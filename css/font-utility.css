@@ -1,0 +1,691 @@
+/* ===========================
+   Typography Utility - Mobile
+=========================== */
+
+/* Heading */
+.typo-m-h1 {
+  font-family: var(--font-inter);
+  font-size: var(--m-h1-size);
+  line-height: var(--m-h1-line);
+  font-weight: var(--m-h1-weight);
+  letter-spacing: var(--m-h1-letter);
+}
+
+.typo-m-header-l {
+  font-family: var(--font-inter);
+  font-size: var(--m-header-l-size);
+  line-height: var(--m-header-l-line);
+  font-weight: var(--m-header-l-weight);
+  letter-spacing: var(--m-header-l-letter);
+}
+
+.typo-m-header {
+  font-family: var(--font-inter);
+  font-size: var(--m-header-size);
+  line-height: var(--m-header-line);
+  font-weight: var(--m-header-weight);
+  letter-spacing: var(--m-header-letter);
+}
+
+.typo-m-header-s {
+  font-family: var(--font-inter);
+  font-size: var(--m-header-s-size);
+  line-height: var(--m-header-s-line);
+  font-weight: var(--m-header-s-weight);
+  letter-spacing: var(--m-header-s-letter);
+}
+
+/* Body */
+.typo-m-body {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-body-size);
+  line-height: var(--m-body-line);
+  font-weight: var(--m-body-weight);
+  letter-spacing: var(--m-body-letter);
+}
+
+.typo-m-body-s {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-body-s-size);
+  line-height: var(--m-body-s-line);
+  font-weight: var(--m-body-s-weight);
+  letter-spacing: var(--m-body-s-letter);
+}
+
+/* Button */
+.typo-m-btn-l {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-btn-l-size);
+  line-height: var(--m-btn-l-line);
+  font-weight: var(--m-btn-l-weight);
+  letter-spacing: var(--m-btn-l-letter);
+}
+
+.typo-m-btn-m {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-btn-m-size);
+  line-height: var(--m-btn-m-line);
+  font-weight: var(--m-btn-m-weight);
+  letter-spacing: var(--m-btn-m-letter);
+}
+
+.typo-m-btn-s {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-btn-s-size);
+  line-height: var(--m-btn-s-line);
+  font-weight: var(--m-btn-s-weight);
+  letter-spacing: var(--m-btn-s-letter);
+}
+
+/* Caption */
+.typo-m-caption {
+  font-family: var(--font-inter);
+  font-size: var(--m-caption-size);
+  line-height: var(--m-caption-line);
+  font-weight: var(--m-caption-weight);
+  letter-spacing: var(--m-caption-letter);
+}
+
+/* Price */
+.typo-m-price {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-price-size);
+  line-height: var(--m-price-line);
+  font-weight: var(--m-price-weight);
+  letter-spacing: var(--m-price-letter);
+}
+
+.typo-m-price-l {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-price-l-size);
+  line-height: var(--m-price-l-line);
+  font-weight: var(--m-price-l-weight);
+  letter-spacing: var(--m-price-l-letter);
+}
+
+.typo-m-price-slash {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-price-slash-size);
+  line-height: var(--m-price-slash-line);
+  font-weight: var(--m-price-slash-weight);
+  letter-spacing: var(--m-price-slash-letter);
+  text-decoration: line-through;
+}
+
+/* Product */
+.typo-m-product-brand {
+  font-family: var(--font-inter);
+  font-size: var(--m-product-brand-size);
+  line-height: var(--m-product-brand-line);
+  font-weight: var(--m-product-brand-weight);
+  letter-spacing: var(--m-product-brand-letter);
+}
+
+.typo-m-product-name {
+  font-family: var(--font-inter);
+  font-size: var(--m-product-name-size);
+  line-height: var(--m-product-name-line);
+  font-weight: var(--m-product-name-weight);
+  letter-spacing: var(--m-product-name-letter);
+}
+
+.typo-m-product-price {
+  font-family: var(--font-inter);
+  font-size: var(--m-product-price-size);
+  line-height: var(--m-product-price-line);
+  font-weight: var(--m-product-price-weight);
+  letter-spacing: var(--m-product-price-letter);
+}
+
+/* Footer */
+.typo-m-footer {
+  font-family: var(--font-pretendard);
+  font-size: var(--m-footer-size);
+  line-height: var(--m-footer-line);
+  font-weight: var(--m-footer-weight);
+  letter-spacing: var(--m-footer-letter);
+}
+
+.typo-m-footer-caption {
+  font-family: var(--font-inter);
+  font-size: var(--m-footer-caption-size);
+  line-height: var(--m-footer-caption-line);
+  font-weight: var(--m-footer-caption-weight);
+  letter-spacing: var(--m-footer-caption-letter);
+}
+
+/* Icons */
+.typo-m-icons-xs-o {
+  font-family: var(--font-material-icons);
+  font-size: var(--m-icons-xs-size);
+  line-height: var(--m-icons-xs-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-m-icons-s-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--m-icons-s-size);
+  line-height: var(--m-icons-s-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-m-icons-m-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--m-icons-m-size);
+  line-height: var(--m-icons-m-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-m-icons-l-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--m-icons-l-size);
+  line-height: var(--m-icons-l-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-m-icons-xl-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--m-icons-xl-size);
+  line-height: var(--m-icons-xl-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ===========================
+   Typography Utility - Tablet
+=========================== */
+
+/* Heading */
+
+.typo-t-h1 {
+  font-family: var(--font-inter);
+  font-size: var(--t-h1-size);
+  line-height: var(--t-h1-line);
+  font-weight: var(--t-h1-weight);
+  letter-spacing: var(--t-h1-letter);
+}
+
+.typo-t-header-l {
+  font-family: var(--font-inter);
+  font-size: var(--t-header-l-size);
+  line-height: var(--t-header-l-line);
+  font-weight: var(--t-header-l-weight);
+  letter-spacing: var(--t-header-l-letter);
+}
+
+.typo-t-header {
+  font-family: var(--font-inter);
+  font-size: var(--t-header-size);
+  line-height: var(--t-header-line);
+  font-weight: var(--t-header-weight);
+  letter-spacing: var(--t-header-letter);
+}
+
+.typo-t-header-s {
+  font-family: var(--font-inter);
+  font-size: var(--t-header-s-size);
+  line-height: var(--t-header-s-line);
+  font-weight: var(--t-header-s-weight);
+  letter-spacing: var(--t-header-s-letter);
+}
+
+.typo-t-heading-p {
+  font-family: var(--font-inter);
+  font-size: var(--t-heading-p-size);
+  line-height: var(--t-heading-p-line);
+  font-weight: var(--t-heading-p-weight);
+  letter-spacing: var(--t-heading-p-letter);
+}
+
+/* Body */
+
+.typo-t-body {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-body-size);
+  line-height: var(--t-body-line);
+  font-weight: var(--t-body-weight);
+  letter-spacing: var(--t-body-letter);
+}
+
+.typo-t-body-s {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-body-s-size);
+  line-height: var(--t-body-s-line);
+  font-weight: var(--t-body-s-weight);
+  letter-spacing: var(--t-body-s-letter);
+}
+
+/* Button */
+
+.typo-t-btn-l {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-btn-l-size);
+  line-height: var(--t-btn-l-line);
+  font-weight: var(--t-btn-l-weight);
+  letter-spacing: var(--t-btn-l-letter);
+}
+
+.typo-t-btn-m {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-btn-m-size);
+  line-height: var(--t-btn-m-line);
+  font-weight: var(--t-btn-m-weight);
+  letter-spacing: var(--t-btn-m-letter);
+}
+
+.typo-t-btn-s {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-btn-s-size);
+  line-height: var(--t-btn-s-line);
+  font-weight: var(--t-btn-s-weight);
+  letter-spacing: var(--t-btn-s-letter);
+}
+
+/* Caption */
+
+.typo-t-caption {
+  font-family: var(--font-inter);
+  font-size: var(--t-caption-size);
+  line-height: var(--t-caption-line);
+  font-weight: var(--t-caption-weight);
+  letter-spacing: var(--t-caption-letter);
+}
+
+/* Price */
+
+.typo-t-price {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-price-size);
+  line-height: var(--t-price-line);
+  font-weight: var(--t-price-weight);
+  letter-spacing: var(--t-price-letter);
+}
+
+.typo-t-price-l {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-price-l-size);
+  line-height: var(--t-price-l-line);
+  font-weight: var(--t-price-l-weight);
+  letter-spacing: var(--t-price-l-letter);
+}
+
+.typo-t-price-slash {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-price-slash-size);
+  line-height: var(--t-price-slash-line);
+  font-weight: var(--t-price-slash-weight);
+  letter-spacing: var(--t-price-slash-letter);
+  text-decoration: line-through;
+}
+
+/* Product */
+
+.typo-t-product-brand {
+  font-family: var(--font-inter);
+  font-size: var(--t-product-brand-size);
+  line-height: var(--t-product-brand-line);
+  font-weight: var(--t-product-brand-weight);
+  letter-spacing: var(--t-product-brand-letter);
+}
+
+.typo-t-product-name {
+  font-family: var(--font-inter);
+  font-size: var(--t-product-name-size);
+  line-height: var(--t-product-name-line);
+  font-weight: var(--t-product-name-weight);
+  letter-spacing: var(--t-product-name-letter);
+}
+
+.typo-t-product-price {
+  font-family: var(--font-inter);
+  font-size: var(--t-product-price-size);
+  line-height: var(--t-product-price-line);
+  font-weight: var(--t-product-price-weight);
+  letter-spacing: var(--t-product-price-letter);
+}
+
+/* Footer */
+
+.typo-t-footer {
+  font-family: var(--font-pretendard);
+  font-size: var(--t-footer-size);
+  line-height: var(--t-footer-line);
+  font-weight: var(--t-footer-weight);
+  letter-spacing: var(--t-footer-letter);
+}
+
+.typo-t-footer-caption {
+  font-family: var(--font-inter);
+  font-size: var(--t-footer-caption-size);
+  line-height: var(--t-footer-caption-line);
+  font-weight: var(--t-footer-caption-weight);
+  letter-spacing: var(--t-footer-caption-letter);
+}
+
+/* Icons */
+
+.typo-t-icon-xs-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--t-icon-xs-size);
+  line-height: var(--t-icon-xs-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-t-icon-s-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--t-icon-s-size);
+  line-height: var(--t-icon-s-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-t-icon-m-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--t-icon-m-size);
+  line-height: var(--t-icon-m-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-t-icons-l-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--t-icons-l-size);
+  line-height: var(--t-icons-l-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-t-icon-xl-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--t-icon-xl-size);
+  line-height: var(--t-icon-xl-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* ===========================
+   Typography Utility - PC
+=========================== */
+
+/* Heading */
+.typo-p-h1 {
+  font-family: var(--font-inter);
+  font-size: var(--p-h1-size);
+  line-height: var(--p-h1-line);
+  font-weight: var(--p-h1-weight);
+  letter-spacing: var(--p-h1-letter);
+}
+
+.typo-p-header-l {
+  font-family: var(--font-inter);
+  font-size: var(--p-header-l-size);
+  line-height: var(--p-header-l-line);
+  font-weight: var(--p-header-l-weight);
+  letter-spacing: var(--p-header-l-letter);
+}
+
+.typo-p-heading {
+  font-family: var(--font-inter);
+  font-size: var(--p-heading-size);
+  line-height: var(--p-heading-line);
+  font-weight: var(--p-heading-weight);
+  letter-spacing: var(--p-heading-letter);
+}
+
+.typo-p-header-s {
+  font-family: var(--font-inter);
+  font-size: var(--p-header-s-size);
+  line-height: var(--p-header-s-line);
+  font-weight: var(--p-header-s-weight);
+  letter-spacing: var(--p-header-s-letter);
+}
+
+.typo-p-heading-p {
+  font-family: var(--font-inter);
+  font-size: var(--p-heading-p-size);
+  line-height: var(--p-heading-p-line);
+  font-weight: var(--p-heading-p-weight);
+  letter-spacing: var(--p-heading-p-letter);
+}
+
+.typo-p-heading-xxs-plus {
+  font-family: var(--font-inter);
+  font-size: var(--p-heading-xxs-plus-size);
+  line-height: var(--p-heading-xxs-plus-line);
+  font-weight: var(--p-heading-xxs-plus-weight);
+  letter-spacing: var(--p-heading-xxs-plus-letter);
+}
+
+/* Body */
+.typo-p-body-plus {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-body-plus-size);
+  line-height: var(--p-body-plus-line);
+  font-weight: var(--p-body-plus-weight);
+  letter-spacing: var(--p-body-plus-letter);
+}
+
+.typo-p-body {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-body-size);
+  line-height: var(--p-body-line);
+  font-weight: var(--p-body-weight);
+  letter-spacing: var(--p-body-letter);
+}
+
+.typo-p-body-s {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-body-s-size);
+  line-height: var(--p-body-s-line);
+  font-weight: var(--p-body-s-weight);
+  letter-spacing: var(--p-body-s-letter);
+}
+
+.typo-p-body-xs {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-body-xs-size);
+  line-height: var(--p-body-xs-line);
+  font-weight: var(--p-body-xs-weight);
+  letter-spacing: var(--p-body-xs-letter);
+}
+
+.typo-p-body-l {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-body-l-size);
+  line-height: var(--p-body-l-line);
+  font-weight: var(--p-body-l-weight);
+  letter-spacing: var(--p-body-l-letter);
+}
+
+/* Button */
+.typo-p-btn-l {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-btn-l-size);
+  line-height: var(--p-btn-l-line);
+  font-weight: var(--p-btn-l-weight);
+  letter-spacing: var(--p-btn-l-letter);
+}
+
+.typo-p-btn-m {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-btn-m-size);
+  line-height: var(--p-btn-m-line);
+  font-weight: var(--p-btn-m-weight);
+  letter-spacing: var(--p-btn-m-letter);
+}
+
+.typo-p-btn-s {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-btn-s-size);
+  line-height: var(--p-btn-s-line);
+  font-weight: var(--p-btn-s-weight);
+  letter-spacing: var(--p-btn-s-letter);
+}
+
+/* Caption */
+.typo-p-caption {
+  font-family: var(--font-inter);
+  font-size: var(--p-caption-size);
+  line-height: var(--p-caption-line);
+  font-weight: var(--p-caption-weight);
+  letter-spacing: var(--p-caption-letter);
+}
+
+/* Price */
+.typo-p-price {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-price-size);
+  line-height: var(--p-price-line);
+  font-weight: var(--p-price-weight);
+  letter-spacing: var(--p-price-letter);
+}
+
+.typo-p-price-slash {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-price-slash-size);
+  line-height: var(--p-price-slash-line);
+  font-weight: var(--p-price-slash-weight);
+  letter-spacing: var(--p-price-slash-letter);
+  text-decoration: line-through;
+}
+
+.typo-p-price-l {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-price-l-size);
+  line-height: var(--p-price-l-line);
+  font-weight: var(--p-price-l-weight);
+  letter-spacing: var(--p-price-l-letter);
+}
+
+/* Product */
+
+.typo-p-product-brand {
+  font-family: var(--font-inter);
+  font-size: var(--p-product-brand-size);
+  line-height: var(--p-product-brand-line);
+  font-weight: var(--p-product-brand-weight);
+  letter-spacing: var(--p-product-brand-letter);
+}
+
+.typo-p-product-name {
+  font-family: var(--font-inter);
+  font-size: var(--p-product-name-size);
+  line-height: var(--p-product-name-line);
+  font-weight: var(--p-product-name-weight);
+  letter-spacing: var(--p-product-name-letter);
+}
+
+.typo-p-product-price {
+  font-family: var(--font-inter);
+  font-size: var(--p-product-price-size);
+  line-height: var(--p-product-price-line);
+  font-weight: var(--p-product-price-weight);
+  letter-spacing: var(--p-product-price-letter);
+}
+
+.typo-p-product-brand-l {
+  font-family: var(--font-inter);
+  font-size: var(--p-product-brand-l-size);
+  line-height: var(--p-product-brand-l-line);
+  font-weight: var(--p-product-brand-l-weight);
+  letter-spacing: var(--p-product-brand-l-letter);
+}
+
+.typo-p-product-name-m {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-product-name-m-size);
+  line-height: var(--p-product-name-m-line);
+  font-weight: var(--p-product-name-m-weight);
+  letter-spacing: var(--p-product-name-m-letter);
+}
+
+/* Footer */
+
+.typo-p-footer {
+  font-family: var(--font-pretendard);
+  font-size: var(--p-footer-size);
+  line-height: var(--p-footer-line);
+  font-weight: var(--p-footer-weight);
+  letter-spacing: var(--p-footer-letter);
+}
+
+.typo-p-footer-caption {
+  font-family: var(--font-inter);
+  font-size: var(--p-footer-caption-size);
+  line-height: var(--p-footer-caption-line);
+  font-weight: var(--p-footer-caption-weight);
+  letter-spacing: var(--p-footer-caption-letter);
+}
+
+/* Caption */
+
+.typo-p-caption-m {
+  font-family: var(--font-inter);
+  font-size: var(--p-caption-m-size);
+  line-height: var(--p-caption-m-line);
+  font-weight: var(--p-caption-m-weight);
+  letter-spacing: var(--p-caption-m-letter);
+}
+
+/* Icons */
+
+.typo-p-icon-xs {
+  font-family: var(--font-material-icons);
+  font-size: var(--p-icon-xs-size);
+  line-height: var(--p-icon-xs-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-p-icon-s-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--p-icon-s-size);
+  line-height: var(--p-icon-s-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-p-icon-m-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--p-icon-m-size);
+  line-height: var(--p-icon-m-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-p-icon-l-o {
+  font-family: var(--font-material-outlined);
+  font-size: var(--p-icon-l-size);
+  line-height: var(--p-icon-l-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-p-icon-xl {
+  font-family: var(--font-material-icons);
+  font-size: var(--p-icon-xl-size);
+  line-height: var(--p-icon-xl-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-p-icon-2xl {
+  font-family: var(--font-material-icons);
+  font-size: var(--p-icon-2xl-size);
+  line-height: var(--p-icon-2xl-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.typo-p-icon-3xl {
+  font-family: var(--font-material-icons);
+  font-size: var(--p-icon-3xl-size);
+  line-height: var(--p-icon-3xl-line);
+  font-weight: 400;
+  letter-spacing: 0;
+}
