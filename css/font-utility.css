@@ -642,8 +642,6 @@
   letter-spacing: 0;
 }
 
-/* Icons */
-
 .typo-p-icon-s-o {
   font-family: var(--font-material-outlined);
   font-size: var(--p-icon-s-size);
