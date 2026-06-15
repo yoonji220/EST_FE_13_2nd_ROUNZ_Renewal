@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/common.css" />
+  </head>
+  <body>
+    <header class="header"></header>
+    <main>
+      <div>
+        <h2>회원가입</h2>
+        <p>ROUNZ에 가입하고 AI 기반의 맞춤형 안경 추천과 <br />가상 피팅 서비스를 경험해보세요.</p>
+      </div>
+      <form action="#" novalidate>
+        <div class="field d-flex flex-column g-1">
+          <label for="useremail">이메일</label>
+          <div class="form">
+            <input type="email" id="useremail" placeholder="email@example.com" required />
+            <button aria-label="이메일 인증요청 버튼">인증요청</button>
+          </div>
+          <span class="feedback"></span>
+        </div>
+
+        <div class="field d-flex flex-column g-1">
+          <label for="validate_number">인증번호</label>
+          <input type="number" id="validate_number" placeholder="6자리 숫자 입력" required />
+          <span>인증번호를 입력해주세요.</span>
+          <span class="feedback"></span>
+        </div>
+
+        <div class="field d-flex flex-column g-1">
+          <label for="userpw">비빌번호</label>
+          <input
+            type="password"
+            id="userpw"
+            placeholder="영문,숫자,특수문자 조합 8자 이상"
+            required
+          />
+          <span>안전한 비밀번호를 입력해 주세요.</span>
+          <span class="feedback"></span>
+        </div>
+
+        <div class="field d-flex flex-column g-1">
+          <label for="userpwc">비빌번호 확인</label>
+          <input type="password" id="userpwc" placeholder="비밀번호 재입력" required />
+          <span class="feedback"></span>
+        </div>
+
+        <div class="field d-flex flex-column g-1">
+          <label for="username">이름</label>
+          <input type="text" id="username" placeholder="실명을 입력해주세요" required />
+          <span class="feedback"></span>
+        </div>
+
+        <div>
+          <input type="checkbox" id="allagree" required />
+          <label for="allagree">[전체 동의]</label>
+        </div>
+
+        <div>
+          <div>
+            <input type="checkbox" id="tosagree" required />
+            <label for="tosagree">[필수] 이용약관</label>
+          </div>
+          <span class="typo-m-icons-xs-o">chevron_right</span>
+        </div>
+
+        <div>
+          <div>
+            <input type="checkbox" id="ppagree" required />
+            <label for="ppagree">[필수] 개인정보 처리 방침</label>
+          </div>
+          <span class="typo-m-icons-xs-o">chevron_right</span>
+        </div>
+
+        <div>
+          <div>
+            <input type="checkbox" id="adagree" />
+            <label for="adagree">[선택] 마케팅 정보 수신</label>
+          </div>
+          <span class="typo-m-icons-xs-o">chevron_right</span>
+        </div>
+
+        <button type="submit">가입하기</button>
+      </form>
+      <hr />
+      <div>
+        <p>이미 계정이 잇으신가요?</p>
+        <a href="#">로그인</a>
+      </div>
+    </main>
+    <footer class="sub-footer"></footer>
+  </body>
+</html>
