@@ -1,20 +1,172 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+      rel="stylesheet" />
 
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
-    rel="stylesheet" />
+    <link rel="stylesheet" href="./css/common.css" />
+  </head>
 
-  <link rel="stylesheet" href="./css/common.css" />
-</head>
+  <body>
+    <!-- 권유진 -->
 
-<body>
-</body>
+    <header class="header">
+      <button class="menu-btn">menu</button>
 
+      <h1 class="logo typo-m-h1">
+        <a href="# typo-m-icons-l-o">ROUNZ</a>
+      </h1>
+
+      <nav class="icon-menu">
+        <a href="#" class="typo-m-icons-l-o">person</a>
+        <a href="#" class="typo-m-icons-l-o">search</a>
+        <a href="#" class="typo-m-icons-l-o">shopping_bag</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <video autoplay muted loop playsinline>
+        <source src="video/main.mp4" type="video/mp4" />
+      </video>
+
+      <div class="slider">
+        <span class="active"></span>
+        <span></span>
+        <span></span>
+      </div>
+    </section>
+
+    <section class="guide">
+      <!-- 카드 1 -->
+      <article class="guide-card">
+        <img src="images/guide1.jpg" alt="AI 얼굴형 분석" />
+
+        <div class="guide-text .typo-m-header-l">
+          <h3>당신의 얼굴형,<br />AI가 분석해드립니다.</h3>
+        </div>
+        <div>
+          <div class="guide-text typo-m-caption">
+            <span>정밀 분석</span>
+            <span>맞춤 프레임 추천</span>
+          </div>
+
+          <p class="typo-m-body-s">
+            AI가 얼굴형과 비율을 분석해 개인에게 어울리는<br />
+            안경테를 추천합니다. <br />
+            복잡한 선택 과정 없이 자신에게 어울리는 스타일을<br />
+            빠르게 찾아보세요!
+          </p>
+
+          <a href="#" class="btn typo-m-btn-l">START NOW</a>
+        </div>
+      </article>
+
+      <!-- 카드 2 -->
+      <article class="guide-card">
+        <img src="images/guide2.jpg" alt="가상 피팅" />
+
+        <div class="guide-text .typo-m-header-l">
+          <h3>사진으로 쉽고 빠른<br />안경 가상 피팅</h3>
+
+          <div class="tag typo-m-caption">
+            <span>간편 분석</span>
+            <span>언제 어디서나 빠른 추천</span>
+          </div>
+
+          <p class="typo-m-body-s">
+            별도의 촬영 없이 사진만 업로드하면 다양한 안경을 자연스럽게 가상으로<br />
+            착용해 볼 수 있습니다. <br />
+            사진 한 장으로 다양한 안경을 미리 착용하고<br />
+            나만의 스타일을 발견해 보세요!
+          </p>
+
+          <a href="#" class="btn typo-m-btn-l">TRY NOW</a>
+        </div>
+      </article>
+
+      <!-- 카드 3 -->
+      <article class="guide-card">
+        <img src="images/guide3.jpg" alt="안경 가이드" />
+
+        <div class="guide-text .typo-m-header-l">
+          <h3>다양한 얼굴형에<br />맞춘 안경 가이드</h3>
+
+          <div class="tag typo-m-caption">
+            <span>얼굴형별 추천 프레임</span>
+            <span>다양한 스타일 검색</span>
+          </div>
+
+          <p class="typo-m-body-s">
+            둥근형, 각진형, 긴형 등 얼굴형별 추천 안경테를 확인하고 다양한 디자인을<br />
+            비교할 수 있습니다.<br />
+            다양한 프레임을 살펴보고 나만의 스타일을<br />
+            완성해 보세요.
+          </p>
+
+          <a href="#" class="btn typo-m-btn-l">EXPLORE</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="best">
+      <div class="best__inner">
+        <!-- 섹션 헤더 -->
+        <div class="best__header">
+          <h2 class="best__title m-header-l">
+            <span>BEST</span>
+            <span>베스트셀러</span>
+          </h2>
+
+          <a href="#" class="best__link">
+            <span class="m-btn-m">VIEW ALL</span>
+            <span class="material-icons-outlines m-icons-s">arrow_forward</span>
+            <link rel="stylesheet" href="" />
+          </a>
+        </div>
+
+        <!-- 상품 리스트 -->
+        <div class="best__list">
+          <!-- 상품 카드 -->
+          <article class="product-card">
+            <a href="#" class="product-card__image">
+              <img src="./images/glasses01.png" alt="Essential Frame Model" />
+            </a>
+
+            <div class="product-card__content">
+              <p class="product-card__brand">BRAND NAME</p>
+
+              <p class="product-card__title">Essential Frame Model</p>
+
+              <div class="product-card__price-row">
+                <p class="product-card__price">₩129,000</p>
+
+                <button class="product-card__wish material-icons-outlines" aria-label="찜하기">favorite_border</button>
+              </div>
+
+              <ul class="product-card__colors">
+                <li>
+                  <button class="color color--black" aria-label="블랙"></button>
+                </li>
+
+                <li>
+                  <button class="color color--gray" aria-label="그레이"></button>
+                </li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- 반복 -->
+          <article class="product-card">...</article>
+
+          <article class="product-card">...</article>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>

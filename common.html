@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./css/common.css" />
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+  </head>
+  <body>
+    <header class="header"></header>
+
+    <footer class="main-footer"></footer>
+    <footer class="sub-footer"></footer>
+
+    <script type="module">
+      import { renderMoblieSubFooter, renderMoblieMainFooter } from "./js/modules/footer.js";
+      import { renderMoblieHeader } from "./js/modules/header.js";
+      renderMoblieHeader();
+      renderMoblieMainFooter();
+      renderMoblieSubFooter();
+    </script>
+  </body>
+</html>
