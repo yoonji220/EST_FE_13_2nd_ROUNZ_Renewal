@@ -19,7 +19,8 @@ export function renderMoblieHeader() {
               <li class="main-menu-item" aria-label="브랜드">
                 <button type="button" data-menu="brand">브랜드</button>
               </li>
-              <li aria-label="라운즈에서만">라운즈only</li>
+              <li aria-label="라운즈에서만"><a href="#">라운즈only</a></li>
+              <hr />
               <li aria-label="안경원">
                 <a href="#">안경원</a><span class="typo-m-icons-l-o">arrow_outward</span>
               </li>
