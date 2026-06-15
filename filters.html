@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROUNZ - Filters</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/filters.css">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0">
+</head>
+
+<body>
+  <div class="app-container filters-page">
+    <main class="filters-main">
+      <nav class="filters-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">HOME</a>
+        <span>&gt;</span>
+        <a href="#">GLASSES</a>
+        <span>&gt;</span>
+        <strong>PRODUCT DETAIL</strong>
+      </nav>
+
+      <button class="filter-bar" id="filter-toggle" type="button" aria-expanded="true">
+        <span class="filter-title">
+          <span class="material-symbols-outlined">sort</span>
+          <span>FILTERS</span>
+        </span>
+        <span class="material-symbols-outlined" id="filter-toggle-icon">expand_more</span>
+      </button>
+
+      <section class="filter-panel" id="filter-panel" aria-label="Filters"></section>
+
+      <section class="sort-control" aria-label="Sort products">
+        <span>1,248 PRODUCTS</span>
+        <div class="sort-dropdown">
+          <span>정렬 기준 :</span>
+          <button id="sort-toggle" type="button">
+            <strong id="sort-current">신상품순</strong>
+            <span class="material-symbols-outlined">expand_more</span>
+          </button>
+          <div class="sort-options" id="sort-options" hidden>
+            <button class="sort-option active" type="button">신상품순</button>
+            <button class="sort-option" type="button">인기순</button>
+            <button class="sort-option" type="button">낮은가격순</button>
+            <button class="sort-option" type="button">높은가격순</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="product-grid" id="product-grid" aria-label="Products"></section>
+
+      <div class="view-more-wrap">
+        <button class="view-more-btn" type="button">더 보기</button>
+      </div>
+    </main>
+
+
+  </div>
+
+  <script src="./js/utils/common.js"></script>
+  <script src="./js/utils/filters.js"></script>
+</body>
+
+</html>
