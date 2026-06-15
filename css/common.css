@@ -3,6 +3,11 @@
 @import url("font-utility.css");
 
 :root {
+  /*=========================== Layout ===========================*/
+  --container-max: 1440px; /* PC 콘텐츠 최대폭 */
+  --container-pad-mobile: 16px; /* 모바일 좌우 여백 (480-448)/2 */
+  --container-pad-tablet: 24px; /* 태블릿 좌우 여백 (768-720)/2 */
+
   /* Base */
   --color-white: #ffffff;
   --color-black: #000000;
@@ -456,4 +461,26 @@ body {
   font-size: var(--base-font);
   color: var(--color-dark-black);
   background-color: var(--color-white);
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+  padding: 0 var(--container-pad-mobile);
+}
+
+/* 태블릿 (브레이크포인트 미정 - 임시 768) */
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--container-pad-tablet);
+  }
+}
+
+/* PC (브레이크포인트 미정 - 팀 확정 후 숫자 교체) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: var(--container-max);
+    padding: 0;
+  }
 }
