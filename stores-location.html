@@ -12,10 +12,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/common.css" />
-    <link rel="stylesheet" href="./css/font-utility.css" />
+    <link rel="stylesheet" href="./css/stores-location.css" />
   </head>
 
   <body>
@@ -24,20 +22,22 @@
     <main class="stores-location">
       <!-- Section 1: Hero -->
       <section class="stores-hero">
-        <div class="stores-hero__heading">
-          <h1 class="typo-m-header-l">가까운 안경원 찾기</h1>
-        </div>
-        <div class="stores-hero__desc">
-          <p class="typo-m-body-s">전문 피팅과 상담이 가능한 ROUNZ 파트너 매장을 검색해보세요.</p>
+        <div class="stores-hero__inner container d-flex flex-column g-1">
+          <div class="stores-hero__heading">
+            <h1 class="typo-m-header-l">가까운 안경원 찾기</h1>
+          </div>
+          <div class="stores-hero__desc">
+            <p class="typo-m-body-s">전문 피팅과 상담이 가능한 ROUNZ 파트너 매장을 검색해보세요.</p>
+          </div>
         </div>
       </section>
 
       <!-- Section 2: Search & Filter -->
       <section class="stores-search" aria-labelledby="stores-search-title">
         <h2 id="stores-search-title" class="sr-only">매장 검색 및 필터</h2>
-        <div class="stores-search__container">
-          <div class="stores-search__input-wrap">
-            <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true">search</span>
+        <div class="stores-search__container container d-flex flex-column g-1">
+          <div class="stores-search__input-wrap d-flex align-items-center">
+            <span class="typo-m-icons-l-o" aria-hidden="true">search</span>
             <input
               type="search"
               class="typo-m-body-s"
@@ -48,7 +48,7 @@
           <button type="button" class="stores-search__location-btn typo-m-btn-m">
             현재 위치로 찾기
           </button>
-          <ul class="stores-search__filters">
+          <ul class="stores-search__filters d-flex">
             <li>
               <button
                 type="button"
@@ -78,13 +78,11 @@
       </section>
 
       <!-- Section 3: AI Banner -->
-      <section class="stores-ai-banner">
-        <div class="stores-ai-banner__icon-wrap">
-          <span class="material-icons-outlined typo-m-icons-xl-o" aria-hidden="true"
-            >visibility</span
-          >
+      <section class="stores-ai-banner container d-flex align-items-center g-2">
+        <div class="stores-ai-banner__icon-wrap d-flex align-items-center justify-content-center">
+          <span class="typo-m-icons-xl-o" aria-hidden="true">visibility</span>
         </div>
-        <div class="stores-ai-banner__content">
+        <div class="stores-ai-banner__content d-flex flex-column g-1">
           <h2 class="typo-m-header">AI 추천 결과가 있으신가요?</h2>
           <p class="typo-m-body-s">
             추천받은 안경을 가까운 ROUNZ 파트너 안경원에서 직접 확인해보세요.
@@ -97,46 +95,44 @@
       </section>
 
       <!-- Section 4: Featured Showroom -->
-      <section class="stores-featured">
+      <section class="stores-featured" aria-labelledby="stores-featured-title">
         <div class="stores-featured__image-wrap">
           <!-- JS로 이미지 렌더링 예정 -->
           <span class="stores-featured__badge typo-m-header">PREMIUM</span>
         </div>
-        <div class="stores-featured__info">
-          <div class="stores-featured__meta">
-            <div class="stores-featured__name-group">
-              <h2 class="typo-m-product-brand">ROUNZ 대표매장 강남</h2>
+        <div class="stores-featured__info d-flex flex-column">
+          <div class="stores-featured__meta d-flex justify-content-between">
+            <div class="stores-featured__name-group d-flex flex-column">
+              <h2 id="stores-featured-title" class="typo-m-product-brand">ROUNZ 대표매장 강남</h2>
               <p class="typo-m-product-name">서울특별시 강남구 강남대로 123</p>
             </div>
-            <div class="stores-featured__rating">
-              <span class="material-icons typo-m-icons-xs-o" aria-hidden="true">star</span>
+            <div class="stores-featured__rating d-flex align-items-center">
+              <span class="typo-m-icons-xs-o" aria-hidden="true">star</span>
               <span class="typo-m-caption">4.9</span>
             </div>
           </div>
-          <div class="stores-featured__hours">
-            <span class="material-icons typo-m-icons-xs-o" aria-hidden="true">schedule</span>
+          <div class="stores-featured__hours d-flex align-items-center">
+            <span class="typo-m-icons-xs-o" aria-hidden="true">schedule</span>
             <span class="typo-m-caption">10:00 - 21:00</span>
           </div>
-          <div class="stores-featured__actions">
+          <div class="stores-featured__actions d-flex">
             <button type="button" class="stores-featured__action-btn typo-m-btn-m">
-              <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true">call</span>
+              <span class="typo-m-icons-l-o" aria-hidden="true">call</span>
               CALL
             </button>
             <button type="button" class="stores-featured__action-btn typo-m-btn-m">
-              <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true"
-                >near_me</span
-              >
+              <span class="typo-m-icons-l-o" aria-hidden="true">near_me</span>
               DIR.
             </button>
             <button type="button" class="stores-featured__action-btn typo-m-btn-m">
-              <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true">map</span>
+              <span class="typo-m-icons-l-o" aria-hidden="true">map</span>
               MAP
             </button>
             <button
               type="button"
               class="stores-featured__action-btn stores-featured__action-btn--book typo-m-btn-m"
             >
-              <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true">event</span>
+              <span class="typo-m-icons-l-o" aria-hidden="true">event</span>
               BOOK
             </button>
           </div>
@@ -145,125 +141,123 @@
 
       <!-- Section 5: Nearby Stores -->
       <section class="stores-list" aria-labelledby="stores-list-title">
-        <div class="stores-list__header">
-          <h2 id="stores-list-title" class="typo-m-header-l">가까운 매장</h2>
-          <button type="button" class="stores-list__sort">
-            <span class="typo-m-caption">추천순</span>
-            <span class="material-icons-outlined typo-m-icons-s-o" aria-hidden="true"
-              >expand_more</span
-            >
-          </button>
+        <div class="stores-list__inner container d-flex flex-column g-2">
+          <div class="stores-list__header d-flex justify-content-between align-items-center">
+            <h2 id="stores-list-title" class="typo-m-header-l">가까운 매장</h2>
+            <button type="button" class="stores-list__sort d-flex align-items-center">
+              <span class="typo-m-caption">추천순</span>
+              <span class="typo-m-icons-s-o" aria-hidden="true">expand_more</span>
+            </button>
+          </div>
+          <ul class="stores-list__items d-flex flex-column">
+            <li class="store-card d-flex flex-column">
+              <div class="store-card__info d-flex justify-content-between">
+                <div class="store-card__name-group d-flex flex-column">
+                  <h3 class="typo-m-product-brand">ROUNZ 홍대점</h3>
+                  <p class="typo-m-product-name">서울 마포구 홍익로 22</p>
+                </div>
+                <span class="store-card__distance typo-m-caption">1.2km</span>
+              </div>
+              <div class="store-card__actions d-flex">
+                <button
+                  type="button"
+                  class="store-card__btn typo-m-btn-s"
+                  aria-label="ROUNZ 홍대점 상세 정보"
+                >
+                  상세 정보
+                </button>
+                <button
+                  type="button"
+                  class="store-card__btn typo-m-btn-s"
+                  aria-label="ROUNZ 홍대점 지도 보기"
+                >
+                  지도 보기
+                </button>
+                <button
+                  type="button"
+                  class="store-card__btn store-card__btn--primary typo-m-btn-s"
+                  aria-label="ROUNZ 홍대점 길 안내"
+                >
+                  길 안내
+                </button>
+              </div>
+            </li>
+            <li class="store-card d-flex flex-column">
+              <div class="store-card__info d-flex justify-content-between">
+                <div class="store-card__name-group d-flex flex-column">
+                  <h3 class="typo-m-product-brand">ROUNZ 성수점</h3>
+                  <p class="typo-m-product-name">서울 성동구 성수이로 88</p>
+                </div>
+                <span class="store-card__distance typo-m-caption">3.5km</span>
+              </div>
+              <div class="store-card__actions d-flex">
+                <button
+                  type="button"
+                  class="store-card__btn typo-m-btn-s"
+                  aria-label="ROUNZ 성수점 상세 정보"
+                >
+                  상세 정보
+                </button>
+                <button
+                  type="button"
+                  class="store-card__btn typo-m-btn-s"
+                  aria-label="ROUNZ 성수점 지도 보기"
+                >
+                  지도 보기
+                </button>
+                <button
+                  type="button"
+                  class="store-card__btn store-card__btn--primary typo-m-btn-s"
+                  aria-label="ROUNZ 성수점 길 안내"
+                >
+                  길 안내
+                </button>
+              </div>
+            </li>
+          </ul>
         </div>
-        <ul class="stores-list__items">
-          <li class="store-card">
-            <div class="store-card__info">
-              <div class="store-card__name-group">
-                <h3 class="typo-m-product-brand">ROUNZ 홍대점</h3>
-                <p class="typo-m-product-name">서울 마포구 홍익로 22</p>
-              </div>
-              <span class="store-card__distance typo-m-caption">1.2km</span>
-            </div>
-            <div class="store-card__actions">
-              <button
-                type="button"
-                class="store-card__btn typo-m-btn-s"
-                aria-label="ROUNZ 홍대점 상세 정보"
-              >
-                상세 정보
-              </button>
-              <button
-                type="button"
-                class="store-card__btn typo-m-btn-s"
-                aria-label="ROUNZ 홍대점 지도 보기"
-              >
-                지도 보기
-              </button>
-              <button
-                type="button"
-                class="store-card__btn store-card__btn--primary typo-m-btn-s"
-                aria-label="ROUNZ 홍대점 길 안내"
-              >
-                길 안내
-              </button>
-            </div>
-          </li>
-          <li class="store-card">
-            <div class="store-card__info">
-              <div class="store-card__name-group">
-                <h3 class="typo-m-product-brand">ROUNZ 성수점</h3>
-                <p class="typo-m-product-name">서울 성동구 성수이로 88</p>
-              </div>
-              <span class="store-card__distance typo-m-caption">3.5km</span>
-            </div>
-            <div class="store-card__actions">
-              <button
-                type="button"
-                class="store-card__btn typo-m-btn-s"
-                aria-label="ROUNZ 성수점 상세 정보"
-              >
-                상세 정보
-              </button>
-              <button
-                type="button"
-                class="store-card__btn typo-m-btn-s"
-                aria-label="ROUNZ 성수점 지도 보기"
-              >
-                지도 보기
-              </button>
-              <button
-                type="button"
-                class="store-card__btn store-card__btn--primary typo-m-btn-s"
-                aria-label="ROUNZ 성수점 길 안내"
-              >
-                길 안내
-              </button>
-            </div>
-          </li>
-        </ul>
       </section>
 
-      <!-- Section 6: In-store Benefits -->
+      <!-- Section 6: In-store Services -->
       <section class="stores-services" aria-labelledby="stores-services-title">
-        <h2 id="stores-services-title" class="typo-m-header-l">매장 서비스</h2>
-        <ul class="stores-services__grid">
-          <li class="stores-services__item">
-            <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true"
-              >straighten</span
-            >
-            <p class="typo-m-body-s">매장 피팅</p>
-          </li>
-          <li class="stores-services__item">
-            <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true"
-              >support_agent</span
-            >
-            <p class="typo-m-body-s">전문 상담</p>
-          </li>
-          <li class="stores-services__item">
-            <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true">face</span>
-            <p class="typo-m-body-s">가상 피팅</p>
-          </li>
-          <li class="stores-services__item">
-            <span class="material-icons-outlined typo-m-icons-l-o" aria-hidden="true"
-              >auto_awesome</span
-            >
-            <p class="typo-m-body-s">렌즈 가이드</p>
-          </li>
-        </ul>
+        <div class="stores-services__inner container d-flex flex-column g-2">
+          <h2 id="stores-services-title" class="typo-m-header-l">매장 서비스</h2>
+          <ul class="stores-services__grid">
+            <li class="stores-services__item">
+              <span class="typo-m-icons-l-o" aria-hidden="true">straighten</span>
+              <p class="typo-m-body-s">매장 피팅</p>
+            </li>
+            <li class="stores-services__item">
+              <span class="typo-m-icons-l-o" aria-hidden="true">support_agent</span>
+              <p class="typo-m-body-s">전문 상담</p>
+            </li>
+            <li class="stores-services__item">
+              <span class="typo-m-icons-l-o" aria-hidden="true">face</span>
+              <p class="typo-m-body-s">가상 피팅</p>
+            </li>
+            <li class="stores-services__item">
+              <span class="typo-m-icons-l-o" aria-hidden="true">auto_awesome</span>
+              <p class="typo-m-body-s">렌즈 가이드</p>
+            </li>
+          </ul>
+        </div>
       </section>
 
       <!-- Section 7: Missing Location CTA -->
       <section class="stores-cta">
-        <div class="stores-cta__text">
-          <h2 class="typo-m-header-l">원하는 매장을 찾지 못하셨나요?</h2>
-          <p class="typo-m-body-s">가까운 ROUNZ 파트너 매장을 찾아보세요.</p>
-        </div>
-        <div class="stores-cta__buttons">
-          <button type="button" class="stores-cta__btn stores-cta__btn--primary typo-m-btn-m">
-            현재 위치로 찾기
-          </button>
-          <button type="button" class="stores-cta__btn stores-cta__btn--secondary typo-m-btn-m">
-            전체 매장 보기
-          </button>
+        <div class="stores-cta__inner container d-flex flex-column g-2">
+          <div class="stores-cta__text d-flex flex-column">
+            <h2 class="typo-m-header-l">원하는 매장을 찾지 못하셨나요?</h2>
+            <p class="typo-m-body-s">가까운 ROUNZ 파트너 매장을 찾아보세요.</p>
+          </div>
+          <div class="stores-cta__buttons d-flex flex-column">
+            <button type="button" class="stores-cta__btn stores-cta__btn--primary typo-m-btn-m">
+              현재 위치로 찾기
+            </button>
+            <button type="button" class="stores-cta__btn stores-cta__btn--secondary typo-m-btn-m">
+              전체 매장 보기
+            </button>
+          </div>
         </div>
       </section>
     </main>
@@ -281,19 +275,19 @@
       <div class="map-lightbox__overlay"></div>
       <div class="map-lightbox__container">
         <button type="button" class="map-lightbox__close" aria-label="닫기" autofocus>
-          <span class="material-icons-outlined" aria-hidden="true">close</span>
+          <span class="typo-m-icons-l-o" aria-hidden="true">close</span>
         </button>
         <!-- JS로 지도 이미지 렌더링 예정 -->
       </div>
     </div>
 
     <!-- Fixed Action Bar -->
-    <div class="fixed-action-bar">
+    <div class="fixed-action-bar d-flex flex-column">
       <button type="button" class="fixed-action-bar__btn" aria-label="맨 위로 이동">
-        <span class="material-icons" aria-hidden="true">keyboard_double_arrow_up</span>
+        <span class="typo-m-icons-l-o" aria-hidden="true">keyboard_double_arrow_up</span>
       </button>
       <button type="button" class="fixed-action-bar__btn" aria-label="채팅 상담">
-        <span class="material-icons" aria-hidden="true">comment</span>
+        <span class="typo-m-icons-l-o" aria-hidden="true">comment</span>
       </button>
     </div>
   </body>

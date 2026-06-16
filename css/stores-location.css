@@ -1,0 +1,698 @@
+/* ============================================================
+   stores-location.css — 매장 찾기 페이지 모바일 스타일
+   Viewport: 480px / Content: 448px (padding 0 16px)
+   Figma: kZYfAsKXLNXvKo9CCA0ypU / node 841:3788
+   Component border-radius: Button 4px / Card 4px /
+   Filter Chip 4px / Input 12px / PREMIUM Badge 100px
+   ============================================================ */
+
+/* ===========================
+   Accessibility Utilities
+   =========================== */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-point);
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible),
+input:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ===========================
+   Page Layout
+   =========================== */
+
+.stores-location {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 24px;
+  padding: 0 16px;
+  overflow-x: hidden;
+}
+
+/* ===========================
+   Section 1 — Hero
+   =========================== */
+
+.stores-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-top: 24px;
+}
+
+.stores-hero__heading h1 {
+  margin: 0;
+  color: var(--color-dark-black);
+}
+
+.stores-hero__desc p {
+  margin: 0;
+  color: var(--color-dark-gray);
+}
+
+/* ===========================
+   Section 2 — Search & Filter
+   =========================== */
+
+.stores-search__container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stores-search__input-wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid var(--color-gray);
+  border-radius: 12px;
+  background-color: var(--color-white);
+}
+
+.stores-search__input-wrap span[aria-hidden] {
+  flex-shrink: 0;
+  color: var(--color-dark-black);
+  line-height: 1;
+}
+
+.stores-search__input-wrap input[type="search"] {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--color-dark-black);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.stores-search__input-wrap input[type="search"]::placeholder {
+  color: var(--color-dark-gray);
+}
+
+.stores-search__input-wrap input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
+
+.stores-search__location-btn {
+  width: 100%;
+  padding: 16px 0;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* ===========================
+   Filter Chip
+   =========================== */
+
+.stores-search__filters {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+}
+
+.stores-search__filters::-webkit-scrollbar {
+  display: none;
+}
+
+.filter-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  background-color: var(--color-light-gray);
+  color: var(--color-dark-gray);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.filter-chip::after {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
+}
+
+.filter-chip--active {
+  background-color: var(--color-point);
+  border-color: var(--color-point);
+  color: var(--color-white);
+}
+
+/* ===========================
+   Section 3 — AI Banner
+   =========================== */
+
+.stores-ai-banner {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--color-point);
+}
+
+.stores-ai-banner__icon-wrap {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--color-point-hover);
+}
+
+.stores-ai-banner__icon-wrap span {
+  display: block;
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.stores-ai-banner__content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.stores-ai-banner__content h2 {
+  margin: 0;
+  color: var(--color-white);
+}
+
+.stores-ai-banner__content p {
+  margin: 0;
+  color: var(--color-white);
+}
+
+.stores-ai-banner__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  min-height: 40px;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: var(--color-white);
+  cursor: pointer;
+}
+
+/* ===========================
+   Section 4 — Featured Showroom
+   =========================== */
+
+.stores-featured {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: var(--color-white);
+}
+
+.stores-featured__image-wrap {
+  position: relative;
+  width: 100%;
+  height: 270px;
+  background-color: var(--color-light-gray);
+  flex-shrink: 0;
+}
+
+.stores-featured__badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  padding: 4px 12px;
+  border-radius: 100px;
+  background-color: var(--color-point);
+  color: var(--color-white);
+}
+
+.stores-featured__info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+}
+
+.stores-featured__meta {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.stores-featured__name-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.stores-featured__name-group h2,
+.stores-featured__name-group p {
+  margin: 0;
+}
+
+.stores-featured__name-group h2 {
+  color: var(--color-dark-black);
+}
+
+.stores-featured__name-group p {
+  color: var(--color-dark-gray);
+}
+
+.stores-featured__rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: var(--color-light-gray);
+  flex-shrink: 0;
+}
+
+.stores-featured__rating .material-icons {
+  color: var(--color-yellow);
+  font-size: 13px;
+  line-height: 1;
+}
+
+.stores-featured__hours {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.stores-featured__hours .material-icons {
+  flex-shrink: 0;
+  color: var(--color-black);
+  font-size: 12px;
+  line-height: 1;
+}
+
+.stores-featured__hours .typo-m-caption {
+  color: var(--color-dark-gray);
+}
+
+.stores-featured__actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-gray);
+}
+
+.stores-featured__action-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  cursor: pointer;
+}
+
+.stores-featured__action-btn .material-icons-outlined {
+  color: var(--color-dark-gray);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.stores-featured__action-btn--book {
+  color: var(--color-point);
+}
+
+.stores-featured__action-btn--book .material-icons-outlined {
+  color: var(--color-point);
+}
+
+/* ===========================
+   Section 5 — Nearby Stores
+   =========================== */
+
+.stores-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.stores-list__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.stores-list__header h2 {
+  margin: 0;
+  color: var(--color-dark-black);
+}
+
+.stores-list__sort {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  min-height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.stores-list__sort .typo-m-caption {
+  color: var(--color-dark-black);
+}
+
+.stores-list__sort .material-icons-outlined {
+  color: var(--color-dark-gray);
+}
+
+.stores-list__items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ===========================
+   Store Card
+   =========================== */
+
+.store-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  background-color: var(--color-white);
+}
+
+.store-card__info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.store-card__name-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.store-card__name-group h3,
+.store-card__name-group p {
+  margin: 0;
+}
+
+.store-card__name-group h3 {
+  color: var(--color-dark-black);
+}
+
+.store-card__name-group p {
+  color: var(--color-dark-gray);
+}
+
+.store-card__distance {
+  flex-shrink: 0;
+  color: var(--color-point);
+}
+
+.store-card__actions {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-light-gray);
+}
+
+.store-card__btn {
+  position: relative;
+  flex: 1;
+  height: 40px;
+  padding: 8px 0;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  cursor: pointer;
+  text-align: center;
+}
+
+.store-card__btn::after {
+  content: "";
+  position: absolute;
+  inset: -4px 0;
+}
+
+.store-card__btn--primary {
+  background-color: var(--color-point);
+  border-color: var(--color-gray);
+  color: var(--color-primary);
+}
+
+/* ===========================
+   Section 6 — In-store Services
+   =========================== */
+
+.stores-services {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+.stores-services h2 {
+  margin: 0;
+  color: var(--color-dark-black);
+}
+
+.stores-services__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stores-services__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--color-light-gray);
+}
+
+.stores-services__item span {
+  color: var(--color-point);
+  line-height: 1;
+}
+
+.stores-services__item p {
+  margin: 0;
+  color: var(--color-dark-black);
+  text-align: center;
+}
+
+/* ===========================
+   Section 7 — Missing Location CTA
+   =========================== */
+
+.stores-cta {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+.stores-cta__text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stores-cta__text h2,
+.stores-cta__text p {
+  margin: 0;
+  text-align: center;
+}
+
+.stores-cta__text h2 {
+  color: var(--color-dark-black);
+}
+
+.stores-cta__text p {
+  color: var(--color-dark-gray);
+}
+
+.stores-cta__buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.stores-cta__btn {
+  width: 100%;
+  height: 56px;
+  padding: 0 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.stores-cta__btn--primary {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  border: none;
+}
+
+.stores-cta__btn--secondary {
+  background-color: var(--color-white);
+  color: var(--color-dark-gray);
+  border: 1px solid var(--color-gray);
+}
+
+/* ===========================
+   Map Lightbox
+   =========================== */
+
+.map-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+}
+
+.map-lightbox__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--color-overlay);
+  cursor: pointer;
+}
+
+.map-lightbox__container {
+  position: absolute;
+  width: calc(100% - 32px);
+  max-height: calc(100vh - 40px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 16px;
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.map-lightbox__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  border: none;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: var(--color-dark-black);
+  cursor: pointer;
+}
+
+/* ===========================
+   Fixed Action Bar
+   =========================== */
+
+.fixed-action-bar {
+  position: fixed;
+  right: 16px;
+  bottom: 80px;
+  z-index: 150;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fixed-action-bar__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  padding: 2px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-white);
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+
+.fixed-action-bar__btn:first-child .material-icons {
+  color: var(--color-point);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.fixed-action-bar__btn:last-child .material-icons {
+  color: var(--color-black);
+  font-size: 20px;
+  line-height: 1;
+}
