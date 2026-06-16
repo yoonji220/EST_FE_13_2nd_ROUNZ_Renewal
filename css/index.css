@@ -1,7 +1,11 @@
-
-  .container {
-    padding: 16px 8px;
-  }
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+/* .container {
+  padding: 16px 8px;
+} */
 
 /* AI 섹션 */
 .guide-card {
@@ -9,9 +13,9 @@
   width: 100%; /* 디자인에 맞는 카드 높이 */
   border-radius: 10px 10px 0 0;
   overflow: hidden;
-  scroll-snap-align: center;    /* 스크롤 멈출 때 화면 중앙에 카드 고정 */
-    box-sizing: border-box;
-    flex: 0 0 100%;
+  scroll-snap-align: center; /* 스크롤 멈출 때 화면 중앙에 카드 고정 */
+  box-sizing: border-box;
+  flex: 0 0 100%;
 }
 
 .guide-card-img {
@@ -47,7 +51,8 @@
   background: var(--color-black);
   color: var(--color-white);
   border-radius: 4px;
-  padding: calc(var(--base-unit) * 0.5) calc(var(--base-unit) * 0.5);}
+  padding: calc(var(--base-unit) * 0.5) calc(var(--base-unit) * 0.5);
+}
 
 /* 태블릿 반응형 */
 @media (min-width: 768px) {
@@ -61,13 +66,174 @@
   /* 카드들을 감싸는 부모 컨테이너를 가로 슬라이드 통로로 만듭니다 */
   .container.g-4.d-flex {
     width: 100%;
-    overflow-x: auto;             /* 가로 스크롤 허용 */
-    scroll-behavior: smooth;      /* 스크롤 이동 시 부동 애니메이션 */
-    scroll-snap-type: x mandatory;  /* 가로 스냅 강제 활성화 */
-    
+    overflow-x: auto; /* 가로 스크롤 허용 */
+    scroll-behavior: smooth; /* 스크롤 이동 시 부동 애니메이션 */
+    scroll-snap-type: x mandatory; /* 가로 스냅 강제 활성화 */
+
     /* 모바일 스크롤바 숨기기 */
-    -ms-overflow-style: none;/* IE */
-    scrollbar-width: none;/* 파이어폭스 */
+    -ms-overflow-style: none; /* IE */
+    scrollbar-width: none; /* 파이어폭스 */
+  }
+}
+
+/* brand 섹션 */
+
+/* notice & event */
+.notice-event {
+  padding: 8px 0;
+  background: var(--color-white);
+}
+
+.notice-event h2 {
+  width: 100%;
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+
+.notice-event .tab-group {
+  width: 100%;
+  height: 50px;
+  padding: 8px;
+  background: var(--color-light-gray);
+  border: 1px solid var(--color-gray);
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.notice-event .tab-btn {
+  flex: 1 1 0;
+  height: 100%;
+  border-radius: 50px;
+  background: var(--color-light-gray);
+  color: var(--color-black);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.notice-event .tab-btn.active {
+  background: var(--color-white);
+  box-shadow: var(--shadow-main);
+}
+
+.notice-event .tab-panel {
+  display: none;
+  width: 100%;
+}
+
+.notice-event .tab-panel.active {
+  display: block;
+}
+
+.notice-event .accordion-list,
+.notice-event .accordion-item {
+  width: 100%;
+}
+
+.notice-event .accordion-item {
+  border-bottom: 1px solid var(--color-gray);
+}
+
+.notice-event .accordion-header {
+  position: relative;
+  width: 100%;
+  padding: 16px 48px 16px 8px;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.notice-event .badge {
+  color: var(--color-point);
+  text-transform: uppercase;
+}
+
+.notice-event .subject {
+  color: var(--color-black);
+}
+
+.notice-event .arrow-icon {
+  position: absolute;
+  top: 37px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  color: var(--color-gray);
+}
+
+.notice-event .accordion-content {
+  display: none;
+  padding: 0 8px 24px;
+  color: var(--color-dark-black);
+}
+
+.notice-event .accordion-item.active .accordion-content {
+  display: block;
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .notice-event {
+    padding: 32px 0 16px;
   }
 
-  /* brand 섹션 */
+  .notice-event h2 {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  .notice-event .badge {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: 600;
+  }
+
+  .notice-event .subject {
+    line-height: 26px;
+  }
+
+  .notice-event .arrow-icon {
+    top: 24px;
+    font-size: 34px;
+    line-height: 36px;
+  }
+}
+
+/* pc */
+@media (min-width: 1200px) {
+  .notice-event {
+    padding: 64px 0;
+  }
+
+  .notice-event h2 {
+    font-size: 32px;
+    line-height: 42px;
+    font-weight: 700;
+  }
+
+  .notice-event .tab-group {
+    width: 556px;
+    height: 58px;
+  }
+
+  .notice-event .tab-btn {
+    font-size: 17px;
+    line-height: 24px;
+  }
+
+  .notice-event .badge {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+  }
+
+  .notice-event .subject {
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+  .notice-event .arrow-icon {
+    top: 42px;
+    font-size: 32px;
+    line-height: 32px;
+  }
+}
