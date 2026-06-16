@@ -1,8 +1,8 @@
 .product-detail-page {
-  max-width: 480px;
-  margin: 0 auto;
+  padding-block: 16px;
 }
-/* 공통 : 브레드 크럼 */
+
+/* 공통 : Breadcrumbs  */
 .breadcrumb {
   height: 40px;
   border-bottom: 1px solid var(--color-gray);
@@ -23,10 +23,6 @@
 }
 
 /* product summary */
-.product-summary {
-  padding-top: 16px;
-}
-
 .product-hero {
   position: relative;
 }
@@ -190,7 +186,6 @@
 /* Product Tab */
 .product-tab {
   height: 48px;
-  margin-top: 32px;
   background-color: var(--color-white);
   box-shadow: 0 1px 0 rgba(184, 184, 184, 0.8);
 }
@@ -233,10 +228,6 @@
 }
 
 /* Detail Section */
-.detail-section {
-  padding-top: 16px;
-}
-
 /* AI Fitting */
 .ai-fitting {
   width: 100%;
@@ -486,7 +477,6 @@
 /* Review */
 .review-section {
   width: 100%;
-  padding-top: 16px;
 }
 
 .review-title {
@@ -616,7 +606,6 @@
 /* QnA */
 .qna-section {
   width: 100%;
-  padding-top: 16px;
 }
 
 .qna-title {
@@ -693,7 +682,6 @@
 /* Purchase Info */
 .purchase-info-section {
   width: 100%;
-  padding-top: 16px;
 }
 
 .purchase-title {
@@ -735,7 +723,6 @@
 /* Recommend Products */
 .recommend-products {
   width: 100%;
-  padding-top: 16px;
 }
 
 .recommend-products-title {
@@ -852,7 +839,6 @@
 /* Store CTA */
 .store-cta {
   width: 100%;
-  margin-top: 16px;
   background: var(--color-info-gray);
 }
 
@@ -860,7 +846,7 @@
   width: 100%;
   padding: 16px;
   border-radius: 4px;
-  background-color: var(--color-bg);
+  background-color: var(--color-info-gray);
 }
 
 .store-cta-eyebrow,
@@ -1126,4 +1112,8 @@
   color: var(--color-point);
 
   text-align: right;
+}
+
+.product-detail-footer {
+  padding-bottom: 112px;
 }

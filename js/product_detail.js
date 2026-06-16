@@ -1,3 +1,7 @@
+import { renderFooter } from "./modules/footer.js";
+
+renderFooter(true);
+
 /* Tab UI */
 const tabButtons = document.querySelectorAll(".product-tab-button");
 const tabPanels = document.querySelectorAll(".tab-panel");
