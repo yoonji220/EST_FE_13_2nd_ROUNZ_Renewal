@@ -612,3 +612,286 @@
   background-color: var(--color-white);
   text-align: center;
 }
+
+/* QnA */
+.qna-section {
+  width: 100%;
+  padding-top: 16px;
+}
+
+.qna-title {
+  margin: 0;
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+
+.qna-button {
+  padding: 8px 16px;
+  border-radius: 4px;
+  color: var(--color-white);
+  background-color: var(--color-point);
+  text-align: center;
+}
+
+.qna-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.qna-item {
+  width: 100%;
+  overflow: hidden;
+}
+
+.qna-question {
+  width: 100%;
+}
+
+.status-badge {
+  padding: 8px;
+  border-radius: 4px;
+  color: var(--color-point);
+  background-color: var(--color-info-bg);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.qna-question-text {
+  margin: 0;
+  color: var(--color-dark-black);
+}
+
+.qna-meta {
+  width: 100%;
+}
+
+.qna-meta-text {
+  color: var(--color-gray);
+}
+
+.answer-block {
+  width: 100%;
+  padding: 8px 16px;
+  border-radius: 4px;
+  background-color: var(--color-light-gray);
+}
+
+.answer-label {
+  color: var(--color-point);
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.answer-content {
+  width: 100%;
+  margin: 0;
+  color: var(--color-dark-gray);
+}
+
+/* Purchase Info */
+.purchase-info-section {
+  width: 100%;
+  padding-top: 16px;
+}
+
+.purchase-title {
+  margin: 0;
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+
+.purchase-content {
+  width: 100%;
+}
+
+.purchase-item {
+  width: 100%;
+}
+
+.purchase-sub-title {
+  width: 100%;
+  margin: 0;
+  padding-bottom: 8px;
+  overflow: hidden;
+  color: var(--color-dark-black);
+  text-transform: uppercase;
+}
+
+.purchase-icon {
+  color: var(--color-point);
+  flex-shrink: 0;
+}
+
+.purchase-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-dark-gray);
+}
+
+/* Recommend Products */
+.recommend-products {
+  width: 100%;
+  padding-top: 16px;
+}
+
+.recommend-products-title {
+  margin: 0;
+  color: var(--color-dark-black);
+  text-transform: uppercase;
+}
+
+.recommend-products-scroller {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.recommend-products-list {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recommend-products-item {
+  flex: 0 0 160px;
+}
+
+.product-card {
+  width: 160px;
+}
+
+.product-card-image-box {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px solid var(--color-gray);
+  outline-offset: -1px;
+  background-color: var(--color-gray);
+}
+
+.product-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-card-wish {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 12px;
+  color: var(--color-black);
+  background-color: var(--color-white);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px);
+}
+
+.product-card-info {
+  width: 100%;
+}
+
+.product-card-brand,
+.product-card-title {
+  margin: 0;
+}
+
+.product-card-brand {
+  color: var(--color-dark-gray);
+  text-transform: uppercase;
+}
+
+.product-card-title {
+  width: 100%;
+  overflow: hidden;
+  color: var(--color-black);
+}
+
+.product-card-title a {
+  display: block;
+  overflow: hidden;
+  color: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.product-card-price-box {
+  width: 100%;
+}
+
+.product-card-price {
+  color: var(--color-dark-black);
+}
+
+.recommend-carousel-controls {
+  position: absolute;
+  top: 69px;
+  left: -15px;
+  right: -15px;
+  height: 32px;
+  padding-inline: 16px;
+  pointer-events: none;
+}
+
+.recommend-carousel-prev,
+.recommend-carousel-next {
+  width: 20px;
+  height: 16px;
+  color: var(--color-gray);
+  pointer-events: auto;
+}
+
+/* Store CTA */
+.store-cta {
+  width: 100%;
+  margin-top: 16px;
+  background: var(--color-info-gray);
+}
+
+.store-cta-card {
+  width: 100%;
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--color-bg);
+}
+
+.store-cta-eyebrow,
+.store-cta-heading,
+.store-cta-desc {
+  margin: 0;
+}
+
+.store-cta-eyebrow {
+  color: var(--color-point);
+  text-transform: uppercase;
+}
+
+.store-cta-heading {
+  width: 299px;
+  color: var(--color-dark-black);
+  text-transform: uppercase;
+}
+
+.store-cta-desc {
+  color: var(--color-dark-gray);
+}
+
+.store-cta-button-wrapper {
+  width: 100%;
+}
+
+.store-cta-button {
+  width: 100%;
+  height: 48px;
+  border-radius: 8px;
+  color: var(--color-white);
+  background-color: var(--color-point);
+}
