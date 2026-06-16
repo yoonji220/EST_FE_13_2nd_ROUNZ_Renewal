@@ -19,13 +19,13 @@
   </head>
   <body>
     <header class="header"></header>
-    <main>
+    <main class="sub-page">
       <div class="container d-flex g-2 justify-content-center">
-          <img
-            src="./img/Rounz-ad.jpg"
-            alt="가상피팅으로 최신 유행하는 선글라스/안경 써보는 라운즈 출시"
-            class="pc-only" hidden
-          />
+        <img
+          src="./img/Rounz-ad.jpg"
+          alt="가상피팅으로 최신 유행하는 선글라스/안경 써보는 라운즈 출시"
+          class="pc-only"
+        />
 
         <section class="d-flex flex-column justify-content-center g-2">
           <div class="title d-flex flex-column g-2">
@@ -110,6 +110,13 @@
         </section>
       </div>
     </main>
-    <footer class="sub-footer"></footer>
+    <footer class="footer"></footer>
+
+    <script type="module">
+      import { renderHeader } from "./js/modules/header.js";
+      import { renderFooter } from "./js/modules/footer.js";
+      renderHeader();
+      renderFooter();
+    </script>
   </body>
 </html>
