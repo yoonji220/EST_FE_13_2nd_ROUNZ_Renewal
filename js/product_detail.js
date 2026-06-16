@@ -54,6 +54,13 @@ purchaseBarBuyButtons.forEach(button => {
 purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
 purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
 
+/* Cart Toast */
+const cartToast = document.querySelector("[data-cart-toast]");
+const cartButtons = document.querySelectorAll(
+  ".purchase-bar-cart, .sheet-cart, .product-card-wish",
+);
+const toastClose = document.querySelector(".cart-toast-close");
+
 let toastTimer;
 
 function showToast() {
