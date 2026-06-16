@@ -1,42 +1,14 @@
 //푸터
-export function renderFooter(){
+// 
+export function renderFooter(isSimple = false) {
   const target = document.querySelector(".footer");
-  target.innerHTML = `
-    <footer>
-      <div class="container">
-        
-        <div class="pc-only">
-          <h2>ROUNZ</h2>
-          <p>세상에 없던 안경 쇼핑</p>
-          <ul>
-            <li><a href="#"><img src="../../img/footer_1.png" alt="Facebook"></a></li>
-            <li><a href="#"><img src="../../img/footer_2.png" alt="Instagram"></a></li>
-            <li><a href="#"><img src="../../img/footer_3.png" alt="Naver Blog"></a></li>
-          </ul>
-        </div>
 
-        <div class="pc-only">
-          <h2>고객지원</h2>
-          <ul class="footer-nav">
-            <li><a href="#">고객센터</a></li>
-            <li><a href="#">공지사항</a></li>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">이용약관</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-          </ul>
-        </div>
+  const footerModeClass = isSimple ? "footer-simple" : "footer-main";
 
-        <div class="mobile-only">
-          <ul class="footer-nav">
-            <li><a href="#">고객센터</a></li>
-            <li><a href="#">개인정보처리방침</a></li>
-            <li><a href="#">이용약관</a></li>
-          </ul>
-        </div>
-
+  const mainFooterHTML = isSimple ? ``: `
         <div>
           <h2 class="pc-only">패밀리 사이트</h2>
-          <ul class="footer-nav">
+          <ul class="footer-nav d-flex g-2">
             <li><a href="#">라운즈앱</a></li>
             <li><a href="#">라운즈해외</a></li>
             <li><a href="#">라운즈파트너스</a></li>
@@ -52,15 +24,18 @@ export function renderFooter(){
           <p>주말&middot;공휴일 휴무</p>
         </div>
 
-        <hr />
-
-        <div>
-          <a href="#">사업자정보확인</a>
-          <p>(주) 라운즈rounz사업장정보</p>
-          <button type="button" aria-expanded="false" aria-label="사업자 정보 펼치기" class="info-toggle-btn">
-            <span class="material-icons" aria-hidden="true">expand_more</span>
-          </button>
+        
+        <div class="mobile-only d-flex g-2">
+        <a href="#">사업자정보확인</a>
+        <div class="d-flex">
+        <p>(주) 라운즈rounz사업장정보</p>
+        <button type="button" aria-expanded="false" aria-label="사업자 정보 펼치기" class="info-toggle-btn">
+        <span class="material-icons" aria-hidden="true">expand_more</span>
+        </button>
         </div>
+        </div>
+        
+        <hr class="contianer pc-only"/>
 
         <div class="rounz-info">
           <ul>
@@ -78,16 +53,51 @@ export function renderFooter(){
         </div>
         
         <div class="mobile-only">
-          <ul>
+          <ul class="d-flex g-2">
             <li><a href="#"><img src="../../img/footer_1.png" alt="Facebook"></a></li>
             <li><a href="#"><img src="../../img/footer_2.png" alt="Instagram"></a></li>
             <li><a href="#"><img src="../../img/footer_3.png" alt="Naver Blog"></a></li>
           </ul>
         </div>
-        
+  `;
+
+  target.innerHTML = `
+      <div class="container d-flex flex-column ${footerModeClass}">
+        <div class="pc-only">
+            <div>
+            <h2>ROUNZ</h2>
+            <p>세상에 없던 안경 쇼핑</p>
+            <ul>
+              <li><a href="#"><img src="../../img/footer_1.png" alt="Facebook"></a></li>
+              <li><a href="#"><img src="../../img/footer_2.png" alt="Instagram"></a></li>
+              <li><a href="#"><img src="../../img/footer_3.png" alt="Naver Blog"></a></li>
+            </ul>
+            </div>
+
+          <div>
+            <h2>고객지원</h2>
+            <ul class="footer-nav">
+              <li><a href="#">고객센터</a></li>
+              <li><a href="#">공지사항</a></li>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">이용약관</a></li>
+              <li><a href="#">개인정보처리방침</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mobile-only">
+          <ul class="footer-nav d-flex g-2">
+            <li><a href="#">고객센터</a></li>
+            <li><a href="#">개인정보처리방침</a></li>
+            <li><a href="#">이용약관</a></li>
+          </ul>
+        </div>
+
+        ${mainFooterHTML}
+     
         <p>&copy; ROUNZ. All rights reserved.</p>
         
       </div>
-    </footer>
-  `
-};
+  `;
+}

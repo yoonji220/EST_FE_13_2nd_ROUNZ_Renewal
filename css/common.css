@@ -5,9 +5,12 @@
 
 :root {
   /*=========================== Layout ===========================*/
-  --container-max: 1440px; /* PC 콘텐츠 최대폭 */
-  --container-pad-mobile: 16px; /* 모바일 좌우 여백 (480-448)/2 */
-  --container-pad-tablet: 24px; /* 태블릿 좌우 여백 (768-720)/2 */
+  --container-max: 1440px;
+  /* PC 콘텐츠 최대폭 */
+  --container-pad-mobile: 16px;
+  /* 모바일 좌우 여백 (480-448)/2 */
+  --container-pad-tablet: 24px;
+  /* 태블릿 좌우 여백 (768-720)/2 */
 
   /* Base */
   --color-white: #ffffff;
@@ -537,4 +540,29 @@ a {
     max-width: var(--container-max);
     padding: 0;
   }
+}
+
+/* 푸터 */
+footer{
+ background-color: var(--color-light-gray);
+ padding: 16px;
+}
+footer > .container{
+  gap: 16px;
+}
+.pc-only {
+  display: none;
+}
+/* 단순 푸터 */
+.footer-simple{
+  align-items: center;
+}
+
+/* 메인 푸터 */
+.footer-main{
+  align-items: left;
+}
+
+.rounz-info{
+  display: none;
 }
