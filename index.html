@@ -314,39 +314,72 @@
     </section>
 
     <section class="store-search">
-      <div class="container g-3">
-        <div class="store-search-header d-flex justify-content-between">
+      <div class="container d-flex flex-column align-items-center g-3">
+        <div
+          class="store-search-header d-flex justify-content-between align-items-center"
+        >
           <h2 class="typo-m-header-l">직접 써보고 구매하는 안경원</h2>
-          <a href="#" class="store__link">
+
+          <a
+            href="#"
+            class="store__link d-flex justify-content-center align-items-center g-1"
+          >
             <span class="typo-m-btn-m">VIEW ALL</span>
-            <span class="typo-m-icons-s-o">arrow_forward</span>
-            <link rel="stylesheet" href="#" />
+            <span
+              class="typo-m-icons-s-o d-flex justify-content-center align-items-center"
+              >arrow_forward</span
+            >
           </a>
         </div>
 
-        <div class="store-preview-img">
-          <img src="img/offline_slide_7.webp" alt="라운즈 오프라인 매장 전경" />
-        </div>
-
-        <form class="store-search-form">
-          <fieldset>
-            <legend class="blind">매장 검색</legend>
-            <input
-              class="typo-m-body"
-              type="text"
-              placeholder="매장명을 입력하세요"
-              aria-label="매장명 입력"
+        <div class="store-search-body d-flex flex-column g-3">
+          <div class="store-preview-img">
+            <img
+              src="img/offline_slide_7.webp"
+              alt="라운즈 오프라인 매장 전경"
             />
-            <button type="submit" class="btn-submit typo-m-btn-m">
-              매장 찾기
-            </button>
-          </fieldset>
-        </form>
+          </div>
 
-        <ul class="store-types g-1">
-          <li class="typo-m-btn-m"><a href="#">라운즈 플래그십 스토어</a></li>
-          <li class="typo-m-btn-m"><a href="#">라운즈 파트너 안경원</a></li>
-        </ul>
+          <div class="store-search-content d-flex flex-column">
+            <div class="store-search-copy">
+              <p>라운즈 안경원에서 안경을 직접 써보고 구매해보세요</p>
+              <p>웹사이트와 같은 가격으로 안내해 드립니다</p>
+            </div>
+
+            <form class="store-search-form">
+              <fieldset class="d-flex flex-column g-2">
+                <legend class="sr-only">매장 검색</legend>
+
+                <input
+                  class="store-search-input typo-m-body"
+                  type="text"
+                  placeholder="매장명을 입력하세요"
+                  aria-label="매장명 입력"
+                />
+
+                <button type="submit" class="btn-submit typo-m-btn-m">
+                  매장 찾기
+                </button>
+              </fieldset>
+            </form>
+
+            <div class="store-types d-flex flex-column align-items-center g-1">
+              <ul
+                class="store-type-list d-flex justify-content-center align-items-center"
+              >
+                <li class="typo-m-btn-m">
+                  <a href="#">라운즈 플래그십 스토어</a>
+                </li>
+
+                <li class="store-type-divider" aria-hidden="true"></li>
+
+                <li class="typo-m-btn-m">
+                  <a href="#">라운즈 파트너 안경원</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
