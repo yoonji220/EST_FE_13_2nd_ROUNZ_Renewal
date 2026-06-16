@@ -792,6 +792,20 @@
   text-align: center;
 }
 
+@media (min-width: 1200px) {
+  .rating-block {
+    max-width: 800px;
+    padding: 24px;
+  }
+
+  .review-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 56px;
+    row-gap: 0;
+  }
+}
+
 /* QnA */
 .qna-section {
   width: 100%;
@@ -868,6 +882,15 @@
   color: var(--color-dark-gray);
 }
 
+@media (min-width: 1200px) {
+  .qna-item {
+    padding-block: 16px;
+  }
+
+  .answer-block {
+    max-width: 1200px;
+  }
+}
 /* Purchase Info */
 .purchase-info-section {
   width: 100%;
