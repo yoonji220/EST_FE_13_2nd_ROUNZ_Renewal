@@ -222,320 +222,294 @@
       <!-- 상세정보 -->
       <div
         id="panel-detail"
-        class="tab-panel detail-section container d-flex flex-column g-2 is-active"
+        class="tab-panel container is-active"
         role="tabpanel"
         data-panel="detail"
         aria-labelledby="tab-detail"
       >
-        <!-- AI 가상피팅 -->
-        <section
-          class="ai-fitting d-flex flex-column align-items-center g-2"
-          aria-labelledby="ai-fitting-title"
-        >
-          <div
-            class="ai-fitting-copy d-flex flex-column align-items-center g-1"
-          >
-            <p class="ai-fitting-kicker typo-m-header">AI VIRTUAL FITTING</p>
-
-            <h2 id="ai-fitting-title" class="ai-fitting-title typo-m-header">
-              내 얼굴에 어울릴까?
-            </h2>
-
-            <p class="ai-fitting-desc typo-m-body">
-              실제 착용 모습을 확인해보세요.
-            </p>
-          </div>
-
-          <div class="ai-fitting-video">
-            <video
-              class="ai-fitting-media"
-              src="https://image.rounz.com/content/VF/VF_banner_SP.mp4"
-              autoplay
-              muted
-              loop
-              playsinline
-            >
-              브라우저가 비디오를 지원하지 않습니다.
-            </video>
-          </div>
-        </section>
-
-        <section
-          class="brand-content d-flex flex-column g-1"
-          aria-labelledby="brand-feature-title"
-        >
-          <article
-            class="brand-feature-card d-flex flex-column align-items-center g-1"
+        <div class="detail-section d-flex flex-column g-2">
+          <!-- AI 가상피팅 -->
+          <section
+            class="ai-fitting d-flex flex-column align-items-center g-2"
+            aria-labelledby="ai-fitting-title"
           >
             <div
-              class="brand-feature-image-box d-flex justify-content-center align-items-center"
+              class="ai-fitting-copy d-flex flex-column align-items-center g-1"
             >
-              <img
-                src="./img/rayban-brand.webp"
-                alt="레이밴 선글라스를 착용한 모델"
-                class="brand-feature-image"
-              />
+              <p class="ai-fitting-kicker typo-m-header">AI VIRTUAL FITTING</p>
+              <h2 id="ai-fitting-title" class="ai-fitting-title typo-m-header">
+                내 얼굴에 어울릴까?
+              </h2>
+              <p class="ai-fitting-desc typo-m-body">
+                실제 착용 모습을 확인해보세요.
+              </p>
             </div>
 
-            <div
-              class="brand-feature-text d-flex flex-column align-items-center g-1"
-            >
-              <h2
-                id="brand-feature-title"
-                class="brand-feature-title typo-m-header-l text-center"
+            <div class="ai-fitting-video">
+              <video
+                class="ai-fitting-media"
+                src="https://image.rounz.com/content/VF/VF_banner_SP.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
               >
-                클래식은 영원하다, 레이밴
+                브라우저가 비디오를 지원하지 않습니다.
+              </video>
+            </div>
+          </section>
+
+          <!-- 브랜드 소개 -->
+          <section
+            class="brand-content d-flex flex-column g-1"
+            aria-labelledby="brand-feature-title"
+          >
+            <article
+              class="brand-feature-card d-flex flex-column align-items-center g-1"
+            >
+              <div
+                class="brand-feature-image-box d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="./img/rayban-brand.webp"
+                  alt="레이밴 선글라스를 착용한 모델"
+                  class="brand-feature-image"
+                />
+              </div>
+
+              <div
+                class="brand-feature-text d-flex flex-column align-items-center g-1"
+              >
+                <h2
+                  id="brand-feature-title"
+                  class="brand-feature-title typo-m-header-l text-center"
+                >
+                  클래식은 영원하다, 레이밴
+                </h2>
+                <p class="brand-feature-desc typo-m-body-s text-center">
+                  시간이 흘러도 변치 않는 클래식의 가치. 뿔테와 메탈의 장점만을
+                  더해 레트로하면서 세련된 분위기를 자아냅니다.
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <!-- 디테일 이미지 -->
+          <section
+            class="detail-image-box d-flex flex-column g-2"
+            aria-labelledby="detail-image-title"
+          >
+            <h2 id="detail-image-title" class="sr-only">상품 상세 이미지</h2>
+            <ul class="detail-image-list d-flex flex-column g-2">
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-01.webp"
+                  alt="레이밴 선글라스 정면 이미지"
+                  class="detail-image"
+                />
+              </li>
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-02.webp"
+                  alt="레이밴 선글라스 측면 이미지"
+                  class="detail-image"
+                />
+              </li>
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-03.webp"
+                  alt="레이밴 선글라스 프레임 디테일 이미지"
+                  class="detail-image"
+                />
+              </li>
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-04.webp"
+                  alt="레이밴 선글라스 다리 디테일 이미지"
+                  class="detail-image"
+                />
+              </li>
+            </ul>
+          </section>
+
+          <!-- 포인트 카드 -->
+          <section class="point-card-box d-flex flex-column g-2">
+            <h2 class="sr-only">상품 특징</h2>
+            <article class="point-card d-flex flex-column g-2">
+              <div
+                class="point-image-box d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="./img/point-01.webp"
+                  alt="아세테이트 소재 측면 디테일"
+                  class="point-image"
+                />
+              </div>
+              <div class="point-content d-flex flex-column g-1">
+                <p class="point-label typo-m-caption">POINT 01</p>
+                <h3 class="point-title typo-m-header">
+                  가볍고 견고한 아세테이트
+                </h3>
+                <p class="point-desc typo-m-body-s">
+                  이탈리아산 아세테이트를 사용해 가벼우면서도 형태가 오래
+                  유지됩니다. 손에 닿는 매끈한 표면과 깊이감 있는 컬러가
+                  특징입니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="point-card d-flex flex-column g-2">
+              <div
+                class="point-image-box d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="./img/point-02.webp"
+                  alt="안경 착용 핏 이미지"
+                  class="point-image"
+                />
+              </div>
+              <div class="point-content d-flex flex-column g-1">
+                <p class="point-label typo-m-caption">POINT 02</p>
+                <h3 class="point-title typo-m-header">하루 종일 편안한 핏</h3>
+                <p class="point-desc typo-m-body-s">
+                  코받침과 템플 곡률을 다듬어 장시간 착용에도 눌림이 적습니다.
+                  22g의 가벼운 무게로 얼굴에 부담을 주지 않습니다.
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <!-- 사이즈 가이드 -->
+          <section
+            class="size-guide d-flex flex-column g-2"
+            aria-labelledby="size-guide-title"
+          >
+            <div class="size-content d-flex flex-column g-2">
+              <h2 id="size-guide-title" class="size-guide-title typo-m-header">
+                SIZE GUIDE
               </h2>
 
-              <p class="brand-feature-desc typo-m-body-s text-center">
-                시간이 흘러도 변치 않는 클래식의 가치. 뿔테와 메탈의 장점만을
-                더해 레트로하면서 세련된 분위기를 자아냅니다.
-              </p>
+              <div class="diagram-card">
+                <img
+                  src="./img/size-guide.webp"
+                  alt="안경 프레임 치수 측정 다이어그램"
+                  class="size-guide-image"
+                />
+              </div>
+
+              <dl class="spec-content d-flex flex-column g-1">
+                <!-- Frame / Material -->
+                <div class="spec-group d-flex">
+                  <div class="spec-row d-flex flex-column g-1">
+                    <dt class="spec-label typo-m-caption">Frame</dt>
+                    <dd class="spec-value typo-m-body">Round / Full-rim</dd>
+                  </div>
+                  <div class="spec-row d-flex flex-column g-1">
+                    <dt class="spec-label typo-m-caption">Material</dt>
+                    <dd class="spec-value typo-m-body">Acetate</dd>
+                  </div>
+                </div>
+
+                <!-- 수치 그룹 -->
+                <div class="spec-detail d-flex flex-column g-1">
+                  <div class="spec-group d-flex">
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Lens Width</dt>
+                      <dd class="spec-value typo-m-body">49 <span>mm</span></dd>
+                    </div>
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Bridge</dt>
+                      <dd class="spec-value typo-m-body">21 <span>mm</span></dd>
+                    </div>
+                  </div>
+
+                  <div class="spec-group d-flex">
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Temple</dt>
+                      <dd class="spec-value typo-m-body">
+                        145 <span>mm</span>
+                      </dd>
+                    </div>
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Weight</dt>
+                      <dd class="spec-value typo-m-body">22 <span>g</span></dd>
+                    </div>
+                  </div>
+                </div>
+              </dl>
             </div>
-          </article>
-        </section>
-
-        <!-- 디테일 이미지 -->
-        <section
-          class="detail-image-box d-flex flex-column g-2"
-          aria-labelledby="detail-image-title"
-        >
-          <h2 id="detail-image-title" class="sr-only">상품 상세 이미지</h2>
-
-          <ul class="detail-image-list d-flex flex-column g-2">
-            <li class="detail-image-item d-flex flex-column">
-              <!-- 크롤링 데이터(rounz.com)를 JS로 렌더링 / 마크업 구조 -->
-              <img
-                src="./img/detail-01.webp"
-                alt="레이밴 선글라스 정면 이미지"
-                class="detail-image"
-              />
-            </li>
-
-            <li class="detail-image-item d-flex flex-column">
-              <img
-                src="./img/detail-02.webp"
-                alt="레이밴 선글라스 측면 이미지"
-                class="detail-image"
-              />
-            </li>
-
-            <li class="detail-image-item d-flex flex-column">
-              <img
-                src="./img/detail-03.webp"
-                alt="레이밴 선글라스 프레임 디테일 이미지"
-                class="detail-image"
-              />
-            </li>
-
-            <li class="detail-image-item d-flex flex-column">
-              <img
-                src="./img/detail-04.webp"
-                alt="레이밴 선글라스 다리 디테일 이미지"
-                class="detail-image"
-              />
-            </li>
-          </ul>
-        </section>
-
-        <!-- 포인트 카드 -->
-        <section class="point-card-box d-flex flex-column g-2">
-          <h2 class="sr-only">상품 특징</h2>
-
-          <!-- JS로 렌더링 예정 / 마크업 구조 샘플 -->
-          <article class="point-card d-flex flex-column g-3">
-            <div
-              class="point-image-box d-flex justify-content-center align-items-center"
-            >
-              <img
-                src="./img/point-01.webp"
-                alt="아세테이트 소재 측면 디테일"
-                class="point-image"
-              />
-            </div>
-
-            <div class="point-content d-flex flex-column g-1">
-              <p class="point-label typo-m-caption">POINT 01</p>
-
-              <h3 class="point-title typo-m-header">
-                가볍고 견고한 아세테이트
-              </h3>
-
-              <p class="point-desc typo-m-body-s">
-                이탈리아산 아세테이트를 사용해 가벼우면서도 형태가 오래
-                유지됩니다. 손에 닿는 매끈한 표면과 깊이감 있는 컬러가
-                특징입니다.
-              </p>
-            </div>
-          </article>
-
-          <article class="point-card d-flex flex-column g-3">
-            <div
-              class="point-image-box d-flex justify-content-center align-items-center"
-            >
-              <img
-                src="./img/point-02.webp"
-                alt="안경 착용 핏 이미지"
-                class="point-image"
-              />
-            </div>
-
-            <div class="point-content d-flex flex-column g-1">
-              <p class="point-label typo-m-caption">POINT 02</p>
-
-              <h3 class="point-title typo-m-header">하루 종일 편안한 핏</h3>
-
-              <p class="point-desc typo-m-body-s">
-                코받침과 템플 곡률을 다듬어 장시간 착용에도 눌림이 적습니다.
-                22g의 가벼운 무게로 얼굴에 부담을 주지 않습니다.
-              </p>
-            </div>
-          </article>
-        </section>
-
-        <!-- 사이즈 가이드 -->
-<section
-  class="size-guide d-flex flex-column g-2"
-  aria-labelledby="size-guide-title"
->
-  <div class="size-content d-flex flex-column g-2">
-    <h2
-      id="size-guide-title"
-      class="size-guide-title typo-m-header"
-    >
-      SIZE GUIDE
-    </h2>
-
-    <div class="diagram-card">
-      <img
-        src="./img/size-guide.webp"
-        alt="안경 프레임 치수 측정 다이어그램"
-        class="size-guide-image"
-      />
-    </div>
-
-    <dl class="spec-content d-flex flex-column g-1">
-
-      <!-- Frame / Material -->
-      <div class="spec-group d-flex">
-        <div class="spec-row d-flex flex-column g-1">
-          <dt class="spec-label typo-m-caption">
-            Frame
-          </dt>
-
-          <dd class="spec-value typo-m-body">
-            Round / Full-rim
-          </dd>
-        </div>
-
-        <div class="spec-row d-flex flex-column g-1">
-          <dt class="spec-label typo-m-caption">
-            Material
-          </dt>
-
-          <dd class="spec-value typo-m-body">
-            Acetate
-          </dd>
+          </section>
         </div>
       </div>
-
-      <!-- 수치 그룹 -->
-      <div class="spec-detail d-flex flex-column g-1">
-
-        <div class="spec-group d-flex">
-          <div class="spec-row d-flex flex-column g-1">
-            <dt class="spec-label typo-m-caption">
-              Lens Width
-            </dt>
-
-            <dd class="spec-value typo-m-body">
-              49 <span>mm</span>
-            </dd>
-          </div>
-
-          <div class="spec-row d-flex flex-column g-1">
-            <dt class="spec-label typo-m-caption">
-              Bridge
-            </dt>
-
-            <dd class="spec-value typo-m-body">
-              21 <span>mm</span>
-            </dd>
-          </div>
-        </div>
-
-        <div class="spec-group d-flex">
-          <div class="spec-row d-flex flex-column g-1">
-            <dt class="spec-label typo-m-caption">
-              Temple
-            </dt>
-
-            <dd class="spec-value typo-m-body">
-              145 <span>mm</span>
-            </dd>
-          </div>
-
-          <div class="spec-row d-flex flex-column g-1">
-            <dt class="spec-label typo-m-caption">
-              Weight
-            </dt>
-
-            <dd class="spec-value typo-m-body">
-              22 <span>g</span>
-            </dd>
-          </div>
-        </div>
-
-      </div>
-
-    </dl>
-  </div>
-</section>
 
       <!-- 후기 -->
       <div
         id="panel-review"
-        class="tab-panel"
+        class="tab-panel container"
         role="tabpanel"
         data-panel="review"
         aria-labelledby="tab-review"
         hidden
       >
-        <div class="review-section">
+        <div class="review-section d-flex flex-column g-2">
           <!-- 리뷰 요약 -->
-          <section class="review-summary">
-            <h2 class="review-title">후기</h2>
-            <div class="rating-block">
-              <div class="rating-score">
-                <strong>4.9</strong>
+          <section class="review-summary d-flex flex-column g-2">
+            <h2 class="review-title typo-m-header-l">후기</h2>
+
+            <div class="rating-block d-flex align-items-center g-2">
+              <div
+                class="rating-score d-flex flex-column align-items-center g-1"
+              >
+                <strong class="typo-m-h1">4.9</strong>
+
                 <div
-                  class="rating-stars"
+                  class="rating-stars d-flex"
                   data-rating="5"
                   role="img"
                   aria-label="5점 만점에 5점"
                 >
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
                 </div>
               </div>
-              <ul class="rating-distribution">
-                <li class="distribution-item">
-                  <span>5</span>
+
+              <div class="rating-divider" aria-hidden="true"></div>
+
+              <ul class="rating-distribution d-flex flex-column g-1">
+                <li class="distribution-item d-flex align-items-center g-1">
+                  <span class="rating-label typo-m-body-s">5</span>
                   <div class="progress-track">
                     <div class="progress-fill" style="width: 80%"></div>
                   </div>
                 </li>
-                <li class="distribution-item">
-                  <span>4</span>
+
+                <li class="distribution-item d-flex align-items-center g-1">
+                  <span class="rating-label typo-m-body-s">4</span>
                   <div class="progress-track">
                     <div class="progress-fill" style="width: 20%"></div>
                   </div>
                 </li>
-                <li class="distribution-item">
-                  <span>3</span>
+
+                <li class="distribution-item d-flex align-items-center g-1">
+                  <span class="rating-label typo-m-body-s">3</span>
                   <div class="progress-track">
                     <div class="progress-fill" style="width: 5%"></div>
                   </div>
@@ -545,31 +519,44 @@
           </section>
 
           <!-- 리뷰 목록 -->
-          <ul class="review-list">
-            <!-- JS로 reviews.json 데이터를 렌더링 / 마크업 구조 샘플 -->
+          <ul class="review-list d-flex flex-column g-2">
             <li>
-              <article class="review-item">
+              <article class="review-item d-flex flex-column g-1">
                 <h3 class="sr-only">ji**** 님의 후기</h3>
-                <header class="review-header">
-                  <div class="reviewer-info">
-                    <span class="reviewer-initial">J</span>
-                    <span class="reviewer-name">ji****</span>
+
+                <header
+                  class="review-header d-flex justify-content-between align-items-center"
+                >
+                  <div class="reviewer-info d-flex align-items-center g-1">
+                    <span
+                      class="reviewer-initial typo-m-header d-flex justify-content-center align-items-center"
+                      >J</span
+                    >
+                    <span class="reviewer-name typo-m-body-s">ji****</span>
                   </div>
-                  <time datetime="2026-06-02">2026.06.02</time>
+
+                  <time
+                    class="review-date typo-m-caption"
+                    datetime="2026-06-02"
+                  >
+                    2026.06.02
+                  </time>
                 </header>
+
                 <div
-                  class="rating-stars"
+                  class="rating-stars d-flex"
                   data-rating="5"
                   role="img"
                   aria-label="5점 만점에 5점"
                 >
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
                 </div>
-                <p class="review-content">
+
+                <p class="review-content typo-m-body-s">
                   얼굴형에 잘 맞고 가벼워서 종일 써도 편해요. 컬러도 사진이랑
                   똑같아서 만족합니다.
                 </p>
@@ -577,7 +564,7 @@
             </li>
           </ul>
 
-          <button type="button" class="review-more-button">
+          <button type="button" class="review-more-button typo-m-btn-m">
             후기 12개 전체 보기
           </button>
         </div>
@@ -586,48 +573,50 @@
       <!-- 문의 -->
       <div
         id="panel-qna"
-        class="tab-panel"
+        class="tab-panel container"
         role="tabpanel"
         data-panel="qna"
         aria-labelledby="tab-qna"
         hidden
       >
-        <section class="qna-section">
-          <header class="qna-header">
-            <h2 class="qna-title">상품 문의</h2>
-            <button type="button" class="qna-button">문의하기</button>
-          </header>
-          <ul class="qna-list">
-            <!-- JS 렌더링 예정 / 마크업 구조 샘플 -->
-            <li>
-              <article class="qna-item">
-                <div class="qna-question">
-                  <span class="status-badge">답변완료</span>
-                  <h3 class="qna-question-text">
-                    도수 렌즈로도 주문할 수 있나요?
-                  </h3>
-                </div>
-                <div class="qna-meta">
-                  <span class="qna-author">kim**</span>
-                  <time datetime="2026-05-30">2026.05.30</time>
-                </div>
-                <div class="answer-block">
-                  <span class="answer-label">A</span>
-                  <p class="answer-content">
-                    네, 도수 렌즈 옵션을 선택하신 뒤 처방값을 입력하시면 함께
-                    제작해 드립니다.
-                  </p>
-                </div>
-              </article>
-            </li>
-          </ul>
-        </section>
+        <div class="qna-section d-flex flex-column g-2">
+          <section class="qna-section">
+            <header class="qna-header">
+              <h2 class="qna-title">상품 문의</h2>
+              <button type="button" class="qna-button">문의하기</button>
+            </header>
+            <ul class="qna-list">
+              <!-- JS 렌더링 예정 / 마크업 구조 샘플 -->
+              <li>
+                <article class="qna-item">
+                  <div class="qna-question">
+                    <span class="status-badge">답변완료</span>
+                    <h3 class="qna-question-text">
+                      도수 렌즈로도 주문할 수 있나요?
+                    </h3>
+                  </div>
+                  <div class="qna-meta">
+                    <span class="qna-author">kim**</span>
+                    <time datetime="2026-05-30">2026.05.30</time>
+                  </div>
+                  <div class="answer-block">
+                    <span class="answer-label">A</span>
+                    <p class="answer-content">
+                      네, 도수 렌즈 옵션을 선택하신 뒤 처방값을 입력하시면 함께
+                      제작해 드립니다.
+                    </p>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </section>
+        </div>
       </div>
 
       <!-- 구매정보 -->
       <div
         id="panel-purchase"
-        class="tab-panel"
+        class="tab-panel container"
         role="tabpanel"
         data-panel="purchase"
         aria-labelledby="tab-purchase"
@@ -921,5 +910,6 @@
     </div>
 
     <footer></footer>
+    <script type="module" src="./js/product_detail.js"></script>
   </body>
 </html>
