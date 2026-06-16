@@ -966,7 +966,10 @@
     </main>
 
     <!-- 하단 고정 구매 바 -->
-    <div class="purchase-bar" data-purchase-bar>
+    <div
+      class="purchase-bar d-flex flex-column align-items-center g-2"
+      data-purchase-bar
+    >
       <button
         type="button"
         class="purchase-bar-handle"
@@ -975,77 +978,123 @@
         <span class="purchase-bar-handle-grip" aria-hidden="true"></span>
       </button>
 
-      <div class="purchase-bar-actions">
+      <div class="purchase-bar-actions d-flex align-items-center g-1">
         <button
           type="button"
-          class="purchase-bar-cart"
+          class="purchase-bar-cart d-flex justify-content-center align-items-center"
           aria-label="장바구니 담기"
         >
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >shopping_bag</span
-          >
+          <span class="typo-m-icons-l-o" aria-hidden="true">
+            shopping_bag
+          </span>
         </button>
-        <button type="button" class="purchase-bar-try">
+
+        <button
+          type="button"
+          class="purchase-bar-try typo-m-btn-s d-flex justify-content-center align-items-center"
+        >
           어울리는지 써보기
         </button>
-        <button type="button" class="purchase-bar-buy">구매하기</button>
+
+        <button
+          type="button"
+          class="purchase-bar-buy typo-m-btn-s d-flex justify-content-center align-items-center"
+        >
+          구매하기
+        </button>
       </div>
     </div>
 
     <!-- 구매 옵션 바텀시트 (구매하기 클릭 시 펼침) -->
-    <div class="purchase-sheet" data-purchase-sheet hidden>
-      <button
-        type="button"
-        class="purchase-sheet-handle"
-        aria-label="구매 옵션 접기"
+    <div class="purchase-sheet" data-purchase-sheet aria-hidden="true">
+      <div
+        class="purchase-sheet-inner d-flex flex-column align-items-center g-2"
       >
-        <span class="purchase-sheet-handle-grip" aria-hidden="true"></span>
-      </button>
-
-      <div class="sheet-product">
-        <h2 class="sheet-product-name">LUTTO 01</h2>
-        <button type="button" class="sheet-close" aria-label="닫기">
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >close</span
-          >
+        <button
+          type="button"
+          class="purchase-sheet-handle"
+          aria-label="구매 옵션 접기"
+        >
+          <span class="purchase-sheet-handle-grip" aria-hidden="true"></span>
         </button>
-      </div>
 
-      <div class="sheet-qty-price">
-        <div class="quantity-control" data-quantity>
+        <div class="sheet-option-card d-flex flex-column g-2">
+          <div
+            class="sheet-product d-flex justify-content-between align-items-center"
+          >
+            <h2 class="sheet-product-name typo-m-header">LUTTO 01</h2>
+
+            <button
+              type="button"
+              class="sheet-close d-flex justify-content-center align-items-center"
+              aria-label="닫기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">close</span>
+            </button>
+          </div>
+
+          <div
+            class="sheet-qty-price d-flex justify-content-between align-items-center"
+          >
+            <div
+              class="quantity-control d-flex justify-content-center align-items-center"
+              data-quantity
+            >
+              <button
+                type="button"
+                class="quantity-button d-flex justify-content-center align-items-center"
+                data-quantity-minus
+                aria-label="수량 줄이기"
+              >
+                <span class="typo-m-icons-s-o" aria-hidden="true">remove</span>
+              </button>
+
+              <span
+                class="quantity-value typo-m-body-s d-flex justify-content-center align-items-center"
+                data-quantity-value
+              >
+                1
+              </span>
+
+              <button
+                type="button"
+                class="quantity-button d-flex justify-content-center align-items-center"
+                data-quantity-plus
+                aria-label="수량 늘리기"
+              >
+                <span class="typo-m-icons-s-o" aria-hidden="true">add</span>
+              </button>
+            </div>
+
+            <strong class="sheet-price typo-m-price">₩249,000</strong>
+          </div>
+        </div>
+
+        <div
+          class="sheet-total d-flex justify-content-between align-items-center"
+        >
+          <span class="sheet-total-label typo-m-price">총 상품금액</span>
+          <strong class="sheet-total-price typo-m-price-l">₩249,000</strong>
+        </div>
+
+        <div class="sheet-actions d-flex align-items-center g-1">
           <button
             type="button"
-            class="quantity-button"
-            data-quantity-minus
-            aria-label="수량 줄이기"
+            class="sheet-cart d-flex justify-content-center align-items-center"
+            aria-label="장바구니 담기"
           >
-            -
+            <span class="typo-m-icons-l-o" aria-hidden="true">
+              shopping_bag
+            </span>
           </button>
-          <span class="quantity-value" data-quantity-value>1</span>
+
           <button
             type="button"
-            class="quantity-button"
-            data-quantity-plus
-            aria-label="수량 늘리기"
+            class="sheet-buy typo-m-btn-s d-flex justify-content-center align-items-center"
           >
-            +
+            구매하기
           </button>
         </div>
-        <strong class="sheet-price">₩249,000</strong>
-      </div>
-
-      <div class="sheet-total">
-        <span class="sheet-total-label">총 상품금액</span>
-        <strong class="sheet-total-price">₩249,000</strong>
-      </div>
-
-      <div class="sheet-actions">
-        <button type="button" class="sheet-cart" aria-label="장바구니 담기">
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >shopping_bag</span
-          >
-        </button>
-        <button type="button" class="sheet-buy">구매하기</button>
       </div>
     </div>
 
@@ -1057,37 +1106,50 @@
       aria-live="polite"
       hidden
     >
-      <div class="cart-toast-header">
-        <span
-          class="material-symbols-outlined cart-toast-check"
-          aria-hidden="true"
-          >check_circle</span
+      <div class="cart-toast-inner d-flex flex-column g-2">
+        <div
+          class="cart-toast-header d-flex justify-content-between align-items-center"
         >
-        <span class="cart-toast-title">장바구니에 담았습니다.</span>
-        <button type="button" class="cart-toast-close" aria-label="닫기">
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >close</span
+          <div class="d-flex align-items-center g-1">
+            <span class="cart-toast-check typo-m-icons-s-o" aria-hidden="true">
+              check_circle
+            </span>
+
+            <span class="cart-toast-title typo-m-btn-s">
+              장바구니에 담았습니다.
+            </span>
+          </div>
+
+          <button
+            type="button"
+            class="cart-toast-close d-flex justify-content-center align-items-center"
+            aria-label="닫기"
           >
-        </button>
-      </div>
-
-      <div class="cart-toast-product">
-        <img
-          src="./img/lutto-01.webp"
-          alt="LUTTO 01"
-          class="cart-toast-thumb"
-        />
-        <div class="cart-toast-info">
-          <p class="cart-toast-name">LUTTO 01</p>
-          <p class="cart-toast-option">BLACK / ONE SIZE</p>
-          <strong class="cart-toast-price">₩249,000</strong>
+            <span class="typo-m-icons-s-o" aria-hidden="true"> close </span>
+          </button>
         </div>
+
+        <div class="cart-toast-product d-flex align-items-center g-1">
+          <img
+            src="./img/lutto-01.webp"
+            alt="LUTTO 01"
+            class="cart-toast-thumb"
+          />
+
+          <div class="cart-toast-info d-flex flex-column">
+            <p class="cart-toast-name typo-m-body">LUTTO 01</p>
+
+            <p class="cart-toast-option typo-m-caption">BLACK / ONE SIZE</p>
+
+            <strong class="cart-toast-price typo-m-price"> ₩249,000 </strong>
+          </div>
+        </div>
+
+        <a href="./cart.html" class="cart-toast-link typo-m-btn-s">
+          보러가기 (1) →
+        </a>
       </div>
-
-      <a href="./cart.html" class="cart-toast-link">보러가기 (1) →</a>
     </div>
-
-    <footer></footer>
     <script type="module" src="./js/product_detail.js"></script>
   </body>
 </html>
