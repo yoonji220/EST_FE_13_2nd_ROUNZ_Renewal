@@ -183,11 +183,69 @@
   color: var(--color-black);
 }
 
+.product-total-row,
+.product-purchase-actions {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .product-image-box {
+    height: 480px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .product-summary {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 80px;
+  }
+
+  .product-hero {
+    flex: 1 1 0;
+    max-width: 720px;
+  }
+
+  .product-image-box {
+    height: 624px;
+  }
+
+  .product-info {
+    flex: 1 1 0;
+    max-width: 640px;
+    gap: 24px;
+  }
+  .product-purchase-actions {
+    display: flex;
+    width: 100%;
+  }
+
+  .purchase-bar,
+  .purchase-sheet {
+    display: none;
+  }
+  .product-stock,
+  .product-total-row {
+    display: flex;
+  }
+
+  .product-purchase-actions {
+    display: flex;
+    width: 100%;
+  }
+
+  .purchase-bar,
+  .purchase-sheet {
+    display: none;
+  }
+}
+
 /* Product Tab */
 .product-tab {
-  height: 48px;
+  position: sticky;
+  top: 48px; /* 임시 */
+  z-index: 50;
   background-color: var(--color-white);
-  box-shadow: 0 1px 0 rgba(184, 184, 184, 0.8);
 }
 
 .product-tab-list {
@@ -225,6 +283,19 @@
   height: 2px;
   background-color: var(--color-point);
   transform: translateX(-50%);
+}
+/* 태블릿 */
+@media (min-width: 768px) {
+  .product-tab {
+    top: 56px; /* 헤더 확정 전 임시 */
+  }
+}
+
+/* PC */
+@media (min-width: 1200px) {
+  .product-tab {
+    top: 69px; /* 데브모드 헤더 높이 */
+  }
 }
 
 /* Detail Section */
