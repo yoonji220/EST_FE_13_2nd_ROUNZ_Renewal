@@ -1,3 +1,4 @@
+// 임시 js - 코드 수정 필요 
 import { renderFooter } from "./modules/footer.js";
 
 renderFooter(true);
