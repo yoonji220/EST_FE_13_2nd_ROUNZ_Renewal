@@ -5,388 +5,121 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ROUNZ - Cart</title>
-  <link rel="stylesheet" href="CSS/c.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="CSS/common.css">
   <link rel="stylesheet" href="CSS/cart.css">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
 </head>
 
 <body>
-  <div class="app-container cart-page">
-    <header class="header">
 
+  <div class="app-container container cart-page">
+    <!-- 상단 고정 헤더 (메뉴, 로고, 마이페이지 아이콘 영역) -->
+    <header class="header cart-topbar">
+      <button class="menu-btn material-symbols-outlined">menu</button>
+      <h1 class="logo">ROUNZ</h1>
+      <nav class="icon-menu">
+        <a href="#" class="material-symbols-outlined">person</a>
+        <a href="#" class="material-symbols-outlined">search</a>
+        <a href="#" class="material-symbols-outlined">shopping_bag</a>
+      </nav>
     </header>
 
+    <!-- 본문 내용 (장바구니 리스트, 추천상품, 결제금액 요약 영역) -->
     <main>
 
-      <!-- =========================
-         상단 네비게이션 영역
-         - 뒤로가기 버튼
-         - 페이지 제목 표시
-    ========================== -->
-      <div class="breadcrumb-container cart-topbar">
+      <!-- 페이지 이동 경로 (Breadcrumb) 표시 영역 -->
+      <nav class="cart-breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">HOME</a>
+        <span>&gt;</span>
+        <strong>CART</strong>
+      </nav>
 
-        <!-- 이전 페이지로 이동 -->
-        <button class="back-btn" type="button" aria-label="Back" onclick="history.back()">
-
-          <span class="material-symbols-outlined">
-            arrow_back_ios_new
-          </span>
-
-        </button>
-
-        <!-- 현재 페이지 제목 -->
-        <h1 class="page-title">장바구니</h1>
-
-      </div>
-
-      <!-- =========================
-         장바구니 타이틀 영역
-         - CART 텍스트
-         - 장바구니 상품 개수
-         - 전체선택 체크박스
-    ========================== -->
+      <!-- 장바구니 제목 및 전체선택 체크박스 컨트롤 영역 -->
       <section class="cart-title-section" aria-labelledby="cart-title">
 
         <div>
-
-          <!-- 상단 소제목 -->
-          <p class="cart-eyebrow">
-            CART
-          </p>
-
-          <!-- 장바구니 제목 + 상품 개수 -->
           <h2 id="cart-title">
-            장바구니
-            <span id="cart-count">(2)</span>
+            장바구니 <span id="cart-count">(0)</span>
           </h2>
-
         </div>
 
-        <!-- 전체 상품 선택 -->
         <label class="checkbox-label select-all-label">
-
-          <input type="checkbox" id="selectAll" checked>
-
+          <input type="checkbox" id="selectAll">
           <span class="checkmark"></span>
-
           전체선택
-
         </label>
 
       </section>
 
-      <!-- =========================
-         장바구니 상품 목록
-    ========================== -->
+      <!-- 실제 장바구니에 담긴 상품 리스트가 렌더링되는 영역 (JS에서 동적 생성) -->
       <section class="cart-items" aria-label="Cart items">
-
-        <!-- =====================
-             상품 1
-        ====================== -->
-        <article class="cart-item" data-price="150000">
-
-          <!-- 상품 선택 체크박스 -->
-          <label class="checkbox-label item-check" aria-label="Select Signature Bold Frame 01">
-
-            <input type="checkbox" class="item-checkbox" checked>
-
-            <span class="checkmark"></span>
-
-          </label>
-
-          <!-- 상품 이미지 -->
-          <div class="cart-item-img">
-
-            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=400&auto=format&fit=crop"
-              alt="Signature Bold Frame 01">
-
-          </div>
-
-          <!-- 상품 정보 -->
-          <div class="cart-item-details">
-
-            <!-- 브랜드명 + 삭제 버튼 -->
-            <div class="item-header">
-
-              <span class="brand-name">
-                ROUNZ EYEWEAR
-              </span>
-
-              <button class="icon-btn close-btn" type="button" aria-label="Remove item">
-
-                <span class="material-symbols-outlined">
-                  close
-                </span>
-
-              </button>
-
-            </div>
-
-            <!-- 상품명 -->
-            <h3 class="product-name">
-              Signature Bold Frame 01
-            </h3>
-
-            <!-- 옵션 정보 -->
-            <p class="product-option">
-              Black / Free
-            </p>
-
-            <!-- 상품 가격 -->
-            <span class="product-price">
-              150,000원
-            </span>
-
-            <!-- 수량 조절 영역 -->
-            <div class="quantity-control" aria-label="Quantity">
-
-              <!-- 수량 감소 -->
-              <button class="qty-btn minus" type="button" aria-label="Decrease quantity">
-
-                <span class="material-symbols-outlined">
-                  remove
-                </span>
-
-              </button>
-
-              <!-- 현재 수량 -->
-              <span class="qty-value">
-                1
-              </span>
-
-              <!-- 수량 증가 -->
-              <button class="qty-btn plus" type="button" aria-label="Increase quantity">
-
-                <span class="material-symbols-outlined">
-                  add
-                </span>
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-        <!-- =====================
-             상품 2
-        ====================== -->
-        <article class="cart-item" data-price="185000">
-
-          <!-- 상품 선택 체크박스 -->
-          <label class="checkbox-label item-check" aria-label="Select Clear Vision Acetate">
-
-            <input type="checkbox" class="item-checkbox" checked>
-
-            <span class="checkmark"></span>
-
-          </label>
-
-          <!-- 상품 이미지 -->
-          <div class="cart-item-img">
-
-            <img src="https://images.unsplash.com/photo-1574258495973-f010dfbb5371?q=80&w=400&auto=format&fit=crop"
-              alt="Clear Vision Acetate">
-
-          </div>
-
-          <!-- 상품 정보 -->
-          <div class="cart-item-details">
-
-            <!-- 브랜드명 + 삭제 -->
-            <div class="item-header">
-
-              <span class="brand-name">
-                RECNZ EYEWEAR
-              </span>
-
-              <button class="icon-btn close-btn" type="button" aria-label="Remove item">
-
-                <span class="material-symbols-outlined">
-                  close
-                </span>
-
-              </button>
-
-            </div>
-
-            <!-- 상품명 -->
-            <h3 class="product-name">
-              Clear Vision Acetate
-            </h3>
-
-            <!-- 옵션 -->
-            <p class="product-option">
-              Brown / Free
-            </p>
-
-            <!-- 가격 -->
-            <span class="product-price">
-              185,000원
-            </span>
-
-            <!-- 수량 조절 -->
-            <div class="quantity-control" aria-label="Quantity">
-
-              <button class="qty-btn minus" type="button" aria-label="Decrease quantity">
-
-                <span class="material-symbols-outlined">
-                  remove
-                </span>
-
-              </button>
-
-              <span class="qty-value">
-                1
-              </span>
-
-              <button class="qty-btn plus" type="button" aria-label="Increase quantity">
-
-                <span class="material-symbols-outlined">
-                  add
-                </span>
-
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
       </section>
 
-      <!-- =========================
-         추천 상품 영역
-         - 관련 상품 슬라이더
-         - 더보기 버튼
-    ========================== -->
+      <!-- 장바구니 하단에 보여지는 함께 보면 좋을 추천 상품 슬라이더 영역 -->
       <section class="recommendations" aria-labelledby="recommendation-title">
 
-        <!-- 섹션 제목 -->
         <div class="section-header">
-
           <h3 class="section-title" id="recommendation-title">
-
-            함께 보면 좋은 상품
-
+            함께 보면 좋을 상품
           </h3>
-
-          <!-- 추천 상품 더보기 -->
-          <a class="view-more" href="Filters.html">
-
-            더보기
-
-          </a>
-
         </div>
 
-        <!-- 추천 상품 카드 슬라이더 -->
-        <div class="card-slider rec-slider">
-
-          <!-- 추천 상품 카드 1 -->
-          <article class="product-card">
-
-            <!-- 상품 이미지 + 찜 버튼 -->
-            <div class="card-img-wrapper">
-              이미지
-              찜버튼
-            </div>
-
-            <!-- 상품 정보 -->
-            <div class="card-info">
-              브랜드명
-              상품명
-              가격
-            </div>
-
-          </article>
-
-          <!-- 추천 상품 카드 2 -->
-          <article class="product-card">
-            ...
-          </article>
-
-          <!-- 추천 상품 카드 3 -->
-          <article class="product-card">
-            ...
-          </article>
-
-        </div>
-
+        <div class="card-slider rec-slider"></div>
       </section>
 
-      <!-- =========================
-         주문 요약 영역
-         - 상품 금액
-         - 배송비
-         - 최종 결제 금액
-    ========================== -->
+      <!-- 총 상품 금액, 배송비, 총 합계를 보여주는 주문 요약 영역 -->
       <section class="order-summary" aria-labelledby="summary-title">
 
-        <!-- 주문 요약 제목 -->
         <h3 class="section-title" id="summary-title">
-
           주문 요약
-
         </h3>
 
-        <!-- 총 상품 금액 -->
         <div class="summary-row">
-
-          <span>
-            총 상품 금액
-          </span>
-
-          <strong id="total-product-price">
-            335,000원
-          </strong>
-
+          <span>총 상품 금액</span>
+          <strong id="total-product-price">0원</strong>
         </div>
 
-        <!-- 배송비 -->
         <div class="summary-row">
-
-          <span>
-            배송비
-          </span>
-
-          <strong id="shipping-price">
-            0원
-          </strong>
-
+          <span>배송비</span>
+          <strong id="shipping-price">0원</strong>
         </div>
 
-        <!-- 구분선 -->
         <div class="summary-divider"></div>
 
-        <!-- 최종 결제 금액 -->
         <div class="summary-row total">
-
-          <span>
-            총 결제 금액
-          </span>
-
-          <strong id="total-price">
-            335,000원
-          </strong>
-
+          <span>총 합계</span>
+          <strong id="total-price">0원</strong>
         </div>
 
       </section>
 
     </main>
 
+    <!-- 화면 하단에 항상 고정되는 '주문하기' 버튼 영역 -->
     <div class="sticky-footer-btn">
       <button class="order-btn" type="button">
         <span>주문하기</span>
         <span class="order-divider"></span>
-        <span id="footer-total">335,000원</span>
+        <span id="footer-total">0원</span>
       </button>
     </div>
+
+    <!-- 페이지 최하단 카피라이트 및 공통 푸터 정보 영역 -->
+    <footer class="main-footer">
+      <p style="text-align:center; padding: 20px; font-size: 14px; color:#b8b8b8;">© ROUNZ AI Eyewear. All rights reserved.</p>
+    </footer>
+
   </div>
+
+  <script src="JS/utils/common.js"></script>
+  <script src="JS/utils/cart.js?v=2"></script>
 
 </body>
 
