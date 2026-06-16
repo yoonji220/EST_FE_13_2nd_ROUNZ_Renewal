@@ -1520,3 +1520,33 @@
     font-weight: 600;
   }
 }
+/* Product Detail Footer */
+.product-detail-footer {
+  display: block;
+  margin-top: 0;
+  padding: 16px;
+  padding-bottom: 112px;
+  background-color: var(--color-light-gray);
+}
+
+.product-detail-footer .pc-only {
+  display: none;
+}
+
+.product-detail-footer .mobile-only {
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .product-detail-footer {
+    padding-bottom: 16px;
+  }
+
+  .product-detail-footer .pc-only {
+    display: block;
+  }
+
+  .product-detail-footer .mobile-only {
+    display: none;
+  }
+}
