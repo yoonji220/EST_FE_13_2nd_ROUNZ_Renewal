@@ -1,8 +1,8 @@
 // 임시 js - 코드 수정 필요
 import { renderFooter } from "./modules/footer.js";
-import { renderHeader } from "./modules/header.js";
+// import { renderHeader } from "./modules/header.js";
 
-renderHeader();
+// renderHeader();
 renderFooter(true);
 
 /* Tab UI */
