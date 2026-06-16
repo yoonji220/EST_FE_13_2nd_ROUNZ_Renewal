@@ -1,0 +1,73 @@
+
+  .container {
+    padding: 16px 8px;
+  }
+
+/* AI 섹션 */
+.guide-card {
+  position: relative; /* 자식 요소들을 이 상자 기준으로 배치하기 위해 (★필수) */
+  width: 100%; /* 디자인에 맞는 카드 높이 */
+  border-radius: 10px 10px 0 0;
+  overflow: hidden;
+  scroll-snap-align: center;    /* 스크롤 멈출 때 화면 중앙에 카드 고정 */
+    box-sizing: border-box;
+    flex: 0 0 100%;
+}
+
+.guide-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+.container .guide-text {
+  position: absolute; /* 부모를 기준으로 절대적인 위치에 배치 (★필수) */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #eff6ff99, transparent);
+  box-sizing: border-box;
+}
+
+.guide-text {
+  padding-top: calc(var(--base-unit) * 2);
+}
+.tag span {
+  background-color: var(--color-point);
+  color: var(--color-white);
+  border-radius: 5px;
+  padding: 0 4px;
+}
+.text-content {
+  padding: calc(var(--base-unit) * 0.5) calc(var(--base-unit) * 0.5);
+}
+
+.ai-btn {
+  background: var(--color-black);
+  color: var(--color-white);
+  border-radius: 4px;
+  padding: calc(var(--base-unit) * 0.5) calc(var(--base-unit) * 0.5);}
+
+/* 태블릿 반응형 */
+@media (min-width: 768px) {
+}
+
+/* PC 반응형 */
+@media (min-width: 1024px) {
+}
+/* 모바일 */
+@media (max-width: 480px) {
+  /* 카드들을 감싸는 부모 컨테이너를 가로 슬라이드 통로로 만듭니다 */
+  .container.g-4.d-flex {
+    width: 100%;
+    overflow-x: auto;             /* 가로 스크롤 허용 */
+    scroll-behavior: smooth;      /* 스크롤 이동 시 부동 애니메이션 */
+    scroll-snap-type: x mandatory;  /* 가로 스냅 강제 활성화 */
+    
+    /* 모바일 스크롤바 숨기기 */
+    -ms-overflow-style: none;/* IE */
+    scrollbar-width: none;/* 파이어폭스 */
+  }
+
+  /* brand 섹션 */
