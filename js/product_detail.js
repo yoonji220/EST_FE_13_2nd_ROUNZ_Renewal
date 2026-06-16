@@ -1,4 +1,4 @@
-// 임시 js - 코드 수정 필요 
+// 임시 js - 코드 수정 필요
 import { renderFooter } from "./modules/footer.js";
 
 renderFooter(true);
@@ -12,7 +12,10 @@ tabButtons.forEach(button => {
     const target = button.dataset.tab;
 
     tabButtons.forEach(btn => {
-      btn.classList.toggle("is-active", btn === button);
+      const isActive = btn === button;
+
+      btn.classList.toggle("is-active", isActive);
+      btn.setAttribute("aria-selected", String(isActive));
     });
 
     tabPanels.forEach(panel => {
@@ -25,7 +28,7 @@ tabButtons.forEach(button => {
 });
 
 /* Purchase Sheet */
-const purchaseBarBuy = document.querySelector(".purchase-bar-buy");
+const purchaseBarBuyButtons = document.querySelectorAll(".purchase-bar-buy");
 const purchaseSheet = document.querySelector("[data-purchase-sheet]");
 const purchaseSheetClose = document.querySelector(".sheet-close");
 const purchaseSheetHandle = document.querySelector(".purchase-sheet-handle");
@@ -44,16 +47,12 @@ function closePurchaseSheet() {
   purchaseSheet.setAttribute("aria-hidden", "true");
 }
 
-purchaseBarBuy?.addEventListener("click", openPurchaseSheet);
+purchaseBarBuyButtons.forEach(button => {
+  button.addEventListener("click", openPurchaseSheet);
+});
+
 purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
 purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
-
-/* Cart Toast */
-const cartToast = document.querySelector("[data-cart-toast]");
-const toastClose = document.querySelector(".cart-toast-close");
-const cartButtons = document.querySelectorAll(
-  ".purchase-bar-cart, .sheet-cart, .product-card-wish",
-);
 
 let toastTimer;
 
