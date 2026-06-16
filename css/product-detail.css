@@ -55,15 +55,35 @@
   height: 100%;
   object-fit: cover;
 }
+.product-thumb-list {
+  display: none; /* 모바일/태블릿 숨김 */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
-.product-hero .carousel-controls {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-  transform: translateY(-50%);
-  pointer-events: none;
-  margin-right: -6px;
+.product-thumb-item {
+  flex: 1;
+  min-width: 0;
+}
+
+.product-thumb-button {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 1px solid transparent;
+  background-color: var(--color-white);
+}
+
+.product-thumb-button.is-active {
+  border-color: var(--color-gray);
+}
+
+.product-thumb-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .product-hero .carousel-prev,
@@ -233,6 +253,7 @@
     max-width: 640px;
     gap: 24px;
   }
+
   .product-purchase-actions {
     display: flex;
     width: 100%;
@@ -242,14 +263,37 @@
   .purchase-sheet {
     display: none;
   }
+
   .product-stock,
   .product-total-row {
     display: flex;
   }
 
-  .product-purchase-actions {
+  .product-thumb-list {
     display: flex;
     width: 100%;
+    padding: 0;
+    list-style: none;
+    gap: 16px;
+    margin: 8px 0 0;
+  }
+
+  .product-thumb-button {
+    width: 168px;
+    height: 168px;
+    overflow: hidden;
+    border: 1px solid transparent;
+    background-color: var(--color-white);
+  }
+
+  .product-thumb-button.is-active {
+    border-color: var(--color-gray);
+  }
+
+  .product-thumb-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 }
 
@@ -1054,6 +1098,15 @@
   color: var(--color-dark-black);
 }
 
+.product-hero .carousel-controls {
+  position: absolute;
+  top: 240px;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
 .recommend-carousel-controls {
   position: absolute;
   top: 80px;
@@ -1086,6 +1139,10 @@
   .product-card-image-box {
     width: 240px;
     height: 240px;
+  }
+
+  .product-hero .carousel-controls {
+    top: 312px;
   }
 
   .recommend-carousel-controls {

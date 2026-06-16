@@ -75,6 +75,68 @@
               </span>
             </button>
           </div>
+          <!-- 상품 이미지 썸네일 -->
+          <ul
+            class="product-thumb-list d-flex g-1"
+            aria-label="상품 이미지 썸네일"
+          >
+            <li class="product-thumb-item">
+              <button
+                type="button"
+                class="product-thumb-button is-active"
+                aria-label="상품 이미지 1 보기"
+                aria-current="true"
+              >
+                <img
+                  src="./img/sample-product.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
+            </li>
+
+            <li class="product-thumb-item">
+              <button
+                type="button"
+                class="product-thumb-button"
+                aria-label="상품 이미지 2 보기"
+              >
+                <img
+                  src="./img/detail-02.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
+            </li>
+
+            <li class="product-thumb-item">
+              <button
+                type="button"
+                class="product-thumb-button"
+                aria-label="상품 이미지 3 보기"
+              >
+                <img
+                  src="./img/detail-03.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
+            </li>
+
+            <li class="product-thumb-item">
+              <button
+                type="button"
+                class="product-thumb-button"
+                aria-label="상품 이미지 4 보기"
+              >
+                <img
+                  src="./img/detail-04.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
+            </li>
+          </ul>
         </div>
         <section class="product-info d-flex flex-column g-2">
           <div class="product-title-block d-flex flex-column g-1">
@@ -213,10 +275,15 @@
       <nav class="product-tab container" aria-label="상품 상세 탭">
         <ul
           class="product-tab-list d-flex justify-content-between align-items-center"
+          role="tablist"
         >
           <li class="product-tab-item">
             <button
               type="button"
+              id="tab-detail"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-detail"
               class="product-tab-button is-active typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="detail"
             >
@@ -227,6 +294,10 @@
           <li class="product-tab-item">
             <button
               type="button"
+              id="tab-review"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-review"
               class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="review"
             >
@@ -237,6 +308,10 @@
           <li class="product-tab-item">
             <button
               type="button"
+              id="tab-qna"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-qna"
               class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="qna"
             >
@@ -247,6 +322,10 @@
           <li class="product-tab-item">
             <button
               type="button"
+              id="tab-purchase"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-purchase"
               class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="purchase"
             >
