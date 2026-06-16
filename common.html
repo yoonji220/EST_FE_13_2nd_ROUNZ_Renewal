@@ -20,16 +20,17 @@
   </head>
   <body>
     <header class="header"></header>
-
-    <footer class="main-footer"></footer>
-    <footer class="sub-footer"></footer>
-
-    <script type="module">
-      import { renderMoblieSubFooter, renderMoblieMainFooter } from "./js/modules/footer.js";
-      import { renderMoblieHeader } from "./js/modules/header.js";
-      renderMoblieHeader();
-      renderMoblieMainFooter();
-      renderMoblieSubFooter();
+    <main>
+      <h2>테스트용</h2>
+      <p>이곳은 테스트용 html입니다</p>
+      <a href="index.html">메인으로 가는 화면</a>
+    </main>
+    <footer class="footer"></footer>
+  <script type="module">
+      import { renderHeader } from "./js/modules/header.js";
+      import { renderFooter } from "./js/modules/footer.js";
+      renderHeader();
+      renderFooter();
     </script>
   </body>
 </html>
