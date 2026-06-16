@@ -414,10 +414,12 @@
 .ai-fitting-media {
   position: absolute;
   top: -180px;
-  left: 0;
-  width: 100%;
+  left: 50%;
+  width: auto;
   height: 708px;
+  max-width: none;
   object-fit: contain;
+  transform: translateX(-50%);
   display: block;
 }
 
@@ -457,14 +459,18 @@
   .ai-fitting-video {
     width: 440px;
     height: 540px;
-    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
   }
 
   .ai-fitting-media {
-    width: 448px;
+    width: auto;
     height: 708px;
-    left: -4px;
+
+    left: 50%;
     top: -168px;
+
+    transform: translateX(-50%);
   }
 }
 
@@ -712,8 +718,6 @@
 
   .spec-content {
     align-self: center;
-  }
-  .spec-content {
     gap: 8px;
   }
 
