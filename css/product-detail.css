@@ -1,0 +1,188 @@
+.product-detail-page {
+  max-width: 480px;
+  margin: 0 auto;
+}
+/* 공통 : 브레드 크럼 */
+.breadcrumb {
+  height: 40px;
+  border-bottom: 1px solid var(--color-gray);
+  background-color: var(--color-white);
+}
+
+.breadcrumb-list {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--color-dark-gray);
+  text-transform: uppercase;
+}
+
+.breadcrumb-list li[aria-current="page"] {
+  color: var(--color-dark-black);
+}
+
+/* product summary */
+.product-summary {
+  padding-top: 16px;
+}
+
+.product-hero {
+  position: relative;
+}
+
+.product-image-box {
+  width: 100%;
+  height: 480px;
+  overflow: hidden;
+  border: 1px solid var(--color-gray);
+  background-color: var(--color-white);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-hero .carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.product-hero .carousel-prev,
+.product-hero .carousel-next {
+  width: 32px;
+  height: 32px;
+  color: var(--color-gray);
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+/* Product Info */
+.product-brand {
+  margin: 0;
+  color: var(--color-dark-gray);
+  text-transform: uppercase;
+}
+
+.product-title {
+  margin: 0;
+  color: var(--color-black);
+  text-transform: uppercase;
+}
+
+.product-price-block {
+  width: 100%;
+}
+
+.price-row {
+  min-width: 0;
+}
+
+.price-row del {
+  color: var(--color-gray);
+}
+
+.discount-rate {
+  color: var(--color-red);
+}
+
+.price-row strong {
+  color: var(--color-black);
+}
+
+.wish-button {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--color-brown);
+}
+
+.product-info hr {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background-color: var(--color-gray);
+}
+
+/* Color Options */
+.color-list {
+  width: 120px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.color-list li {
+  width: 40px;
+  height: 40px;
+}
+
+.color-list button {
+  width: 40px;
+  height: 40px;
+  padding: 4px;
+  border-radius: 999px;
+}
+
+.color-list button::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--color-gray);
+  border-radius: 50%;
+}
+
+.color-list li:nth-child(1) button::before {
+  background-color: var(--color-gray);
+}
+
+.color-list li:nth-child(2) button::before {
+  background-color: var(--color-black);
+}
+
+.color-list li:nth-child(3) button::before {
+  background-color: #ffd700;
+}
+
+.color-list button[aria-pressed="true"] {
+  outline: 2px solid var(--color-black);
+  outline-offset: -2px;
+}
+
+/* Quantity Control */
+.quantity-control {
+  width: 120px;
+  height: 40px;
+  overflow: hidden;
+  border-radius: 4px;
+  outline: 1px solid var(--color-light-gray);
+  outline-offset: -1px;
+  background-color: var(--color-white);
+}
+
+.quantity-button,
+.quantity-value {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+}
+
+.quantity-button[data-quantity-minus] {
+  color: var(--color-gray);
+}
+
+.quantity-button[data-quantity-plus] {
+  color: var(--color-brown);
+}
+
+.quantity-value {
+  color: var(--color-black);
+}

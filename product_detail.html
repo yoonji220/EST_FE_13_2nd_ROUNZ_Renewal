@@ -21,8 +21,10 @@
     <header></header>
     <main class="product-detail-page">
       <!-- 브레드크럼 -->
-      <nav class="breadcrumb" aria-label="현재 위치">
-        <ol class="breadcrumb-list">
+      <nav class="breadcrumb container" aria-label="현재 위치">
+        <ol
+          class="breadcrumb-list d-flex align-items-center g-1 typo-m-header-s"
+        >
           <li>
             <a href="./index.html">HOME</a>
           </li>
@@ -39,117 +41,136 @@
         </ol>
       </nav>
 
-      <!-- 상품 요약 -->
-      <div class="product-hero">
-        <div class="product-image-box">
-          <img
-            src="./img/sample-product.webp"
-            alt="레이밴 선글라스 클럽마스터"
-            class="product-image"
-          />
-        </div>
+      <div class="product-summary container d-flex flex-column g-2">
+        <!-- 상품 요약 -->
+        <div class="product-hero">
+          <div class="product-image-box">
+            <img
+              src="./img/sample-product.webp"
+              alt="레이밴 선글라스 클럽마스터"
+              class="product-image"
+            />
+          </div>
 
-        <!-- 이미지 슬라이드 컨트롤 -->
-        <div class="carousel-controls">
-          <button
-            type="button"
-            class="carousel-prev"
-            aria-label="이전 상품 이미지"
+          <!-- 이미지 슬라이드 컨트롤 -->
+          <div
+            class="carousel-controls d-flex justify-content-between align-items-center"
           >
-            <span class="material-symbols-outlined" aria-hidden="true">
-              arrow_back_ios
-            </span>
-          </button>
+            <button
+              type="button"
+              class="carousel-prev d-flex justify-content-center align-items-center"
+              aria-label="이전 상품 이미지"
+            >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                arrow_back_ios
+              </span>
+            </button>
 
-          <button
-            type="button"
-            class="carousel-next"
-            aria-label="다음 상품 이미지"
-          >
-            <span class="material-symbols-outlined" aria-hidden="true">
-              arrow_forward_ios
-            </span>
-          </button>
+            <button
+              type="button"
+              class="carousel-next d-flex justify-content-center align-items-center"
+              aria-label="다음 상품 이미지"
+            >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                arrow_forward_ios
+              </span>
+            </button>
+          </div>
         </div>
+        <section class="product-info d-flex flex-column g-2">
+          <div class="product-title-block d-flex flex-column g-1">
+            <p class="product-brand typo-m-product-brand">RAY-BAN</p>
+            <h1 class="product-title typo-m-header-l">
+              레이밴 선글라스 클럽마스터 RB3016 W0365 51MM
+            </h1>
+          </div>
+
+          <div
+            class="product-price-block d-flex justify-content-between align-items-center"
+          >
+            <div class="price-row d-flex align-items-center g-1">
+              <del class="typo-m-price-slash">₩256,000</del>
+              <span class="discount-rate typo-m-price">20%</span>
+              <strong class="typo-m-price-l">₩204,800</strong>
+            </div>
+
+            <button
+              type="button"
+              class="wish-button"
+              aria-label="관심상품 추가"
+            >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                favorite_border
+              </span>
+            </button>
+          </div>
+          <hr />
+
+          <div class="color-options d-flex flex-column">
+            <div
+              class="color-header d-flex justify-content-between align-items-center typo-m-caption"
+            >
+              <span>color</span>
+              <span>black</span>
+            </div>
+
+            <ul class="color-list d-flex g-1" aria-label="색상 선택">
+              <li>
+                <button
+                  type="button"
+                  aria-pressed="true"
+                  aria-label="black 색상 선택"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="gray 색상 선택"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="yellow 색상 선택"
+                ></button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 공통 Quantity Control -->
+          <div
+            class="quantity-control d-flex justify-content-center align-items-center"
+            data-quantity
+          >
+            <button
+              type="button"
+              class="quantity-button d-flex justify-content-center align-items-center"
+              data-quantity-minus
+              aria-label="수량 줄이기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">remove</span>
+            </button>
+
+            <span
+              class="quantity-value typo-m-body-s d-flex justify-content-center align-items-center"
+              data-quantity-value
+            >
+              1
+            </span>
+
+            <button
+              type="button"
+              class="quantity-button d-flex justify-content-center align-items-center"
+              data-quantity-plus
+              aria-label="수량 늘리기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">add</span>
+            </button>
+          </div>
+        </section>
       </div>
-      <section class="product-info">
-        <div class="product-title-block">
-          <p class="product-brand">RAY-BAN</p>
-          <h1 class="product-title">
-            레이밴 선글라스 클럽마스터 RB3016 W0365 51MM
-          </h1>
-        </div>
-
-        <div class="product-price-block">
-          <div class="price-row">
-            <del>₩256,000</del>
-            <span class="discount-rate">20%</span>
-            <strong>₩204,800</strong>
-          </div>
-
-          <button type="button" class="wish-button" aria-label="관심상품 추가">
-            <span class="material-symbols-outlined" aria-hidden="true">
-              favorite_border
-            </span>
-          </button>
-        </div>
-
-        <hr />
-
-        <div class="color-options">
-          <div class="color-header">
-            <span>COLOR</span>
-            <span>black</span>
-          </div>
-
-          <ul class="color-list" aria-label="색상 선택">
-            <li>
-              <button
-                type="button"
-                aria-pressed="true"
-                aria-label="black 색상 선택"
-              ></button>
-            </li>
-            <li>
-              <button
-                type="button"
-                aria-pressed="false"
-                aria-label="gray 색상 선택"
-              ></button>
-            </li>
-            <li>
-              <button
-                type="button"
-                aria-pressed="false"
-                aria-label="yellow 색상 선택"
-              ></button>
-            </li>
-          </ul>
-        </div>
-
-        <!-- 공통 Quantity Control -->
-        <div class="quantity-control" data-quantity>
-          <button
-            type="button"
-            class="quantity-button"
-            data-quantity-minus
-            aria-label="수량 줄이기"
-          >
-            -
-          </button>
-
-          <span class="quantity-value" data-quantity-value>1</span>
-
-          <button
-            type="button"
-            class="quantity-button"
-            data-quantity-plus
-            aria-label="수량 늘리기"
-          >
-            +
-          </button>
-        </div>
-      </section>
 
       <!-- 상품 상세 탭 -->
       <nav class="product-tab" aria-label="상품 상세 탭">
@@ -224,23 +245,26 @@
         </section>
 
         <!-- 브랜드 소개 -->
-        <div class="brand-content">
+        <section class="brand-content" aria-labelledby="brand-feature-title">
           <article class="brand-feature-card">
             <img
               src="./img/rayban-brand.webp"
               alt="레이밴 선글라스를 착용한 모델"
               class="brand-feature-image"
             />
+
             <div class="brand-feature-text">
-              <h2 class="brand-feature-title">클래식은 영원하다, 레이밴</h2>
+              <h2 id="brand-feature-title" class="brand-feature-title">
+                클래식은 영원하다, 레이밴
+              </h2>
+
               <p class="brand-feature-desc">
                 시간이 흘러도 변치 않는 클래식의 가치. 뿔테와 메탈의 장점만을
                 더해 레트로하면서 세련된 분위기를 자아냅니다.
               </p>
             </div>
           </article>
-        </div>
-
+        </section>
         <!-- 디테일 이미지 -->
         <section class="detail-image-box" aria-labelledby="detail-image-title">
           <h2 id="detail-image-title" class="sr-only">상품 상세 이미지</h2>
@@ -469,12 +493,11 @@
             <!-- JS 렌더링 예정 / 마크업 구조 샘플 -->
             <li>
               <article class="qna-item">
-                <h3 class="sr-only">도수 렌즈로도 주문할 수 있나요?</h3>
                 <div class="qna-question">
                   <span class="status-badge">답변완료</span>
-                  <p class="qna-question-text">
+                  <h3 class="qna-question-text">
                     도수 렌즈로도 주문할 수 있나요?
-                  </p>
+                  </h3>
                 </div>
                 <div class="qna-meta">
                   <span class="qna-author">kim**</span>
