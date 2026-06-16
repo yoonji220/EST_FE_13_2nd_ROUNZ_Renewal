@@ -559,7 +559,7 @@ header {
   z-index: 2;
 }
 /* 헤더에 가려진 메인 컨텐츠 */
-.sub-page main.container{
+.sub-page {
   padding-top: 98px;
 }
 
@@ -634,16 +634,16 @@ header {
 }
 
 /* (선택) 깔끔한 UI를 위해 스크롤바 숨기기 */
-.sub-menu-panel  .shape-scroll-container::-webkit-scrollbar {
+.sub-menu-panel .shape-scroll-container::-webkit-scrollbar {
   display: none; /* 크롬, 사파리, 오페라, 엣지 */
 }
-.sub-menu-panel  .shape-scroll-container {
+.sub-menu-panel .shape-scroll-container {
   -ms-overflow-style: none; /* IE 및 구버전 엣지 */
   scrollbar-width: none; /* 파이어폭스 */
 }
 
 /* 개별 모양 아이템 */
-.sub-menu-panel  .shape-item {
+.sub-menu-panel .shape-item {
   flex: 0 0 auto; /* 화면이 좁아져도 아이템 크기가 찌그러지지 않게 강제 유지 */
   white-space: nowrap; /* 텍스트가 두 줄로 줄바꿈되는 것을 방지 */
   display: flex;
@@ -675,12 +675,12 @@ header {
 
 /* a 태그 영역을 넓혀 클릭하기 편하게 설정 */
 .sub-menu-panel .grid > * > a {
-  display: flex;               /* a 태그 자체를 Flex 박스로 만듦 */
-  align-items: center;         /* 세로 중앙 정렬 */
-  justify-content: center;     /* 가로 중앙 정렬 */
+  display: flex; /* a 태그 자체를 Flex 박스로 만듦 */
+  align-items: center; /* 세로 중앙 정렬 */
+  justify-content: center; /* 가로 중앙 정렬 */
   width: 100%;
-  height: 100%;                /* 2줄짜리 박스 높이에 맞춰 1줄짜리 a태그 영역도 꽉 채움 */
-  padding: 8px;                /* 위에서 뺀 패딩을 클릭 영역 안으로 이동 */
+  height: 100%; /* 2줄짜리 박스 높이에 맞춰 1줄짜리 a태그 영역도 꽉 채움 */
+  padding: 8px; /* 위에서 뺀 패딩을 클릭 영역 안으로 이동 */
   box-sizing: border-box;
   color: var(--color-dark-gray);
 }
@@ -695,14 +695,17 @@ header {
   color: var(--color-white);
 }
 
-#sunglasses-text-box{
-   background-image: linear-gradient(var(--color-overlay),var(--color-overlay)), url("../img/sunglasses-promotion.webp");
+#sunglasses-text-box {
+  background-image:
+    linear-gradient(var(--color-overlay), var(--color-overlay)),
+    url("../img/sunglasses-promotion.webp");
 }
 
-#frame-text-box{
-   background-image:linear-gradient(var(--color-overlay),var(--color-overlay)), url("../img/glasses-promotion.webp");
+#frame-text-box {
+  background-image:
+    linear-gradient(var(--color-overlay), var(--color-overlay)),
+    url("../img/glasses-promotion.webp");
 }
-
 
 .sub-menu-panel .text-box > p {
   margin-bottom: 16px; /* p 태그 아래쪽에 16px의 바깥 여백 추가 */
