@@ -173,12 +173,14 @@
       </div>
 
       <!-- 상품 상세 탭 -->
-      <nav class="product-tab" aria-label="상품 상세 탭">
-        <ul class="product-tab-list">
+      <nav class="product-tab container" aria-label="상품 상세 탭">
+        <ul
+          class="product-tab-list d-flex justify-content-between align-items-center"
+        >
           <li class="product-tab-item">
             <button
               type="button"
-              class="product-tab-button is-active"
+              class="product-tab-button is-active typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="detail"
             >
               상세정보
@@ -186,13 +188,21 @@
           </li>
 
           <li class="product-tab-item">
-            <button type="button" class="product-tab-button" data-tab="review">
+            <button
+              type="button"
+              class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
+              data-tab="review"
+            >
               후기(12)
             </button>
           </li>
 
           <li class="product-tab-item">
-            <button type="button" class="product-tab-button" data-tab="qna">
+            <button
+              type="button"
+              class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
+              data-tab="qna"
+            >
               문의(8)
             </button>
           </li>
@@ -200,7 +210,7 @@
           <li class="product-tab-item">
             <button
               type="button"
-              class="product-tab-button"
+              class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="purchase"
             >
               구매정보
@@ -212,21 +222,28 @@
       <!-- 상세정보 -->
       <div
         id="panel-detail"
-        class="tab-panel detail-section is-active"
+        class="tab-panel detail-section container is-active"
         role="tabpanel"
         data-panel="detail"
         aria-labelledby="tab-detail"
       >
         <!-- AI 가상피팅 -->
-        <section class="ai-fitting" aria-labelledby="ai-fitting-title">
-          <div class="ai-fitting-copy">
-            <p class="ai-fitting-kicker">AI VIRTUAL FITTING</p>
+        <section
+          class="ai-fitting d-flex flex-column align-items-center g-2"
+          aria-labelledby="ai-fitting-title"
+        >
+          <div
+            class="ai-fitting-copy d-flex flex-column align-items-center g-1"
+          >
+            <p class="ai-fitting-kicker typo-m-header">AI VIRTUAL FITTING</p>
 
-            <h2 id="ai-fitting-title" class="ai-fitting-title">
+            <h2 id="ai-fitting-title" class="ai-fitting-title typo-m-header">
               내 얼굴에 어울릴까?
             </h2>
 
-            <p class="ai-fitting-desc">실제 착용 모습을 확인해보세요.</p>
+            <p class="ai-fitting-desc typo-m-body">
+              실제 착용 모습을 확인해보세요.
+            </p>
           </div>
 
           <div class="ai-fitting-video">
@@ -237,7 +254,6 @@
               muted
               loop
               playsinline
-              controls
             >
               브라우저가 비디오를 지원하지 않습니다.
             </video>
