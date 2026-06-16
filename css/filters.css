@@ -2,9 +2,28 @@ body {
   background: #f4f4f5;
 }
 
-.filters-page {
-  max-width: 480px;
+.container {
+  width: 100%;
+  max-width: 1440px;
   margin: 0 auto;
+  padding: 0 24px;
+}
+
+.product-layout {
+  display: flex;
+  gap: 32px;
+}
+
+.product-content {
+  flex: 1;
+}
+
+.filter-sidebar {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.filters-page {
   min-height: 100vh;
   background: #ffffff;
   box-shadow: var(--shadow-main);
@@ -83,6 +102,16 @@ body {
   border-radius: 16px;
   background: #ffffff;
   cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.filter-bar:hover {
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .filter-title {
@@ -114,7 +143,7 @@ body {
 }
 
 .filter-row span {
-  min-width: 74px;
+  min-width: 8px;
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.08em;
@@ -180,11 +209,17 @@ body {
   cursor: pointer;
 }
 
+/* [추가] JavaScript의 hidden 속성이 CSS display: grid보다 우선하도록 설정 */
+.sort-options[hidden] {
+  display: none !important;
+}
+
 .sort-options {
   position: absolute;
   right: 0;
   top: calc(100% + 8px);
-  z-index: 10;
+  z-index: 100;
+  /* 상품 이미지보다 무조건 위에 뜨도록 z-index 상향 */
   display: grid;
   min-width: 140px;
   padding: 8px;
@@ -192,7 +227,7 @@ body {
   border-radius: 16px;
   border: 1px solid #e5e7eb;
   background: #ffffff;
-  box-shadow: var(--shadow-main);
+  box-shadow: var(--shadow-main, 0 4px 12px rgba(0, 0, 0, 0.1));
 }
 
 .sort-option {
@@ -216,6 +251,8 @@ body {
 }
 
 .filter-product-card {
+  display: flex;
+  flex-direction: column;
   border: 1px solid #eceef2;
   border-radius: 20px;
   overflow: hidden;
@@ -224,14 +261,22 @@ body {
 }
 
 .product-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   aspect-ratio: 1 / 1;
   background: linear-gradient(180deg, #f8fafc, #eef2f7);
+  padding: 16px;
+  /* image_3e4e79.png 처럼 안경 주변에 부드러운 여백 생성 */
+  box-sizing: border-box;
 }
 
 .product-image img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  /* cover에서 contain으로 변경하여 안경 전체가 다 보이게 조절 */
 }
 
 .product-meta {
