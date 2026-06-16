@@ -1,0 +1,23 @@
+input {
+  padding: 8px 16px;
+  border: var(--color-gray) 1px solid;
+  border-radius: 4px;
+}
+
+#validate {
+  padding: 8px 16px;
+  border: var(--color-gray) 1px solid;
+  border-radius: 4px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
