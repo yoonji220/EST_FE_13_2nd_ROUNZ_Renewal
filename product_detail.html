@@ -222,7 +222,7 @@
       <!-- 상세정보 -->
       <div
         id="panel-detail"
-        class="tab-panel detail-section container is-active"
+        class="tab-panel detail-section container d-flex flex-column g-2 is-active"
         role="tabpanel"
         data-panel="detail"
         aria-labelledby="tab-detail"
@@ -260,32 +260,50 @@
           </div>
         </section>
 
-        <!-- 브랜드 소개 -->
-        <section class="brand-content" aria-labelledby="brand-feature-title">
-          <article class="brand-feature-card">
-            <img
-              src="./img/rayban-brand.webp"
-              alt="레이밴 선글라스를 착용한 모델"
-              class="brand-feature-image"
-            />
+        <section
+          class="brand-content d-flex flex-column g-1"
+          aria-labelledby="brand-feature-title"
+        >
+          <article
+            class="brand-feature-card d-flex flex-column align-items-center g-1"
+          >
+            <div
+              class="brand-feature-image-box d-flex justify-content-center align-items-center"
+            >
+              <img
+                src="./img/rayban-brand.webp"
+                alt="레이밴 선글라스를 착용한 모델"
+                class="brand-feature-image"
+              />
+            </div>
 
-            <div class="brand-feature-text">
-              <h2 id="brand-feature-title" class="brand-feature-title">
+            <div
+              class="brand-feature-text d-flex flex-column align-items-center g-1"
+            >
+              <h2
+                id="brand-feature-title"
+                class="brand-feature-title typo-m-header-l text-center"
+              >
                 클래식은 영원하다, 레이밴
               </h2>
 
-              <p class="brand-feature-desc">
+              <p class="brand-feature-desc typo-m-body-s text-center">
                 시간이 흘러도 변치 않는 클래식의 가치. 뿔테와 메탈의 장점만을
                 더해 레트로하면서 세련된 분위기를 자아냅니다.
               </p>
             </div>
           </article>
         </section>
+
         <!-- 디테일 이미지 -->
-        <section class="detail-image-box" aria-labelledby="detail-image-title">
+        <section
+          class="detail-image-box d-flex flex-column g-2"
+          aria-labelledby="detail-image-title"
+        >
           <h2 id="detail-image-title" class="sr-only">상품 상세 이미지</h2>
-          <ul class="detail-image-list">
-            <li class="detail-image-item">
+
+          <ul class="detail-image-list d-flex flex-column g-2">
+            <li class="detail-image-item d-flex flex-column">
               <!-- 크롤링 데이터(rounz.com)를 JS로 렌더링 / 마크업 구조 -->
               <img
                 src="./img/detail-01.webp"
@@ -294,7 +312,7 @@
               />
             </li>
 
-            <li class="detail-image-item">
+            <li class="detail-image-item d-flex flex-column">
               <img
                 src="./img/detail-02.webp"
                 alt="레이밴 선글라스 측면 이미지"
@@ -302,7 +320,7 @@
               />
             </li>
 
-            <li class="detail-image-item">
+            <li class="detail-image-item d-flex flex-column">
               <img
                 src="./img/detail-03.webp"
                 alt="레이밴 선글라스 프레임 디테일 이미지"
@@ -310,7 +328,7 @@
               />
             </li>
 
-            <li class="detail-image-item">
+            <li class="detail-image-item d-flex flex-column">
               <img
                 src="./img/detail-04.webp"
                 alt="레이밴 선글라스 다리 디테일 이미지"
@@ -321,84 +339,158 @@
         </section>
 
         <!-- 포인트 카드 -->
-        <section class="point-card-box">
+        <section class="point-card-box d-flex flex-column g-2">
           <h2 class="sr-only">상품 특징</h2>
+
           <!-- JS로 렌더링 예정 / 마크업 구조 샘플 -->
-          <article class="point-card">
-            <img
-              src="./img/point-01.webp"
-              alt="아세테이트 소재 측면 디테일"
-              class="point-image"
-            />
-            <p class="point-label">POINT 01</p>
-            <h3 class="point-title">가볍고 견고한 아세테이트</h3>
-            <p class="point-desc">
-              이탈리아산 아세테이트를 사용해 가벼우면서도 형태가 오래
-              유지됩니다. 손에 닿는 매끈한 표면과 깊이감 있는 컬러가 특징입니다.
-            </p>
+          <article class="point-card d-flex flex-column g-3">
+            <div
+              class="point-image-box d-flex justify-content-center align-items-center"
+            >
+              <img
+                src="./img/point-01.webp"
+                alt="아세테이트 소재 측면 디테일"
+                class="point-image"
+              />
+            </div>
+
+            <div class="point-content d-flex flex-column g-1">
+              <p class="point-label typo-m-caption">POINT 01</p>
+
+              <h3 class="point-title typo-m-header">
+                가볍고 견고한 아세테이트
+              </h3>
+
+              <p class="point-desc typo-m-body-s">
+                이탈리아산 아세테이트를 사용해 가벼우면서도 형태가 오래
+                유지됩니다. 손에 닿는 매끈한 표면과 깊이감 있는 컬러가
+                특징입니다.
+              </p>
+            </div>
           </article>
-          <article class="point-card">
-            <img
-              src="./img/point-02.webp"
-              alt="안경 착용 핏 이미지"
-              class="point-image"
-            />
-            <p class="point-label">POINT 02</p>
-            <h3 class="point-title">하루 종일 편안한 핏</h3>
-            <p class="point-desc">
-              코받침과 템플 곡률을 다듬어 장시간 착용에도 눌림이 적습니다. 22g의
-              가벼운 무게로 얼굴에 부담을 주지 않습니다.
-            </p>
+
+          <article class="point-card d-flex flex-column g-3">
+            <div
+              class="point-image-box d-flex justify-content-center align-items-center"
+            >
+              <img
+                src="./img/point-02.webp"
+                alt="안경 착용 핏 이미지"
+                class="point-image"
+              />
+            </div>
+
+            <div class="point-content d-flex flex-column g-1">
+              <p class="point-label typo-m-caption">POINT 02</p>
+
+              <h3 class="point-title typo-m-header">하루 종일 편안한 핏</h3>
+
+              <p class="point-desc typo-m-body-s">
+                코받침과 템플 곡률을 다듬어 장시간 착용에도 눌림이 적습니다.
+                22g의 가벼운 무게로 얼굴에 부담을 주지 않습니다.
+              </p>
+            </div>
           </article>
         </section>
 
         <!-- 사이즈 가이드 -->
-        <section class="size-guide" aria-labelledby="size-guide-title">
-          <div class="size-content">
-            <h2 id="size-guide-title" class="size-guide-title">SIZE GUIDE</h2>
+<section
+  class="size-guide d-flex flex-column g-2"
+  aria-labelledby="size-guide-title"
+>
+  <div class="size-content d-flex flex-column g-2">
+    <h2
+      id="size-guide-title"
+      class="size-guide-title typo-m-header"
+    >
+      SIZE GUIDE
+    </h2>
 
-            <div class="diagram-card">
-              <img
-                src="./img/size-guide.webp"
-                alt="안경 프레임 치수 측정 다이어그램"
-                class="size-guide-image"
-              />
-            </div>
+    <div class="diagram-card">
+      <img
+        src="./img/size-guide.webp"
+        alt="안경 프레임 치수 측정 다이어그램"
+        class="size-guide-image"
+      />
+    </div>
 
-            <dl class="spec-content">
-              <div class="spec-row">
-                <dt>Frame</dt>
-                <dd>Round / Full-rim</dd>
-              </div>
+    <dl class="spec-content d-flex flex-column g-1">
 
-              <div class="spec-row">
-                <dt>Material</dt>
-                <dd>Acetate</dd>
-              </div>
+      <!-- Frame / Material -->
+      <div class="spec-group d-flex">
+        <div class="spec-row d-flex flex-column g-1">
+          <dt class="spec-label typo-m-caption">
+            Frame
+          </dt>
 
-              <div class="spec-row">
-                <dt>Lens Width</dt>
-                <dd>49 <span>mm</span></dd>
-              </div>
+          <dd class="spec-value typo-m-body">
+            Round / Full-rim
+          </dd>
+        </div>
 
-              <div class="spec-row">
-                <dt>Bridge</dt>
-                <dd>21 <span>mm</span></dd>
-              </div>
+        <div class="spec-row d-flex flex-column g-1">
+          <dt class="spec-label typo-m-caption">
+            Material
+          </dt>
 
-              <div class="spec-row">
-                <dt>Temple</dt>
-                <dd>145 <span>mm</span></dd>
-              </div>
-
-              <div class="spec-row">
-                <dt>Weight</dt>
-                <dd>22 <span>g</span></dd>
-              </div>
-            </dl>
-          </div>
-        </section>
+          <dd class="spec-value typo-m-body">
+            Acetate
+          </dd>
+        </div>
       </div>
+
+      <!-- 수치 그룹 -->
+      <div class="spec-detail d-flex flex-column g-1">
+
+        <div class="spec-group d-flex">
+          <div class="spec-row d-flex flex-column g-1">
+            <dt class="spec-label typo-m-caption">
+              Lens Width
+            </dt>
+
+            <dd class="spec-value typo-m-body">
+              49 <span>mm</span>
+            </dd>
+          </div>
+
+          <div class="spec-row d-flex flex-column g-1">
+            <dt class="spec-label typo-m-caption">
+              Bridge
+            </dt>
+
+            <dd class="spec-value typo-m-body">
+              21 <span>mm</span>
+            </dd>
+          </div>
+        </div>
+
+        <div class="spec-group d-flex">
+          <div class="spec-row d-flex flex-column g-1">
+            <dt class="spec-label typo-m-caption">
+              Temple
+            </dt>
+
+            <dd class="spec-value typo-m-body">
+              145 <span>mm</span>
+            </dd>
+          </div>
+
+          <div class="spec-row d-flex flex-column g-1">
+            <dt class="spec-label typo-m-caption">
+              Weight
+            </dt>
+
+            <dd class="spec-value typo-m-body">
+              22 <span>g</span>
+            </dd>
+          </div>
+        </div>
+
+      </div>
+
+    </dl>
+  </div>
+</section>
 
       <!-- 후기 -->
       <div
