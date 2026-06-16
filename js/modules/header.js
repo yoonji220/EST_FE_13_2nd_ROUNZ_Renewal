@@ -1,10 +1,22 @@
-export function renderMoblieHeader() {
+export function renderHeader() {
   const target = document.querySelector(".header");
   target.innerHTML = `
-  <div>
+      <div class="container">
         <!-- 햄버거 -->
-        <span class="typo-m-icons-xl-o">menu</span>
-        <nav>
+        <button type="button" class="btn-hamburger mobile-only" aria-label="메뉴 열기">
+          <span class="typo-m-icons-xl-o">menu</span>
+        </button>
+
+        <nav class="main-nav">
+
+        <div class="nav-top mobile-only">
+          <h2>메뉴</h2>
+          <button type="button" class="btn-hamburger mobile-only" aria-label="메뉴 닫기">
+            <span class="typo-m-icons-xl-o">close</span>
+          </button>
+        </div>
+
+
           <div class="main-menu-panel">
             <ul>
               <li class="main-menu-item" aria-label="선글라스">
@@ -22,22 +34,22 @@ export function renderMoblieHeader() {
               <li aria-label="라운즈에서만"><a href="#">라운즈only</a></li>
               <hr />
               <li aria-label="안경원">
-                <a href="#">안경원</a><span class="typo-m-icons-l-o">arrow_outward</span>
+                <a href="#">안경원</a><span class="typo-m-icons-l-o mobile-only">arrow_outward</span>
               </li>
               <li aria-label="신상품">
-                <a href="#">신상품</a><span class="typo-m-icons-l-o">arrow_outward</span>
+                <a href="#">신상품</a><span class="typo-m-icons-l-o mobile-only">arrow_outward</span>
               </li>
               <li aria-label="기획전">
-                <a href="#">기획전</a><span class="typo-m-icons-l-o">arrow_outward</span>
+                <a href="#">기획전</a><span class="typo-m-icons-l-o mobile-only">arrow_outward</span>
               </li>
               <li aria-label="시리즈">
-                <a href="#">시리즈</a><span class="typo-m-icons-l-o">arrow_outward</span>
+                <a href="#">시리즈</a><span class="typo-m-icons-l-o mobile-only">arrow_outward</span>
               </li>
               <li aria-label="라운즈소개">
-                <a href="#">라운즈소개</a><span class="typo-m-icons-l-o">arrow_outward</span>
+                <a href="#">라운즈소개</a><span class="typo-m-icons-l-o mobile-only">arrow_outward</span>
               </li>
               <li aria-label="고객센터">
-                <a href="#">고객센터</a><span class="typo-m-icons-l-o">arrow_outward</span>
+                <a href="#">고객센터</a><span class="typo-m-icons-l-o mobile-only">arrow_outward</span>
               </li>
             </ul>
           </div>
@@ -53,18 +65,15 @@ export function renderMoblieHeader() {
                   <p>모양</p>
                   <span class="typo-m-icons-m-o">expand_more</span>
                 </div>
-                <div class="swiper">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="#">라운드</a></div>
-                    <div class="swiper-slide"><a href="#">스퀘어</a></div>
-                    <div class="swiper-slide"><a href="#">하금테</a></div>
-                    <div class="swiper-slide"><a href="#">고글</a></div>
-                    <div class="swiper-slide"><a href="#">믹스</a></div>
-                    <div class="swiper-slide"><a href="#">보잉</a></div>
-                    <div class="swiper-slide"><a href="#">켓아이</a></div>
-                    <div class="swiper-slide"><a href="#">기타</a></div>
-                  </div>
-                  <div class="swiper-scrollbar"></div>
+                <div class="shape-scroll-container">
+                  <div class="shape-item"><a href="#">라운드</a></div>
+                  <div class="shape-item"><a href="#">스퀘어</a></div>
+                  <div class="shape-item"><a href="#">하금테</a></div>
+                  <div class="shape-item"><a href="#">고글</a></div>
+                  <div class="shape-item"><a href="#">믹스</a></div>
+                  <div class="shape-item"><a href="#">보잉</a></div>
+                  <div class="shape-item"><a href="#">캣아이</a></div>
+                  <div class="shape-item"><a href="#">기타</a></div>
                 </div>
               </div>
               <div>
@@ -99,18 +108,17 @@ export function renderMoblieHeader() {
                   <p>모양</p>
                   <span class="typo-m-icons-m-o">expand_more</span>
                 </div>
-                <div class="swiper">
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide"><a href="#">라운드</a></div>
-                    <div class="swiper-slide"><a href="#">스퀘어</a></div>
-                    <div class="swiper-slide"><a href="#">하금테</a></div>
-                    <div class="swiper-slide"><a href="#">믹스</a></div>
-                    <div class="swiper-slide"><a href="#">보잉</a></div>
-                    <div class="swiper-slide"><a href="#">켓아이</a></div>
-                    <div class="swiper-slide"><a href="#">기타</a></div>
-                  </div>
-                  <div class="swiper-scrollbar"></div>
+                <div class="shape-scroll-container">
+                  <div class="shape-item"><a href="#">라운드</a></div>
+                  <div class="shape-item"><a href="#">스퀘어</a></div>
+                  <div class="shape-item"><a href="#">하금테</a></div>
+                  <div class="shape-item"><a href="#">고글</a></div>
+                  <div class="shape-item"><a href="#">믹스</a></div>
+                  <div class="shape-item"><a href="#">보잉</a></div>
+                  <div class="shape-item"><a href="#">캣아이</a></div>
+                  <div class="shape-item"><a href="#">기타</a></div>
                 </div>
+              </div>
               </div>
               <div>
                 <div>
@@ -142,23 +150,17 @@ export function renderMoblieHeader() {
               <div>
                 <h2>인기 키워드</h2>
                 <ul>
-                  <li><a href="#">&#035;티타늄 안경테</a></li>
-                  <li><a href="#">&#035;동글이 안경테</a></li>
-                  <li><a href="#">&#035;뿔테 안경테</a></li>
-                  <li><a href="#">&#035;스포츠 고글</a></li>
-                  <li><a href="#">&#035;투브릿지 안경테</a></li>
-                  <li><a href="#">&#035;틴트 선글라스</a></li>
+                  <li><a href="#">#티타늄 안경테</a></li>
+                  <li><a href="#">#동글이 안경테</a></li>
+                  <li><a href="#">#뿔테 안경테</a></li>
+                  <li><a href="#">#스포츠 고글</a></li>
+                  <li><a href="#">#투브릿지 안경테</a></li>
+                  <li><a href="#">#뿔테 선글라스</a></li>
                 </ul>
               </div>
             </div>
           </div>
         </nav>
-
-        <div class="top">
-          <span class="typo-m-icons-m-o">close</span>
-          <h2>메뉴</h2>
-        </div>
-
         <!-- 로고 -->
         <h1 class="logo">rounz</h1>
 
