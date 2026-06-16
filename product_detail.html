@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./css/product-detail.css" />
   </head>
   <body>
-     <!-- 최윤지 -->
+    <!-- 최윤지 -->
     <header></header>
     <!-- 브레드크럼 -->
     <nav class="breadcrumb container" aria-label="현재 위치">
@@ -1266,6 +1266,83 @@
         </div>
       </div>
     </div>
+
+    <!-- PC floating purchase panel -->
+    <aside class="pc-purchase-panel" aria-label="구매 패널">
+      <div class="pc-purchase-card d-flex flex-column g-2">
+        <div
+          class="pc-purchase-product d-flex justify-content-between align-items-start"
+        >
+          <p class="pc-purchase-name typo-m-body">
+            레이밴 클럽마스터 선글라스 RB3016F W0365 55mm RB3016-F
+          </p>
+
+          <button
+            type="button"
+            class="pc-purchase-close d-flex justify-content-center align-items-center"
+            aria-label="구매 패널 닫기"
+          >
+            <span class="typo-m-icons-s-o" aria-hidden="true">close</span>
+          </button>
+        </div>
+
+        <div
+          class="pc-purchase-option d-flex justify-content-between align-items-center"
+        >
+          <div
+            class="quantity-control d-flex justify-content-center align-items-center"
+          >
+            <button
+              type="button"
+              class="quantity-button d-flex justify-content-center align-items-center"
+              aria-label="수량 줄이기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">remove</span>
+            </button>
+
+            <span
+              class="quantity-value typo-m-body-s d-flex justify-content-center align-items-center"
+            >
+              1
+            </span>
+
+            <button
+              type="button"
+              class="quantity-button d-flex justify-content-center align-items-center"
+              aria-label="수량 늘리기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">add</span>
+            </button>
+          </div>
+
+          <strong class="pc-purchase-price typo-m-price">₩204,800</strong>
+        </div>
+      </div>
+
+      <div
+        class="pc-purchase-total d-flex justify-content-between align-items-center"
+      >
+        <span class="pc-purchase-total-label typo-m-price">총 상품금액</span>
+        <strong class="pc-purchase-total-price typo-m-price-l">₩204,800</strong>
+      </div>
+
+      <div class="pc-purchase-actions d-flex align-items-center g-1">
+        <button
+          type="button"
+          class="purchase-bar-cart d-flex justify-content-center align-items-center"
+          aria-label="장바구니 담기"
+        >
+          <span class="typo-m-icons-l-o" aria-hidden="true">shopping_bag</span>
+        </button>
+
+        <button
+          type="button"
+          class="purchase-bar-buy typo-m-btn-s d-flex justify-content-center align-items-center"
+        >
+          구매하기
+        </button>
+      </div>
+    </aside>
 
     <!-- 장바구니 담김 토스트 -->
     <div

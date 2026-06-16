@@ -148,6 +148,7 @@
   background-color: #ffd700;
 }
 
+/* 상태 표시용 outline (접근성 고려) aria-pressed 선택 상태를 명확히 구분하기 위해 유지 */
 .color-list button[aria-pressed="true"] {
   outline: 2px solid var(--color-black);
   outline-offset: -2px;
@@ -184,7 +185,8 @@
 
 .product-total-row,
 .product-purchase-actions,
-.ai-fitting-button {
+.ai-fitting-button,
+.pc-purchase-panel {
   display: none;
 }
 
@@ -232,11 +234,6 @@
   .product-purchase-actions {
     display: flex;
     width: 100%;
-  }
-
-  .purchase-bar,
-  .purchase-sheet {
-    display: none;
   }
 }
 
@@ -931,6 +928,18 @@
   list-style: none;
   color: var(--color-dark-gray);
 }
+@media (min-width: 1200px) {
+  .purchase-content {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 80px;
+    row-gap: 48px;
+  }
+
+  .purchase-item {
+    width: 100%;
+  }
+}
 
 /* Recommend Products */
 .recommend-products {
@@ -1046,7 +1055,29 @@
   color: var(--color-gray);
   pointer-events: auto;
 }
+@media (min-width: 1200px) {
+  .recommend-card {
+    flex: 0 0 240px;
+  }
 
+  .recommend-controls {
+    position: absolute;
+    inset-inline: 16px;
+    top: 104px;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .recommend-image-box {
+    width: 240px;
+    height: 240px;
+  }
+
+  .recommend-card {
+    width: 240px;
+  }
+}
 /* Store CTA */
 .store-cta {
   width: 100%;
@@ -1093,6 +1124,30 @@
   background-color: var(--color-point);
 }
 
+@media (min-width: 1200px) {
+  .store-cta {
+    padding: 48px 40px;
+  }
+
+  .store-cta-card {
+    padding: 0;
+    gap: 24px;
+  }
+
+  .store-cta-heading {
+    width: 100%;
+  }
+
+  .store-cta-button-wrapper {
+    align-items: center;
+  }
+
+  .store-cta-button {
+    max-width: 640px;
+    height: 56px;
+  }
+}
+
 /* Bottom Purchase UI */
 .purchase-bar,
 .purchase-sheet {
@@ -1100,7 +1155,7 @@
   left: 50%;
   bottom: 0;
   width: 100%;
-  max-width: 480px;
+  max-width: 768px;
   padding: 16px;
   overflow: hidden;
   border-top-left-radius: 16px;
@@ -1236,6 +1291,50 @@
 
 .sheet-total-price {
   color: var(--color-point);
+}
+
+.pc-purchase-close {
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  color: var(--color-gray);
+}
+
+.pc-purchase-card {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--color-light-gray);
+  border-radius: 4px;
+  background-color: var(--color-white);
+}
+
+@media (min-width: 1200px) {
+  .purchase-bar,
+  .purchase-sheet {
+    display: none;
+  }
+
+  .pc-purchase-panel {
+    display: flex;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 120;
+
+    width: 360px;
+    padding: 16px;
+    flex-direction: column;
+    gap: 16px;
+
+    border: 0;
+    border-radius: 16px;
+    background-color: var(--color-white);
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  .pc-purchase-total-price {
+    color: var(--color-point);
+  }
 }
 
 /* Cart Toast */
