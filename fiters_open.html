@@ -18,8 +18,8 @@
 </head>
 
 <body>
-  <div class="app-container filters-open-page">
-    <!-- Header -->
+  <div class="app-container container filters-open-page">
+    <!-- 필터 팝업 모달창용 상단 헤더 영역 -->
     <header class="modal-header">
       <div style="width: 24px;"></div> <!-- Spacer for center alignment -->
       <h1 class="modal-title">필터</h1>
@@ -28,8 +28,9 @@
       </button>
     </header>
 
+    <!-- 필터 옵션별 상세 선택 메인 영역 -->
     <main class="filter-main-content">
-      <!-- Brand Section -->
+      <!-- 필터: 브랜드 선택 영역 -->
       <section class="filter-block">
         <h2 class="filter-heading">브랜드</h2>
         <div class="brand-grid">
@@ -42,9 +43,7 @@
         </div>
       </section>
 
-      <!-- =========================
-     프레임 형태
-========================= -->
+      <!-- 필터: 프레임 형태 (라운드, 보스턴 등) 선택 영역 -->
       <section class="filter-section">
 
         <h3 class="filter-title">
@@ -108,7 +107,7 @@
         </div>
 
       </section>
-      <!-- Face Shape Section -->
+      <!-- 필터: 얼굴형 선택 및 AI 얼굴 분석 버튼 영역 -->
       <section class="filter-block">
         <div class="face-shape-header">
           <h2 class="filter-heading" style="margin-bottom: 0;">얼굴형</h2>
@@ -173,7 +172,7 @@
         </div>
       </section>
 
-      <!-- Material Section -->
+      <!-- 필터: 안경/선글라스 소재 선택 영역 -->
       <section class="filter-block">
         <h2 class="filter-heading">소재</h2>
         <div class="material-grid">
@@ -189,28 +188,19 @@
         </div>
       </section>
 
-      <!-- Price Section -->
-      <section class="filter-block">
-        <h2 class="filter-heading">가격</h2>
-        <div class="dual-slider-wrapper">
-          <div class="dual-slider-container">
-            <div class="slider-track"></div>
-            <div class="slider-range" id="sliderRange"></div>
-            <input type="range" min="0" max="4" value="0" step="1" class="thumb thumb-min" id="priceMin">
-            <input type="range" min="0" max="4" value="1" step="1" class="thumb thumb-max" id="priceMax">
-          </div>
-          <div class="slider-labels" id="sliderLabels">
-            <span data-index="0">0원</span>
-            <span data-index="1">10만원</span>
-            <span data-index="2">20만원</span>
-            <span data-index="3">30만원</span>
-            <span data-index="4">200만원</span>
-          </div>
+      <!-- 필터: 가격대 슬라이더 및 선택된 금액 표시 영역 -->
+      <h2 class="filter-heading">가격대</h2>
+      <div class="price-slider-wrapper">
+        <input type="range" min="0" max="500000" value="250000" step="10000" class="price-slider" id="priceRange">
+        <div class="price-labels">
+          <span>0원</span>
+          <span id="priceDisplay">500,000원+</span>
         </div>
-      </section>
+
+
     </main>
 
-    <!-- Bottom Actions -->
+    <!-- 필터 모달창 하단 고정 액션 버튼 (초기화, 필터적용) 영역 -->
     <div class="filter-bottom-actions">
       <button class="btn-reset" onclick="window.location.reload()">
         <span class="material-symbols-outlined" style="font-size: 16px;">refresh</span>
@@ -220,7 +210,7 @@
     </div>
   </div>
   <script src="./js/utils/common.js"></script>
-  <script src="JS/utils/filters-open.js"></script>
+  <script src="./js/utils/filters-open.js"></script>
 </body>
 
 </html>

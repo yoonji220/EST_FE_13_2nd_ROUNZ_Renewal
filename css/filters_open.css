@@ -1,19 +1,25 @@
-/* Filters Open Overlay */
+/* =========================
+   Filters Open Overlay
+   - 모바일 최적화 (max-width: 480px)
+   - 간격은 8px 단위 기준
+========================= */
 
 body {
   margin: 0;
   background-color: #f4f4f5;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .filters-open-page {
   display: flex;
   flex-direction: column;
+  width: 100%;
   min-height: 100vh;
-  background-color: #fff;
-  position: relative;
 }
 
+/* =========================
+   Header
+========================= */
 .modal-header {
   position: sticky;
   top: 0;
@@ -21,14 +27,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 16px;
   background-color: #fff;
   border-bottom: 1px solid #e5e7eb;
-}
-
-.header-spacer {
-  width: 24px;
-  flex: 0 0 24px;
 }
 
 .modal-title {
@@ -44,12 +45,18 @@ body {
   cursor: pointer;
 }
 
+/* =========================
+   Main Content
+========================= */
 .filter-main-content {
   flex: 1;
   padding: 16px 16px 120px;
   overflow-y: auto;
 }
 
+/* =========================
+   Filter Block (공통 섹션)
+========================= */
 .filter-block {
   margin-bottom: 24px;
 }
@@ -57,18 +64,16 @@ body {
 .filter-heading {
   margin: 0 0 16px;
   color: #2e2a2b;
-  font-size: 1.125rem;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
 }
 
-.filter-heading-tight {
-  margin-bottom: 0;
-}
-
+/* =========================
+   Brand Grid
+========================= */
 .brand-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 8px;
 }
 
@@ -81,17 +86,17 @@ body {
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease,
-    color 0.2s ease,
-    transform 0.2s ease;
+    color 0.2s ease;
 }
 
 .brand-btn {
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   background-color: #fff;
   color: #141b2b;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+  text-align: center;
 }
 
 .brand-btn.active {
@@ -101,11 +106,72 @@ body {
   font-weight: 600;
 }
 
+/* =========================
+   Frame Shape (프레임 형태)
+========================= */
+.filter-section {
+  margin-bottom: 24px;
+}
+
+.filter-title {
+  margin: 0 0 16px;
+  color: #2e2a2b;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.shape-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.shape-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background-color: #fff;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.shape-card:hover,
+.shape-card.active {
+  border-color: #2563eb;
+}
+
+.shape-card .shape-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.shape-card .shape-icon-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.shape-name {
+  font-size: 0.75rem;
+  color: #45464f;
+}
+
+/* =========================
+   Face Shape (얼굴형)
+========================= */
 .face-shape-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 8px;
   margin-bottom: 16px;
 }
 
@@ -113,25 +179,19 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: 6px 12px;
+  padding: 8px 16px;
   border: none;
-  border-radius: 20px;
+  border-radius: 24px;
   background-color: #000;
   color: #fff;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 700;
   cursor: pointer;
 }
 
-.ai-analysis-icon,
-.reset-icon {
-  font-size: 14px;
-  line-height: 1;
-}
-
 .face-shape-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 
@@ -143,7 +203,7 @@ body {
   cursor: pointer;
 }
 
-.shape-icon-wrapper {
+.face-shape-item .shape-icon-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -153,6 +213,7 @@ body {
   border: 1px solid #dad9df;
   border-radius: 50%;
   background-color: #fff;
+  transition: all 0.2s ease;
 }
 
 .shape-icon-wrapper img {
@@ -163,12 +224,17 @@ body {
 
 .face-shape-item span {
   color: #45464f;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
+}
+
+.face-shape-item:hover .shape-icon-wrapper {
+  border-color: #000;
+  transform: scale(1.05);
 }
 
 .face-shape-item.active .shape-icon-wrapper {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+  border: 2px solid #000;
+  background-color: #ebf3fc;
 }
 
 .face-shape-item.active span {
@@ -176,9 +242,12 @@ body {
   font-weight: 600;
 }
 
+/* =========================
+   Material Grid (소재)
+========================= */
 .material-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 8px;
 }
 
@@ -188,7 +257,7 @@ body {
   border-radius: 4px;
   background-color: #fff;
   color: #5e5e5e;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   text-align: center;
 }
 
@@ -199,36 +268,41 @@ body {
   font-weight: 600;
 }
 
+/* =========================
+   Price Slider (단일 슬라이더)
+========================= */
 .price-slider-wrapper {
-  margin-top: 16px;
+  padding: 8px 0;
 }
 
 .price-slider {
   width: 100%;
   height: 4px;
   appearance: none;
+  -webkit-appearance: none;
   border-radius: 999px;
-  background: linear-gradient(90deg, #2563eb 0%, #2563eb 100%);
+  background: linear-gradient(90deg, #e5e7eb 0%, #e5e7eb 100%);
   outline: none;
 }
 
 .price-slider::-webkit-slider-thumb {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   appearance: none;
+  -webkit-appearance: none;
   border: 2px solid #fff;
   border-radius: 50%;
-  background: #000;
+  background: var(--color-point-hover);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
 .price-slider::-moz-range-thumb {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   border: 2px solid #fff;
   border-radius: 50%;
-  background: #000;
+  background: var(--color-point-hover);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
@@ -236,29 +310,34 @@ body {
 .price-labels {
   display: flex;
   justify-content: space-between;
-  margin-top: 12px;
+  margin-top: 8px;
   color: #2e2a2b;
-  font-size: 1rem;
+  font-size: 0.875rem;
   font-weight: 600;
 }
 
+/* =========================
+   Bottom Actions (하단 버튼)
+========================= */
 .filter-bottom-actions {
   position: fixed;
   bottom: 0;
   left: 50%;
+  transform: translateX(-50%);
   display: flex;
   width: 100%;
-  max-width: 480px;
+  max-width: var(--container-max);
   gap: 8px;
   padding: 16px;
-  transform: translateX(-50%);
   background-color: #fff;
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+  z-index: 30;
 }
 
 .btn-reset,
 .btn-apply {
-  min-height: 52px;
+  min-height: 48px;
   border-radius: 4px;
   font-size: 0.875rem;
   font-weight: 700;
@@ -270,7 +349,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 4px;
-  width: 156px;
+  width: 136px;
   border: 1px solid #2563eb;
   background-color: #eff6ff;
   color: #2563eb;
@@ -283,107 +362,33 @@ body {
   color: #fff;
 }
 
-@media (max-width: 520px) {
-  .filters-open-page {
-    min-height: 100dvh;
-  }
-
-  .modal-header {
-    padding-inline: 16px;
-  }
-
+/* =========================
+   Responsive (작은 모바일)
+========================= */
+@media (max-width: 360px) {
   .filter-main-content {
-    padding-inline: 12px;
+    padding: 16px 16px 112px;
   }
 
-  .brand-grid,
-  .face-shape-grid,
-  .material-grid {
-    gap: 10px;
+  .brand-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .shape-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .face-shape-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .face-shape-item .shape-icon-wrapper {
+    width: 64px;
+    height: 64px;
   }
 
   .material-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, 1fr);
   }
-
-  .filter-bottom-actions {
-    padding: 12px;
-  }
-
-  .btn-reset {
-    width: 132px;
-  }
-}
-
-.slider-labels span.active {
-  color: #2563eb;
-  /* Highlighted Blue */
-  font-weight: 700;
-}
-
-/* Bottom Actions */
-.filter-bottom-actions {
-  position: absolute;
-  /* Stick to bottom of the container */
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: #fff;
-  display: flex;
-  gap: 8px;
-  padding: 16px;
-  box-sizing: border-box;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
-  z-index: 30;
-  /* Ensure it stays on top of content */
-}
-
-.btn-reset {
-  width: 156px;
-  background-color: #eff6ff;
-  border: 1px solid #2563eb;
-  color: #2563eb;
-  padding: 16px 0;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.875rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 4px;
-  cursor: pointer;
-}
-
-.btn-apply {
-  flex: 1;
-  background-color: #000;
-  border: none;
-  color: #fff;
-  padding: 16px 0;
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: 0.875rem;
-  cursor: pointer;
-}
-
-.face-shape-item .shape-icon-wrapper {
-  border: 1px solid #dad9df;
-  transition: all 0.2s ease;
-  cursor: pointer;
-}
-
-/* hover 효과 */
-.face-shape-item:hover .shape-icon-wrapper {
-  border-color: #000;
-  transform: scale(1.05);
-}
-
-/* 선택 상태 */
-.face-shape-item.active .shape-icon-wrapper {
-  border: 2px solid #000;
-  background-color: #ebf3fc;
 }
