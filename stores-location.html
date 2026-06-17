@@ -21,7 +21,7 @@
 
     <!-- Mobile + Tablet 전용 구조 (0~1199px) -->
     <div class="layout-mobile-tablet">
-      <main class="stores-location">
+      <main class="sub-page stores-location">
         <!-- Section 1: Hero -->
         <section class="stores-hero">
           <div class="stores-hero__inner container d-flex flex-column g-1">
@@ -99,7 +99,7 @@
         </section>
 
         <!-- Section 4: Featured Showroom -->
-        <section class="stores-featured" aria-labelledby="stores-featured-title">
+        <section class="stores-featured container" aria-labelledby="stores-featured-title">
           <div class="stores-featured__image-wrap">
             <!-- JS로 이미지 렌더링 예정 -->
             <span class="stores-featured__badge typo-m-header">PREMIUM</span>
@@ -510,10 +510,10 @@
       </button>
     </div>
     <script type="module">
-      // import { renderHeader } from "./js/modules/header.js";
+      import { renderHeader } from "./js/modules/header.js";
       import { renderFooter } from "./js/modules/footer.js";
-      // renderHeader();
-      renderFooter(true);
+      renderHeader();
+      renderFooter();
     </script>
   </body>
 </html>
