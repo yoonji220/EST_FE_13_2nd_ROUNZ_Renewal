@@ -656,6 +656,15 @@ a:focus:not(:focus-visible) {
   cursor: pointer;
 }
 
+.map-lightbox__map {
+  width: 100%;
+  height: 360px;
+}
+
+.map-lightbox__map img {
+  max-width: none !important;
+}
+
 /* ===========================
    Fixed Action Bar
    =========================== */
@@ -947,11 +956,16 @@ a:focus:not(:focus-visible) {
   }
 
   .pc-store-card__actions {
+    display: flex;
     gap: 8px;
-    margin-top: 4px;
+    margin-top: 8px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-gray-200, #e5e5e5);
   }
 
   .pc-store-card__btn {
+    position: relative;
+    z-index: 2;
     flex: 1;
     display: inline-flex;
     align-items: center;
@@ -964,11 +978,30 @@ a:focus:not(:focus-visible) {
     background: var(--color-white, #fff);
     color: var(--color-black, #111);
     cursor: pointer;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.1s ease;
+  }
+
+  .pc-store-card__btn:hover {
+    background-color: var(--color-gray-100, #f5f5f5);
+  }
+
+  .pc-store-card__btn:active {
+    transform: translateY(1px);
   }
 
   .pc-store-card__btn--primary {
     background-color: var(--color-point, #2563eb);
     border-color: var(--color-point, #2563eb);
+    color: var(--color-white, #fff);
+  }
+
+  .pc-store-card__btn--primary:hover {
+    background-color: #1d4ed8;
+    border-color: #1d4ed8;
     color: var(--color-white, #fff);
   }
 
@@ -997,10 +1030,16 @@ a:focus:not(:focus-visible) {
   }
 
   .pc-map-bg {
-    position: absolute;
+    position: absolute !important;
     inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
     background-color: var(--color-gray-200, #e5e5e5);
-    /* JS로 지도 이미지 렌더링 예정 */
+  }
+
+  .pc-map-bg img {
+    max-width: none !important;
   }
 
   .pc-map-markers {
