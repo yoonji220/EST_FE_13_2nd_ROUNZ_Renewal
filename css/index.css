@@ -1,52 +1,97 @@
 /* AI 섹션 */
+.guide {
+  padding: calc(var(--base-unit) * 0.5) 0;
+}
+
+.guide > .container {
+  overflow-x: auto;
+}
+
 .guide-card {
   position: relative;
-  border-radius: 10px 10px 0 0;
+  width: 448px;
+  flex: 0 0 448px;
   overflow: hidden;
-  box-sizing: border-box;
-  flex: 0 0 100%;
 }
 
-.guide-card-img {
+.guide-card > img {
+  width: 100%;
+  height: 448px;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.guide-text {
   position: absolute;
-  max-width: 100%;
-  height: auto;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-top: calc(var(--base-unit) * 2);
+  background: linear-gradient(
+    180deg,
+    rgba(239, 246, 255, 0.6) 0%,
+    rgba(153, 153, 153, 0) 100%
+  );
+  color: var(--color-dark-black);
 }
 
-.container .guide-text {
-  top: 0%;
-  left: 0%;
-  background: linear-gradient(to bottom, #eff6ff99, transparent);
-  box-sizing: border-box;
-  padding-top: calc(var(--base-unit) * 2);
+.guide-text h2 {
+  margin: 0;
+}
+
+.text-content {
+  padding: calc(var(--base-unit) * 0.5);
 }
 
 .tag span {
+  padding: 0 4px;
   background-color: var(--color-point);
   color: var(--color-white);
   border-radius: 5px;
-  padding: 0 4px;
-}
-.text-content {
-  padding: calc(var(--base-unit) * 0.5) calc(var(--base-unit) * 0.5);
 }
 
 .ai-btn {
+  padding: calc(var(--base-unit) * 0.5);
   background: var(--color-black);
   color: var(--color-white);
   border-radius: 4px;
-  padding: calc(var(--base-unit) * 0.5) calc(var(--base-unit) * 0.5);
+  text-transform: uppercase;
 }
 
-/* 태블릿 반응형 */
-@media (min-width: 768px) {
-}
-
-/* PC 반응형 */
-@media (min-width: 1024px) {
-}
-/* 모바일 */
+/* mobile */
 @media (max-width: 480px) {
+  .guide-card {
+    width: 100%;
+    flex-basis: 100%;
+  }
+
+  .guide-card > img {
+    height: 448px;
+  }
+}
+
+/* tablet */
+@media (min-width: 768px) {
+  .guide-card {
+    width: 448px;
+    flex-basis: 448px;
+  }
+}
+
+/* pc */
+@media (min-width: 1200px) {
+  .guide {
+    padding: calc(var(--base-unit) * 4) 0;
+  }
+
+  .guide > .container {
+    justify-content: center;
+  }
+
+  .guide-text {
+    font-size: 32px;
+    line-height: 42px;
+  }
 }
 
 /* best 섹션 */
