@@ -530,7 +530,6 @@ a {
   }
 }
 
-<<<<<<< HEAD
 /* =========================
    공통 푸터 스타일
 ========================= */
@@ -538,7 +537,8 @@ a {
 .sub-footer {
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
-=======
+}
+
 .sr-only,
 .visually-hidden {
   position: absolute;
@@ -766,5 +766,4 @@ footer > .container {
 
 .rounz-info {
   display: none;
->>>>>>> c13537dce7e4727a20f5177b1be7c1a08b6b406f
 }
