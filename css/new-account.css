@@ -10,6 +10,10 @@ input {
   border-radius: 4px;
 }
 
+.form.d-flex input {
+  flex: 1;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -17,7 +21,25 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.account-make{
+  max-width: 300px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  align-self: center;
+}
+
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+.main-content > img{
+  border-right: 1px var(--color-gray) solid;
+  padding: 20px;
+}
+
+.main-content{
+  padding: 16px;
 }
