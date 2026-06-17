@@ -248,7 +248,7 @@ function bindHeaderEvents(target){
   const menuButtons = target.querySelectorAll('.main-menu-item button[data-menu]');
   const menuItems = target.querySelectorAll('.main-menu-item');
   const subMenuLists = target.querySelectorAll('.sub-menu-list[data-submenu]');
-  const isPc =window.matchMedia('(min-width: 1024px)');
+  const isPc =window.matchMedia('(min-width: 1200px)');
   // 2. 서브 메뉴 아코디언(Accordion) 열고 닫기 로직
   // .sub-menu-list 안에서 컨텐츠를 열고 닫을 기준이 되는 .sub-menu(제목 부분)를 모두 찾습니다.
   const accordionHeaders = target.querySelectorAll('.sub-menu-list div > .sub-menu');

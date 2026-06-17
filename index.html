@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>홈</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
@@ -21,12 +21,13 @@
   </head>
 
   <body>
+    <header class="header"></header>
     <!-- 권유진 -->
 
     <section class="guide">
       <div class="container g-4 d-flex text-center">
         <article class="guide-card d-flex flex-column g-2">
-          <img src="img/main_AI_3.png" alt="AI 얼굴형 분석" />
+          <img src="img/main_AI_2.png" alt="AI 얼굴형 분석" />
 
           <div class="guide-text typo-m-header-l">
             <h2>당신의 얼굴형,<br />AI가 분석해드립니다.</h2>
@@ -49,7 +50,7 @@
         </article>
 
         <article class="guide-card d-flex flex-column g-2">
-          <img src="img/main_AI_2.png" alt="가상 피팅" />
+          <img src="img/main_AI_1.png" alt="가상 피팅" />
 
           <div class="guide-text typo-m-header-l">
             <h2>사진으로 쉽고 빠른<br />안경 가상 피팅</h2>
@@ -71,9 +72,12 @@
             <a href="#" class="ai-btn typo-m-btn-l">TRY NOW</a>
           </div>
         </article>
-        d
+
         <article class="guide-card d-flex flex-column g-2">
-          <img src="img/main_AI_1.png" alt="안경 가이드" />
+          <img
+            src="img/main_AI_3.png"
+            alt="안경 가이드"
+          />
 
           <div class="guide-text typo-m-header-l">
             <h2>다양한 얼굴형에<br />맞춘 안경 가이드</h2>
@@ -101,18 +105,19 @@
       <div class="container g-3">
         <div class="best-header d-flex justify-content-between">
           <h2 class="best-title typo-m-header-l">
-            <span>BEST</span>
-            <span>베스트셀러</span>
+            <span>BEST 베스트셀러</span>
           </h2>
 
-          <a href="#" class="best-link g-1">
+          <a
+            href="#"
+            class="best-link d-flex justify-content-center align-items-center g-1"
+          >
             <span class="typo-m-btn-m">VIEW ALL</span>
-            <span class="typo-m-icons-s-o">arrow_forward</span>
-            <link rel="stylesheet" href="#" />
+            <span class="typo-m-icons-s-o d-flex justify-content-center align-items-center">arrow_forward</span>
           </a>
         </div>
 
-        <ul class="best-slider g-3 d-flex">
+        <ul class="best-swiper g-3 d-flex" data-best-list>
           <li class="product-card g-1 d-flex flex-column">
             <a href="#" class="product-card__image">
               <img src="./images/glasses01.png" alt="Essential Frame Model" />
@@ -144,7 +149,10 @@
                 </li>
 
                 <li>
-                  <button class="piting-color gray" aria-label="그레이"></button>
+                  <button
+                    class="piting-color gray"
+                    aria-label="그레이"
+                  ></button>
                 </li>
               </ul>
             </div>
@@ -180,7 +188,10 @@
                 </li>
 
                 <li>
-                  <button class="piting-color gray" aria-label="그레이"></button>
+                  <button
+                    class="piting-color gray"
+                    aria-label="그레이"
+                  ></button>
                 </li>
               </ul>
             </div>
@@ -216,7 +227,10 @@
                 </li>
 
                 <li>
-                  <button class="piting-color gray" aria-label="그레이"></button>
+                  <button
+                    class="piting-color gray"
+                    aria-label="그레이"
+                  ></button>
                 </li>
               </ul>
             </div>
@@ -252,9 +266,85 @@
                 </li>
 
                 <li>
-                  <button class="piting-color gray" aria-label="그레이"></button>
+                  <button
+                    class="piting-color gray"
+                    aria-label="그레이"
+                  ></button>
                 </li>
               </ul>
+            </div>
+          </li>
+        </ul>
+        <ul class="best-ranking d-flex flex-column g-1">
+          <li class="best-ranking-item d-flex align-items-center g-1">
+            <img src="./img/sunglasses-promotion.webp" alt="" />
+            <div class="best-ranking-content d-flex flex-column justify-content-between">
+              <p class="best-ranking-brand">BRAND NAME</p>
+              <p class="best-ranking-title">Essential Frame Model</p>
+              <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
+                <span>₩129,000</span>
+                <button
+                  type="button"
+                  class="best-ranking-wish typo-m-icons-s-o"
+                  aria-label="찜하기"
+                >
+                  favorite_border
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <li class="best-ranking-item d-flex align-items-center g-1">
+            <img src="./img/glasses-promotion.webp" alt="" />
+            <div class="best-ranking-content d-flex flex-column justify-content-between">
+              <p class="best-ranking-brand">BRAND NAME</p>
+              <p class="best-ranking-title">Essential Frame Model</p>
+              <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
+                <span>₩129,000</span>
+                <button
+                  type="button"
+                  class="best-ranking-wish typo-m-icons-s-o"
+                  aria-label="찜하기"
+                >
+                  favorite_border
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <li class="best-ranking-item d-flex align-items-center g-1">
+            <img src="./img/sunglasses-promotion.webp" alt="" />
+            <div class="best-ranking-content d-flex flex-column justify-content-between">
+              <p class="best-ranking-brand">BRAND NAME</p>
+              <p class="best-ranking-title">Essential Frame Model</p>
+              <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
+                <span>₩129,000</span>
+                <button
+                  type="button"
+                  class="best-ranking-wish typo-m-icons-s-o"
+                  aria-label="찜하기"
+                >
+                  favorite_border
+                </button>
+              </div>
+            </div>
+          </li>
+
+          <li class="best-ranking-item d-flex align-items-center g-1">
+            <img src="./img/glasses-promotion.webp" alt="" />
+            <div class="best-ranking-content d-flex flex-column justify-content-between">
+              <p class="best-ranking-brand">BRAND NAME</p>
+              <p class="best-ranking-title">Essential Frame Model</p>
+              <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
+                <span>₩129,000</span>
+                <button
+                  type="button"
+                  class="best-ranking-wish typo-m-icons-s-o"
+                  aria-label="찜하기"
+                >
+                  favorite_border
+                </button>
+              </div>
             </div>
           </li>
         </ul>
@@ -266,46 +356,78 @@
         <div class="brand-header d-flex justify-content-between">
           <h2 class="brand-title typo-m-header-l">brand 브랜드</h2>
 
-          <a href="#" class="brand-link">
+          <a
+            href="#"
+            class="brand-link d-flex justify-content-center align-items-center g-1"
+          >
             <span class="typo-m-btn-m">VIEW ALL</span>
-            <span class="typo-m-icons-s-o">arrow_forward</span>
-            <link rel="stylesheet" href="#" />
+            <span class="typo-m-icons-s-o typo-m-icons-s-o d-flex justify-content-center align-items-center">arrow_forward</span>
           </a>
         </div>
 
         <div class="grid-wrapper d-flex">
-          <div class="left-column g-1 d-flex flex-column">
-            <img src="img/Main_brand_1.jpg" alt="TOMMY HILFIGER 모델 사진" />
-            <img src="img/Main_brand_2.jpg" alt="BAIRIMENG 모델 사진" />
-            <img src="img/Main_brand_3.png" alt="ROUNZ BASIC 안경 사진" />
-          </div>
-          <div class="right-column g-1 d-flex flex-column">
-            <img src="img/Main_brand_4.jpg" alt="SAGAWAFUJII 모델 사진" />
-            <img src="img/Main_brand_5.jpg" alt="MYKITA 모델 사진" />
-            <img src="img/Main_brand_6.jpg" alt="OLIVER PEOPLES 안경 사진" />
-            <img src="img/Main_brand_7.jpg" alt="PUBLIC BEACON 모델 사진" />
-          </div>
+          <ul class="left-column g-1 d-flex flex-column">
+            <li class="brand-item brand-item-1">
+              <a href="#" class="brand-card">
+                <img
+                  src="img/Main_brand_1.jpg"
+                  alt="TOMMY HILFIGER 모델 사진"
+                />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">TOMMY HILFIGER</span>
+              </a>
+            </li>
+            <li class="brand-item brand-item-2">
+              <a href="#" class="brand-card">
+                <img src="img/Main_brand_2.jpg" alt="BAIRIMENG 모델 사진" />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">BAIRIMENG</span>
+              </a>
+            </li>
+            <li class="brand-item brand-item-3">
+              <a href="#" class="brand-card">
+                <img src="img/Main_brand_3.png" alt="ROUNZ BASIC 안경 사진" />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">ROUNZ BASIC</span>
+              </a>
+            </li>
+          </ul>
+
+          <ul class="right-column g-1 d-flex flex-column">
+            <li class="brand-item brand-item-4">
+              <a href="#" class="brand-card">
+                <img src="img/Main_brand_4.jpg" alt="SAGAWAFUJII 모델 사진" />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">SAGAWAFUJII</span>
+              </a>
+            </li>
+            <li class="brand-item brand-item-5">
+              <a href="#" class="brand-card">
+                <img src="img/Main_brand_5.jpg" alt="MYKITA 모델 사진" />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">MYKITA</span>
+              </a>
+            </li>
+            <li class="brand-item brand-item-6">
+              <a href="#" class="brand-card">
+                <img
+                  src="img/Main_brand_6.jpg"
+                  alt="OLIVER PEOPLES 안경 사진"
+                />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">OLIVER PEOPLES</span>
+              </a>
+            </li>
+            <li class="brand-item brand-item-7">
+              <a href="#" class="brand-card">
+                <img src="img/Main_brand_7.jpg" alt="PUBLIC BEACON 모델 사진" />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">PUBLIC BEACON</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </div>
     </section>
-
     <section class="store-search">
       <div class="container d-flex flex-column align-items-center g-3">
         <div
           class="store-search-header d-flex justify-content-between align-items-center"
         >
           <h2 class="typo-m-header-l">직접 써보고 구매하는 안경원</h2>
-
-          <a
-            href="#"
-            class="store__link d-flex justify-content-center align-items-center g-1"
-          >
-            <span class="typo-m-btn-m">VIEW ALL</span>
-            <span
-              class="typo-m-icons-s-o d-flex justify-content-center align-items-center"
-              >arrow_forward</span
-            >
-          </a>
         </div>
 
         <div class="store-search-body d-flex flex-column g-3">
@@ -356,6 +478,16 @@
             </div>
           </div>
         </div>
+        <a
+          href="#"
+          class="store__link d-flex justify-content-center align-items-center g-1"
+        >
+          <span class="typo-m-btn-m">VIEW ALL</span>
+          <span
+            class="typo-m-icons-s-o d-flex justify-content-center align-items-center"
+            >arrow_forward</span
+          >
+        </a>
       </div>
     </section>
 
@@ -575,8 +707,8 @@
 
                 <span
                   class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
-                  >chevron_right</span
-                >
+                  >chevron_right
+                </span>
               </div>
 
               <div class="accordion-content typo-m-body-s">
@@ -620,6 +752,14 @@
         </div>
       </div>
     </section>
+    <footer class="footer"></footer>
+
+    <script type="module">
+      import { renderHeader } from "./js/modules/header.js";
+      import { renderFooter } from "./js/modules/footer.js";
+      renderHeader();
+      renderFooter();
+    </script>
     <script src="./js/utils/common.js"></script>
     <script src="js/utils/index.js"></script>
   </body>
