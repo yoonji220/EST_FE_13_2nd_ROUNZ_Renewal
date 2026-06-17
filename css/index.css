@@ -7,18 +7,182 @@
   overflow-x: auto;
 }
 
-.guide-card {
-  position: relative;
-  width: 448px;
-  flex: 0 0 448px;
-  overflow: hidden;
+/* Main video */
+.hero-video {
+  width: 100%;
+  padding-top: 98px;
+  background: var(--color-black);
 }
 
-.guide-card > img {
+.hero-video-slider {
+  position: relative;
   width: 100%;
-  height: 448px;
+  height: min(720px, calc(100vh - 98px));
+  min-height: 520px;
+  overflow: hidden;
+  color: var(--color-white);
+  touch-action: pan-y;
+  user-select: none;
+}
+
+.hero-video-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.6s ease,
+    visibility 0.6s ease;
+}
+
+.hero-video-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1;
+}
+
+.hero-video-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.12) 58%, rgba(0, 0, 0, 0.24));
+  pointer-events: none;
+}
+
+.hero-video-media {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px 10px 0 0;
+}
+
+.hero-video-copy {
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 72px;
+  z-index: 2;
+  max-width: 620px;
+}
+
+.hero-video-eyebrow {
+  margin-bottom: 12px;
+}
+
+.hero-video-copy h1 {
+  margin: 0 0 16px;
+}
+
+.hero-video-progress {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  z-index: 3;
+  display: flex;
+  width: min(420px, calc(100% - 32px));
+  height: 4px;
+  gap: 8px;
+  transform: translateX(-50%);
+}
+
+.hero-video-progress-item {
+  flex: 1 1 0;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.hero-video-progress-fill {
+  display: block;
+  width: 0%;
+  height: 100%;
+  background: var(--color-white);
+}
+
+.hero-video-control {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .hero-video-slider {
+    height: min(760px, calc(100vh - 98px));
+    min-height: 620px;
+  }
+
+  .hero-video-copy {
+    left: 48px;
+    right: 48px;
+    bottom: 104px;
+  }
+
+  .hero-video-progress {
+    bottom: 48px;
+    width: min(520px, calc(100% - 96px));
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-video-copy {
+    left: calc((100% - var(--container-max)) / 2);
+  }
+
+  .hero-video-control {
+    position: absolute;
+    top: 50%;
+    z-index: 4;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 56px;
+    height: 56px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.28);
+    color: var(--color-white);
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-50%);
+    transition:
+      background 0.2s ease,
+      border-color 0.2s ease,
+      opacity 0.2s ease,
+      visibility 0.2s ease;
+  }
+
+  .hero-video-slider.is-control-visible .hero-video-control,
+  .hero-video-slider:hover .hero-video-control,
+  .hero-video-control:focus-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .hero-video-control:hover {
+    border-color: var(--color-white);
+    background: rgba(0, 0, 0, 0.52);
+  }
+
+  .hero-video-control.prev {
+    left: 48px;
+  }
+
+  .hero-video-control.next {
+    right: 48px;
+  }
+
+  .hero-video-control .material-symbols-outlined {
+    font-size: 36px;
+    line-height: 1;
+  }
+}
+
+/* AI 섹션 */
+
+.guide-card-img,
+.guide-card > img {
+  display: block;
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
 }
 
 .guide-text {
@@ -959,5 +1123,110 @@
     top: 42px;
     font-size: 32px;
     line-height: 32px;
+  }
+}
+
+/* Guide card slider */
+.guide {
+  padding: 8px 0;
+}
+
+.guide-slider {
+  align-items: stretch;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.guide-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.guide-card {
+  display: flex;
+  min-width: 0;
+  background: var(--color-white);
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.guide-card-img {
+  position: static;
+  width: 100%;
+  max-width: none;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  object-fit: cover;
+}
+
+.container .guide-text {
+  min-height: 100px;
+  padding: calc(var(--base-unit) * 1.5) calc(var(--base-unit) * 0.75) 0;
+}
+
+.text-content {
+  flex: 1 1 auto;
+}
+
+.text-content p {
+  flex: 1 1 auto;
+}
+
+.ai-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  min-height: 44px;
+}
+
+@media (min-width: 768px) {
+  .guide {
+    padding: 32px 0 16px;
+  }
+
+  .container .guide-text {
+    min-height: 118px;
+    padding: calc(var(--base-unit) * 2) var(--base-unit) 0;
+  }
+
+  .text-content {
+    padding: var(--base-unit);
+  }
+}
+
+@media (min-width: 1025px) {
+  .guide {
+    padding: 64px 0;
+  }
+
+  .guide-slider {
+    overflow: visible;
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+
+  .guide-card {
+    flex: 1 1 0;
+    scroll-snap-align: none;
+  }
+
+  .guide-card-img {
+    aspect-ratio: 16 / 9;
+  }
+
+  .container .guide-text {
+    min-height: 116px;
+  }
+
+  .text-content {
+    min-height: 250px;
+  }
+
+  .ai-btn {
+    min-width: 144px;
   }
 }
