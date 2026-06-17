@@ -157,6 +157,25 @@
   background: var(--color-gray);
 }
 
+.best-ranking {
+  display: none;
+}
+
+.best-ranking {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.best-ranking-brand,
+.best-ranking-title {
+  margin: 0;
+}
+
+.best-ranking-wish {
+  flex-shrink: 0;
+}
+
 /* best tablet */
 @media (min-width: 768px) {
   .best {
@@ -184,6 +203,62 @@
   .product-card-price {
     font-size: 16px;
     line-height: 24px;
+  }
+
+  .best-ranking {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .best-ranking-item:nth-child(n + 3) {
+    display: none;
+  }
+
+  .best-ranking-item {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    height: 96px;
+  }
+
+  .best-ranking-item img {
+    width: 160px;
+    height: 96px;
+    object-fit: cover;
+  }
+
+  .best-ranking-content {
+    flex: 1;
+    height: 100%;
+    padding: 8px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .best-ranking-brand {
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 700;
+    color: var(--color-dark-gray);
+    text-transform: uppercase;
+  }
+
+  .best-ranking-title {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .best-ranking-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .best-ranking-item:nth-child(n + 3) {
+    display: none;
   }
 }
 
@@ -245,6 +320,43 @@
   .product-card-wish {
     font-size: 18px;
     line-height: 24px;
+  }
+
+  .best-ranking-brand {
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+  .best-ranking-title {
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+  .best-ranking-price-row {
+    font-size: 17px;
+    line-height: 28px;
+  }
+
+  .best-ranking-item:nth-child(n + 3) {
+    display: flex;
+  }
+
+  .best-ranking {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 24px;
+  }
+
+  .best-ranking-item:nth-child(n + 3) {
+    display: flex;
+  }
+
+  .best-ranking-item {
+    height: 96px;
+  }
+
+  .best-ranking-price-row {
+    justify-content: space-between;
   }
 }
 
