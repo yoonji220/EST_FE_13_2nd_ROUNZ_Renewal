@@ -875,6 +875,12 @@
   text-align: center;
 }
 
+.answer-lock {
+  color: var(--color-point);
+  font-size: var(--base-unit);
+  flex-shrink: 0;
+}
+
 @media (min-width: 1200px) {
   .rating-block {
     max-width: 800px;

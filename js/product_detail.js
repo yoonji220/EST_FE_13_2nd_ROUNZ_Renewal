@@ -120,6 +120,7 @@ function createContent(data, brandData) {
   createSheetContent(data);
   createToastContent(data);
   createReviews(data);
+  createQna(data);
 }
 
 function createSummary(data) {
@@ -453,6 +454,68 @@ function renderReviewItems(reviews) {
     .join("");
 
   reviewList.innerHTML = reviewHTML;
+}
+
+function createQna(data) {
+  const qnaTab = document.querySelector("#tab-qna");
+  const qnaList = document.querySelector(".qna-list");
+
+  const qna = data.qna || [];
+  const qnaCount = qna.length;
+
+  if (qnaTab) {
+    qnaTab.textContent = `문의(${qnaCount})`;
+  }
+
+  if (!qnaList) return;
+
+  if (qnaCount === 0) {
+    qnaList.innerHTML = `
+      <li>
+        <article class="qna-item d-flex flex-column g-1">
+          <p class="answer-content typo-m-caption">
+            등록된 상품 문의가 없습니다.
+          </p>
+        </article>
+      </li>
+    `;
+    return;
+  }
+
+  qnaList.innerHTML = qna
+    .slice(0, 6)
+    .map(item => {
+      const title = item.title || "상품 문의";
+      const answer = item.answer || item.content || item.reply || "";
+      const hasAnswer = Boolean(answer);
+
+      return `
+        <li>
+          <article class="qna-item d-flex flex-column g-1">
+            <div class="qna-question d-flex align-items-center g-2">
+              <span class="status-badge typo-m-caption d-flex justify-content-center align-items-center">
+                답변완료
+              </span>
+
+              <h3 class="qna-question-text typo-m-body-s">
+                ${title}
+              </h3>
+            </div>
+
+            <div class="answer-block d-flex align-items-center g-2">
+              <span class="${hasAnswer ? "answer-label typo-m-header" : "answer-lock typo-p-icon-xs"}" aria-hidden="true">
+                ${hasAnswer ? "A" : "lock"}
+              </span>
+
+              <p class="answer-content typo-m-caption">
+                ${hasAnswer ? answer : "비밀 문의입니다."}
+              </p>
+            </div>
+          </article>
+        </li>
+      `;
+    })
+    .join("");
 }
 
 function createRecommendLists(all, category, id) {
