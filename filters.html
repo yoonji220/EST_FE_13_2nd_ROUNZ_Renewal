@@ -1,21 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROUNZ - Filters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/filters.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROUNZ - Filters</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/filters.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0">
-</head>
+  <body>
+    <div class="app-container container filters-page">
+      <!-- 상단 고정 헤더 (메뉴, 로고, 마이페이지 아이콘 영역) -->
+      <header class="header cart-topbar">
+        <button class="menu-btn material-symbols-outlined">menu</button>
+        <h1 class="logo">ROUNZ</h1>
+        <nav class="icon-menu">
+          <a href="#" class="material-symbols-outlined">person</a>
+          <a href="#" class="material-symbols-outlined">search</a>
+          <a href="#" class="material-symbols-outlined">shopping_bag</a>
+        </nav>
+      </header>
+      <!-- 상품 리스트 및 필터 조작 메인 영역 -->
+      <main class="filters-main">
+        <!-- 페이지 이동 경로 (Breadcrumb) 영역 -->
+        <nav class="filters-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">HOME</a>
+          <span>&gt;</span>
+          <a href="#">GLASSES</a>
+          <span>&gt;</span>
+          <strong>PRODUCT DETAIL</strong>
+        </nav>
 
 <body>
   <div class="filters-page">
@@ -189,4 +212,7 @@
   <script type="module" src="./js/utils/filters.js"></script>
 </body>
 
+    <script src="./js/utils/common.js"></script>
+    <script src="./js/utils/filters.js?v=2"></script>
+  </body>
 </html>
