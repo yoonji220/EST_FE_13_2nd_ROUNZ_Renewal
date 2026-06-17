@@ -1,98 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROUNZ - Filters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+      rel="stylesheet" />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/filters.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROUNZ - Filters</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/filters.css">
-  <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0">
-</head>
+  <body>
+    <div class="app-container container filters-page">
+      <!-- 상단 고정 헤더 (메뉴, 로고, 마이페이지 아이콘 영역) -->
+      <header class="header cart-topbar">
+        <button class="menu-btn material-symbols-outlined">menu</button>
+        <h1 class="logo">ROUNZ</h1>
+        <nav class="icon-menu">
+          <a href="#" class="material-symbols-outlined">person</a>
+          <a href="#" class="material-symbols-outlined">search</a>
+          <a href="#" class="material-symbols-outlined">shopping_bag</a>
+        </nav>
+      </header>
+      <!-- 상품 리스트 및 필터 조작 메인 영역 -->
+      <main class="filters-main">
+        <!-- 페이지 이동 경로 (Breadcrumb) 영역 -->
+        <nav class="filters-breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">HOME</a>
+          <span>&gt;</span>
+          <a href="#">GLASSES</a>
+          <span>&gt;</span>
+          <strong>PRODUCT DETAIL</strong>
+        </nav>
 
-<body>
-  <div class="app-container container filters-page">
-    <!-- 상단 고정 헤더 (메뉴, 로고, 마이페이지 아이콘 영역) -->
-    <header class="header cart-topbar">
-      <button class="menu-btn material-symbols-outlined">menu</button>
-      <h1 class="logo">ROUNZ</h1>
-      <nav class="icon-menu">
-        <a href="#" class="material-symbols-outlined">person</a>
-        <a href="#" class="material-symbols-outlined">search</a>
-        <a href="#" class="material-symbols-outlined">shopping_bag</a>
-      </nav>
-    </header>
-    <!-- 상품 리스트 및 필터 조작 메인 영역 -->
-    <main class="filters-main">
-      <!-- 페이지 이동 경로 (Breadcrumb) 영역 -->
-      <nav class="filters-breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">HOME</a>
-        <span>&gt;</span>
-        <a href="#">GLASSES</a>
-        <span>&gt;</span>
-        <strong>PRODUCT DETAIL</strong>
-      </nav>
+        <!-- 상세 필터 팝업 열기 버튼 (클릭 시 fiters_open.html로 이동) -->
+        <a class="filter-bar" id="filter-toggle" href="fiters_open.html" aria-label="필터 열기">
+          <span class="filter-title">
+            <span class="material-symbols-outlined">sort</span>
+            <span>FILTERS</span>
+          </span>
+          <span class="material-symbols-outlined" id="filter-toggle-icon">expand_more</span>
+        </a>
 
-      <!-- 상세 필터 팝업 열기 버튼 (클릭 시 fiters_open.html로 이동) -->
-      <a class="filter-bar" id="filter-toggle" href="fiters_open.html" aria-label="필터 열기">
-        <span class="filter-title">
-          <span class="material-symbols-outlined">sort</span>
-          <span>FILTERS</span>
-        </span>
-        <span class="material-symbols-outlined" id="filter-toggle-icon">expand_more</span>
-      </a>
-
-      <!-- 상품 기본 카테고리 필터 영역 (Sunglasses, Glasses 선택) -->
-      <section class="filter-panel" id="filter-panel" aria-label="Filters">
-        <div class="filter-row" data-selection-group>
-          <span>종류</span>
-          <button class="selected" data-filter-option data-category="sunglasses" type="button">Sunglasses</button>
-          <button data-filter-option data-category="glasses" type="button">Glasses</button>
-        </div>
-      </section>
-
-      <!-- 전체 상품 개수 표시 및 정렬 기준(신상품순, 인기순 등) 드롭다운 영역 -->
-      <section class="sort-control" aria-label="Sort products">
-        <span id="product-count">0 PRODUCTS</span>
-        <div class="sort-dropdown">
-          <span>정렬 기준 :</span>
-          <button id="sort-toggle" type="button" aria-expanded="false">
-            <strong id="sort-current">신상품순</strong>
-            <span class="material-symbols-outlined">expand_more</span>
-          </button>
-          <div class="sort-options" id="sort-options" hidden>
-            <button class="sort-option active" data-sort-option type="button">신상품순</button>
-            <button class="sort-option" data-sort-option type="button">인기순</button>
-            <button class="sort-option" data-sort-option type="button">낮은가격순</button>
-            <button class="sort-option" data-sort-option type="button">높은가격순</button>
+        <!-- 상품 기본 카테고리 필터 영역 (Sunglasses, Glasses 선택) -->
+        <section class="filter-panel" id="filter-panel" aria-label="Filters">
+          <div class="filter-row" data-selection-group>
+            <span>종류</span>
+            <button class="selected" data-filter-option data-category="sunglasses" type="button">Sunglasses</button>
+            <button data-filter-option data-category="glasses" type="button">Glasses</button>
           </div>
+        </section>
+
+        <!-- 전체 상품 개수 표시 및 정렬 기준(신상품순, 인기순 등) 드롭다운 영역 -->
+        <section class="sort-control" aria-label="Sort products">
+          <span id="product-count">0 PRODUCTS</span>
+          <div class="sort-dropdown">
+            <span>정렬 기준 :</span>
+            <button id="sort-toggle" type="button" aria-expanded="false">
+              <strong id="sort-current">신상품순</strong>
+              <span class="material-symbols-outlined">expand_more</span>
+            </button>
+            <div class="sort-options" id="sort-options" hidden>
+              <button class="sort-option active" data-sort-option type="button">신상품순</button>
+              <button class="sort-option" data-sort-option type="button">인기순</button>
+              <button class="sort-option" data-sort-option type="button">낮은가격순</button>
+              <button class="sort-option" data-sort-option type="button">높은가격순</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- 필터링된 실제 상품들이 격자(Grid) 형태로 렌더링되는 영역 -->
+        <section class="product-grid" id="product-grid" aria-label="Products"></section>
+
+        <!-- 하단 상품 추가 로드 '더 보기' 버튼 영역 -->
+        <div class="view-more-wrap" id="view-more-wrap">
+          <button class="view-more-btn" id="view-more-btn" type="button">더 보기</button>
         </div>
-      </section>
+      </main>
 
-      <!-- 필터링된 실제 상품들이 격자(Grid) 형태로 렌더링되는 영역 -->
-      <section class="product-grid" id="product-grid" aria-label="Products"></section>
+      <!-- 페이지 하단 카피라이트 및 공통 푸터 정보 영역 -->
+      <footer class="main-footer">
+        <p style="text-align: center; padding: 20px; font-size: 14px; color: #b8b8b8">
+          © ROUNZ AI Eyewear. All rights reserved.
+        </p>
+      </footer>
+    </div>
 
-      <!-- 하단 상품 추가 로드 '더 보기' 버튼 영역 -->
-      <div class="view-more-wrap" id="view-more-wrap">
-        <button class="view-more-btn" id="view-more-btn" type="button">더 보기</button>
-      </div>
-    </main>
-
-    <!-- 페이지 하단 카피라이트 및 공통 푸터 정보 영역 -->
-    <footer class="main-footer">
-      <p style="text-align:center; padding: 20px; font-size: 14px; color:#b8b8b8;">© ROUNZ AI Eyewear. All rights reserved.</p>
-    </footer>
-  </div>
-
-  <script src="./js/utils/common.js"></script>
-  <script src="./js/utils/filters.js?v=2"></script>
-</body>
-
+    <script src="./js/utils/common.js"></script>
+    <script src="./js/utils/filters.js?v=2"></script>
+  </body>
 </html>
