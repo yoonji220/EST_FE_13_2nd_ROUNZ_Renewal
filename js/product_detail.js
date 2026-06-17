@@ -119,6 +119,7 @@ function createContent(data, brandData) {
   createSizeGuide(data);
   createSheetContent(data);
   createToastContent(data);
+  createReviews(data);
 }
 
 function createSummary(data) {
@@ -352,6 +353,106 @@ function createToastContent(data) {
 
   if (toastName) toastName.textContent = data.title;
   if (toastPrice) toastPrice.textContent = formatWon(data.price.final);
+}
+
+function createReviews(data) {
+  const reviewTab = document.querySelector("#tab-review");
+  const reviewList = document.querySelector(".review-list");
+  const reviewMoreButton = document.querySelector(".review-more-button");
+  const ratingScore = document.querySelector(".rating-score strong");
+
+  const reviews = data.reviews || [];
+  const reviewCount = reviews.length;
+
+  if (reviewTab) {
+    reviewTab.textContent = `후기(${reviewCount})`;
+  }
+
+  if (ratingScore) {
+    ratingScore.textContent = reviewCount > 0 ? "4.9" : "0.0";
+  }
+
+  if (!reviewList) return;
+
+  if (reviewCount === 0) {
+    reviewList.innerHTML = `
+      <li>
+        <article class="review-item d-flex flex-column g-1">
+          <p class="review-content typo-m-body-s">
+            등록된 후기가 없습니다.
+          </p>
+        </article>
+      </li>
+    `;
+
+    if (reviewMoreButton) {
+      reviewMoreButton.hidden = true;
+    }
+
+    return;
+  }
+
+  renderReviewItems(reviews.slice(0, 4));
+
+  if (reviewMoreButton) {
+    reviewMoreButton.hidden = reviewCount <= 4;
+    reviewMoreButton.textContent = `후기 ${reviewCount}개 전체 보기`;
+
+    reviewMoreButton.onclick = () => {
+      renderReviewItems(reviews);
+      reviewMoreButton.hidden = true;
+    };
+  }
+}
+
+function renderReviewItems(reviews) {
+  const reviewList = document.querySelector(".review-list");
+
+  if (!reviewList) return;
+
+  const reviewHTML = reviews
+    .map((review, index) => {
+      const reviewerName = `user${index + 1}***`;
+      const reviewerInitial = reviewerName.charAt(0).toUpperCase();
+
+      return `
+        <li>
+          <article class="review-item d-flex flex-column g-1">
+            <h3 class="sr-only">${reviewerName} 님의 후기</h3>
+
+            <header class="review-header d-flex justify-content-between align-items-center">
+              <div class="reviewer-info d-flex align-items-center g-1">
+                <span class="reviewer-initial typo-m-header d-flex justify-content-center align-items-center">
+                  ${reviewerInitial}
+                </span>
+                <span class="reviewer-name typo-m-body-s">${reviewerName}</span>
+              </div>
+
+              <span class="review-date typo-m-caption">구매 후기</span>
+            </header>
+
+            <div
+              class="rating-stars d-flex"
+              data-rating="5"
+              role="img"
+              aria-label="5점 만점에 5점">
+              <span class="star typo-m-icons-xs-o">star</span>
+              <span class="star typo-m-icons-xs-o">star</span>
+              <span class="star typo-m-icons-xs-o">star</span>
+              <span class="star typo-m-icons-xs-o">star</span>
+              <span class="star typo-m-icons-xs-o">star</span>
+            </div>
+
+            <p class="review-content typo-m-body-s">
+              ${review.content || review.title || "후기 내용이 없습니다."}
+            </p>
+          </article>
+        </li>
+      `;
+    })
+    .join("");
+
+  reviewList.innerHTML = reviewHTML;
 }
 
 function createRecommendLists(all, category, id) {
