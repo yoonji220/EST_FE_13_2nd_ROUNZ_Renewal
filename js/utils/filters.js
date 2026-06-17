@@ -9,7 +9,6 @@ import { renderHeader } from "../../js/modules/header.js";
      상수 및 상태
   ========================= */
   const ITEMS_PER_PAGE = 8; // 한 번에 보여줄 상품 수
-  const MAX_ITEMS = 16; // 최대 표시 가능 상품 수
 
   let allProducts = []; // 전체 상품 목록 (JSON에서 로드)
   let filteredProducts = []; // 필터/정렬 후 상품
@@ -47,25 +46,97 @@ import { renderHeader } from "../../js/modules/header.js";
   }
 
   /* =========================
+  /* =========================
+     선택된 태그 UI 렌더링
+  ========================= */
+  function updateSelectedTagsUI() {
+    const selectedTagsContainer = document.querySelector('.selected-tags');
+    const tagsList = document.querySelector('.tags-list');
+    if (!selectedTagsContainer || !tagsList) return;
+
+    const checkedBoxes = document.querySelectorAll('.filter-accordion input[type="checkbox"]:checked');
+    
+    if (checkedBoxes.length === 0) {
+      selectedTagsContainer.style.display = 'none';
+      tagsList.innerHTML = '';
+      return;
+    }
+
+    selectedTagsContainer.style.display = 'block';
+    
+    tagsList.innerHTML = Array.from(checkedBoxes).map(cb => {
+      const labelText = cb.parentElement.textContent.trim();
+      return `
+        <span class="tag">
+          ${escapeHtml(labelText)}
+          <button type="button" data-filter-name="${cb.name}" data-filter-value="${cb.value}">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </span>
+      `;
+    }).join("");
+
+    // 태그 삭제 버튼 이벤트 연결
+    tagsList.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const name = btn.getAttribute('data-filter-name');
+        const value = btn.getAttribute('data-filter-value');
+        const checkbox = document.querySelector(`input[name="${name}"][value="${value}"]`);
+        if (checkbox) {
+          checkbox.checked = false;
+          applyFilters();
+        }
+      });
+    });
+  }
+
+  /* =========================
      필터 및 정렬 적용
   ========================= */
   function applyFilters() {
-    // 카테고리 필터 적용
+    // 사이드바 필터 상태 읽기
+    const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
+    const selectedFrames = Array.from(document.querySelectorAll('input[name="frameShape"]:checked')).map(cb => cb.value);
+    const selectedMaterials = Array.from(document.querySelectorAll('input[name="material"]:checked')).map(cb => cb.value);
+    const selectedPrices = Array.from(document.querySelectorAll('input[name="price"]:checked')).map(cb => cb.value);
+
+    // 카테고리 및 속성 필터 적용
     filteredProducts = allProducts.filter(product => {
-      if (currentCategory === "sunglasses") {
-        return product.category === "sunglasses";
-      } else if (currentCategory === "glasses") {
-        return (
-          product.category === "glasses" ||
-          product.category === "eyeglasses" ||
-          product.category === ""
-        );
+      // 1. 카테고리 확인
+      if (currentCategory === "sunglasses" && product.category !== "sunglasses") return false;
+      if (currentCategory === "glasses" && !(product.category === "glasses" || product.category === "eyeglasses" || product.category === "")) return false;
+      
+      // 2. 브랜드 필터
+      if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) return false;
+
+      // 3. 프레임 형태 필터
+      if (selectedFrames.length > 0 && !selectedFrames.includes(product["frame-shape"])) return false;
+
+      // 4. 소재 필터 (이름에 포함되는지 검사 - OR)
+      if (selectedMaterials.length > 0) {
+        const title = product.title || "";
+        const matchesMaterial = selectedMaterials.some(mat => title.includes(mat));
+        if (!matchesMaterial) return false;
       }
+
+      // 5. 가격 필터 (선택된 범위 중 하나라도 속하면 통과 - OR)
+      if (selectedPrices.length > 0) {
+        const price = product.price?.final || 0;
+        const matchesPrice = selectedPrices.some(range => {
+          const [min, max] = range.split('-').map(Number);
+          return price >= min && price <= max;
+        });
+        if (!matchesPrice) return false;
+      }
+
       return true;
     });
 
     // 정렬 적용
     sortProducts();
+
+    // 태그 UI 업데이트
+    updateSelectedTagsUI();
 
     // 페이지 초기화
     currentPage = 1;
@@ -111,7 +182,6 @@ import { renderHeader } from "../../js/modules/header.js";
 
     const visibleCount = Math.min(
       currentPage * ITEMS_PER_PAGE,
-      MAX_ITEMS,
       filteredProducts.length,
     );
     const visibleProducts = filteredProducts.slice(0, visibleCount);
@@ -164,7 +234,7 @@ import { renderHeader } from "../../js/modules/header.js";
     if (!viewMoreWrap || !viewMoreBtn) return;
 
     const visibleCount = currentPage * ITEMS_PER_PAGE;
-    const maxReachable = Math.min(MAX_ITEMS, filteredProducts.length);
+    const maxReachable = filteredProducts.length;
 
     if (visibleCount >= maxReachable) {
       viewMoreWrap.style.display = "none";
@@ -179,6 +249,30 @@ import { renderHeader } from "../../js/modules/header.js";
   function bindEvents() {
     // 헤더, 하단 푸터 렌더링 및 모바일 반응형 처리
     document.addEventListener("DOMContentLoaded", () => {
+      // 모바일 필터 연동 (sessionStorage)
+      const savedStateStr = sessionStorage.getItem('mobileFilters');
+      if (savedStateStr) {
+        try {
+          const savedState = JSON.parse(savedStateStr);
+          
+          // 체크박스 복원
+          document.querySelectorAll('.filter-accordion input[type="checkbox"]').forEach(cb => {
+            if (cb.name === 'brand' && savedState.brands?.includes(cb.value)) cb.checked = true;
+            if (cb.name === 'frameShape' && savedState.shapes?.includes(cb.value)) cb.checked = true;
+            if (cb.name === 'material' && savedState.materials?.includes(cb.value)) cb.checked = true;
+            if (cb.name === 'price') {
+              const maxPrice = savedState.priceMax !== undefined ? savedState.priceMax : 500000;
+              const [min, max] = cb.value.split('-').map(Number);
+              if (max <= maxPrice) cb.checked = true;
+            }
+          });
+        } catch (e) {
+          console.error("Failed to parse mobileFilters");
+        }
+        // 한 번 적용 후 세션 초기화 (계속 남아있으면 불편할 수 있음)
+        sessionStorage.removeItem('mobileFilters');
+      }
+
       // 헤더 렌더링
       renderHeader();
 
@@ -199,6 +293,14 @@ import { renderHeader } from "../../js/modules/header.js";
         }
       });
     });
+
+    // 사이드바 체크박스 이벤트 연결
+    const filterAccordion = document.querySelector('.filter-accordion');
+    if (filterAccordion) {
+      filterAccordion.addEventListener('change', () => {
+        applyFilters();
+      });
+    }
 
     // 종류 필터 버튼 클릭
     if (filterPanel) {

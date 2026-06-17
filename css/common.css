@@ -826,6 +826,10 @@ footer > .container {
     gap: calc(var(--base-unit));
   }
 
+  .rounz-find-info{
+    display: none !important;
+  }
+
   .rounz-info{
     display: flex;
     flex-direction: column;
@@ -847,10 +851,6 @@ footer > .container {
     display: flex !important; /* 상황에 따라 flex 등으로 조절 가능 */
   }
 
-
   
-  .footer-simple .footer-simple {
-    display: flex !important;
-  }
 
 }
