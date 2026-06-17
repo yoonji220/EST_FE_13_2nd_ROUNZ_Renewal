@@ -301,9 +301,10 @@
 /* Product Tab */
 .product-tab {
   position: sticky;
-  top: 48px; /* 임시 */
-  z-index: 50;
+  top: 72px; /* 임시 */
+  z-index: 1;
   background-color: var(--color-white);
+  padding-top: 24px;
 }
 
 .product-tab-list {
