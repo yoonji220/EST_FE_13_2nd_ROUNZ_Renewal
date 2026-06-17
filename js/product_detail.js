@@ -330,9 +330,14 @@ function createSizeGuide(data) {
 function createSheetContent(data) {
   const sheetName = document.querySelector(".sheet-product-name");
   const sheetPrice = document.querySelector(".sheet-price");
+  const pcName = document.querySelector(".pc-purchase-name");
+  const pcPrice = document.querySelector(".pc-purchase-price");
 
   if (sheetName) sheetName.textContent = data.title;
   if (sheetPrice) sheetPrice.textContent = formatWon(data.price.final);
+
+  if (pcName) pcName.textContent = data.title;
+  if (pcPrice) pcPrice.textContent = formatWon(data.price.final);
 }
 
 function createToastContent(data) {
