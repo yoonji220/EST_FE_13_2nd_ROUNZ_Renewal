@@ -119,40 +119,16 @@
   object-fit: cover;
 }
 
-.brand-card {
-  position: relative;
+.left-column,
+.right-column {
+  gap: 8px;
 }
 
-.brand-card img {
-  transition: transform 0.3s ease;
-}
-
-.hover-overlay {
-  position: absolute;
-  inset: 0;
+.brand-link .typo-m-icons-s-o {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 12px;
-  background: rgba(0, 0, 0, 0.72);
-  color: var(--color-white);
-  text-align: center;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity 0.3s ease,
-    visibility 0.3s ease;
-}
-
-.brand-card:hover img,
-.brand-card:focus-visible img {
-  transform: scale(1.05);
-}
-
-.brand-card:hover .hover-overlay,
-.brand-card:focus-visible .hover-overlay {
-  opacity: 1;
-  visibility: visible;
+  line-height: 1;
 }
 
 /* tablet */
@@ -276,14 +252,16 @@
 }
 
 .store-search-header {
+  position: relative;
   width: 100%;
+  min-height: 40px;
   gap: 24px;
   padding-right: 138px;
 }
 
 .store__link {
   position: absolute;
-  top: 16px;
+  top: 8px;
   right: 8px;
   color: var(--color-black);
   white-space: nowrap;
