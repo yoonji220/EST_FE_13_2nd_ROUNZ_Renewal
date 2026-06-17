@@ -1,23 +1,8 @@
 .product-detail-page {
-  padding-block: 16px;
+  padding-top: 98px;
+  padding-bottom: 16px;
 }
 
-header {
-  display: none !important; /*  미완성 헤더 숨김 */
-  height: 0 !important;
-  min-height: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  border: 0 !important;
-  position: static !important;
-  visibility: hidden !important;
-  overflow: hidden !important;
-}
-
-/* .header-spacer {
-  height: 98px;
-  flex-shrink: 0;
-} */
 /* 공통 : Breadcrumbs  */
 .breadcrumb {
   height: 40px;
