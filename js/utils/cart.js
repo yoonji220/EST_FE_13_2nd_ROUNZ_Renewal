@@ -1,7 +1,22 @@
 import { renderFooter } from "../../js/modules/footer.js";
+import { renderHeader } from "../../js/modules/header.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  renderFooter(false);
+  renderHeader();
+  renderFooter(window.innerWidth < 1200);
+
+  window.addEventListener("resize", () => {
+    const footerContainer = document.querySelector(".footer .container");
+    if (footerContainer) {
+      if (window.innerWidth < 1200) {
+        footerContainer.classList.remove("footer-main");
+        footerContainer.classList.add("footer-simple");
+      } else {
+        footerContainer.classList.remove("footer-simple");
+        footerContainer.classList.add("footer-main");
+      }
+    }
+  });
 
   const selectAllCheckbox = document.getElementById("selectAll");
   const cartItemsSection = document.querySelector(".cart-items");
