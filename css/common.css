@@ -750,16 +750,107 @@ footer {
 footer > .container {
   gap: 16px;
 }
+/* 메인 푸터 */
+.footer-main {
+  align-items: flex-start;
+}
+
+.footer-wrap{
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base-unit));
+}
+  .footer-foot-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-unit));
+  }
+
 /* 단순 푸터 */
 .footer-simple {
   align-items: center;
 }
 
-/* 메인 푸터 */
-.footer-main {
-  align-items: left;
+.footer-simple .rounz-find-info,
+.footer-simple .pc-only,
+.footer-simple .family-site,
+.footer-simple .sns-icon {
+  display: none;
 }
 
-.rounz-info {
+.rounz-info{
   display: none;
+}
+.rounz-info.show {
+  display: flex;
+}
+
+/* 푸터 반응형 */
+@media (min-width: 1200px) {
+.footer-wrap{
+  display: flex;
+  flex-direction: row;
+  gap: calc(var(--base-unit)*12);
+}
+
+  .mobile-only{
+    display: none;
+  }
+  .pc-only{
+    display: block;
+  }
+  .footer-main-content{
+    display: flex;
+    gap: calc(var(--base-unit)*12);
+  }
+  
+  .cs .footer-nav{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-unit) * 0.5);
+  }
+
+  .family-site .footer-nav{
+    flex-direction: column;
+  }
+
+  .cc{
+    display: flex;
+  }
+  .cc > *{
+    display: block;
+  }
+  .footer-foot-wrap{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-unit));
+  }
+
+  .rounz-info{
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--base-unit));
+  }
+  .rounz-info> ul{
+    display: flex;
+    gap: calc(var(--base-unit));
+  }
+  /* .footer-simple 클래스가 붙어있더라도 중앙 정렬을 무력화하고 좌측 정렬로 덮어씌웁니다 */
+  .footer-simple {
+    align-items: flex-start;
+  }
+
+  /* 단순 푸터용으로 숨겨두었던 요소들을 1200px 이상에서는 강제로 다시 노출합니다 */
+  .footer-simple .rounz-info,
+  .footer-simple .family-site,
+  .footer-simple .pc-only {
+    display: flex !important; /* 상황에 따라 flex 등으로 조절 가능 */
+  }
+
+
+  
+  .footer-simple .footer-simple {
+    display: flex !important;
+  }
+
 }
