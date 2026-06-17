@@ -415,6 +415,7 @@ function renderReviewItems(reviews) {
     .map((review, index) => {
       const reviewerName = `user${index + 1}***`;
       const reviewerInitial = reviewerName.charAt(0).toUpperCase();
+      const reviewDate = getReviewDate(review.image);
 
       return `
         <li>
@@ -428,8 +429,9 @@ function renderReviewItems(reviews) {
                 </span>
                 <span class="reviewer-name typo-m-body-s">${reviewerName}</span>
               </div>
-
-              <span class="review-date typo-m-caption">구매 후기</span>
+               <time class="review-date typo-m-caption">
+                  ${reviewDate}
+              </time>
             </header>
 
             <div
@@ -454,6 +456,16 @@ function renderReviewItems(reviews) {
     .join("");
 
   reviewList.innerHTML = reviewHTML;
+}
+
+function getReviewDate(imageUrl) {
+  const match = imageUrl?.match(/review\/(\d{4})(\d{2})\/(\d{2})\//);
+
+  if (!match) return "";
+
+  const [, year, month, day] = match;
+
+  return `${year}.${month}.${day}`;
 }
 
 function createQna(data) {
