@@ -76,11 +76,21 @@ function renderPointCards(product) {
   const pointImages = document.querySelectorAll(".point-image");
   const imageUrls = product.images?.pointImages ?? [];
 
-  pointImages.forEach((image, index) => {
-    if (!imageUrls[index]) return;
+  const fallbackImages = ["./img/point-01.webp", "./img/point-02.webp"];
 
-    image.src = imageUrls[index];
-    image.alt = `${product.title} 포인트 이미지 ${index + 1}`;
+  const altTexts = [
+    `${product.title} 프레임 디테일 이미지`,
+    `${product.title} 착용감 참고 이미지`,
+  ];
+
+  pointImages.forEach((image, index) => {
+    image.src = imageUrls[index] || fallbackImages[index];
+    image.alt = altTexts[index];
+
+    image.onerror = () => {
+      image.src = fallbackImages[index];
+      image.alt = altTexts[index];
+    };
   });
 }
 
@@ -102,28 +112,6 @@ function normalizeBrandImageName(brandName) {
 }
 
 initProductDetail();
-
-function renderPointCards(product) {
-  const pointImages = document.querySelectorAll(".point-image");
-  const imageUrls = product.images?.pointImages ?? [];
-
-  const fallbackImages = ["./img/point-01.webp", "./img/point-02.webp"];
-
-  const altTexts = [
-    `${product.title} 프레임 디테일 이미지`,
-    `${product.title} 착용감 참고 이미지`,
-  ];
-
-  pointImages.forEach((image, index) => {
-    image.src = imageUrls[index] || fallbackImages[index];
-    image.alt = altTexts[index];
-
-    image.onerror = () => {
-      image.src = fallbackImages[index];
-      image.alt = altTexts[index];
-    };
-  });
-}
 
 /* Tab UI */
 const tabButtons = document.querySelectorAll(".product-tab-button");
