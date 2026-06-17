@@ -87,6 +87,17 @@
   object-fit: cover;
 }
 
+.product-thumb-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--color-light-gray);
+  background-color: var(--color-info-gray);
+  color: var(--color-gray);
+  text-align: center;
+}
+
 .product-hero .carousel-prev,
 .product-hero .carousel-next {
   width: 32px;
@@ -153,42 +164,53 @@
 }
 
 .color-list li {
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: auto;
 }
 
-.color-list button {
-  width: 40px;
-  height: 40px;
+.color-chip {
+  position: relative;
   padding: 4px;
   border-radius: 999px;
+  cursor: pointer;
 }
 
-.color-list button::before {
-  content: "";
+.color-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.color-dot {
   display: block;
   width: 32px;
   height: 32px;
   border: 1px solid var(--color-gray);
-  border-radius: 50%;
+  border-radius: 9999px;
 }
 
-.color-list li:nth-child(1) button::before {
+.color-dot-black {
   background-color: var(--color-gray);
 }
 
-.color-list li:nth-child(2) button::before {
+.color-dot-gray {
   background-color: var(--color-black);
 }
 
-.color-list li:nth-child(3) button::before {
+.color-dot-yellow {
   background-color: #ffd700;
 }
 
-/* 상태 표시용 outline (접근성 고려) aria-pressed 선택 상태를 명확히 구분하기 위해 유지 */
-.color-list button[aria-pressed="true"] {
+/* 선택 상태: 피그마처럼 칩 바깥에 outline */
+.color-chip:has(input:checked) {
   outline: 2px solid var(--color-black);
   outline-offset: -2px;
+}
+
+/* 키보드 포커스 표시 */
+.color-chip:has(input:focus-visible) {
+  outline: 2px solid var(--color-point);
+  outline-offset: 2px;
 }
 
 /* Quantity Control */
@@ -224,6 +246,17 @@
 .product-purchase-actions,
 .ai-fitting-button,
 .pc-purchase-panel {
+  display: none;
+}
+
+.brand-feature-image {
+  width: 100%;
+  height: 334px;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.pc-purchase-mini-card {
   display: none;
 }
 
@@ -295,6 +328,62 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+
+  .product-thumb-placeholder {
+    width: 168px;
+    height: 168px;
+  }
+
+  .brand-feature-image {
+    height: 640px;
+    object-position: center bottom;
+  }
+
+  .pc-purchase-mini-card {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 120;
+
+    width: 160px;
+    min-height: 72px;
+    padding: 12px 16px;
+
+    border-radius: 16px;
+    border: 1px solid var(--color-light-gray);
+    background-color: var(--color-white);
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--color-black);
+    cursor: pointer;
+  }
+
+  .pc-purchase-mini-card[hidden] {
+    display: none;
+  }
+
+  .pc-mini-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .pc-mini-qty {
+    color: var(--color-dark-gray);
+  }
+
+  .pc-mini-price {
+    color: var(--color-point);
+  }
+
+  .pc-purchase-panel[hidden] {
+    display: none;
   }
 }
 
@@ -487,15 +576,14 @@
 
 .brand-feature-image-box {
   width: 100%;
-  background-color: var(--color-light-gray);
-  border: 1px solid var(--color-light-gray);
   overflow: hidden;
 }
 
 .brand-feature-image {
   width: 100%;
-  height: 334px;
-  object-fit: cover;
+  height: auto;
+  max-height: 560px;
+  object-fit: contain;
 }
 
 .brand-feature-text {
@@ -646,16 +734,15 @@
 
 .diagram-card {
   width: 100%;
-  height: 240px;
   overflow: hidden;
   border-radius: 12px;
   border: 2px solid var(--color-light-gray);
 }
 
 .size-guide-image {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .spec-content {
@@ -715,7 +802,6 @@
 
   .diagram-card {
     width: 456px;
-    height: 456px;
   }
 
   .spec-content {
@@ -855,6 +941,12 @@
   text-align: center;
 }
 
+.answer-lock {
+  color: var(--color-point);
+  font-size: var(--base-unit);
+  flex-shrink: 0;
+}
+
 @media (min-width: 1200px) {
   .rating-block {
     max-width: 800px;
@@ -943,6 +1035,16 @@
   width: 100%;
   margin: 0;
   color: var(--color-dark-gray);
+}
+
+.qna-more-button {
+  width: 100%;
+  padding-block: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--color-gray);
+  color: var(--color-dark-black);
+  background-color: var(--color-white);
+  text-align: center;
 }
 
 @media (min-width: 1200px) {
@@ -1385,6 +1487,13 @@
   background-color: var(--color-white);
 }
 
+.product-total-price,
+.sheet-total-price,
+.pc-purchase-total-price,
+.pc-mini-price {
+  color: var(--color-point);
+}
+
 @media (min-width: 1200px) {
   .purchase-bar,
   .purchase-sheet {
@@ -1407,10 +1516,6 @@
     border-radius: 16px;
     background-color: var(--color-white);
     box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.1);
-  }
-
-  .pc-purchase-total-price {
-    color: var(--color-point);
   }
 }
 

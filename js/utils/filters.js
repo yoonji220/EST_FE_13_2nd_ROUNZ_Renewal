@@ -204,10 +204,10 @@ import { renderHeader } from "../../js/modules/header.js";
             : `<strong>${formatWon(product.price.final)}</strong>`;
 
         return `
-        <article class="filter-product-card">
-          <a href="product_detail.html" class="product-image">
-            <img src="${escapeHtml(product.images.thumbnail)}" alt="${escapeHtml(product.title)}">
-          </a>
+  <article class="filter-product-card">
+    <a href="./product_detail.html?id=${product.id}" class="product-image">
+      <img src="${escapeHtml(product.images.thumbnail)}" alt="${escapeHtml(product.title)}">
+    </a>
           <div class="product-meta">
             <span class="brand-name">${escapeHtml(product.brand)}</span>
             <h2>${escapeHtml(product.title)}</h2>
