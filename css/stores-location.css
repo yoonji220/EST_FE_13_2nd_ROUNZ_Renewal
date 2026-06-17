@@ -44,7 +44,6 @@ a:focus:not(:focus-visible) {
   flex-direction: column;
   align-items: stretch;
   gap: 24px;
-  padding: 0 16px;
   overflow-x: hidden;
 }
 
@@ -695,4 +694,413 @@ a:focus:not(:focus-visible) {
   color: var(--color-black);
   font-size: 20px;
   line-height: 1;
+}
+
+/* ==========================================================================
+   Layout 분기 — Mobile/Tablet vs PC
+   ========================================================================== */
+
+.layout-mobile-tablet {
+  display: block;
+}
+
+.layout-pc {
+  display: none;
+}
+@media (max-width: 767px) {
+  .stores-location .container {
+    padding: 0;
+  }
+}
+
+/* ==========================================================================
+   Tablet Responsive — @media (min-width: 768px)
+   ========================================================================== */
+
+@media (min-width: 768px) {
+  .stores-location {
+    gap: 32px;
+  }
+
+  .stores-search__filters {
+    gap: 40px;
+    justify-content: center;
+  }
+
+  .stores-featured__image-wrap {
+    height: 400px;
+  }
+
+  .stores-list__items {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .stores-services__grid {
+    gap: 16px;
+  }
+
+  .stores-services__item {
+    min-height: 93px;
+  }
+}
+
+/* ==========================================================================
+   PC Layout — @media (min-width: 1200px)
+   ========================================================================== */
+
+@media (min-width: 1200px) {
+  /* 레이아웃 전환 */
+  .layout-mobile-tablet {
+    display: none;
+  }
+
+  .layout-pc {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start; /* sticky 자식 요소가 독립 높이를 가지도록 */
+  }
+
+  /* Mobile/Tablet 전용 요소 숨김 */
+  .fixed-action-bar {
+    display: none;
+  }
+
+  /* PC에서 라이트박스 안전 차단 (JS 트리거 없으나 방어적 처리) */
+  .map-lightbox {
+    display: none !important;
+  }
+
+  /* ------------------------------------------------------------------
+     PC 사이드바
+     ------------------------------------------------------------------ */
+
+  .pc-sidebar {
+    position: sticky;
+    top: 70px; /* 헤더 높이 */
+    width: 450px;
+    min-width: 450px; /* flex 환경에서 줄어들지 않도록 */
+    flex-shrink: 0;
+    height: calc(100vh - 70px);
+    overflow-y: auto;
+    border-right: 1px solid var(--color-gray-200, #e5e5e5);
+    background-color: var(--color-white, #fff);
+  }
+
+  .pc-sidebar__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .pc-sidebar__inner > h1 {
+    margin: 0;
+  }
+
+  /* 프로모션 카드 */
+  .pc-promo-card {
+    gap: 16px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: var(--color-white, #fff);
+    border: 1px solid var(--color-gray, #b8b8b8);
+    justify-content: space-between;
+  }
+
+  .pc-promo-card__text {
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .pc-promo-card__btn {
+    align-self: flex-start;
+    padding: 8px 16px;
+    border: 1px solid var(--color-black, #000);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--color-black, #000);
+    cursor: pointer;
+  }
+
+  .pc-promo-card__image {
+    width: 96px;
+    height: 96px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    background-color: #faf8ff;
+    border: 1px solid var(--color-gray, #b8b8b8);
+  }
+
+  /* 검색 영역 */
+  .pc-search-section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .pc-search-header {
+    gap: 4px;
+  }
+
+  .pc-search-form {
+    gap: 8px;
+    height: 48px;
+    padding: 0 12px;
+    border: 1px solid var(--color-dark-gray, #5e5e5e);
+    border-radius: 8px;
+    background-color: var(--color-white, #fff);
+  }
+
+  .pc-search-form input {
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+  .pc-search-form__btn {
+    flex-shrink: 0;
+    padding: 6px 14px;
+    border-radius: 4px;
+    background-color: var(--color-point, #2563eb);
+    color: var(--color-white, #fff);
+    border: none;
+    cursor: pointer;
+  }
+
+  /* PC 필터 칩 */
+  .pc-filter-chips {
+    gap: 24px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pc-filter-chips .filter-chip {
+    height: 36px;
+  }
+
+  /* 결과 요약 */
+  .pc-results-summary {
+    gap: 8px;
+    padding: 8px 0 0;
+    border-top: 1px solid var(--color-gray, #b8b8b8);
+  }
+
+  .pc-results-summary__sort {
+    gap: 4px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-dark-gray, #374151);
+    padding: 0;
+  }
+
+  /* PC 매장 리스트 */
+  .pc-store-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* PC 매장 카드 */
+  .pc-store-card {
+    gap: 12px;
+    padding: 24px;
+    border: 1px solid var(--color-gray-200, #e5e5e5);
+    border-radius: 4px;
+    background-color: var(--color-white, #fff);
+    cursor: pointer;
+    transition: border-color 0.15s ease;
+  }
+
+  .pc-store-card--active {
+    border: 2px solid var(--color-point, #2563eb);
+  }
+
+  .pc-store-card__header {
+    gap: 8px;
+  }
+
+  .pc-store-card__badge {
+    padding: 4px 8px;
+    border-radius: 4px;
+    background-color: var(--color-point, #2563eb);
+    color: var(--color-white, #fff);
+    flex-shrink: 0;
+  }
+
+  .pc-store-card__detail {
+    gap: 8px;
+  }
+
+  .pc-store-card__detail .typo-m-icons-xs-o {
+    flex-shrink: 0;
+    color: var(--color-gray-500, #6b7280);
+  }
+
+  .pc-store-card__actions {
+    gap: 8px;
+    margin-top: 4px;
+  }
+
+  .pc-store-card__btn {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid var(--color-gray-300, #d1d5db);
+    border-radius: 4px;
+    background: var(--color-white, #fff);
+    color: var(--color-black, #111);
+    cursor: pointer;
+  }
+
+  .pc-store-card__btn--primary {
+    background-color: var(--color-point, #2563eb);
+    border-color: var(--color-point, #2563eb);
+    color: var(--color-white, #fff);
+  }
+
+  /* 더보기 버튼 */
+  .pc-store-list__more {
+    width: 100%;
+    height: 56px;
+    border: 1px solid var(--color-gray, #b8b8b8);
+    border-radius: 4px;
+    background: var(--color-white, #fff);
+    cursor: pointer;
+  }
+
+  /* ------------------------------------------------------------------
+     PC 지도 영역
+     ------------------------------------------------------------------ */
+
+  .pc-map-area {
+    position: sticky;
+    top: 70px; /* 헤더 높이 */
+    flex: 1;
+    min-width: 0; /* flex-item이 부모를 초과하지 않도록 */
+    height: calc(100vh - 70px);
+    overflow: hidden;
+    background-color: var(--color-gray-100, #f5f5f5);
+  }
+
+  .pc-map-bg {
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-gray-200, #e5e5e5);
+    /* JS로 지도 이미지 렌더링 예정 */
+  }
+
+  .pc-map-markers {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  /* 필터 오버레이 — 지도 좌상단 */
+  .pc-filter-overlay {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    z-index: 10;
+    width: 224px;
+    padding: 24px;
+    border-radius: 16px;
+    background-color: #faf8ff;
+    border: 1px solid var(--color-gray, #b8b8b8);
+  }
+
+  .pc-filter-overlay__list {
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .pc-filter-overlay__list li {
+    gap: 12px;
+    cursor: pointer;
+  }
+
+  .pc-filter-overlay__list input {
+    cursor: pointer;
+  }
+
+  /* 지도 컨트롤 — 우측 상단 */
+  .pc-map-controls {
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    z-index: 10;
+    gap: 8px;
+  }
+
+  .pc-map-controls__btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: 1px solid var(--color-gray, #b8b8b8);
+    background-color: #faf8ff;
+    box-shadow:
+      0 2px 4px -2px rgba(0, 0, 0, 0.1),
+      0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+
+  /* 토스트 안내 — 하단 중앙 */
+  .pc-map-toast {
+    position: absolute;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    width: 346px;
+    min-height: 78px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #faf8ff;
+    border: 1px solid var(--color-gray, #b8b8b8);
+    color: var(--color-black, #000);
+  }
+  /* Footer test */
+  .pc-only {
+    display: block;
+  }
+
+  .mobile-only {
+    display: none;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .pc-sidebar {
+    width: 360px;
+    min-width: 360px;
+  }
+  .pc-sidebar__inner {
+    padding: 24px;
+    gap: 24px;
+  }
+  .pc-filter-overlay {
+    top: 24px;
+    left: 24px;
+  }
+  .pc-map-controls {
+    top: 24px;
+    right: 24px;
+  }
 }

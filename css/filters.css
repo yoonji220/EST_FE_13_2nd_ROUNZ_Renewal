@@ -1,5 +1,5 @@
 body {
-  background: #f4f4f5;
+  background: #fff;
 }
 
 .container {
@@ -19,8 +19,14 @@ body {
 }
 
 .filter-sidebar {
-  width: 240px;
-  flex-shrink: 0;
+  display: none;
+}
+@media (min-width: 1024px) {
+  .filter-sidebar {
+    display: block;
+    width: 240px;
+    flex-shrink: 0;
+  }
 }
 
 .filters-page {
@@ -81,10 +87,12 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 14px;
+  padding: 16px 0;
+  margin-bottom: 24px;
   font-size: 0.75rem;
   color: #6b7280;
   letter-spacing: 0.04em;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .filters-breadcrumb strong {
@@ -419,16 +427,201 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 520px) {
+@media (max-width: 1023px) {
   .filters-page {
     box-shadow: none;
   }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-  }
-
   .floating-actions {
     right: 16px;
+  }
+
+  /* 모바일/태블릿을 위한 폰트 크기 및 여백 대폭 축소 */
+  .content-title {
+    font-size: 1.125rem; /* 18px */
+    line-height: 1.4;
+  }
+  .content-count {
+    font-size: 0.75rem; /* 12px */
+  }
+  #sort-toggle {
+    font-size: 0.8125rem; /* 13px */
+  }
+  .product-meta {
+    padding: 10px;
+    gap: 4px;
+  }
+  .brand-name {
+    font-size: 0.6875rem; /* 11px */
+    line-height: 1.2;
+  }
+  .product-meta h2 {
+    font-size: 0.8125rem; /* 13px */
+    line-height: 1.3;
+    /* 상품명 줄바꿈 방지 */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .price-row strong {
+    font-size: 0.875rem; /* 14px */
+    line-height: 1.2;
+  }
+}
+
+/* =========================
+   사이드바 필터 영역 (PC)
+========================= */
+.sidebar-title {
+  font-size: 1.125rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+.sidebar-subtitle {
+  font-size: 0.75rem;
+  color: #888;
+  font-weight: 400;
+}
+.search-box {
+  display: flex;
+  align-items: center;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  padding: 8px 12px;
+  margin-bottom: 24px;
+}
+.search-box input {
+  border: none;
+  outline: none;
+  margin-left: 8px;
+  width: 100%;
+  font-size: 0.8125rem;
+}
+.search-box .material-symbols-outlined {
+  font-size: 18px;
+  color: #888;
+}
+
+.filter-accordion details {
+  border-bottom: 1px solid #eee;
+  padding: 16px 0;
+}
+.filter-accordion summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  cursor: pointer;
+  list-style: none;
+}
+.filter-accordion summary::-webkit-details-marker {
+  display: none;
+}
+.accordion-content {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.875rem;
+  color: #555;
+}
+.accordion-content label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.selected-tags {
+  margin-top: 32px;
+}
+.tags-label {
+  font-size: 0.8125rem;
+  color: #888;
+  display: block;
+  margin-bottom: 12px;
+}
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: #f1f1f1;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #333;
+}
+.tag button {
+  background: transparent;
+  border: none;
+  margin-left: 4px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.tag .material-symbols-outlined {
+  font-size: 14px;
+}
+
+/* =========================
+   상품 목록 상단 영역
+========================= */
+.product-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #111;
+}
+.content-title {
+  font-size: 1.375rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+.content-count {
+  font-size: 0.75rem;
+  color: #888;
+}
+#sort-btn {
+  background: transparent;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+/* 다크 버튼 */
+.btn-dark {
+  background: #2e2a2b;
+  color: #fff;
+  border-radius: 4px;
+  padding: 12px 24px;
+}
+
+/* =========================
+   PC 대응 (1024px 이상)
+========================= */
+@media (min-width: 1024px) {
+  .product-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .filter-bar,
+  .filter-panel {
+    display: none !important;
+  }
+
+  .filters-main {
+    padding-left: 24px;
+    padding-right: 24px;
   }
 }

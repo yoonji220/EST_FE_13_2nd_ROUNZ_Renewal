@@ -1,151 +1,148 @@
+import { renderFooter } from "../../js/modules/footer.js";
+
 (function () {
   const { escapeHtml, formatWon, renderList, setExclusiveActive } =
     window.ROUNZCommon;
 
-  const filterRows = [
-    {
-      label: "BRAND",
-      options: [{ label: "ROUNZ", selected: true }, { label: "RECNZ" }],
-    },
-    {
-      label: "COLOR",
-      options: [
-        { label: "BLACK", selected: true },
-        { label: "SILVER" },
-        { label: "PINK" },
-      ],
-    },
-  ];
+  /* =========================
+     상수 및 상태
+  ========================= */
+  const ITEMS_PER_PAGE = 8; // 한 번에 보여줄 상품 수
+  const MAX_ITEMS = 16; // 최대 표시 가능 상품 수
 
-  const sortOptions = [
-    { label: "신상품순", active: true },
-    { label: "인기순" },
-    { label: "낮은가순" },
-  ];
+  let allProducts = []; // 전체 상품 목록 (JSON에서 로드)
+  let filteredProducts = []; // 필터/정렬 후 상품
+  let currentPage = 1; // 현재 페이지 (더보기 클릭 시 증가)
+  let currentCategory = "sunglasses"; // 현재 선택된 카테고리
+  let currentSort = "신상품순"; // 현재 정렬 기준
 
-  const products = [
-    {
-      image:
-        "https://www.figma.com/api/mcp/asset/04745885-97aa-40ec-b479-1306bb3767e7",
-      alt: "Modern black framed eyeglasses",
-      brand: "BRAND NAME 1",
-      nameLines: ["Product Model", "Identifier 1"],
-      price: 128000,
-      colors: ["black", "gray", "pink"],
-    },
-    {
-      image:
-        "https://www.figma.com/api/mcp/asset/a5c3ac45-25d0-4786-b695-d7b96bfd67d9",
-      alt: "Elegant gold metal frame eyeglasses",
-      brand: "BRAND NAME 2",
-      nameLines: ["Product Model", "Identifier 2"],
-      price: 128000,
-      colors: ["black", "gray", "pink"],
-    },
-    {
-      image:
-        "https://www.figma.com/api/mcp/asset/1912b724-edfb-4e15-893e-ab4e518125a1",
-      alt: "Classic round tortoise shell eyeglasses",
-      brand: "BRAND NAME 3",
-      nameLines: ["Product Model", "Identifier 3"],
-      price: 128000,
-      colors: ["black", "gray", "pink"],
-    },
-    {
-      image:
-        "https://www.figma.com/api/mcp/asset/e28983f4-3118-4627-88c0-95a4eac76e00",
-      alt: "Trendy clear acetate eyeglasses",
-      brand: "BRAND NAME 4",
-      nameLines: ["Product Model", "Identifier 4"],
-      price: 128000,
-      colors: ["black", "gray", "pink"],
-    },
-  ];
-
-  const filterToggle = document.getElementById("filter-toggle");
-  const filterToggleIcon = document.getElementById("filter-toggle-icon");
+  /* =========================
+     DOM 요소
+  ========================= */
   const filterPanel = document.getElementById("filter-panel");
   const sortToggle = document.getElementById("sort-toggle");
   const sortCurrent = document.getElementById("sort-current");
   const sortOptionsPanel = document.getElementById("sort-options");
   const productGrid = document.getElementById("product-grid");
+  const productCountEl = document.querySelector(".content-count");
+  const viewMoreBtn = document.getElementById("view-more-btn");
+  const viewMoreWrap = document.getElementById("view-more-wrap");
   const scrollTopButton = document.getElementById("scroll-top");
 
-  const renderFilterPanel = () => {
-    if (!filterPanel) {
-      return;
+  /* =========================
+     데이터 로드 (products.json)
+  ========================= */
+  async function loadProducts() {
+    try {
+      const response = await fetch("./data/products.json");
+      const data = await response.json();
+      allProducts = data.products || [];
+      applyFilters();
+    } catch (error) {
+      console.error("상품 데이터 로드 실패:", error);
+      allProducts = [];
+      applyFilters();
     }
+  }
 
-    filterPanel.innerHTML = filterRows
-      .map(
-        row => `
-          <div class="filter-row" data-selection-group>
-            <span>${escapeHtml(row.label)}</span>
-            ${row.options
-              .map(
-                option => `
-                  <button
-                    class="${option.selected ? "selected" : ""}"
-                    data-filter-option
-                    type="button"
-                  >
-                    ${escapeHtml(option.label)}
-                  </button>
-                `,
-              )
-              .join("")}
-          </div>
-        `,
-      )
-      .join("");
-  };
+  /* =========================
+     필터 및 정렬 적용
+  ========================= */
+  function applyFilters() {
+    // 카테고리 필터 적용
+    filteredProducts = allProducts.filter(product => {
+      if (currentCategory === "sunglasses") {
+        return product.category === "sunglasses";
+      } else if (currentCategory === "glasses") {
+        return (
+          product.category === "glasses" ||
+          product.category === "eyeglasses" ||
+          product.category === ""
+        );
+      }
+      return true;
+    });
 
-  const renderSortOptions = () => {
-    if (!sortOptionsPanel) {
-      return;
+    // 정렬 적용
+    sortProducts();
+
+    // 페이지 초기화
+    currentPage = 1;
+
+    // 상품 수 업데이트
+    updateProductCount();
+
+    // 렌더링
+    renderProducts();
+    updateViewMoreButton();
+  }
+
+  function sortProducts() {
+    switch (currentSort) {
+      case "신상품순":
+        filteredProducts.sort(
+          (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate),
+        );
+        break;
+      case "인기순":
+        filteredProducts.sort((a, b) => b.likeCount - a.likeCount);
+        break;
+      case "낮은가격순":
+        filteredProducts.sort((a, b) => a.price.final - b.price.final);
+        break;
+      case "높은가격순":
+        filteredProducts.sort((a, b) => b.price.final - a.price.final);
+        break;
     }
+  }
 
-    sortOptionsPanel.innerHTML = sortOptions
-      .map(
-        option => `
-          <button
-            class="sort-option${option.active ? " active" : ""}"
-            data-sort-option
-            type="button"
-          >
-            ${escapeHtml(option.label)}
-          </button>
-        `,
-      )
-      .join("");
-
-    sortOptionsPanel.hidden = true;
-  };
-
-  const renderProducts = () => {
-    if (!productGrid) {
-      return;
+  function updateProductCount() {
+    if (productCountEl) {
+      productCountEl.textContent = `${filteredProducts.length.toLocaleString()}개의 제품이 검색되었습니다`;
     }
+  }
 
-    renderList(productGrid, products, product => {
-      const colorMarkup = product.colors
-        .map((color, index) => {
-          const isSelected = index === 0;
-          return `<span class="swatch ${escapeHtml(color)}${isSelected ? " selected" : ""}"></span>`;
-        })
-        .join("");
+  /* =========================
+     상품 렌더링
+  ========================= */
+  function renderProducts() {
+    if (!productGrid) return;
 
-      return `
+    const visibleCount = Math.min(
+      currentPage * ITEMS_PER_PAGE,
+      MAX_ITEMS,
+      filteredProducts.length,
+    );
+    const visibleProducts = filteredProducts.slice(0, visibleCount);
+
+    productGrid.innerHTML = visibleProducts
+      .map(product => {
+        // 색상 스와치 생성 (otherColors 기반)
+        const colors = ["black", "gray", "pink"]; // 기본 색상
+        const colorMarkup = colors
+          .map((color, index) => {
+            const isSelected = index === 0;
+            return `<span class="swatch ${escapeHtml(color)}${isSelected ? " selected" : ""}"></span>`;
+          })
+          .join("");
+
+        // 할인 가격 표시
+        const priceDisplay =
+          product.price.discountRate > 0
+            ? `<strong>${formatWon(product.price.final)}</strong>`
+            : `<strong>${formatWon(product.price.final)}</strong>`;
+
+        return `
         <article class="filter-product-card">
-          <div class="product-image">
-            <img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.alt)}">
-          </div>
+          <a href="product_detail.html" class="product-image">
+            <img src="${escapeHtml(product.images.thumbnail)}" alt="${escapeHtml(product.title)}">
+          </a>
           <div class="product-meta">
             <span class="brand-name">${escapeHtml(product.brand)}</span>
-            <h2>${escapeHtml(product.nameLines[0])}<br>${escapeHtml(product.nameLines[1])}</h2>
+            <h2>${escapeHtml(product.title)}</h2>
             <div class="price-row">
-              <strong>${formatWon(product.price)}</strong>
-              <button class="favorite-btn" type="button" aria-label="Favorite" aria-pressed="false">
+              ${priceDisplay}
+              <button class="favorite-btn" type="button" aria-label="찜하기" aria-pressed="false">
                 <span class="material-symbols-outlined">favorite_border</span>
               </button>
             </div>
@@ -155,50 +152,89 @@
           </div>
         </article>
       `;
-    });
-  };
+      })
+      .join("");
+  }
 
-  const syncSortState = selectedButton => {
-    if (!sortCurrent || !sortOptionsPanel || !selectedButton) {
-      return;
+  /* =========================
+     더보기 버튼 업데이트
+  ========================= */
+  function updateViewMoreButton() {
+    if (!viewMoreWrap || !viewMoreBtn) return;
+
+    const visibleCount = currentPage * ITEMS_PER_PAGE;
+    const maxReachable = Math.min(MAX_ITEMS, filteredProducts.length);
+
+    if (visibleCount >= maxReachable) {
+      viewMoreWrap.style.display = "none";
+    } else {
+      viewMoreWrap.style.display = "flex";
+    }
+  }
+
+  /* =========================
+     이벤트 바인딩
+  ========================= */
+  function bindEvents() {
+    // 모바일 뷰 하단 푸터 렌더링
+    document.addEventListener("DOMContentLoaded", () => {
+      renderMoblieSubFooter(false);
+    });
+
+    // 종류 필터 버튼 클릭
+    if (filterPanel) {
+      filterPanel.addEventListener("click", event => {
+        const button = event.target.closest("[data-filter-option]");
+        if (!button) return;
+
+        // 기존 선택 해제
+        filterPanel.querySelectorAll("[data-filter-option]").forEach(btn => {
+          btn.classList.remove("selected");
+        });
+        // 새 선택 활성화
+        button.classList.add("selected");
+
+        // 카테고리 업데이트
+        currentCategory = button.dataset.category;
+        applyFilters();
+      });
     }
 
-    sortCurrent.textContent = selectedButton.textContent.trim();
-    sortOptionsPanel.hidden = true;
-    sortToggle?.setAttribute("aria-expanded", "false");
-  };
-
-  const bindSharedActions = () => {
-    filterToggle?.addEventListener("click", () => {
-      const willOpen = Boolean(filterPanel?.hidden);
-
-      if (filterPanel) {
-        filterPanel.hidden = !willOpen;
-      }
-
-      filterToggle?.setAttribute("aria-expanded", String(willOpen));
-
-      if (filterToggleIcon) {
-        filterToggleIcon.textContent = willOpen ? "expand_less" : "expand_more";
-      }
-    });
-
+    // 정렬 토글
     sortToggle?.addEventListener("click", event => {
       event.stopPropagation();
-      if (!sortOptionsPanel) {
-        return;
-      }
+      if (!sortOptionsPanel) return;
 
       const willOpen = Boolean(sortOptionsPanel.hidden);
       sortOptionsPanel.hidden = !willOpen;
       sortToggle.setAttribute("aria-expanded", String(willOpen));
     });
 
-    document.addEventListener("click", event => {
-      if (!sortOptionsPanel || !sortToggle) {
-        return;
-      }
+    // 정렬 옵션 선택
+    sortOptionsPanel?.addEventListener("click", event => {
+      const button = event.target.closest(".sort-option");
+      if (!button) return;
 
+      // 활성 상태 업데이트
+      sortOptionsPanel.querySelectorAll(".sort-option").forEach(item => {
+        item.classList.toggle("active", item === button);
+      });
+
+      // 정렬 기준 업데이트
+      currentSort = button.textContent.trim();
+      if (sortCurrent) {
+        sortCurrent.textContent = currentSort;
+      }
+      sortOptionsPanel.hidden = true;
+      sortToggle?.setAttribute("aria-expanded", "false");
+
+      // 다시 필터/정렬 적용
+      applyFilters();
+    });
+
+    // 외부 클릭 시 정렬 드롭다운 닫기
+    document.addEventListener("click", event => {
+      if (!sortOptionsPanel || !sortToggle) return;
       if (
         !sortToggle.contains(event.target) &&
         !sortOptionsPanel.contains(event.target)
@@ -208,55 +244,36 @@
       }
     });
 
-    sortOptionsPanel?.addEventListener("click", event => {
-      const button = event.target.closest("[data-sort-option]");
-      if (!button) {
-        return;
-      }
-
-      sortOptionsPanel.querySelectorAll("[data-sort-option]").forEach(item => {
-        item.classList.toggle("active", item === button);
-      });
-
-      syncSortState(button);
+    // 더보기 버튼
+    viewMoreBtn?.addEventListener("click", () => {
+      currentPage++;
+      renderProducts();
+      updateViewMoreButton();
     });
 
+    // 찜하기 버튼 (이벤트 위임)
     productGrid?.addEventListener("click", event => {
       const favoriteButton = event.target.closest(".favorite-btn");
-      if (!favoriteButton) {
-        return;
-      }
+      if (!favoriteButton) return;
 
+      event.preventDefault();
       const icon = favoriteButton.querySelector(".material-symbols-outlined");
       const isActive = favoriteButton.classList.toggle("active");
-
       favoriteButton.setAttribute("aria-pressed", String(isActive));
-
       if (icon) {
         icon.textContent = isActive ? "favorite" : "favorite_border";
       }
     });
 
+    // 맨 위로 스크롤
     scrollTopButton?.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  };
-
-  renderFilterPanel();
-  renderSortOptions();
-  renderProducts();
-  bindSharedActions();
-
-  document.querySelectorAll(".filter-row").forEach(row => {
-    setExclusiveActive(row, "[data-filter-option]", "selected");
-  });
-
-  if (sortOptionsPanel) {
-    setExclusiveActive(sortOptionsPanel, "[data-sort-option]", "active");
   }
 
-  if (sortOptions.length > 0 && sortCurrent) {
-    sortCurrent.textContent =
-      sortOptions.find(option => option.active)?.label ?? sortOptions[0].label;
-  }
+  /* =========================
+     초기화
+  ========================= */
+  bindEvents();
+  loadProducts();
 })();
