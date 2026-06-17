@@ -588,7 +588,7 @@ function createRecommendLists(all, category, id) {
         <li class="recommend-products-item">
           <article class="product-card d-flex flex-column g-1">
             <div class="product-card-image-box">
-              <a href="./product-detail.html?id=${p.id}">
+              <a href="./product_detail.html?id=${p.id}">
                 <img
                   src="${p.images.thumbnail}"
                   alt="${p.title}"
@@ -607,7 +607,7 @@ function createRecommendLists(all, category, id) {
               <p class="product-card-brand typo-m-caption">${p.brand}</p>
 
               <h3 class="product-card-title typo-m-body">
-                <a href="./product-detail.html?id=${p.id}">${p.title}</a>
+                <a href="./product_detail.html?id=${p.id}">${p.title}</a>
               </h3>
 
               <div class="product-card-price-box">
