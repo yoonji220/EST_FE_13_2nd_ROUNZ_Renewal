@@ -555,15 +555,26 @@ a {
   background-color: var(--color-white);
   border-bottom: var(--color-gray) 1px solid;
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-  padding: 24px 0;
+  padding: 24px var(--container-pad-mobile);
   z-index: 2;
 }
 
-.header .logo {
+.hide-menu{
+  display: none !important;
+}
+
+.main-header .logo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   margin: 0; /* 혹시 모를 마진 리셋 */
+}
+
+.nav-top {
+  width: 100%;
+  padding:24px  var(--container-pad-mobile);
+  border-bottom: var(--color-gray) 1px solid;
+  background-color: var(--color-white);
 }
 
 /* 헤더에 가려진 메인 컨텐츠 */
@@ -621,12 +632,6 @@ a {
   border-left: var(--color-point) 4px solid;
 }
 
-.nav-top {
-  width: 100%;
-  padding:24px  var(--container-pad-tablet);
-  border-bottom: var(--color-gray) 1px solid;
-  background-color: var(--color-white);
-}
 
 /* 서브메뉴 */
 .sub-menu-panel {

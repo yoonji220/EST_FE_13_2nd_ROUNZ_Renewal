@@ -7,8 +7,8 @@ export function renderFooter(isSimple = false) {
 
   const mainFooterHTML = isSimple ? ``: `
         <div>
-          <h2 class="pc-only">패밀리 사이트</h2>
-          <ul class="footer-nav d-flex g-2">
+          <h2 class="pc-only typo-m-header-s">패밀리 사이트</h2>
+          <ul class="footer-nav d-flex g-2 typo-m-footer">
             <li><a href="#">라운즈앱</a></li>
             <li><a href="#">라운즈해외</a></li>
             <li><a href="#">라운즈파트너스</a></li>
@@ -17,19 +17,19 @@ export function renderFooter(isSimple = false) {
           </ul>
         </div>
 
-        <div class="pc-only">
-          <h2>고객센터</h2>
-          <p>1522-0416</p>
+        <div class="pc-only typo-m-footer">
+          <h2 class="typo-m-header-s">고객센터</h2>
+          <p class="typo-m-header-s">1522-0416</p>
           <p>평일 09:00 - 18:00</p>
           <p>주말&middot;공휴일 휴무</p>
         </div>
 
         
-        <div class="mobile-only d-flex g-2">
+        <div class="mobile-only d-flex g-2 typo-m-footer">
         <a href="#">사업자정보확인</a>
         <div class="d-flex">
         <p>(주) 라운즈rounz사업장정보</p>
-        <button type="button" aria-expanded="false" aria-label="사업자 정보 펼치기" class="info-toggle-btn">
+        <button type="button" aria-expanded="false" aria-label="사업자 정보 펼치기" class="info-toggle-btn typo-m-icons-s-o">
         <span class="material-icons" aria-hidden="true">expand_more</span>
         </button>
         </div>
@@ -37,7 +37,7 @@ export function renderFooter(isSimple = false) {
         
         <hr class="contianer pc-only"/>
 
-        <div class="rounz-info">
+        <div class="rounz-info typo-m-footer-caption">
           <ul>
             <li>상호명 : 주식회사 라운즈</li>
             <li>대표 : 김세민, 김명섭</li>
@@ -65,8 +65,8 @@ export function renderFooter(isSimple = false) {
       <div class="container d-flex flex-column ${footerModeClass}">
         <div class="pc-only">
             <div>
-            <h2>ROUNZ</h2>
-            <p>세상에 없던 안경 쇼핑</p>
+            <h2 class="typo-m-header-l">ROUNZ</h2>
+            <p class="typo-m-body">세상에 없던 안경 쇼핑</p>
             <ul>
               <li><a href="#"><img src="../../img/footer_1.png" alt="Facebook"></a></li>
               <li><a href="#"><img src="../../img/footer_2.png" alt="Instagram"></a></li>
@@ -75,8 +75,8 @@ export function renderFooter(isSimple = false) {
             </div>
 
           <div>
-            <h2>고객지원</h2>
-            <ul class="footer-nav">
+            <h2 class="typo-m-header-s">고객지원</h2>
+            <ul class="footer-nav typo-m-footer">
               <li><a href="#">고객센터</a></li>
               <li><a href="#">공지사항</a></li>
               <li><a href="#">FAQ</a></li>
@@ -87,7 +87,7 @@ export function renderFooter(isSimple = false) {
         </div>
 
         <div class="mobile-only">
-          <ul class="footer-nav d-flex g-2">
+          <ul class="footer-nav d-flex g-2 typo-m-footer">
             <li><a href="#">고객센터</a></li>
             <li><a href="#">개인정보처리방침</a></li>
             <li><a href="#">이용약관</a></li>
@@ -96,7 +96,7 @@ export function renderFooter(isSimple = false) {
 
         ${mainFooterHTML}
      
-        <p>&copy; ROUNZ. All rights reserved.</p>
+        <p class="typo-m-footer-caption">&copy; ROUNZ. All rights reserved.</p>
         
       </div>
   `;
