@@ -347,12 +347,17 @@ function createSheetContent(data) {
   const sheetPrice = document.querySelector(".sheet-price");
   const pcName = document.querySelector(".pc-purchase-name");
   const pcPrice = document.querySelector(".pc-purchase-price");
+  const miniPrice = document.querySelector(".pc-mini-price");
+  const miniQty = document.querySelector(".pc-mini-qty");
 
   if (sheetName) sheetName.textContent = data.title;
   if (sheetPrice) sheetPrice.textContent = formatWon(data.price.final);
 
   if (pcName) pcName.textContent = data.title;
   if (pcPrice) pcPrice.textContent = formatWon(data.price.final);
+
+  if (miniPrice) miniPrice.textContent = formatWon(data.price.final);
+  if (miniQty) miniQty.textContent = `${quantityValue}개`;
 }
 
 function createToastContent(data) {
@@ -648,15 +653,20 @@ quantityControls.forEach(control => {
 
 function updateQuantity() {
   const quantityTexts = document.querySelectorAll("[data-quantity-value]");
+  const miniQty = document.querySelector(".pc-mini-qty");
 
   quantityTexts.forEach(text => {
     text.textContent = quantityValue;
   });
+
+  if (miniQty) {
+    miniQty.textContent = `${quantityValue}개`;
+  }
 }
 
 function updateTotalPrice() {
   const totalPrices = document.querySelectorAll(
-    ".product-total-price, .sheet-total-price, .pc-purchase-total-price",
+    ".product-total-price, .sheet-total-price, .pc-purchase-total-price, .pc-mini-price",
   );
 
   const total = product.price ? product.price.final * quantityValue : 0;
@@ -671,6 +681,9 @@ const purchaseBarBuyButtons = document.querySelectorAll(".purchase-bar-buy");
 const purchaseSheet = document.querySelector("[data-purchase-sheet]");
 const purchaseSheetClose = document.querySelector(".sheet-close");
 const purchaseSheetHandle = document.querySelector(".purchase-sheet-handle");
+const pcPurchasePanel = document.querySelector(".pc-purchase-panel");
+const pcPurchaseClose = document.querySelector(".pc-purchase-close");
+const pcPurchaseMiniCard = document.querySelector(".pc-purchase-mini-card");
 
 function openPurchaseSheet() {
   if (!purchaseSheet) return;
@@ -692,6 +705,23 @@ purchaseBarBuyButtons.forEach(button => {
 
 purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
 purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
+
+function closePcPurchasePanel() {
+  if (!pcPurchasePanel || !pcPurchaseMiniCard) return;
+
+  pcPurchasePanel.hidden = true;
+  pcPurchaseMiniCard.hidden = false;
+}
+
+function openPcPurchasePanel() {
+  if (!pcPurchasePanel || !pcPurchaseMiniCard) return;
+
+  pcPurchasePanel.hidden = false;
+  pcPurchaseMiniCard.hidden = true;
+}
+
+pcPurchaseClose?.addEventListener("click", closePcPurchasePanel);
+pcPurchaseMiniCard?.addEventListener("click", openPcPurchasePanel);
 
 /* 장바구니 */
 const cartButtons = document.querySelectorAll(

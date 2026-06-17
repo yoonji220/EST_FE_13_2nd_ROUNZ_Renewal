@@ -256,6 +256,10 @@
   object-position: center center;
 }
 
+.pc-purchase-mini-card {
+  display: none;
+}
+
 @media (min-width: 768px) {
   .product-image-box {
     height: 480px;
@@ -334,6 +338,52 @@
   .brand-feature-image {
     height: 640px;
     object-position: center bottom;
+  }
+
+  .pc-purchase-mini-card {
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    z-index: 120;
+
+    width: 160px;
+    min-height: 72px;
+    padding: 12px 16px;
+
+    border-radius: 16px;
+    border: 1px solid var(--color-light-gray);
+    background-color: var(--color-white);
+    box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    color: var(--color-black);
+    cursor: pointer;
+  }
+
+  .pc-purchase-mini-card[hidden] {
+    display: none;
+  }
+
+  .pc-mini-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .pc-mini-qty {
+    color: var(--color-dark-gray);
+  }
+
+  .pc-mini-price {
+    color: var(--color-point);
+  }
+
+  .pc-purchase-panel[hidden] {
+    display: none;
   }
 }
 
@@ -1428,6 +1478,13 @@
   background-color: var(--color-white);
 }
 
+.product-total-price,
+.sheet-total-price,
+.pc-purchase-total-price,
+.pc-mini-price {
+  color: var(--color-point);
+}
+
 @media (min-width: 1200px) {
   .purchase-bar,
   .purchase-sheet {
@@ -1450,10 +1507,6 @@
     border-radius: 16px;
     background-color: var(--color-white);
     box-shadow: 0 -2px 16px rgba(0, 0, 0, 0.1);
-  }
-
-  .pc-purchase-total-price {
-    color: var(--color-point);
   }
 }
 
