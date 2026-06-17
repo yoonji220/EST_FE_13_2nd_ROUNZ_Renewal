@@ -21,6 +21,16 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
+.account-make{
+  max-width: 300px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: var(--color-black);
+  color: var(--color-white);
+  align-self: center;
+}
+
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
