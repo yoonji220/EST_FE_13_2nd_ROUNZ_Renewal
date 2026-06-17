@@ -538,7 +538,7 @@
 
 /* store search */
 .store-search {
-  padding: 8px 0;
+  padding: calc(var(--base-unit) * 0.5) 0;
 }
 
 .store-search > .container {
@@ -549,14 +549,13 @@
   position: relative;
   width: 100%;
   min-height: 40px;
-  gap: 24px;
   padding-right: 138px;
 }
 
 .store__link {
   position: absolute;
-  top: 8px;
-  right: 8px;
+  top: calc(var(--base-unit) * 0.5);
+  right: calc(var(--base-unit) * 0.5);
   color: var(--color-black);
 }
 
@@ -564,13 +563,13 @@
   width: 40px;
   height: 40px;
   flex-shrink: 0;
+  line-height: 1;
 }
 
-.store-search-body {
-  width: 100%;
-}
-
-.store-preview-img {
+.store-search-body,
+.store-preview-img,
+.store-search-content,
+.store-search-form {
   width: 100%;
 }
 
@@ -580,17 +579,8 @@
   object-fit: cover;
 }
 
-.store-search-content {
-  width: 100%;
-  gap: 24px;
-}
-
 .store-search-copy {
   display: none;
-}
-
-.store-search-form {
-  width: 100%;
 }
 
 .store-search-form fieldset {
@@ -601,7 +591,7 @@
 
 .store-search-input {
   width: 100%;
-  padding: 16px;
+  padding: var(--base-unit);
   border: 1px solid var(--color-black);
   border-radius: 4px;
   color: var(--color-black);
@@ -613,7 +603,7 @@
 
 .btn-submit {
   width: 100%;
-  padding: 16px 0;
+  padding: var(--base-unit) 0;
   background: var(--color-black);
   color: var(--color-white);
   border-radius: 4px;
@@ -643,9 +633,6 @@
 .store-type-list a {
   width: 100%;
   height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   color: var(--color-black);
 }
 
@@ -659,7 +646,7 @@
 /* tablet */
 @media (min-width: 768px) {
   .store-search {
-    padding: 32px 0 16px;
+    padding: calc(var(--base-unit) * 2) 0 var(--base-unit);
   }
 
   .store-search h2 {
@@ -676,23 +663,21 @@
     line-height: 26px;
   }
 
-  .btn-submit {
-    line-height: 24px;
-  }
-
+  .btn-submit,
   .store-type-list .typo-m-btn-m {
     line-height: 24px;
   }
+
   .store__link {
-    top: 16px;
-    right: 24px;
+    top: var(--base-unit);
+    right: calc(var(--base-unit) * 1.5);
   }
 }
 
 /* pc */
 @media (min-width: 1200px) {
   .store-search {
-    padding: 64px 0;
+    padding: calc(var(--base-unit) * 4) 0;
   }
 
   .store-search > .container {
@@ -706,28 +691,15 @@
   }
 
   .store__link {
-    top: 16px;
+    top: var(--base-unit);
     right: 0;
     width: 178px;
     min-width: 178px;
   }
 
-  /* .store__link .typo-m-btn-m {
-    font-family: var(--font-inter);
-    font-size: 24px;
-    line-height: 32px;
-    font-weight: 700;
-  } */
-
-  /* .store__link .typo-m-icons-s-o {
-    font-size: 32px;
-    line-height: 32px;
-  } */
-
   .store-search-body {
     flex-direction: row;
     align-items: center;
-    gap: 24px;
   }
 
   .store-preview-img {
@@ -748,7 +720,7 @@
   .store-search-copy {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: var(--base-unit);
   }
 
   .store-search-copy p:first-child {
