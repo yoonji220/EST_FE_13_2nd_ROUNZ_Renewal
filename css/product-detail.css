@@ -238,6 +238,13 @@
   display: none;
 }
 
+.brand-feature-image {
+  width: 100%;
+  height: 334px;
+  object-fit: cover;
+  object-position: center center;
+}
+
 @media (min-width: 768px) {
   .product-image-box {
     height: 480px;
@@ -306,6 +313,10 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  .brand-feature-image {
+    height: 640px;
+    object-position: center bottom;
   }
 }
 
@@ -657,16 +668,15 @@
 
 .diagram-card {
   width: 100%;
-  height: 240px;
   overflow: hidden;
   border-radius: 12px;
   border: 2px solid var(--color-light-gray);
 }
 
 .size-guide-image {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
 .spec-content {
@@ -726,7 +736,6 @@
 
   .diagram-card {
     width: 456px;
-    height: 456px;
   }
 
   .spec-content {
