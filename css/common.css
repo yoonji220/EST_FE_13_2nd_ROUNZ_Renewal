@@ -530,15 +530,6 @@ a {
   }
 }
 
-/* =========================
-   공통 푸터 스타일
-========================= */
-.main-footer,
-.sub-footer {
-  background-color: #f9f9f9;
-  border-top: 1px solid #e5e5e5;
-}
-
 .sr-only,
 .visually-hidden {
   position: absolute;
