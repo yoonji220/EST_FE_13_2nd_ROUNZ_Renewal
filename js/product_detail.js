@@ -148,8 +148,14 @@ function createGallery(data) {
   const nextBtn = document.querySelector(".carousel-next");
 
   const gallery = data.images.gallery?.length
-    ? data.images.gallery
+    ? data.images.gallery.slice(0, 4)
     : [data.images.thumbnail];
+
+  const thumbnailList = [...gallery];
+
+  while (thumbnailList.length < 4) {
+    thumbnailList.push(null);
+  }
 
   if (mainImage) {
     mainImage.src = gallery[0];
@@ -161,22 +167,29 @@ function createGallery(data) {
   }
 
   if (thumbList) {
-    const thumbHTML = gallery
-      .slice(0, 4)
-      .map(
-        (image, index) => `
-          <li class="product-thumb-item">
-            <button
-              type="button"
-              class="product-thumb-button ${index === 0 ? "is-active" : ""}"
-              aria-label="상품 이미지 ${index + 1} 보기"
-              aria-current="${index === 0 ? "true" : "false"}"
-              data-gallery-index="${index}">
-              <img src="${image}" alt="" class="product-thumb-image" />
-            </button>
-          </li>
-        `,
-      )
+    const thumbHTML = thumbnailList
+      .map((image, index) => {
+        if (!image) {
+          return `
+        <li class="product-thumb-item product-thumb-placeholder">
+          <span class="typo-m-caption">이미지 준비중</span>
+        </li>
+      `;
+        }
+
+        return `
+      <li class="product-thumb-item">
+        <button
+          type="button"
+          class="product-thumb-button ${index === 0 ? "is-active" : ""}"
+          aria-label="상품 이미지 ${index + 1} 보기"
+          aria-current="${index === 0 ? "true" : "false"}"
+          data-gallery-index="${index}">
+          <img src="${image}" alt="" class="product-thumb-image" />
+        </button>
+      </li>
+    `;
+      })
       .join("");
 
     thumbList.innerHTML = thumbHTML;

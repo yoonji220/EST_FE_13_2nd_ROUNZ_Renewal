@@ -87,6 +87,17 @@
   object-fit: cover;
 }
 
+.product-thumb-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1 / 1;
+  border: 1px solid var(--color-light-gray);
+  background-color: var(--color-info-gray);
+  color: var(--color-gray);
+  text-align: center;
+}
+
 .product-hero .carousel-prev,
 .product-hero .carousel-next {
   width: 32px;
@@ -314,6 +325,12 @@
     height: 100%;
     object-fit: cover;
   }
+
+  .product-thumb-placeholder {
+    width: 168px;
+    height: 168px;
+  }
+
   .brand-feature-image {
     height: 640px;
     object-position: center bottom;
