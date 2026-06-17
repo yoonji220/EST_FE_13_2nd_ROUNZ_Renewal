@@ -1,4 +1,9 @@
+import { renderMoblieSubFooter } from "../../js/modules/footer.js";
+
 document.addEventListener("DOMContentLoaded", () => {
+  // 모바일/서브 푸터 렌더링
+  renderMoblieSubFooter(false);
+
   const selectAllCheckbox = document.getElementById("selectAll");
   const cartItemsSection = document.querySelector(".cart-items");
   const cartCount = document.getElementById("cart-count");
@@ -15,7 +20,6 @@ document.addEventListener("DOMContentLoaded", () => {
     !totalProductPrice ||
     !shippingPrice ||
     !totalPrice ||
-    !footerTotal ||
     !recommendationSlider
   ) {
     return;
@@ -156,14 +160,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function updateSummary() {
     const selectedTotal = getSelectedTotal();
-    const shipping = selectedTotal > 0 ? 0 : 0;
+    const shipping = selectedTotal > 0 && selectedTotal < 50000 ? 3000 : 0;
     const total = selectedTotal + shipping;
+
+    const selectedCount = cartItems.filter(item => item.selected).length;
+    const subtotalLabel = document.getElementById("subtotal-label");
+    if (subtotalLabel) {
+      subtotalLabel.textContent = `소계 (${selectedCount} 개)`;
+    }
 
     cartCount.textContent = `(${cartItems.length})`;
     totalProductPrice.textContent = formatWon(selectedTotal);
-    shippingPrice.textContent = formatWon(shipping);
+    shippingPrice.textContent = shipping === 0 ? "무료" : formatWon(shipping);
     totalPrice.textContent = formatWon(total);
-    footerTotal.textContent = formatWon(total);
+    if (footerTotal) footerTotal.textContent = formatWon(total);
   }
 
   /* =========================
@@ -196,7 +206,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .map(
         item => `
           <article class="product-card" aria-labelledby="rec-title-${item.id}">
-            <a class="card-img-wrapper" href="${escapeHtml(item.sourceUrl)}" aria-label="${escapeHtml(item.title)} 보기">
+            <a class="card-img-wrapper" href="product_detail.html?id=${item.id}" aria-label="${escapeHtml(item.title)} 보기">
               <img src="${escapeHtml(item.images.thumbnail)}" alt="${escapeHtml(item.title)}">
               <button class="favorite-btn" type="button" aria-label="찜하기" aria-pressed="false">
                 <span class="material-symbols-outlined">favorite_border</span>
@@ -240,12 +250,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .map(
         item => `
           <article class="cart-item" data-id="${escapeHtml(item.id)}" aria-labelledby="cart-title-${item.id}">
-            <label class="checkbox-label item-check">
-              <input type="checkbox" class="item-checkbox" ${item.selected ? "checked" : ""}>
-              <span class="checkmark"></span>
-            </label>
 
             <div class="cart-item-img">
+              <label class="checkbox-label item-check">
+                <input type="checkbox" class="item-checkbox" ${item.selected ? "checked" : ""}>
+                <span class="checkmark"></span>
+              </label>
               <img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.alt)}">
             </div>
 
@@ -405,6 +415,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const walk = (currentX - recommendationStartX) * 2;
     recommendationSlider.scrollLeft = recommendationScrollLeft - walk;
   });
+
+  // 슬라이더 좌우 이동 버튼
+  const prevBtn = document.querySelector(".recommendations .slider-btn[aria-label='이전']");
+  const nextBtn = document.querySelector(".recommendations .slider-btn[aria-label='다음']");
+
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener("click", () => {
+      recommendationSlider.scrollBy({ left: -300, behavior: "smooth" });
+    });
+
+    nextBtn.addEventListener("click", () => {
+      recommendationSlider.scrollBy({ left: 300, behavior: "smooth" });
+    });
+  }
 
   /* =========================
      초기화
