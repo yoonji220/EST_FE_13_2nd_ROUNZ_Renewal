@@ -1,0 +1,335 @@
+/* ============================================================
+   login.css — 로그인 페이지 전용 스타일
+   ============================================================ */
+
+.login-page {
+  background: #FFFFFF;
+  padding-top: 86px;
+}
+
+.login-main {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px 80px;
+}
+
+.login-container {
+  width: 100%;
+  max-width: 480px;
+  /* 로그인 폼은 화면이 커져도 일정 너비 유지 */
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+
+.login-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.login-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 24px;
+}
+
+.banner-know-frame {
+  margin-bottom: 8px;
+}
+
+.banner-title {
+  color: #3B82F6;
+  /* 로운즈 파란색 (가상) */
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.banner-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 로그인 폼 */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.input-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.input-field {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 4px;
+  font-size: 14px;
+  color: #000;
+  background-color: #FFFFFF;
+  transition: border-color 0.2s;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.input-field::placeholder {
+  color: #9CA3AF;
+}
+
+/* 옵션 (체크박스 & 비밀번호 찾기) */
+.form-options {
+  margin-top: 4px;
+  margin-bottom: 8px;
+}
+
+.custom-checkbox {
+  cursor: pointer;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-box {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  position: relative;
+  background-color: #fff;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkbox-box {
+  background-color: #000;
+  border-color: #000;
+}
+
+.custom-checkbox input[type="checkbox"]:checked+.checkbox-box::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 1px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-text {
+  font-size: 13px;
+  color: #333;
+}
+
+.find-password-link {
+  font-size: 13px;
+  color: #666;
+  text-decoration: none;
+}
+
+/* 로그인 버튼 */
+.btn-login {
+  width: 100%;
+  height: 52px;
+  background-color: #000;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s;
+}
+
+.btn-login:hover {
+  background-color: #333;
+}
+
+/* 구분선 */
+.divider {
+  border: none;
+  border-top: 1px solid #E5E7EB;
+  margin: 0;
+}
+
+/* 회원가입 섹션 */
+.signup-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.signup-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+
+.signup-subtitle {
+  font-size: 13px;
+  color: #666;
+}
+
+.btn-signup {
+  width: 100%;
+  height: 52px;
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: border-color 0.2s;
+}
+
+.btn-signup:hover {
+  border-color: #000;
+}
+
+/* 간편 로그인 섹션 */
+.sns-login-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.sns-title {
+  font-size: 13px;
+  color: #666;
+}
+
+.sns-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.sns-btn .sns-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: #fff;
+}
+
+.sns-btn.kakao .sns-icon {
+  background-color: #FEE500;
+  color: #000;
+}
+
+.sns-btn.naver .sns-icon {
+  background-color: #03C75A;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.sns-btn.google .sns-icon {
+  background-color: #222;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.sns-name {
+  font-size: 11px;
+  color: #666;
+}
+
+/* AI 배너 섹션 */
+.ai-banner {
+  margin-top: 16px;
+  padding: 32px 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.ai-banner-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+
+.ai-banner-desc {
+  font-size: 13px;
+  color: #666;
+  line-height: 1.5;
+}
+
+.btn-ai-start {
+  width: 200px;
+  height: 44px;
+  background-color: #3B82F6;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-ai-start:hover {
+  background-color: #2563EB;
+}
+
+/* ===========================
+   반응형 (Tablet, PC)
+   =========================== */
+
+@media (min-width: 481px) {
+  .login-main {
+    padding: 60px 24px 100px;
+  }
+}
+
+@media (min-width: 769px) {
+  .login-main {
+    padding: 80px 24px 120px;
+  }
+
+  .banner-know-frame {
+    display: none;
+  }
+}
