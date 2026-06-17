@@ -18,11 +18,14 @@
     <link rel="stylesheet" href="./css/product-detail.css" />
   </head>
   <body>
-    <header></header>
-    <main class="product-detail-page">
+    <!-- 최윤지 -->
+    <header class="header"></header>
+    <main class="product-detail-page sub-page d-flex flex-column g-3">
       <!-- 브레드크럼 -->
-      <nav class="breadcrumb" aria-label="현재 위치">
-        <ol class="breadcrumb-list">
+      <nav class="breadcrumb container" aria-label="현재 위치">
+        <ol
+          class="breadcrumb-list d-flex align-items-center g-1 typo-m-header-s"
+        >
           <li>
             <a href="./index.html">HOME</a>
           </li>
@@ -38,126 +41,251 @@
           <li aria-current="page">RAY-BAN</li>
         </ol>
       </nav>
-
-      <!-- 상품 요약 -->
-      <div class="product-hero">
-        <div class="product-image-box">
-          <img
-            src="./img/sample-product.webp"
-            alt="레이밴 선글라스 클럽마스터"
-            class="product-image"
-          />
-        </div>
-
-        <!-- 이미지 슬라이드 컨트롤 -->
-        <div class="carousel-controls">
-          <button
-            type="button"
-            class="carousel-prev"
-            aria-label="이전 상품 이미지"
-          >
-            <span class="material-symbols-outlined" aria-hidden="true">
-              arrow_back_ios
-            </span>
-          </button>
-
-          <button
-            type="button"
-            class="carousel-next"
-            aria-label="다음 상품 이미지"
-          >
-            <span class="material-symbols-outlined" aria-hidden="true">
-              arrow_forward_ios
-            </span>
-          </button>
-        </div>
-      </div>
-      <section class="product-info">
-        <div class="product-title-block">
-          <p class="product-brand">RAY-BAN</p>
-          <h1 class="product-title">
-            레이밴 선글라스 클럽마스터 RB3016 W0365 51MM
-          </h1>
-        </div>
-
-        <div class="product-price-block">
-          <div class="price-row">
-            <del>₩256,000</del>
-            <span class="discount-rate">20%</span>
-            <strong>₩204,800</strong>
+      <div class="product-summary container d-flex flex-column g-2">
+        <!-- 상품 요약 -->
+        <div class="product-hero">
+          <div class="product-image-box">
+            <img
+              src="./img/sample-product.webp"
+              alt="레이밴 선글라스 클럽마스터"
+              class="product-image"
+            />
           </div>
 
-          <button type="button" class="wish-button" aria-label="관심상품 추가">
-            <span class="material-symbols-outlined" aria-hidden="true">
-              favorite_border
-            </span>
-          </button>
-        </div>
+          <!-- 이미지 슬라이드 컨트롤 -->
+          <div
+            class="carousel-controls d-flex justify-content-between align-items-center"
+          >
+            <button
+              type="button"
+              class="carousel-prev d-flex justify-content-center align-items-center"
+              aria-label="이전 상품 이미지"
+            >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                arrow_back_ios
+              </span>
+            </button>
 
-        <hr />
-
-        <div class="color-options">
-          <div class="color-header">
-            <span>COLOR</span>
-            <span>black</span>
+            <button
+              type="button"
+              class="carousel-next d-flex justify-content-center align-items-center"
+              aria-label="다음 상품 이미지"
+            >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                arrow_forward_ios
+              </span>
+            </button>
           </div>
+          <!-- 상품 이미지 썸네일 -->
+          <ul
+            class="product-thumb-list d-flex g-1"
+            aria-label="상품 이미지 썸네일"
+          >
+            <li class="product-thumb-item">
+              <button
+                type="button"
+                class="product-thumb-button is-active"
+                aria-label="상품 이미지 1 보기"
+                aria-current="true"
+              >
+                <img
+                  src="./img/sample-product.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
+            </li>
 
-          <ul class="color-list" aria-label="색상 선택">
-            <li>
+            <li class="product-thumb-item">
               <button
                 type="button"
-                aria-pressed="true"
-                aria-label="black 색상 선택"
-              ></button>
+                class="product-thumb-button"
+                aria-label="상품 이미지 2 보기"
+              >
+                <img
+                  src="./img/detail-02.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
             </li>
-            <li>
+
+            <li class="product-thumb-item">
               <button
                 type="button"
-                aria-pressed="false"
-                aria-label="gray 색상 선택"
-              ></button>
+                class="product-thumb-button"
+                aria-label="상품 이미지 3 보기"
+              >
+                <img
+                  src="./img/detail-03.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
             </li>
-            <li>
+
+            <li class="product-thumb-item">
               <button
                 type="button"
-                aria-pressed="false"
-                aria-label="yellow 색상 선택"
-              ></button>
+                class="product-thumb-button"
+                aria-label="상품 이미지 4 보기"
+              >
+                <img
+                  src="./img/detail-04.webp"
+                  alt=""
+                  class="product-thumb-image"
+                />
+              </button>
             </li>
           </ul>
         </div>
+        <section class="product-info d-flex flex-column g-2">
+          <div class="product-title-block d-flex flex-column g-1">
+            <p class="product-brand typo-m-product-brand">RAY-BAN</p>
+            <h1 class="product-title typo-m-header-l">
+              레이밴 선글라스 클럽마스터 RB3016 W0365 51MM
+            </h1>
+          </div>
 
-        <!-- 공통 Quantity Control -->
-        <div class="quantity-control" data-quantity>
-          <button
-            type="button"
-            class="quantity-button"
-            data-quantity-minus
-            aria-label="수량 줄이기"
+          <div
+            class="product-price-block d-flex justify-content-between align-items-center"
           >
-            -
-          </button>
+            <div class="price-row d-flex align-items-center g-1">
+              <del class="typo-m-price-slash">₩256,000</del>
+              <span class="discount-rate typo-m-price">20%</span>
+              <strong class="typo-m-price-l">₩204,800</strong>
+            </div>
 
-          <span class="quantity-value" data-quantity-value>1</span>
+            <button
+              type="button"
+              class="wish-button"
+              aria-label="관심상품 추가"
+            >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                favorite_border
+              </span>
+            </button>
+          </div>
+          <hr />
 
-          <button
-            type="button"
-            class="quantity-button"
-            data-quantity-plus
-            aria-label="수량 늘리기"
+          <div class="color-options d-flex flex-column">
+            <div
+              class="color-header d-flex justify-content-between align-items-center typo-m-caption"
+            >
+              <span>color</span>
+              <span>black</span>
+            </div>
+
+            <ul class="color-list d-flex g-1" aria-label="색상 선택">
+              <li>
+                <button
+                  type="button"
+                  aria-pressed="true"
+                  aria-label="black 색상 선택"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="gray 색상 선택"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  aria-pressed="false"
+                  aria-label="yellow 색상 선택"
+                ></button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 공통 Quantity Control -->
+          <div
+            class="product-stock-row d-flex justify-content-between align-items-center"
           >
-            +
-          </button>
-        </div>
-      </section>
+            <div
+              class="quantity-control d-flex justify-content-center align-items-center"
+              data-quantity
+            >
+              <button
+                type="button"
+                class="quantity-button d-flex justify-content-center align-items-center"
+                data-quantity-minus
+                aria-label="수량 줄이기"
+              >
+                <span class="typo-m-icons-s-o" aria-hidden="true">remove</span>
+              </button>
+
+              <span
+                class="quantity-value typo-m-body-s d-flex justify-content-center align-items-center"
+                data-quantity-value
+              >
+                1
+              </span>
+
+              <button
+                type="button"
+                class="quantity-button d-flex justify-content-center align-items-center"
+                data-quantity-plus
+                aria-label="수량 늘리기"
+              >
+                <span class="typo-m-icons-s-o" aria-hidden="true">add</span>
+              </button>
+            </div>
+            <p class="product-stock typo-m-caption">현재 구매 가능 수량 : 12</p>
+          </div>
+
+          <div
+            class="product-total-row d-flex justify-content-between align-items-center"
+          >
+            <span class="product-total-label typo-m-body">총 상품금액</span>
+            <strong class="product-total-price typo-m-price-l">₩204,800</strong>
+          </div>
+
+          <div class="product-purchase-actions d-flex align-items-center g-1">
+            <button
+              type="button"
+              class="purchase-bar-cart d-flex justify-content-center align-items-center"
+              aria-label="장바구니 담기"
+            >
+              <span class="typo-m-icons-l-o" aria-hidden="true"
+                >shopping_bag</span
+              >
+            </button>
+
+            <button
+              type="button"
+              class="purchase-bar-try typo-m-btn-s d-flex justify-content-center align-items-center"
+            >
+              어울리는지 써보기
+            </button>
+
+            <button
+              type="button"
+              class="purchase-bar-buy typo-m-btn-s d-flex justify-content-center align-items-center"
+            >
+              구매하기
+            </button>
+          </div>
+        </section>
+      </div>
 
       <!-- 상품 상세 탭 -->
-      <nav class="product-tab" aria-label="상품 상세 탭">
-        <ul class="product-tab-list">
+      <nav class="product-tab container" aria-label="상품 상세 탭">
+        <ul
+          class="product-tab-list d-flex justify-content-between align-items-center"
+          role="tablist"
+        >
           <li class="product-tab-item">
             <button
               type="button"
-              class="product-tab-button is-active"
+              id="tab-detail"
+              role="tab"
+              aria-selected="true"
+              aria-controls="panel-detail"
+              class="product-tab-button is-active typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="detail"
             >
               상세정보
@@ -165,13 +293,29 @@
           </li>
 
           <li class="product-tab-item">
-            <button type="button" class="product-tab-button" data-tab="review">
+            <button
+              type="button"
+              id="tab-review"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-review"
+              class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
+              data-tab="review"
+            >
               후기(12)
             </button>
           </li>
 
           <li class="product-tab-item">
-            <button type="button" class="product-tab-button" data-tab="qna">
+            <button
+              type="button"
+              id="tab-qna"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-qna"
+              class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
+              data-tab="qna"
+            >
               문의(8)
             </button>
           </li>
@@ -179,7 +323,11 @@
           <li class="product-tab-item">
             <button
               type="button"
-              class="product-tab-button"
+              id="tab-purchase"
+              role="tab"
+              aria-selected="false"
+              aria-controls="panel-purchase"
+              class="product-tab-button typo-m-btn-m d-flex justify-content-center align-items-center"
               data-tab="purchase"
             >
               구매정보
@@ -191,219 +339,300 @@
       <!-- 상세정보 -->
       <div
         id="panel-detail"
-        class="tab-panel detail-section is-active"
+        class="tab-panel container is-active"
         role="tabpanel"
         data-panel="detail"
         aria-labelledby="tab-detail"
       >
-        <!-- AI 가상피팅 -->
-        <section class="ai-fitting" aria-labelledby="ai-fitting-title">
-          <div class="ai-fitting-copy">
-            <p class="ai-fitting-kicker">AI VIRTUAL FITTING</p>
-
-            <h2 id="ai-fitting-title" class="ai-fitting-title">
-              내 얼굴에 어울릴까?
-            </h2>
-
-            <p class="ai-fitting-desc">실제 착용 모습을 확인해보세요.</p>
-          </div>
-
-          <div class="ai-fitting-video">
-            <video
-              class="ai-fitting-media"
-              src="https://image.rounz.com/content/VF/VF_banner_SP.mp4"
-              autoplay
-              muted
-              loop
-              playsinline
-              controls
+        <div class="detail-section d-flex flex-column g-2">
+          <!-- AI 가상피팅 -->
+          <section
+            class="ai-fitting d-flex flex-column align-items-center g-2"
+            aria-labelledby="ai-fitting-title"
+          >
+            <div
+              class="ai-fitting-copy d-flex flex-column align-items-center g-1"
             >
-              브라우저가 비디오를 지원하지 않습니다.
-            </video>
-          </div>
-        </section>
-
-        <!-- 브랜드 소개 -->
-        <div class="brand-content">
-          <article class="brand-feature-card">
-            <img
-              src="./img/rayban-brand.webp"
-              alt="레이밴 선글라스를 착용한 모델"
-              class="brand-feature-image"
-            />
-            <div class="brand-feature-text">
-              <h2 class="brand-feature-title">클래식은 영원하다, 레이밴</h2>
-              <p class="brand-feature-desc">
-                시간이 흘러도 변치 않는 클래식의 가치. 뿔테와 메탈의 장점만을
-                더해 레트로하면서 세련된 분위기를 자아냅니다.
+              <p class="ai-fitting-kicker typo-m-header">AI VIRTUAL FITTING</p>
+              <h2 id="ai-fitting-title" class="ai-fitting-title typo-m-header">
+                내 얼굴에 어울릴까?
+              </h2>
+              <p class="ai-fitting-desc typo-m-body">
+                실제 착용 모습을 확인해보세요.
               </p>
+              <button type="button" class="ai-fitting-button typo-m-btn-s">
+                AI 가상 피팅 체험하기
+              </button>
             </div>
-          </article>
+
+            <div class="ai-fitting-video">
+              <video
+                class="ai-fitting-media"
+                src="https://image.rounz.com/content/VF/VF_banner_SP.mp4"
+                autoplay
+                muted
+                loop
+                playsinline
+              >
+                브라우저가 비디오를 지원하지 않습니다.
+              </video>
+            </div>
+          </section>
+
+          <!-- 브랜드 소개 -->
+          <section
+            class="brand-content d-flex flex-column g-1"
+            aria-labelledby="brand-feature-title"
+          >
+            <h2 id="brand-feature-title" class="sr-only">브랜드 소개</h2>
+
+            <article
+              class="brand-feature-card d-flex flex-column align-items-center g-1"
+            >
+              <div
+                class="brand-feature-image-box d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="./img/rayban-brand.webp"
+                  alt="레이밴 선글라스를 착용한 모델"
+                  class="brand-feature-image"
+                />
+              </div>
+
+              <div
+                class="brand-feature-text d-flex flex-column align-items-center g-1"
+              >
+                <h3 class="brand-feature-title typo-m-header-l text-center">
+                  클래식은 영원하다, 레이밴
+                </h3>
+
+                <p class="brand-feature-desc typo-m-body-s text-center">
+                  시간이 흘러도 변치 않는 클래식의 가치. 뿔테와 메탈의 장점만을
+                  더해 레트로하면서 세련된 분위기를 자아냅니다.
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <!-- 디테일 이미지 -->
+          <section
+            class="detail-image-box d-flex flex-column g-2"
+            aria-labelledby="detail-image-title"
+          >
+            <h2 id="detail-image-title" class="sr-only">상품 상세 이미지</h2>
+            <ul class="detail-image-list d-flex flex-column g-2">
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-01.webp"
+                  alt="레이밴 선글라스 정면 이미지"
+                  class="detail-image"
+                />
+              </li>
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-02.webp"
+                  alt="레이밴 선글라스 측면 이미지"
+                  class="detail-image"
+                />
+              </li>
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-03.webp"
+                  alt="레이밴 선글라스 프레임 디테일 이미지"
+                  class="detail-image"
+                />
+              </li>
+              <li class="detail-image-item d-flex flex-column">
+                <img
+                  src="./img/detail-04.webp"
+                  alt="레이밴 선글라스 다리 디테일 이미지"
+                  class="detail-image"
+                />
+              </li>
+            </ul>
+          </section>
+
+          <!-- 포인트 카드 -->
+          <section class="point-card-box d-flex flex-column g-2">
+            <h2 class="sr-only">상품 특징</h2>
+            <article class="point-card d-flex flex-column g-2">
+              <div
+                class="point-image-box d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="./img/point-01.webp"
+                  alt="아세테이트 소재 측면 디테일"
+                  class="point-image"
+                />
+              </div>
+              <div class="point-content d-flex flex-column g-1">
+                <p class="point-label typo-m-caption">POINT 01</p>
+                <h3 class="point-title typo-m-header">
+                  가볍고 견고한 아세테이트
+                </h3>
+                <p class="point-desc typo-m-body-s">
+                  이탈리아산 아세테이트를 사용해 가벼우면서도 형태가 오래
+                  유지됩니다. 손에 닿는 매끈한 표면과 깊이감 있는 컬러가
+                  특징입니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="point-card d-flex flex-column g-2">
+              <div
+                class="point-image-box d-flex justify-content-center align-items-center"
+              >
+                <img
+                  src="./img/point-02.webp"
+                  alt="안경 착용 핏 이미지"
+                  class="point-image"
+                />
+              </div>
+              <div class="point-content d-flex flex-column g-1">
+                <p class="point-label typo-m-caption">POINT 02</p>
+                <h3 class="point-title typo-m-header">하루 종일 편안한 핏</h3>
+                <p class="point-desc typo-m-body-s">
+                  코받침과 템플 곡률을 다듬어 장시간 착용에도 눌림이 적습니다.
+                  22g의 가벼운 무게로 얼굴에 부담을 주지 않습니다.
+                </p>
+              </div>
+            </article>
+          </section>
+
+          <!-- 사이즈 가이드 -->
+          <section
+            class="size-guide d-flex flex-column g-2"
+            aria-labelledby="size-guide-title"
+          >
+            <div class="size-content d-flex flex-column g-2">
+              <h2 id="size-guide-title" class="size-guide-title typo-m-header">
+                SIZE GUIDE
+              </h2>
+
+              <div class="diagram-card">
+                <img
+                  src="./img/size-guide.webp"
+                  alt="안경 프레임 치수 측정 다이어그램"
+                  class="size-guide-image"
+                />
+              </div>
+
+              <div class="spec-content d-flex flex-column g-1">
+                <!-- Frame / Material -->
+                <dl class="spec-group d-flex">
+                  <div class="spec-row d-flex flex-column g-1">
+                    <dt class="spec-label typo-m-caption">Frame</dt>
+                    <dd class="spec-value typo-m-body">Round / Full-rim</dd>
+                  </div>
+
+                  <div class="spec-row d-flex flex-column g-1">
+                    <dt class="spec-label typo-m-caption">Material</dt>
+                    <dd class="spec-value typo-m-body">Acetate</dd>
+                  </div>
+                </dl>
+
+                <!-- 수치 그룹 -->
+                <div class="spec-detail d-flex flex-column g-1">
+                  <dl class="spec-group d-flex">
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Lens Width</dt>
+                      <dd class="spec-value typo-m-body">49 <span>mm</span></dd>
+                    </div>
+
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Bridge</dt>
+                      <dd class="spec-value typo-m-body">21 <span>mm</span></dd>
+                    </div>
+                  </dl>
+
+                  <dl class="spec-group d-flex">
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Temple</dt>
+                      <dd class="spec-value typo-m-body">
+                        145 <span>mm</span>
+                      </dd>
+                    </div>
+
+                    <div class="spec-row d-flex flex-column g-1">
+                      <dt class="spec-label typo-m-caption">Weight</dt>
+                      <dd class="spec-value typo-m-body">22 <span>g</span></dd>
+                    </div>
+                  </dl>
+                </div>
+              </div>
+            </div>
+          </section>
         </div>
-
-        <!-- 디테일 이미지 -->
-        <section class="detail-image-box" aria-labelledby="detail-image-title">
-          <h2 id="detail-image-title" class="sr-only">상품 상세 이미지</h2>
-          <ul class="detail-image-list">
-            <li class="detail-image-item">
-              <!-- 크롤링 데이터(rounz.com)를 JS로 렌더링 / 마크업 구조 -->
-              <img
-                src="./img/detail-01.webp"
-                alt="레이밴 선글라스 정면 이미지"
-                class="detail-image"
-              />
-            </li>
-
-            <li class="detail-image-item">
-              <img
-                src="./img/detail-02.webp"
-                alt="레이밴 선글라스 측면 이미지"
-                class="detail-image"
-              />
-            </li>
-
-            <li class="detail-image-item">
-              <img
-                src="./img/detail-03.webp"
-                alt="레이밴 선글라스 프레임 디테일 이미지"
-                class="detail-image"
-              />
-            </li>
-
-            <li class="detail-image-item">
-              <img
-                src="./img/detail-04.webp"
-                alt="레이밴 선글라스 다리 디테일 이미지"
-                class="detail-image"
-              />
-            </li>
-          </ul>
-        </section>
-
-        <!-- 포인트 카드 -->
-        <section class="point-card-box">
-          <h2 class="sr-only">상품 특징</h2>
-          <!-- JS로 렌더링 예정 / 마크업 구조 샘플 -->
-          <article class="point-card">
-            <img
-              src="./img/point-01.webp"
-              alt="아세테이트 소재 측면 디테일"
-              class="point-image"
-            />
-            <p class="point-label">POINT 01</p>
-            <h3 class="point-title">가볍고 견고한 아세테이트</h3>
-            <p class="point-desc">
-              이탈리아산 아세테이트를 사용해 가벼우면서도 형태가 오래
-              유지됩니다. 손에 닿는 매끈한 표면과 깊이감 있는 컬러가 특징입니다.
-            </p>
-          </article>
-          <article class="point-card">
-            <img
-              src="./img/point-02.webp"
-              alt="안경 착용 핏 이미지"
-              class="point-image"
-            />
-            <p class="point-label">POINT 02</p>
-            <h3 class="point-title">하루 종일 편안한 핏</h3>
-            <p class="point-desc">
-              코받침과 템플 곡률을 다듬어 장시간 착용에도 눌림이 적습니다. 22g의
-              가벼운 무게로 얼굴에 부담을 주지 않습니다.
-            </p>
-          </article>
-        </section>
-
-        <!-- 사이즈 가이드 -->
-        <section class="size-guide" aria-labelledby="size-guide-title">
-          <div class="size-content">
-            <h2 id="size-guide-title" class="size-guide-title">SIZE GUIDE</h2>
-
-            <div class="diagram-card">
-              <img
-                src="./img/size-guide.webp"
-                alt="안경 프레임 치수 측정 다이어그램"
-                class="size-guide-image"
-              />
-            </div>
-
-            <dl class="spec-content">
-              <div class="spec-row">
-                <dt>Frame</dt>
-                <dd>Round / Full-rim</dd>
-              </div>
-
-              <div class="spec-row">
-                <dt>Material</dt>
-                <dd>Acetate</dd>
-              </div>
-
-              <div class="spec-row">
-                <dt>Lens Width</dt>
-                <dd>49 <span>mm</span></dd>
-              </div>
-
-              <div class="spec-row">
-                <dt>Bridge</dt>
-                <dd>21 <span>mm</span></dd>
-              </div>
-
-              <div class="spec-row">
-                <dt>Temple</dt>
-                <dd>145 <span>mm</span></dd>
-              </div>
-
-              <div class="spec-row">
-                <dt>Weight</dt>
-                <dd>22 <span>g</span></dd>
-              </div>
-            </dl>
-          </div>
-        </section>
       </div>
 
       <!-- 후기 -->
       <div
         id="panel-review"
-        class="tab-panel"
+        class="tab-panel container"
         role="tabpanel"
         data-panel="review"
         aria-labelledby="tab-review"
         hidden
       >
-        <div class="review-section">
+        <div class="review-section d-flex flex-column g-2">
           <!-- 리뷰 요약 -->
-          <section class="review-summary">
-            <h2 class="review-title">후기</h2>
-            <div class="rating-block">
-              <div class="rating-score">
-                <strong>4.9</strong>
+          <section class="review-summary d-flex flex-column g-2">
+            <h2 class="review-title typo-m-header-l">후기</h2>
+
+            <div class="rating-block d-flex align-items-center g-2">
+              <div
+                class="rating-score d-flex flex-column align-items-center g-1"
+              >
+                <strong class="typo-m-h1">4.9</strong>
+
                 <div
-                  class="rating-stars"
+                  class="rating-stars d-flex"
                   data-rating="5"
                   role="img"
                   aria-label="5점 만점에 5점"
                 >
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
+                  <span
+                    class="star typo-m-icons-xs-o d-flex justify-content-center align-items-center"
+                    >star</span
+                  >
                 </div>
               </div>
-              <ul class="rating-distribution">
-                <li class="distribution-item">
-                  <span>5</span>
+
+              <div class="rating-divider" aria-hidden="true"></div>
+
+              <ul class="rating-distribution d-flex flex-column g-1">
+                <li class="distribution-item d-flex align-items-center g-1">
+                  <span class="rating-label typo-m-body-s">5</span>
                   <div class="progress-track">
                     <div class="progress-fill" style="width: 80%"></div>
                   </div>
                 </li>
-                <li class="distribution-item">
-                  <span>4</span>
+
+                <li class="distribution-item d-flex align-items-center g-1">
+                  <span class="rating-label typo-m-body-s">4</span>
                   <div class="progress-track">
                     <div class="progress-fill" style="width: 20%"></div>
                   </div>
                 </li>
-                <li class="distribution-item">
-                  <span>3</span>
+
+                <li class="distribution-item d-flex align-items-center g-1">
+                  <span class="rating-label typo-m-body-s">3</span>
                   <div class="progress-track">
                     <div class="progress-fill" style="width: 5%"></div>
                   </div>
@@ -413,31 +642,170 @@
           </section>
 
           <!-- 리뷰 목록 -->
-          <ul class="review-list">
-            <!-- JS로 reviews.json 데이터를 렌더링 / 마크업 구조 샘플 -->
+          <ul class="review-list d-flex flex-column g-2">
             <li>
-              <article class="review-item">
+              <article class="review-item d-flex flex-column g-1">
                 <h3 class="sr-only">ji**** 님의 후기</h3>
-                <header class="review-header">
-                  <div class="reviewer-info">
-                    <span class="reviewer-initial">J</span>
-                    <span class="reviewer-name">ji****</span>
+
+                <header
+                  class="review-header d-flex justify-content-between align-items-center"
+                >
+                  <div class="reviewer-info d-flex align-items-center g-1">
+                    <span
+                      class="reviewer-initial typo-m-header d-flex justify-content-center align-items-center"
+                      >J</span
+                    >
+                    <span class="reviewer-name typo-m-body-s">ji****</span>
                   </div>
-                  <time datetime="2026-06-02">2026.06.02</time>
+
+                  <time
+                    class="review-date typo-m-caption"
+                    datetime="2026-06-02"
+                  >
+                    2026.06.02
+                  </time>
                 </header>
+
                 <div
-                  class="rating-stars"
+                  class="rating-stars d-flex"
                   data-rating="5"
                   role="img"
                   aria-label="5점 만점에 5점"
                 >
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
                 </div>
-                <p class="review-content">
+
+                <p class="review-content typo-m-body-s">
+                  얼굴형에 잘 맞고 가벼워서 종일 써도 편해요. 컬러도 사진이랑
+                  똑같아서 만족합니다.
+                </p>
+              </article>
+            </li>
+            <li>
+              <article class="review-item d-flex flex-column g-1">
+                <h3 class="sr-only">ji**** 님의 후기</h3>
+
+                <header
+                  class="review-header d-flex justify-content-between align-items-center"
+                >
+                  <div class="reviewer-info d-flex align-items-center g-1">
+                    <span
+                      class="reviewer-initial typo-m-header d-flex justify-content-center align-items-center"
+                      >J</span
+                    >
+                    <span class="reviewer-name typo-m-body-s">ji****</span>
+                  </div>
+
+                  <time
+                    class="review-date typo-m-caption"
+                    datetime="2026-06-02"
+                  >
+                    2026.06.02
+                  </time>
+                </header>
+
+                <div
+                  class="rating-stars d-flex"
+                  data-rating="5"
+                  role="img"
+                  aria-label="5점 만점에 5점"
+                >
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                </div>
+
+                <p class="review-content typo-m-body-s">
+                  얼굴형에 잘 맞고 가벼워서 종일 써도 편해요. 컬러도 사진이랑
+                  똑같아서 만족합니다.
+                </p>
+              </article>
+            </li>
+            <li>
+              <article class="review-item d-flex flex-column g-1">
+                <h3 class="sr-only">ji**** 님의 후기</h3>
+
+                <header
+                  class="review-header d-flex justify-content-between align-items-center"
+                >
+                  <div class="reviewer-info d-flex align-items-center g-1">
+                    <span
+                      class="reviewer-initial typo-m-header d-flex justify-content-center align-items-center"
+                      >J</span
+                    >
+                    <span class="reviewer-name typo-m-body-s">ji****</span>
+                  </div>
+
+                  <time
+                    class="review-date typo-m-caption"
+                    datetime="2026-06-02"
+                  >
+                    2026.06.02
+                  </time>
+                </header>
+
+                <div
+                  class="rating-stars d-flex"
+                  data-rating="5"
+                  role="img"
+                  aria-label="5점 만점에 5점"
+                >
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                </div>
+
+                <p class="review-content typo-m-body-s">
+                  얼굴형에 잘 맞고 가벼워서 종일 써도 편해요. 컬러도 사진이랑
+                  똑같아서 만족합니다.
+                </p>
+              </article>
+            </li>
+            <li>
+              <article class="review-item d-flex flex-column g-1">
+                <h3 class="sr-only">ji**** 님의 후기</h3>
+
+                <header
+                  class="review-header d-flex justify-content-between align-items-center"
+                >
+                  <div class="reviewer-info d-flex align-items-center g-1">
+                    <span
+                      class="reviewer-initial typo-m-header d-flex justify-content-center align-items-center"
+                      >J</span
+                    >
+                    <span class="reviewer-name typo-m-body-s">ji****</span>
+                  </div>
+
+                  <time
+                    class="review-date typo-m-caption"
+                    datetime="2026-06-02"
+                  >
+                    2026.06.02
+                  </time>
+                </header>
+
+                <div
+                  class="rating-stars d-flex"
+                  data-rating="5"
+                  role="img"
+                  aria-label="5점 만점에 5점"
+                >
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                  <span class="star typo-m-icons-xs-o">star</span>
+                </div>
+
+                <p class="review-content typo-m-body-s">
                   얼굴형에 잘 맞고 가벼워서 종일 써도 편해요. 컬러도 사진이랑
                   똑같아서 만족합니다.
                 </p>
@@ -445,7 +813,7 @@
             </li>
           </ul>
 
-          <button type="button" class="review-more-button">
+          <button type="button" class="review-more-button typo-m-btn-m">
             후기 12개 전체 보기
           </button>
         </div>
@@ -454,37 +822,87 @@
       <!-- 문의 -->
       <div
         id="panel-qna"
-        class="tab-panel"
+        class="tab-panel container"
         role="tabpanel"
         data-panel="qna"
         aria-labelledby="tab-qna"
         hidden
       >
-        <section class="qna-section">
-          <header class="qna-header">
-            <h2 class="qna-title">상품 문의</h2>
-            <button type="button" class="qna-button">문의하기</button>
+        <section
+          class="qna-section d-flex flex-column g-2"
+          aria-labelledby="qna-title"
+        >
+          <header
+            class="qna-header d-flex justify-content-between align-items-center"
+          >
+            <h2 id="qna-title" class="qna-title typo-m-header-l">상품 문의</h2>
+
+            <button type="button" class="qna-button typo-m-btn-m">
+              문의하기
+            </button>
           </header>
-          <ul class="qna-list">
+
+          <ul class="qna-list d-flex flex-column g-2">
             <!-- JS 렌더링 예정 / 마크업 구조 샘플 -->
             <li>
-              <article class="qna-item">
-                <h3 class="sr-only">도수 렌즈로도 주문할 수 있나요?</h3>
-                <div class="qna-question">
-                  <span class="status-badge">답변완료</span>
-                  <p class="qna-question-text">
+              <article class="qna-item d-flex flex-column g-1">
+                <div class="qna-question d-flex align-items-center g-2">
+                  <span
+                    class="status-badge typo-m-caption d-flex justify-content-center align-items-center"
+                  >
+                    답변완료
+                  </span>
+
+                  <h3 class="qna-question-text typo-m-body-s">
                     도수 렌즈로도 주문할 수 있나요?
-                  </p>
+                  </h3>
                 </div>
+
                 <div class="qna-meta">
-                  <span class="qna-author">kim**</span>
-                  <time datetime="2026-05-30">2026.05.30</time>
+                  <span class="qna-meta-text typo-m-caption">
+                    kim** ·
+                    <time datetime="2026-05-30">2026.05.30</time>
+                  </span>
                 </div>
-                <div class="answer-block">
-                  <span class="answer-label">A</span>
-                  <p class="answer-content">
+
+                <div class="answer-block d-flex align-items-center g-2">
+                  <span class="answer-label typo-m-header"> A </span>
+
+                  <p class="answer-content typo-m-caption">
                     네, 도수 렌즈 옵션을 선택하신 뒤 처방값을 입력하시면 함께
                     제작해 드립니다.
+                  </p>
+                </div>
+              </article>
+            </li>
+
+            <li>
+              <article class="qna-item d-flex flex-column g-1">
+                <div class="qna-question d-flex align-items-center g-2">
+                  <span
+                    class="status-badge typo-m-caption d-flex justify-content-center align-items-center"
+                  >
+                    답변완료
+                  </span>
+
+                  <h3 class="qna-question-text typo-m-body-s">
+                    코받침 교체가 가능한가요?
+                  </h3>
+                </div>
+
+                <div class="qna-meta">
+                  <span class="qna-meta-text typo-m-caption">
+                    park*** ·
+                    <time datetime="2026-05-22">2026.05.22</time>
+                  </span>
+                </div>
+
+                <div class="answer-block d-flex align-items-center g-2">
+                  <span class="answer-label typo-m-header"> A </span>
+
+                  <p class="answer-content typo-m-caption">
+                    가까운 안경원에서 코받침 교체가 가능하며, 기본 코받침은
+                    구성품에 포함되어 있습니다.
                   </p>
                 </div>
               </article>
@@ -492,81 +910,113 @@
           </ul>
         </section>
       </div>
-
       <!-- 구매정보 -->
       <div
         id="panel-purchase"
-        class="tab-panel"
+        class="tab-panel container"
         role="tabpanel"
         data-panel="purchase"
         aria-labelledby="tab-purchase"
         hidden
       >
-        <section class="purchase-info-section">
-          <h2 class="purchase-title">구매 정보</h2>
+        <section
+          class="purchase-info-section d-flex flex-column g-2"
+          aria-labelledby="purchase-title"
+        >
+          <h2 id="purchase-title" class="purchase-title typo-m-header-l">
+            구매 정보
+          </h2>
 
-          <div class="purchase-content">
-            <article class="purchase-item">
-              <h3 class="purchase-sub-title">
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >visibility</span
-                >
+          <div class="purchase-content d-flex flex-column g-2">
+            <article class="purchase-item d-flex flex-column g-1">
+              <h3
+                class="purchase-sub-title typo-m-header d-flex align-items-center g-1"
+              >
+                <span class="purchase-icon typo-m-icons-s-o" aria-hidden="true">
+                  visibility
+                </span>
                 도수 렌즈 제작
               </h3>
-              <ul class="purchase-list">
-                <li>도수 렌즈는 온라인 구매가 불가합니다.</li>
-                <li>플래그십 스토어 및 파트너 안경원에서 제작 가능합니다.</li>
-                <li>
+
+              <ul class="purchase-list d-flex flex-column g-1">
+                <li class="typo-m-caption">
+                  도수 렌즈는 온라인 구매가 불가합니다.
+                </li>
+                <li class="typo-m-caption">
+                  플래그십 스토어 및 파트너 안경원에서 제작 가능합니다.
+                </li>
+                <li class="typo-m-caption">
                   렌즈 삽입 가능 여부는 고객센터를 통해 확인할 수
                   있습니다.(1522-0416)
                 </li>
               </ul>
             </article>
 
-            <article class="purchase-item">
-              <h3 class="purchase-sub-title">
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >local_shipping</span
-                >
+            <article class="purchase-item d-flex flex-column g-1">
+              <h3
+                class="purchase-sub-title typo-m-header d-flex align-items-center g-1"
+              >
+                <span class="purchase-icon typo-m-icons-s-o" aria-hidden="true">
+                  local_shipping
+                </span>
                 배송 안내
               </h3>
-              <ul class="purchase-list">
-                <li>전 상품 무료배송</li>
-                <li>평일 15시 이전 결제 시 당일 발송됩니다.</li>
-                <li>렌즈 옵션 선택 시 2~3일 더 소요될 수 있습니다.</li>
+
+              <ul class="purchase-list d-flex flex-column g-1">
+                <li class="typo-m-caption">전 상품 무료배송</li>
+                <li class="typo-m-caption">
+                  평일 15시 이전 결제 시 당일 발송됩니다.
+                </li>
+                <li class="typo-m-caption">
+                  렌즈 옵션 선택 시 2~3일 더 소요될 수 있습니다.
+                </li>
               </ul>
             </article>
 
-            <article class="purchase-item">
-              <h3 class="purchase-sub-title">
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >replay</span
-                >
+            <article class="purchase-item d-flex flex-column g-1">
+              <h3
+                class="purchase-sub-title typo-m-header d-flex align-items-center g-1"
+              >
+                <span class="purchase-icon typo-m-icons-s-o" aria-hidden="true">
+                  replay
+                </span>
                 교환 · 반품 안내
               </h3>
-              <ul class="purchase-list">
-                <li>수령 후 10일 이내 무료 교환·반품 가능합니다.</li>
-                <li>
+
+              <ul class="purchase-list d-flex flex-column g-1">
+                <li class="typo-m-caption">
+                  수령 후 10일 이내 무료 교환·반품 가능합니다.
+                </li>
+                <li class="typo-m-caption">
                   사용 흔적이 있거나 구성품이 누락된 경우 교환·반품이
                   어렵습니다.
                 </li>
-                <li>마이페이지 주문내역에서 신청 가능합니다.</li>
+                <li class="typo-m-caption">
+                  마이페이지 주문내역에서 신청 가능합니다.
+                </li>
               </ul>
             </article>
 
-            <article class="purchase-item">
-              <h3 class="purchase-sub-title">
-                <span class="material-symbols-outlined" aria-hidden="true"
-                  >handyman</span
-                >
+            <article class="purchase-item d-flex flex-column g-1">
+              <h3
+                class="purchase-sub-title typo-m-header d-flex align-items-center g-1"
+              >
+                <span class="purchase-icon typo-m-icons-s-o" aria-hidden="true">
+                  handyman
+                </span>
                 A/S 안내
               </h3>
-              <ul class="purchase-list">
-                <li>
+
+              <ul class="purchase-list d-flex flex-column g-1">
+                <li class="typo-m-caption">
                   구매일로부터 1년 이내 제품 하자에 한해 무상 수리가 제공됩니다.
                 </li>
-                <li>고객 과실에 의한 수리는 유상 처리됩니다.</li>
-                <li>수리 비용 및 기간은 사전 안내됩니다.</li>
+                <li class="typo-m-caption">
+                  고객 과실에 의한 수리는 유상 처리됩니다.
+                </li>
+                <li class="typo-m-caption">
+                  수리 비용 및 기간은 사전 안내됩니다.
+                </li>
               </ul>
             </article>
           </div>
@@ -575,43 +1025,128 @@
 
       <!-- 추천 상품 -->
       <section
-        class="recommend-products"
+        class="recommend-products container d-flex flex-column g-2"
         aria-labelledby="recommend-products-title"
       >
-        <h2 id="recommend-products-title" class="recommend-products-title">
+        <h2
+          id="recommend-products-title"
+          class="recommend-products-title typo-m-header"
+        >
           이 상품과 비슷한 상품
         </h2>
 
         <div class="recommend-products-scroller">
-          <ul class="recommend-products-list">
+          <ul class="recommend-products-list d-flex g-2">
             <!-- JS로 추천 상품 데이터 렌더링 예정 / 마크업 구조 샘플 -->
-            <li>
-              <article class="product-card">
+            <li class="recommend-products-item">
+              <article class="product-card d-flex flex-column g-1">
                 <div class="product-card-image-box">
                   <img
                     src="./img/recommend-product-01.webp"
                     alt="레이밴 선글라스 클럽마스터"
                     class="product-card-image"
                   />
+
                   <button
                     type="button"
-                    class="product-card-wish"
+                    class="product-card-wish d-flex justify-content-center align-items-center"
                     aria-label="관심상품 추가"
                   >
-                    <span class="material-symbols-outlined" aria-hidden="true"
-                      >favorite_border</span
-                    >
+                    <span class="typo-m-icons-s-o" aria-hidden="true">
+                      favorite_border
+                    </span>
                   </button>
                 </div>
-                <div class="product-card-info">
-                  <p class="product-card-brand">RAY-BAN</p>
-                  <h3 class="product-card-title">
-                    <a href="./product-detail.html"
-                      >레이밴 선글라스 클럽마스터</a
-                    >
+
+                <div class="product-card-info d-flex flex-column">
+                  <p class="product-card-brand typo-m-caption">RAY-BAN</p>
+
+                  <h3 class="product-card-title typo-m-body">
+                    <a href="./product-detail.html">
+                      레이밴 선글라스 클럽마스터
+                    </a>
                   </h3>
+
                   <div class="product-card-price-box">
-                    <strong class="product-card-price">204,800원</strong>
+                    <strong class="product-card-price typo-m-header-s">
+                      204,800원
+                    </strong>
+                  </div>
+                </div>
+              </article>
+            </li>
+
+            <li class="recommend-products-item">
+              <article class="product-card d-flex flex-column g-1">
+                <div class="product-card-image-box">
+                  <img
+                    src="./img/recommend-product-01.webp"
+                    alt="레이밴 선글라스 클럽마스터"
+                    class="product-card-image"
+                  />
+
+                  <button
+                    type="button"
+                    class="product-card-wish d-flex justify-content-center align-items-center"
+                    aria-label="관심상품 추가"
+                  >
+                    <span class="typo-m-icons-s-o" aria-hidden="true">
+                      favorite_border
+                    </span>
+                  </button>
+                </div>
+
+                <div class="product-card-info d-flex flex-column">
+                  <p class="product-card-brand typo-m-caption">RAY-BAN</p>
+
+                  <h3 class="product-card-title typo-m-body">
+                    <a href="./product-detail.html">
+                      레이밴 선글라스 클럽마스터
+                    </a>
+                  </h3>
+
+                  <div class="product-card-price-box">
+                    <strong class="product-card-price typo-m-header-s">
+                      204,800원
+                    </strong>
+                  </div>
+                </div>
+              </article>
+            </li>
+
+            <li class="recommend-products-item">
+              <article class="product-card d-flex flex-column g-1">
+                <div class="product-card-image-box">
+                  <img
+                    src="./img/recommend-product-01.webp"
+                    alt="레이밴 선글라스 클럽마스터"
+                    class="product-card-image"
+                  />
+
+                  <button
+                    type="button"
+                    class="product-card-wish d-flex justify-content-center align-items-center"
+                    aria-label="관심상품 추가"
+                  >
+                    <span class="typo-m-icons-s-o" aria-hidden="true">
+                      favorite_border
+                    </span>
+                  </button>
+                </div>
+
+                <div class="product-card-info d-flex flex-column">
+                  <p class="product-card-brand typo-m-caption">RAY-BAN</p>
+
+                  <h3 class="product-card-title typo-m-body">
+                    <a href="./product-detail.html">
+                      레이밴 선글라스 클럽마스터
+                    </a>
+                  </h3>
+
+                  <div class="product-card-price-box">
+                    <strong class="product-card-price typo-m-header-s">
+                      204,800원
+                    </strong>
                   </div>
                 </div>
               </article>
@@ -619,47 +1154,59 @@
           </ul>
 
           <!-- 추천 상품 슬라이드 컨트롤 -->
-          <div class="carousel-controls">
+          <div
+            class="recommend-carousel-controls d-flex justify-content-between align-items-center"
+          >
             <button
               type="button"
-              class="carousel-prev"
+              class="recommend-carousel-prev"
               aria-label="이전 추천 상품"
             >
-              <span class="material-symbols-outlined" aria-hidden="true"
-                >arrow_back_ios</span
-              >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                arrow_back_ios
+              </span>
             </button>
+
             <button
               type="button"
-              class="carousel-next"
+              class="recommend-carousel-next"
               aria-label="다음 추천 상품"
             >
-              <span class="material-symbols-outlined" aria-hidden="true"
-                >arrow_forward_ios</span
-              >
+              <span class="typo-m-icons-l-o" aria-hidden="true">
+                arrow_forward_ios
+              </span>
             </button>
           </div>
         </div>
       </section>
 
       <!-- 파트너 스토어 CTA -->
-      <section class="store-cta" aria-labelledby="store-cta-title">
-        <div class="store-cta-card">
-          <p class="store-cta-eyebrow">PARTNER STORE</p>
+      <section
+        class="store-cta container d-flex flex-column"
+        aria-labelledby="store-cta-title"
+      >
+        <div class="store-cta-card d-flex flex-column align-items-center g-1">
+          <p class="store-cta-eyebrow typo-m-btn-m text-center">
+            PARTNER STORE
+          </p>
 
-          <h2 id="store-cta-title" class="store-cta-heading">
+          <h2
+            id="store-cta-title"
+            class="store-cta-heading typo-m-header text-center"
+          >
             가까운 파트너 안경원에서 직접 써보세요
           </h2>
 
-          <p class="store-cta-desc">
+          <p class="store-cta-desc typo-m-body-s text-center">
             전국 파트너 안경원에서 착용 후 구매할 수 있습니다.
           </p>
 
-          <div class="store-cta-button-wrapper">
-            <a href="./store.html" class="store-cta-button">
-              <span class="material-symbols-outlined" aria-hidden="true">
-                place
-              </span>
+          <div class="store-cta-button-wrapper d-flex flex-column g-2">
+            <a
+              href="./store.html"
+              class="store-cta-button typo-m-btn-m d-flex justify-content-center align-items-center g-1"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true"> place </span>
               파트너 안경원 찾기
             </a>
           </div>
@@ -668,7 +1215,10 @@
     </main>
 
     <!-- 하단 고정 구매 바 -->
-    <div class="purchase-bar" data-purchase-bar>
+    <div
+      class="purchase-bar d-flex flex-column align-items-center g-2"
+      data-purchase-bar
+    >
       <button
         type="button"
         class="purchase-bar-handle"
@@ -677,79 +1227,204 @@
         <span class="purchase-bar-handle-grip" aria-hidden="true"></span>
       </button>
 
-      <div class="purchase-bar-actions">
+      <div class="purchase-bar-actions d-flex align-items-center g-1">
         <button
           type="button"
-          class="purchase-bar-cart"
+          class="purchase-bar-cart d-flex justify-content-center align-items-center"
           aria-label="장바구니 담기"
         >
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >shopping_bag</span
-          >
+          <span class="typo-m-icons-l-o" aria-hidden="true">
+            shopping_bag
+          </span>
         </button>
-        <button type="button" class="purchase-bar-try">
+
+        <button
+          type="button"
+          class="purchase-bar-try typo-m-btn-s d-flex justify-content-center align-items-center"
+        >
           어울리는지 써보기
         </button>
-        <button type="button" class="purchase-bar-buy">구매하기</button>
+
+        <button
+          type="button"
+          class="purchase-bar-buy typo-m-btn-s d-flex justify-content-center align-items-center"
+        >
+          구매하기
+        </button>
       </div>
     </div>
 
     <!-- 구매 옵션 바텀시트 (구매하기 클릭 시 펼침) -->
-    <div class="purchase-sheet" data-purchase-sheet hidden>
-      <button
-        type="button"
-        class="purchase-sheet-handle"
-        aria-label="구매 옵션 접기"
+    <div class="purchase-sheet" data-purchase-sheet aria-hidden="true">
+      <div
+        class="purchase-sheet-inner d-flex flex-column align-items-center g-2"
       >
-        <span class="purchase-sheet-handle-grip" aria-hidden="true"></span>
-      </button>
-
-      <div class="sheet-product">
-        <h2 class="sheet-product-name">LUTTO 01</h2>
-        <button type="button" class="sheet-close" aria-label="닫기">
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >close</span
-          >
+        <button
+          type="button"
+          class="purchase-sheet-handle"
+          aria-label="구매 옵션 접기"
+        >
+          <span class="purchase-sheet-handle-grip" aria-hidden="true"></span>
         </button>
-      </div>
 
-      <div class="sheet-qty-price">
-        <div class="quantity-control" data-quantity>
+        <div class="sheet-option-card d-flex flex-column g-2">
+          <div
+            class="sheet-product d-flex justify-content-between align-items-center"
+          >
+            <h2 class="sheet-product-name typo-m-header">
+              레이밴 선글라스 클럽마스터 RB3016 W0365 51MM
+            </h2>
+
+            <button
+              type="button"
+              class="sheet-close d-flex justify-content-center align-items-center"
+              aria-label="닫기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">close</span>
+            </button>
+          </div>
+
+          <div
+            class="sheet-qty-price d-flex justify-content-between align-items-center"
+          >
+            <div
+              class="quantity-control d-flex justify-content-center align-items-center"
+              data-quantity
+            >
+              <button
+                type="button"
+                class="quantity-button d-flex justify-content-center align-items-center"
+                data-quantity-minus
+                aria-label="수량 줄이기"
+              >
+                <span class="typo-m-icons-s-o" aria-hidden="true">remove</span>
+              </button>
+
+              <span
+                class="quantity-value typo-m-body-s d-flex justify-content-center align-items-center"
+                data-quantity-value
+              >
+                1
+              </span>
+
+              <button
+                type="button"
+                class="quantity-button d-flex justify-content-center align-items-center"
+                data-quantity-plus
+                aria-label="수량 늘리기"
+              >
+                <span class="typo-m-icons-s-o" aria-hidden="true">add</span>
+              </button>
+            </div>
+
+            <strong class="sheet-price typo-m-price">₩249,000</strong>
+          </div>
+        </div>
+
+        <div
+          class="sheet-total d-flex justify-content-between align-items-center"
+        >
+          <span class="sheet-total-label typo-m-price">총 상품금액</span>
+          <strong class="sheet-total-price typo-m-price-l">₩204,800</strong>
+        </div>
+
+        <div class="sheet-actions d-flex align-items-center g-1">
           <button
             type="button"
-            class="quantity-button"
-            data-quantity-minus
-            aria-label="수량 줄이기"
+            class="sheet-cart d-flex justify-content-center align-items-center"
+            aria-label="장바구니 담기"
           >
-            -
+            <span class="typo-m-icons-l-o" aria-hidden="true">
+              shopping_bag
+            </span>
           </button>
-          <span class="quantity-value" data-quantity-value>1</span>
+
           <button
             type="button"
-            class="quantity-button"
-            data-quantity-plus
-            aria-label="수량 늘리기"
+            class="sheet-buy typo-m-btn-s d-flex justify-content-center align-items-center"
           >
-            +
+            구매하기
           </button>
         </div>
-        <strong class="sheet-price">₩249,000</strong>
-      </div>
-
-      <div class="sheet-total">
-        <span class="sheet-total-label">총 상품금액</span>
-        <strong class="sheet-total-price">₩249,000</strong>
-      </div>
-
-      <div class="sheet-actions">
-        <button type="button" class="sheet-cart" aria-label="장바구니 담기">
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >shopping_bag</span
-          >
-        </button>
-        <button type="button" class="sheet-buy">구매하기</button>
       </div>
     </div>
+
+    <!-- PC floating purchase panel -->
+    <aside class="pc-purchase-panel" aria-label="구매 패널">
+      <div class="pc-purchase-card d-flex flex-column g-2">
+        <div
+          class="pc-purchase-product d-flex justify-content-between align-items-start"
+        >
+          <p class="pc-purchase-name typo-m-body">
+            레이밴 클럽마스터 선글라스 RB3016F W0365 55mm RB3016-F
+          </p>
+
+          <button
+            type="button"
+            class="pc-purchase-close d-flex justify-content-center align-items-center"
+            aria-label="구매 패널 닫기"
+          >
+            <span class="typo-m-icons-s-o" aria-hidden="true">close</span>
+          </button>
+        </div>
+
+        <div
+          class="pc-purchase-option d-flex justify-content-between align-items-center"
+        >
+          <div
+            class="quantity-control d-flex justify-content-center align-items-center"
+          >
+            <button
+              type="button"
+              class="quantity-button d-flex justify-content-center align-items-center"
+              aria-label="수량 줄이기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">remove</span>
+            </button>
+
+            <span
+              class="quantity-value typo-m-body-s d-flex justify-content-center align-items-center"
+            >
+              1
+            </span>
+
+            <button
+              type="button"
+              class="quantity-button d-flex justify-content-center align-items-center"
+              aria-label="수량 늘리기"
+            >
+              <span class="typo-m-icons-s-o" aria-hidden="true">add</span>
+            </button>
+          </div>
+
+          <strong class="pc-purchase-price typo-m-price">₩204,800</strong>
+        </div>
+      </div>
+
+      <div
+        class="pc-purchase-total d-flex justify-content-between align-items-center"
+      >
+        <span class="pc-purchase-total-label typo-m-price">총 상품금액</span>
+        <strong class="pc-purchase-total-price typo-m-price-l">₩204,800</strong>
+      </div>
+
+      <div class="pc-purchase-actions d-flex align-items-center g-1">
+        <button
+          type="button"
+          class="purchase-bar-cart d-flex justify-content-center align-items-center"
+          aria-label="장바구니 담기"
+        >
+          <span class="typo-m-icons-l-o" aria-hidden="true">shopping_bag</span>
+        </button>
+
+        <button
+          type="button"
+          class="purchase-bar-buy typo-m-btn-s d-flex justify-content-center align-items-center"
+        >
+          구매하기
+        </button>
+      </div>
+    </aside>
 
     <!-- 장바구니 담김 토스트 -->
     <div
@@ -759,36 +1434,58 @@
       aria-live="polite"
       hidden
     >
-      <div class="cart-toast-header">
-        <span
-          class="material-symbols-outlined cart-toast-check"
-          aria-hidden="true"
-          >check_circle</span
+      <div class="cart-toast-inner d-flex flex-column g-2">
+        <div
+          class="cart-toast-header d-flex justify-content-between align-items-center"
         >
-        <span class="cart-toast-title">장바구니에 담았습니다.</span>
-        <button type="button" class="cart-toast-close" aria-label="닫기">
-          <span class="material-symbols-outlined" aria-hidden="true"
-            >close</span
+          <div class="d-flex align-items-center g-1">
+            <span class="cart-toast-check typo-m-icons-s-o" aria-hidden="true">
+              check_circle
+            </span>
+
+            <span class="cart-toast-title typo-m-btn-s">
+              장바구니에 담았습니다.
+            </span>
+          </div>
+
+          <button
+            type="button"
+            class="cart-toast-close d-flex justify-content-center align-items-center"
+            aria-label="닫기"
           >
-        </button>
-      </div>
-
-      <div class="cart-toast-product">
-        <img
-          src="./img/lutto-01.webp"
-          alt="LUTTO 01"
-          class="cart-toast-thumb"
-        />
-        <div class="cart-toast-info">
-          <p class="cart-toast-name">LUTTO 01</p>
-          <p class="cart-toast-option">BLACK / ONE SIZE</p>
-          <strong class="cart-toast-price">₩249,000</strong>
+            <span class="typo-m-icons-s-o" aria-hidden="true"> close </span>
+          </button>
         </div>
+
+        <div class="cart-toast-product d-flex align-items-center g-1">
+          <img
+            src="./img/recommend-product-01.webp"
+            alt="레이밴 클럽마스터 선글라스"
+            class="cart-toast-thumb"
+          />
+
+          <div class="cart-toast-info d-flex flex-column">
+            <p class="cart-toast-name typo-m-body">
+              레이밴 클럽마스터 선글라스 RB3016-F W0366 55MM
+            </p>
+
+            <p class="cart-toast-option typo-m-caption">BLACK / ONE SIZE</p>
+
+            <strong class="cart-toast-price typo-m-price">₩204,800</strong>
+          </div>
+        </div>
+
+        <a
+          href="./cart.html"
+          class="cart-toast-link typo-m-btn-s d-flex justify-content-center align-items-center g-1"
+          aria-label="장바구니로 이동, 담긴 상품 1개"
+        >
+          <span>보러가기 (1)</span>
+          <span class="typo-m-icons-s-o" aria-hidden="true">arrow_forward</span>
+        </a>
       </div>
-
-      <a href="./cart.html" class="cart-toast-link">보러가기 (1) →</a>
     </div>
-
-    <footer></footer>
+    <footer class="footer product-detail-footer"></footer>
+    <script type="module" src="./js/product_detail.js"></script>
   </body>
 </html>
