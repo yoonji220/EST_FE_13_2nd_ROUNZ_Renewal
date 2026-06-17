@@ -10,6 +10,10 @@ input {
   border-radius: 4px;
 }
 
+.form.d-flex input {
+  flex: 1;
+}
+
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -21,11 +25,6 @@ input::-webkit-inner-spin-button {
 input[type=number] {
   -moz-appearance: textfield;
 }
-
-main{
-  height: calc(100vh - 97px);
-}
-
 .main-content > img{
   border-right: 1px var(--color-gray) solid;
   padding: 20px;
