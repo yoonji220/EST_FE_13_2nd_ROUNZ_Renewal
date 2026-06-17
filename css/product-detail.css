@@ -153,42 +153,53 @@
 }
 
 .color-list li {
-  width: 40px;
-  height: 40px;
+  width: auto;
+  height: auto;
 }
 
-.color-list button {
-  width: 40px;
-  height: 40px;
+.color-chip {
+  position: relative;
   padding: 4px;
   border-radius: 999px;
+  cursor: pointer;
 }
 
-.color-list button::before {
-  content: "";
+.color-chip input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.color-dot {
   display: block;
   width: 32px;
   height: 32px;
   border: 1px solid var(--color-gray);
-  border-radius: 50%;
+  border-radius: 9999px;
 }
 
-.color-list li:nth-child(1) button::before {
+.color-dot-black {
   background-color: var(--color-gray);
 }
 
-.color-list li:nth-child(2) button::before {
+.color-dot-gray {
   background-color: var(--color-black);
 }
 
-.color-list li:nth-child(3) button::before {
+.color-dot-yellow {
   background-color: #ffd700;
 }
 
-/* 상태 표시용 outline (접근성 고려) aria-pressed 선택 상태를 명확히 구분하기 위해 유지 */
-.color-list button[aria-pressed="true"] {
+/* 선택 상태: 피그마처럼 칩 바깥에 outline */
+.color-chip:has(input:checked) {
   outline: 2px solid var(--color-black);
   outline-offset: -2px;
+}
+
+/* 키보드 포커스 표시 */
+.color-chip:has(input:focus-visible) {
+  outline: 2px solid var(--color-point);
+  outline-offset: 2px;
 }
 
 /* Quantity Control */

@@ -168,38 +168,51 @@
           </div>
           <hr />
 
-          <div class="color-options d-flex flex-column">
+          <fieldset class="color-options d-flex flex-column g-1">
+            <legend class="sr-only">색상 선택</legend>
+
             <div
               class="color-header d-flex justify-content-between align-items-center typo-m-caption"
             >
               <span>color</span>
-              <span>black</span>
+              <span data-selected-color>black</span>
             </div>
 
-            <ul class="color-list d-flex g-1" aria-label="색상 선택">
+            <ul class="color-list d-flex justify-content-between">
               <li>
-                <button
-                  type="button"
-                  aria-pressed="true"
-                  aria-label="black 색상 선택"
-                ></button>
+                <label class="color-chip d-flex align-items-center">
+                  <input type="radio" name="color" value="black" checked />
+                  <span
+                    class="color-dot color-dot-black"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">black 색상 선택</span>
+                </label>
               </li>
+
               <li>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  aria-label="gray 색상 선택"
-                ></button>
+                <label class="color-chip d-flex align-items-center">
+                  <input type="radio" name="color" value="gray" />
+                  <span
+                    class="color-dot color-dot-gray"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">gray 색상 선택</span>
+                </label>
               </li>
+
               <li>
-                <button
-                  type="button"
-                  aria-pressed="false"
-                  aria-label="yellow 색상 선택"
-                ></button>
+                <label class="color-chip d-flex align-items-center">
+                  <input type="radio" name="color" value="yellow" />
+                  <span
+                    class="color-dot color-dot-yellow"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="sr-only">yellow 색상 선택</span>
+                </label>
               </li>
             </ul>
-          </div>
+          </fieldset>
 
           <!-- 공통 Quantity Control -->
           <div
