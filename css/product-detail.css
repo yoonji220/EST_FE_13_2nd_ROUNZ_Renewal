@@ -1038,6 +1038,16 @@
   color: var(--color-dark-gray);
 }
 
+.qna-more-button {
+  width: 100%;
+  padding-block: 8px;
+  border-radius: 4px;
+  border: 1px solid var(--color-gray);
+  color: var(--color-dark-black);
+  background-color: var(--color-white);
+  text-align: center;
+}
+
 @media (min-width: 1200px) {
   .qna-item {
     padding-block: 16px;

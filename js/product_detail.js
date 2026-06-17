@@ -489,6 +489,7 @@ function getReviewDate(imageUrl) {
 function createQna(data) {
   const qnaTab = document.querySelector("#tab-qna");
   const qnaList = document.querySelector(".qna-list");
+  const qnaMoreButton = document.querySelector(".qna-more-button");
 
   const qna = data.qna || [];
   const qnaCount = qna.length;
@@ -509,11 +510,33 @@ function createQna(data) {
         </article>
       </li>
     `;
+
+    if (qnaMoreButton) {
+      qnaMoreButton.hidden = true;
+    }
+
     return;
   }
 
-  qnaList.innerHTML = qna
-    .slice(0, 6)
+  renderQnaItems(qna.slice(0, 6));
+
+  if (qnaMoreButton) {
+    qnaMoreButton.hidden = qnaCount <= 6;
+    qnaMoreButton.textContent = `문의 ${qnaCount}개 전체 보기`;
+
+    qnaMoreButton.onclick = () => {
+      renderQnaItems(qna);
+      qnaMoreButton.hidden = true;
+    };
+  }
+}
+
+function renderQnaItems(qna) {
+  const qnaList = document.querySelector(".qna-list");
+
+  if (!qnaList) return;
+
+  const qnaHTML = qna
     .map(item => {
       const title = item.title || "상품 문의";
       const answer = item.answer || item.content || item.reply || "";
@@ -546,6 +569,8 @@ function createQna(data) {
       `;
     })
     .join("");
+
+  qnaList.innerHTML = qnaHTML;
 }
 
 function createRecommendLists(all, category, id) {
