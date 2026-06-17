@@ -3,6 +3,7 @@
 ========================= */
 .cart-page {
   background: #fff;
+  padding-top: 86px;
   padding-bottom: 80px;
 }
 
@@ -113,12 +114,12 @@
 }
 
 /* 체크 상태 */
-.checkbox-label input:checked+.checkmark {
+.checkbox-label input:checked + .checkmark {
   background: #2563eb;
   border-color: #2563eb;
 }
 
-.checkbox-label input:checked+.checkmark::after {
+.checkbox-label input:checked + .checkmark::after {
   display: block;
 }
 
@@ -248,8 +249,6 @@
   background: #fff;
 }
 
-
-
 .recommendations .section-header {
   padding: 0 24px;
   margin-bottom: 16px;
@@ -276,8 +275,6 @@
 .slider-btn:hover {
   background: #f9f9f9;
 }
-
-
 
 .rec-slider {
   display: flex;
@@ -355,7 +352,7 @@
 
 .favorite-btn.active .material-symbols-outlined {
   color: #ff3b30;
-  font-variation-settings: 'FILL' 1;
+  font-variation-settings: "FILL" 1;
 }
 
 .recommendations .product-name {
@@ -439,7 +436,6 @@
   margin: 0;
   color: #555;
 }
-
 
 /* =========================
    하단 고정 주문 버튼
@@ -561,8 +557,16 @@
     border-radius: 8px;
     background: #2563eb !important;
   }
-  .order-btn .pc-only-text { display: inline-flex; }
-  .order-btn .m-only-text { display: none; }
-  .order-btn .order-divider { display: none; }
-  #footer-total { display: none; }
+  .order-btn .pc-only-text {
+    display: inline-flex;
+  }
+  .order-btn .m-only-text {
+    display: none;
+  }
+  .order-btn .order-divider {
+    display: none;
+  }
+  #footer-total {
+    display: none;
+  }
 }
