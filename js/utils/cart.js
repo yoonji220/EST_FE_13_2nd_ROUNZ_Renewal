@@ -1,8 +1,7 @@
-import { renderMoblieSubFooter } from "../../js/modules/footer.js";
+import { renderFooter } from "../../js/modules/footer.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 모바일/서브 푸터 렌더링
-  renderMoblieSubFooter(false);
+  renderFooter(false);
 
   const selectAllCheckbox = document.getElementById("selectAll");
   const cartItemsSection = document.querySelector(".cart-items");
@@ -417,8 +416,12 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // 슬라이더 좌우 이동 버튼
-  const prevBtn = document.querySelector(".recommendations .slider-btn[aria-label='이전']");
-  const nextBtn = document.querySelector(".recommendations .slider-btn[aria-label='다음']");
+  const prevBtn = document.querySelector(
+    ".recommendations .slider-btn[aria-label='이전']",
+  );
+  const nextBtn = document.querySelector(
+    ".recommendations .slider-btn[aria-label='다음']",
+  );
 
   if (prevBtn && nextBtn) {
     prevBtn.addEventListener("click", () => {

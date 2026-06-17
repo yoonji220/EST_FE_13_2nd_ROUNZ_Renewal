@@ -1,4 +1,4 @@
-import { renderMoblieSubFooter } from "../../js/modules/footer.js";
+import { renderFooter } from "../../js/modules/footer.js";
 
 (function () {
   const { escapeHtml, formatWon, renderList, setExclusiveActive } =
@@ -7,12 +7,12 @@ import { renderMoblieSubFooter } from "../../js/modules/footer.js";
   /* =========================
      상수 및 상태
   ========================= */
-  const ITEMS_PER_PAGE = 4;   // 한 번에 보여줄 상품 수
-  const MAX_ITEMS = 16;       // 최대 표시 가능 상품 수
+  const ITEMS_PER_PAGE = 8; // 한 번에 보여줄 상품 수
+  const MAX_ITEMS = 16; // 최대 표시 가능 상품 수
 
-  let allProducts = [];        // 전체 상품 목록 (JSON에서 로드)
-  let filteredProducts = [];   // 필터/정렬 후 상품
-  let currentPage = 1;         // 현재 페이지 (더보기 클릭 시 증가)
+  let allProducts = []; // 전체 상품 목록 (JSON에서 로드)
+  let filteredProducts = []; // 필터/정렬 후 상품
+  let currentPage = 1; // 현재 페이지 (더보기 클릭 시 증가)
   let currentCategory = "sunglasses"; // 현재 선택된 카테고리
   let currentSort = "신상품순"; // 현재 정렬 기준
 
@@ -54,7 +54,11 @@ import { renderMoblieSubFooter } from "../../js/modules/footer.js";
       if (currentCategory === "sunglasses") {
         return product.category === "sunglasses";
       } else if (currentCategory === "glasses") {
-        return product.category === "glasses" || product.category === "eyeglasses" || product.category === "";
+        return (
+          product.category === "glasses" ||
+          product.category === "eyeglasses" ||
+          product.category === ""
+        );
       }
       return true;
     });
@@ -76,7 +80,9 @@ import { renderMoblieSubFooter } from "../../js/modules/footer.js";
   function sortProducts() {
     switch (currentSort) {
       case "신상품순":
-        filteredProducts.sort((a, b) => new Date(b.releaseDate) - new Date(a.releaseDate));
+        filteredProducts.sort(
+          (a, b) => new Date(b.releaseDate) - new Date(a.releaseDate),
+        );
         break;
       case "인기순":
         filteredProducts.sort((a, b) => b.likeCount - a.likeCount);
@@ -102,25 +108,31 @@ import { renderMoblieSubFooter } from "../../js/modules/footer.js";
   function renderProducts() {
     if (!productGrid) return;
 
-    const visibleCount = Math.min(currentPage * ITEMS_PER_PAGE, MAX_ITEMS, filteredProducts.length);
+    const visibleCount = Math.min(
+      currentPage * ITEMS_PER_PAGE,
+      MAX_ITEMS,
+      filteredProducts.length,
+    );
     const visibleProducts = filteredProducts.slice(0, visibleCount);
 
-    productGrid.innerHTML = visibleProducts.map(product => {
-      // 색상 스와치 생성 (otherColors 기반)
-      const colors = ["black", "gray", "pink"]; // 기본 색상
-      const colorMarkup = colors
-        .map((color, index) => {
-          const isSelected = index === 0;
-          return `<span class="swatch ${escapeHtml(color)}${isSelected ? " selected" : ""}"></span>`;
-        })
-        .join("");
+    productGrid.innerHTML = visibleProducts
+      .map(product => {
+        // 색상 스와치 생성 (otherColors 기반)
+        const colors = ["black", "gray", "pink"]; // 기본 색상
+        const colorMarkup = colors
+          .map((color, index) => {
+            const isSelected = index === 0;
+            return `<span class="swatch ${escapeHtml(color)}${isSelected ? " selected" : ""}"></span>`;
+          })
+          .join("");
 
-      // 할인 가격 표시
-      const priceDisplay = product.price.discountRate > 0
-        ? `<strong>${formatWon(product.price.final)}</strong>`
-        : `<strong>${formatWon(product.price.final)}</strong>`;
+        // 할인 가격 표시
+        const priceDisplay =
+          product.price.discountRate > 0
+            ? `<strong>${formatWon(product.price.final)}</strong>`
+            : `<strong>${formatWon(product.price.final)}</strong>`;
 
-      return `
+        return `
         <article class="filter-product-card">
           <a href="product_detail.html" class="product-image">
             <img src="${escapeHtml(product.images.thumbnail)}" alt="${escapeHtml(product.title)}">
@@ -140,7 +152,8 @@ import { renderMoblieSubFooter } from "../../js/modules/footer.js";
           </div>
         </article>
       `;
-    }).join("");
+      })
+      .join("");
   }
 
   /* =========================
