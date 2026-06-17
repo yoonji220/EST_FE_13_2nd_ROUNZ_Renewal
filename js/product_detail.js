@@ -316,11 +316,14 @@ function createSizeGuide(data) {
 
   if (!sizeGuideImage) return;
 
-  sizeGuideImage.src = data.images.sizeGuide || "./img/size-guide.webp";
+  const sizeGuideUrl = data.images?.sizeGuide;
+
+  sizeGuideImage.src = sizeGuideUrl || "./img/SIZE.webp";
   sizeGuideImage.alt = `${data.title} 사이즈 가이드`;
 
   sizeGuideImage.onerror = () => {
-    sizeGuideImage.src = "./img/size-guide.webp";
+    sizeGuideImage.onerror = null;
+    sizeGuideImage.src = "./img/SIZE.webp";
   };
 }
 
