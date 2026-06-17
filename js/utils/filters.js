@@ -1,4 +1,5 @@
 import { renderFooter } from "../../js/modules/footer.js";
+import { renderHeader } from "../../js/modules/header.js";
 
 (function () {
   const { escapeHtml, formatWon, renderList, setExclusiveActive } =
@@ -176,9 +177,27 @@ import { renderFooter } from "../../js/modules/footer.js";
      이벤트 바인딩
   ========================= */
   function bindEvents() {
-    // 모바일 뷰 하단 푸터 렌더링
+    // 헤더, 하단 푸터 렌더링 및 모바일 반응형 처리
     document.addEventListener("DOMContentLoaded", () => {
-      renderMoblieSubFooter(false);
+      // 헤더 렌더링
+      renderHeader();
+
+      // 초기 너비에 따라 렌더링
+      renderFooter(window.innerWidth < 1200);
+
+      // 리사이즈 시 클래스 동적 변경
+      window.addEventListener("resize", () => {
+        const footerContainer = document.querySelector(".footer .container");
+        if (footerContainer) {
+          if (window.innerWidth < 1200) {
+            footerContainer.classList.remove("footer-main");
+            footerContainer.classList.add("footer-simple");
+          } else {
+            footerContainer.classList.remove("footer-simple");
+            footerContainer.classList.add("footer-main");
+          }
+        }
+      });
     });
 
     // 종류 필터 버튼 클릭

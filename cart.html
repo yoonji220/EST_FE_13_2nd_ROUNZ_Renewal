@@ -21,23 +21,13 @@
 
   <div class="cart-page">
     <!-- 상단 고정 헤더 (메뉴, 로고, 마이페이지 아이콘 영역) -->
-    <header class="header cart-topbar">
-      <div class="container" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-        <button class="menu-btn material-symbols-outlined">menu</button>
-        <h1 class="logo">ROUNZ</h1>
-        <nav class="icon-menu">
-          <a href="#" class="material-symbols-outlined">person</a>
-          <a href="#" class="material-symbols-outlined">search</a>
-          <a href="#" class="material-symbols-outlined">shopping_bag</a>
-        </nav>
-      </div>
-    </header>
+    <header class="header"></header>
 
     <!-- 본문 내용 (장바구니 리스트, 추천상품, 결제금액 요약 영역) -->
     <main>
 
       <!-- 페이지 이동 경로 (Breadcrumb) 표시 영역 -->
-      <nav class="cart-breadcrumb" aria-label="Breadcrumb">
+      <nav class="cart-breadcrumb typo-m-body-s" aria-label="Breadcrumb">
         <div class="container" style="display: flex; gap: 8px;">
           <a href="index.html">HOME</a>
           <span>&gt;</span>
@@ -54,12 +44,12 @@
             <section class="cart-title-section" aria-labelledby="cart-title">
 
               <div>
-                <h2 id="cart-title">
+                <h1 id="cart-title" class="typo-m-btn-l">
                   장바구니 <span id="cart-count">(0)</span>
-                </h2>
+                </h1>
               </div>
 
-              <label class="checkbox-label" aria-label="전체상품 선택">
+              <label class="checkbox-label typo-m-body-s">
                 <input type="checkbox" id="selectAll">
                 <span class="checkmark"></span>
                 <span>전체선택</span>
@@ -74,9 +64,9 @@
             <section class="recommendations" aria-labelledby="recommendation-title">
 
               <div class="section-header" style="display: flex; justify-content: space-between; align-items: center;">
-                <h3 class="section-title" id="recommendation-title">
-                  추천 상품
-                </h3>
+                <h2 class="section-title typo-m-header-l" id="recommendation-title">
+                  함께 보면 좋을 상품
+                </h2>
                 <div class="slider-nav">
                   <button type="button" class="slider-btn" aria-label="이전"><span
                       class="material-symbols-outlined">chevron_left</span></button>
@@ -95,54 +85,57 @@
             <!-- 총 상품 금액, 배송비, 총 합계를 보여주는 주문 요약 영역 -->
             <section class="order-summary" aria-labelledby="summary-title">
 
-              <h3 class="section-title" id="summary-title">
+              <h3 class="section-title typo-m-header-l" id="summary-title">
                 주문 요약
               </h3>
 
-              <div class="summary-row">
+              <div class="summary-row typo-m-body-s">
                 <span id="subtotal-label">소계 (0 개)</span>
-                <strong id="total-product-price">0원</strong>
+                <strong id="total-product-price" class="typo-m-price">0원</strong>
               </div>
 
-              <div class="summary-row">
+              <div class="summary-row typo-m-body-s">
                 <span>배송비</span>
-                <strong id="shipping-price">무료</strong>
+                <strong id="shipping-price" class="typo-m-price">무료</strong>
               </div>
 
-              <div class="summary-row">
+              <div class="summary-row typo-m-body-s">
                 <span>세금</span>
-                <strong id="tax-price">0 원</strong>
+                <strong id="tax-price" class="typo-m-price">0 원</strong>
               </div>
 
               <div class="summary-divider"></div>
 
-              <div class="summary-row total">
+              <div class="summary-row total typo-m-header">
                 <span>총합계</span>
-                <strong id="total-price" class="text-blue">0 원</strong>
+                <strong id="total-price" class="text-blue typo-m-price-l">0 원</strong>
               </div>
 
               <!-- 화면 하단에 항상 고정되는 '결제' 버튼 영역 (PC에서는 우측 하단 고정) -->
               <div class="sticky-footer-btn">
-                <button class="order-btn btn-blue" type="button">
-                  <span>결제 진행하기</span>
-                  <span class="material-symbols-outlined" style="font-size: 18px;">arrow_forward</span>
+                <button class="order-btn typo-m-btn-l" type="button">
+                  <span class="m-only-text">주문하기</span>
+                  <span class="pc-only-text" style="align-items:center; gap:4px;">결제 진행하기</span>
+                  <span class="order-divider"></span>
+                  <span id="footer-total">0원</span>
+                  <span class="material-symbols-outlined pc-only-text" style="font-size: 18px;">arrow_forward</span>
                 </button>
               </div>
 
-              <div class="secure-checkout-text">
+              <div class="secure-checkout-text typo-m-caption">
                 안전 결제 시스템, 30일 이내 반품 가능
               </div>
 
               <div class="shipping-notice-box">
                 <span class="material-symbols-outlined notice-icon">info</span>
-                <p>무료배송은 5만원부터<br>가능합니다. 주문 내역을<br>확인해주세요!</p>
+                <p class="typo-m-caption">무료배송은 5만원부터가능합니다. <br>주문 내역을 확인해주세요!</p>
               </div>
 
             </section>
 
           </div> <!-- end cart-right -->
         </div> <!-- end cart-layout -->
-      </div> <!-- end container -->
+      </div>
 
     </main>
 
