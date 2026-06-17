@@ -8,7 +8,7 @@ export function renderHeader() {
 
         <h1 class="logo"><a href="#">rounz</a></h1>
 
-        <nav class="global-nav visually-hidden">
+        <nav class="global-nav hide-menu">
           <div class="nav-top d-flex justify-content-between align-items-center mobile-only">
             <button type="button" class="btn-hamburger mobile-only" aria-label="메뉴 닫기">
               <span class="typo-m-icons-xl-o">close</span>
@@ -54,7 +54,7 @@ export function renderHeader() {
             </div>
 
             <div class="sub-menu-panel">
-              <div class="sub-menu-list d-flex flex-column g-3 visually-hidden" data-submenu="sunglasses">
+              <div class="sub-menu-list d-flex flex-column g-3 hide-menu" data-submenu="sunglasses">
                 <div class="sub-menu">
                   <a class="d-flex justify-content-between align-items-center" href="#">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
@@ -63,7 +63,7 @@ export function renderHeader() {
                     <p>모양</p>
                     <span class="typo-m-icons-m-o">chevron_right</span>
                   </div>
-                  <div class="sub-menu-item shape-scroll-container visually-hidden">
+                  <div class="sub-menu-item shape-scroll-container hide-menu">
                     <div class="shape-item">
                       <img src="#" alt="라운드 선글라스" />
                       <a href="#">라운드</a>
@@ -103,7 +103,7 @@ export function renderHeader() {
                     <p>브랜드</p>
                     <span class="typo-m-icons-m-o">chevron_right</span>
                   </div>
-                  <div class="sub-menu-item grid visually-hidden">
+                  <div class="sub-menu-item grid hide-menu">
                     <div><a href="#">Ray-Ban</a></div>
                     <div><a href="#">OAKLEY</a></div>
                     <div><a href="#">LE <br/>SPECS</a></div>
@@ -120,7 +120,7 @@ export function renderHeader() {
                 </a>
               </div>
 
-              <div class="sub-menu-list d-flex flex-column g-3 visually-hidden" data-submenu="glasses">
+              <div class="sub-menu-list d-flex flex-column g-3 hide-menu" data-submenu="glasses">
                 <div class="sub-menu">
                   <a class="d-flex justify-content-between align-items-center" href="#">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
@@ -129,7 +129,7 @@ export function renderHeader() {
                     <p>모양</p>
                     <span class="typo-m-icons-m-o">chevron_right</span>
                   </div>
-                  <div class="sub-menu-item shape-scroll-container visually-hidden">
+                  <div class="sub-menu-item shape-scroll-container hide-menu">
                     <div class="shape-item">
                       <img src="img/filters_img/peuleim/1.round.png" alt="라운드 안경테" />
                       <a href="#">라운드</a>
@@ -165,7 +165,7 @@ export function renderHeader() {
                     <p>브랜드</p>
                     <span class="typo-m-icons-m-o">chevron_right</span>
                   </div>
-                  <div class="sub-menu-item grid visually-hidden">
+                  <div class="sub-menu-item grid hide-menu">
                     <div><a href="#">TART <br/> OPTICAL</a></div>
                     <div><a href="#">STEPHANE <br /> CHRISTIAN</a></div>
                     <div><a href="#">Ray-Ban</a></div>
@@ -182,7 +182,7 @@ export function renderHeader() {
                 </a>
               </div>
 
-              <div class="sub-menu-list d-flex flex-column g-3 visually-hidden" data-submenu="best">
+              <div class="sub-menu-list d-flex flex-column g-3 hide-menu" data-submenu="best">
                 <div class="sub-menu">
                   <a  class="d-flex justify-content-between align-items-center" href="#">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
@@ -228,7 +228,7 @@ function bindHeaderEvents(target){
 
   if (btnOpen) {
     btnOpen.addEventListener('click', () => {
-      globalNav.classList.remove('visually-hidden');
+      globalNav.classList.remove('hide-menu');
       globalNav.classList.add('open');
       body.classList.add('body-no-scroll');
     });
@@ -237,7 +237,7 @@ function bindHeaderEvents(target){
 
   if (btnClose) {
     btnClose.addEventListener('click', () => {
-      globalNav.classList.add('visually-hidden');
+      globalNav.classList.add('hide-menu');
       globalNav.classList.remove('open');
       body.classList.remove('body-no-scroll');
     });
@@ -269,13 +269,13 @@ function bindHeaderEvents(target){
         button.closest('.main-menu-item').classList.add('active');
 
         // --- [서브 메뉴 화면 처리] ---
-        // 모든 서브 메뉴를 먼저 숨김 (visually-hidden 추가)
-        subMenuLists.forEach(subList => subList.classList.add('visually-hidden'));
+        // 모든 서브 메뉴를 먼저 숨김 (hide-menu 추가)
+        subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
         
-        // 클릭한 버튼과 똑같은 값을 가진 서브 메뉴만 찾아서 보여주기 (visually-hidden 제거)
+        // 클릭한 버튼과 똑같은 값을 가진 서브 메뉴만 찾아서 보여주기 (hide-menu 제거)
         const targetSubMenu = target.querySelector(`.sub-menu-list[data-submenu="${targetMenu}"]`);
         if (targetSubMenu) {
-          targetSubMenu.classList.remove('visually-hidden');
+          targetSubMenu.classList.remove('hide-menu');
         }
       }
 
@@ -290,35 +290,35 @@ function bindHeaderEvents(target){
     });
   });
   
-  accordionHeaders.forEach(header => {
-    header.addEventListener('click', function(e) {
-      
-      // 💡 [핵심 분기 처리] PC 화면일 때는 아코디언 동작을 막습니다.
-     if (isPc.matches) {
-        // PC에서 마우스를 올렸을 때의 동작 (예: 드롭다운 열기)
-      }
-
-      // --- 여기서부터는 모바일일 때만 실행되는 아코디언 로직 ---
-      if (e.target.closest('a')) return;
-
-      // 자바스크립트가 클릭한 요소 바로 밑에 있는 동생 태그(내용물)를 자동으로 찾습니다.
-      const content = header.nextElementSibling;
-
-      // 바로 밑에 실제 숨겨진 컨텐츠(.sub-menu-item)가 존재할 경우에만 실행
-      if (content && content.classList.contains('sub-menu-item')) {
-        // visually-hidden 클래스를 토글하여 화면에 보였다가 숨겼다가를 제어합니다.
-        content.classList.toggle('visually-hidden');
-
-        // (디테일 추가) 우측 화살표 아이콘 방향 변경
-        const icon = header.querySelector('.typo-m-icons-m-o');
-        if (icon) {
-          // 메뉴가 열렸으면 아래 화살표(expand_more), 닫혔으면 오른쪽 화살표(chevron_right)로 변경
-          const isHidden = content.classList.contains('visually-hidden');
-          icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
+    accordionHeaders.forEach(header => {
+      header.addEventListener('click', function(e) {
+        
+        // 💡 [핵심 분기 처리] PC 화면일 때는 아코디언 동작을 막습니다.
+      if (isPc.matches) {
+          // PC에서 마우스를 올렸을 때의 동작 (예: 드롭다운 열기)
         }
-      }
+
+        // --- 여기서부터는 모바일일 때만 실행되는 아코디언 로직 ---
+        if (e.target.closest('a')) return;
+
+        // 자바스크립트가 클릭한 요소 바로 밑에 있는 동생 태그(내용물)를 자동으로 찾습니다.
+        const content = header.nextElementSibling;
+
+        // 바로 밑에 실제 숨겨진 컨텐츠(.sub-menu-item)가 존재할 경우에만 실행
+        if (content && content.classList.contains('sub-menu-item')) {
+          // hide-menu 클래스를 토글하여 화면에 보였다가 숨겼다가를 제어합니다.
+          content.classList.toggle('hide-menu');
+
+          // (디테일 추가) 우측 화살표 아이콘 방향 변경
+          const icon = header.querySelector('.typo-m-icons-m-o');
+          if (icon) {
+            // 메뉴가 열렸으면 아래 화살표(expand_more), 닫혔으면 오른쪽 화살표(chevron_right)로 변경
+            const isHidden = content.classList.contains('hide-menu');
+            icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
+          }
+        }
+      });
     });
-  });
     
 
 }
