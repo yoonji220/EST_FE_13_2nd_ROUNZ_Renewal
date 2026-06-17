@@ -264,7 +264,7 @@ function createBrandContent(data, brandData) {
   const brand = brandData[data.brand];
 
   if (brandImage) {
-    brandImage.src = data.images.brand || "./img/rayban-brand.webp";
+    brandImage.src = brand?.image || "./img/brands_img/RAYBAN.webp";
     brandImage.alt = `${data.brand} 브랜드 이미지`;
 
     brandImage.onerror = () => {
