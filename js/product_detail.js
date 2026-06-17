@@ -75,7 +75,7 @@ export async function fetchProduct() {
 
   if (!productId) {
     alert("잘못된 접근입니다. 상품 목록으로 이동합니다.");
-    location.href = "./product-list.html";
+    location.href = "./filters.html";
     return;
   }
 
@@ -89,6 +89,10 @@ export async function fetchProduct() {
 
     const productData = await productRes.json();
     const brandData = await brandRes.json();
+
+    if (!productData.products || productData.products.length === 0) {
+      throw new Error("상품 데이터가 비어 있습니다.");
+    }
 
     product = productData.products.find(p => p.id === Number(productId));
 
@@ -147,9 +151,28 @@ function createGallery(data) {
   const prevBtn = document.querySelector(".carousel-prev");
   const nextBtn = document.querySelector(".carousel-next");
 
-  const gallery = data.images.gallery?.length
-    ? data.images.gallery.slice(0, 4)
-    : [data.images.thumbnail];
+  const gallery =
+    data.images.gallery?.length > 0
+      ? data.images.gallery.slice(0, 4)
+      : data.images.thumbnail
+        ? [data.images.thumbnail]
+        : [];
+
+  if (gallery.length === 0) {
+    if (mainImage) {
+      mainImage.alt = "상품 이미지를 준비 중입니다.";
+    }
+
+    if (thumbList) {
+      thumbList.innerHTML = `
+      <li class="product-thumb-item product-thumb-placeholder">
+        <span class="typo-m-caption">이미지 준비중</span>
+      </li>
+    `;
+    }
+
+    return;
+  }
 
   const thumbnailList = [...gallery];
 
@@ -162,7 +185,9 @@ function createGallery(data) {
     mainImage.alt = data.title;
 
     mainImage.onerror = () => {
+      mainImage.onerror = null;
       mainImage.src = data.images.thumbnail;
+      mainImage.alt = "상품 이미지를 준비 중입니다.";
     };
   }
 
@@ -574,13 +599,22 @@ function renderQnaItems(qna) {
 }
 
 function createRecommendLists(all, category, id) {
+  const recommendGrid = document.querySelector(".recommend-products-list");
+
+  if (!recommendGrid) return;
+
   const recommendList = all
     .filter(p => p.category === category && p.id !== id)
     .slice(0, 4);
 
-  const recommendGrid = document.querySelector(".recommend-products-list");
-
-  if (!recommendGrid) return;
+  if (recommendList.length === 0) {
+    recommendGrid.innerHTML = `
+      <li class="empty-message typo-m-body-s">
+        추천 상품이 없습니다.
+      </li>
+    `;
+    return;
+  }
 
   const productHTML = recommendList
     .map(
