@@ -251,7 +251,7 @@ function createGallery(data) {
   if (productImageSwiper) {
     productImageSwiper.destroy(true, true);
   }
-  
+
   productImageSwiper = new Swiper(".product-image-swiper", {
     direction: "horizontal",
     loop: true,
@@ -609,7 +609,7 @@ function createRecommendLists(all, category, id) {
 
   const recommendList = all
     .filter(p => p.category === category && p.id !== id)
-    .slice(0, 4);
+    .slice(0, 8);
 
   if (recommendList.length === 0) {
     recommendGrid.innerHTML = `
