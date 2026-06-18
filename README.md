@@ -38,6 +38,12 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 | 프로젝트명    | ROUNZ 웹페이지 반응형 리뉴얼 프로젝트 |
 | 프로젝트 기간 | 2026.05.29 ~ 2026.06.19               |
 | 팀명          | Cookie & Session                      |
+| 항목          | 내용                                  |
+| ------------- | ------------------------------------- |
+| 과정명        | 오르미 프론트엔드 13기                |
+| 프로젝트명    | ROUNZ 웹페이지 반응형 리뉴얼 프로젝트 |
+| 프로젝트 기간 | 2026.05.29 ~ 2026.06.19               |
+| 팀명          | Cookie & Session                      |
 
 ---
 
@@ -49,9 +55,17 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 - PC · Tablet · Mobile 환경 대응
 - 디바이스별 최적화된 레이아웃 제공
 - 반응형 상품 그리드 구현
+- Mobile First 방식 적용
+- PC · Tablet · Mobile 환경 대응
+- 디바이스별 최적화된 레이아웃 제공
+- 반응형 상품 그리드 구현
 
 ### AI 서비스 경험 강화
 
+- AI 가상 피팅 노출 강화
+- 얼굴형 추천 서비스 강조
+- 비디오 기반 Hero Banner 적용
+- 서비스 핵심 가치 전달 강화
 - AI 가상 피팅 노출 강화
 - 얼굴형 추천 서비스 강조
 - 비디오 기반 Hero Banner 적용
@@ -63,9 +77,18 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 - 탐색 → 비교 → 구매 흐름 개선
 - 장바구니 및 구매 동선 개선
 - 로그인 및 회원가입 접근성 향상
+- 복잡한 콘텐츠 구조 단순화
+- 탐색 → 비교 → 구매 흐름 개선
+- 장바구니 및 구매 동선 개선
+- 로그인 및 회원가입 접근성 향상
 
 ### 웹 품질 개선
 
+- WebP 이미지 적용
+- Lazy Loading 적용
+- Skeleton UI 적용
+- 웹 접근성 개선
+- 웹 표준 준수
 - WebP 이미지 적용
 - Lazy Loading 적용
 - Skeleton UI 적용
@@ -79,9 +102,14 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 ### Design
 
 - Figma
+- Figma
 
 ### Frontend
 
+- HTML5
+- CSS3
+- Vanilla JavaScript (ES6+)
+- Swiper.js
 - HTML5
 - CSS3
 - Vanilla JavaScript (ES6+)
@@ -91,9 +119,13 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 
 - JSON
 - Fetch API
+- JSON
+- Fetch API
 
 ### Collaboration
 
+- GitHub
+- GitHub Pull Request
 - GitHub
 - GitHub Pull Request
 
@@ -101,13 +133,13 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 
 # 👥 팀 구성 및 역할
 
-| 이름   | 역할 | 세부 담당                                                | GitHub    | Email                                                   |
-| ------ | ---- | -------------------------------------------------------- | --------- | ------------------------------------------------------- |
-| 최윤지 | 팀장 | 기획 · 디자인 · 상품 상세 페이지                         | yoonji220 | [choiyj220220@gmail.com](mailto:choiyj220220@gmail.com) |
-| 김정우 | 팀원 | 기획 · 디자인 · 회원가입 · Git 관리 · 공통 Header/Footer | GitHub ID | Email                                                   |
-| 권유진 | 팀원 | 기획 · 디자인 · 메인 페이지 · 회의록 작성                | GitHub ID | Email                                                   |
-| 남윤동 | 팀원 | 기획 · 디자인 · 장바구니 · 필터 · 로그인 페이지          | GitHub ID | Email                                                   |
-| 이민호 | 팀원 | 기획 · 디자인 · 매장 찾기 페이지                         | GitHub ID | [minho0391] (minh05@navercom)                           |
+| 이름   | 역할 | 세부 담당                                                | GitHub        | Email                                                   |
+| ------ | ---- | -------------------------------------------------------- | ------------- | ------------------------------------------------------- |
+| 최윤지 | 팀장 | 기획 · 디자인 · 상품 상세 페이지                         | yoonji220     | [choiyj220220@gmail.com](mailto:choiyj220220@gmail.com) |
+| 김정우 | 팀원 | 기획 · 디자인 · 회원가입 · Git 관리 · 공통 Header/Footer | GitHub ID     | Email                                                   |
+| 권유진 | 팀원 | 기획 · 디자인 · 메인 페이지 · 회의록 작성                | GitHub ID     | Email                                                   |
+| 남윤동 | 팀원 | 기획 · 디자인 · 장바구니 · 필터 · 로그인 페이지          | dbsehd125-bot | [dbsehd125@gmail.com] Email                             |
+| 이민호 | 팀원 | 기획 · 디자인 · 매장 찾기 페이지                         | GitHub ID     | [minho0391] (minh05@navercom)                           |
 
 ---
 
@@ -120,9 +152,18 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 - 브랜드 추천
 - 이벤트 및 프로모션
 - 비디오 제어 기능
+- Hero Video Banner
+- AI 가상 피팅 소개
+- 브랜드 추천
+- 이벤트 및 프로모션
+- 비디오 제어 기능
 
 ### 상품 목록 페이지
 
+- 상품 비동기 렌더링
+- 상품 필터
+- 상품 정렬
+- 더보기 기능
 - 상품 비동기 렌더링
 - 상품 필터
 - 상품 정렬
@@ -136,9 +177,19 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 - 브랜드 소개
 - 상품 상세 정보
 - 추천 상품
+- URL Parameter 기반 비동기 렌더링
+- 브레드크럼
+- AI 가상 피팅 섹션
+- 브랜드 소개
+- 상품 상세 정보
+- 추천 상품
 
 ### 장바구니 페이지
 
+- 상품 수량 변경
+- 총 금액 계산
+- 추천 상품 노출
+- 구매 바텀시트
 - 상품 수량 변경
 - 총 금액 계산
 - 추천 상품 노출
@@ -149,9 +200,14 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 - 로그인
 - 회원가입
 - 입력값 유효성 검사
+- 로그인
+- 회원가입
+- 입력값 유효성 검사
 
 ### 매장 찾기 페이지
 
+- 매장 정보 조회
+- 지도 기반 위치 확인
 - 매장 정보 조회
 - 지도 기반 위치 확인
 
@@ -159,6 +215,18 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 
 # ✨ 주요 구현 내용
 
+- Mobile First 반응형 웹 구현
+- JSON 데이터 기반 비동기 렌더링
+- 상품 필터 및 정렬 기능
+- 상품 더보기 기능
+- 상품 상세 페이지 동적 렌더링
+- 구매 바텀시트 구현
+- Hero Video 제어 기능
+- Toast UI 구현
+- Skeleton UI 구현
+- Breadcrumb Navigation 구현
+- WebP 이미지 최적화
+- 접근성 개선
 - Mobile First 반응형 웹 구현
 - JSON 데이터 기반 비동기 렌더링
 - 상품 필터 및 정렬 기능
@@ -236,6 +304,10 @@ EST_FE_13_2nd_ROUNZ_Renewal - Cookie & Session
 | ------- | ------------------------------- |
 | Mobile  | 480px 이하                      |
 | Tablet  | 481px ~ 768px                   |
+| Device  | Breakpoint                      |
+| ------- | ------------------------------- |
+| Mobile  | 480px 이하                      |
+| Tablet  | 481px ~ 768px                   |
 | Desktop | 769px 이상 (1440px 기준 디자인) |
 
 ---
@@ -300,9 +372,18 @@ gantt
 - 필수 기능 범위 정의 (비동기 데이터 렌더링, 예외 처리)
 - GitHub Repository 생성 및 협업 환경 세팅
 - 프로젝트 폴더 구조 설계 (`/css`, `/js`, `/data` 등)
+- ROUNZ 기존 메인페이지 구조 분석 (레이아웃 · UI/UX)
+- Figma 와이어프레임 제작
+- 필수 기능 범위 정의 (비동기 데이터 렌더링, 예외 처리)
+- GitHub Repository 생성 및 협업 환경 세팅
+- 프로젝트 폴더 구조 설계 (`/css`, `/js`, `/data` 등)
 
 ### 2일차 - 공통 구조 구축
 
+- HTML 시맨틱 구조 작성 (`header`, `nav`, `main`, `footer`)
+- 공통 Header · Footer 마크업 및 스타일 구현
+- 공통 스타일 가이드 및 CSS 변수 정의
+- Reset CSS 및 Normalize CSS 적용
 - HTML 시맨틱 구조 작성 (`header`, `nav`, `main`, `footer`)
 - 공통 Header · Footer 마크업 및 스타일 구현
 - 공통 스타일 가이드 및 CSS 변수 정의
@@ -314,9 +395,17 @@ gantt
 - 반응형 레이아웃 및 상품 그리드 구현
 - JavaScript 기반 비동기 데이터 렌더링 구현
 - 데이터 로딩 실패 시 예외 처리 로직 적용
+- Hero Banner, 추천 상품, 이벤트 영역 마크업
+- 반응형 레이아웃 및 상품 그리드 구현
+- JavaScript 기반 비동기 데이터 렌더링 구현
+- 데이터 로딩 실패 시 예외 처리 로직 적용
 
 ### 4일차 - 서브 페이지 및 기능 구현
 
+- 팀원별 담당 페이지 HTML/CSS 구현
+- 상품 필터링 및 정렬 기능 구현
+- 네트워크 오류 및 빈 데이터 예외 처리 고도화
+- GitHub Pull Request 기반 코드 리뷰 및 병합 진행
 - 팀원별 담당 페이지 HTML/CSS 구현
 - 상품 필터링 및 정렬 기능 구현
 - 네트워크 오류 및 빈 데이터 예외 처리 고도화
@@ -328,9 +417,17 @@ gantt
 - 모바일 · 태블릿 · 데스크톱 반응형 최종 조정
 - 크로스 브라우저 테스트 진행 (Chrome, Edge, Safari)
 - GitHub Pages 배포 설정 및 배포 완료
+- 메인 페이지와 서브 페이지 통합
+- 모바일 · 태블릿 · 데스크톱 반응형 최종 조정
+- 크로스 브라우저 테스트 진행 (Chrome, Edge, Safari)
+- GitHub Pages 배포 설정 및 배포 완료
 
 ### 6일차 - 최종 점검 및 발표 준비
 
+- 배포 사이트 기능 최종 점검
+- 코드 리팩토링 및 주석 정리
+- 발표 자료 및 시연 영상 제작
+- 팀원별 발표 파트 분배 및 리허설 진행
 - 배포 사이트 기능 최종 점검
 - 코드 리팩토링 및 주석 정리
 - 발표 자료 및 시연 영상 제작
@@ -340,5 +437,7 @@ gantt
 
 # 🚀 개선 예정
 
+- 접근성 추가 개선
+- 성능 최적화
 - 접근성 추가 개선
 - 성능 최적화
