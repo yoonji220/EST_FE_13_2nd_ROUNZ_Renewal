@@ -1430,3 +1430,14 @@ button[class*="wish"].is-wished {
 .header.scrolled .header-icons{
   color: var(--color-black);
 }
+
+@media (min-width: 1200px)  {
+  .header .main-menu-panel{
+    color: var(--color-white);
+  }
+
+    .header.scrolled .main-menu-panel{
+    color: var(--color-black);
+  }
+  
+}
