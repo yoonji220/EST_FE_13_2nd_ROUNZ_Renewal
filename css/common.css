@@ -560,7 +560,7 @@ a {
   z-index: 4;
 }
 
-.hide-menu{
+.hide-menu {
   display: none !important;
 }
 
@@ -574,17 +574,17 @@ a {
 
 .nav-top {
   width: 100%;
-  padding:24px  var(--container-pad-mobile);
+  padding: 24px var(--container-pad-mobile);
   border-bottom: var(--color-gray) 1px solid;
   background-color: var(--color-white);
 }
 
-.cart-link{
+.cart-link {
   position: relative;
   display: inline-block;
 }
 
-.cart-badge{
+.cart-badge {
   position: absolute;
   top: -4px;
   right: -10px;
@@ -594,9 +594,7 @@ a {
   min-width: 20px;
   min-height: 20px;
   border-radius: 50%;
- 
 }
-
 
 /* 모바일 메뉴 오픈 시 배경 스크롤 방지 */
 .body-no-scroll {
@@ -623,8 +621,7 @@ a {
   border-right: var(--color-gray) 1px solid;
 }
 
-
-.main-menu-panel > ul > li > button{
+.main-menu-panel > ul > li > button {
   display: block;
   width: 100%;
   height: 100%;
@@ -632,7 +629,7 @@ a {
   text-align: left;
 }
 
-.main-menu-panel > ul > li > a{
+.main-menu-panel > ul > li > a {
   display: block;
   width: 100%;
   height: 100%;
@@ -648,7 +645,6 @@ a {
   border-left: var(--color-point) 4px solid;
 }
 
-
 /* 서브메뉴 */
 .sub-menu-panel {
   flex: 1;
@@ -663,11 +659,11 @@ a {
   border-bottom: var(--color-gray) 1px solid;
 }
 
-.sub-menu>a{
+.sub-menu > a {
   display: flex;
   width: 100%;
   height: 100%;
-  }
+}
 /* 스크롤을 감싸는 부모 컨테이너 */
 .sub-menu-panel .shape-scroll-container {
   display: flex;
@@ -771,16 +767,16 @@ footer > .container {
   align-items: flex-start;
 }
 
-.footer-wrap{
+.footer-wrap {
   display: flex;
   flex-direction: column;
   gap: calc(var(--base-unit));
 }
-  .footer-foot-wrap{
-    display: flex;
-    flex-direction: column;
-    gap: calc(var(--base-unit));
-  }
+.footer-foot-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--base-unit));
+}
 
 /* 단순 푸터 */
 .footer-simple {
@@ -794,7 +790,7 @@ footer > .container {
   display: none;
 }
 
-.rounz-info{
+.rounz-info {
   display: none;
 }
 .rounz-info.show {
@@ -804,27 +800,27 @@ footer > .container {
 /* 헤더 푸터 반응형 */
 @media (min-width: 1200px) {
   /* 공통 */
-  .mobile-only{
+  .mobile-only {
     display: none !important;
   }
-  .pc-only{
+  .pc-only {
     display: block;
   }
 
-/* 헤더 */
-  .header{
+  /* 헤더 */
+  .header {
     padding: 0 var(--base-unit);
   }
   .main-header {
     position: static;
   }
 
-  .main-header .logo{
+  .main-header .logo {
     position: static;
     left: auto;
     transform: none;
   }
-  .global-nav{
+  .global-nav {
     position: static;
     display: block;
     background-color: transparent;
@@ -835,11 +831,10 @@ footer > .container {
     z-index: 2;
     overflow: visible;
   }
-  .header-hr{
+  .header-hr {
     display: none;
   }
-  
-  
+
   .main-menu-panel {
     background-color: transparent;
     border-right: none;
@@ -847,11 +842,11 @@ footer > .container {
     width: auto;
   }
 
-  .main-menu-panel > ul{
-   display: flex;
+  .main-menu-panel > ul {
+    display: flex;
     flex-direction: row; /* 상단 메뉴를 가로로 나열합니다 [cite: 930] */
     align-items: center;
-    gap: calc(var(--base-unit)*2); /* 메뉴 간격 조정 */
+    gap: calc(var(--base-unit) * 2); /* 메뉴 간격 조정 */
     margin: 24px 16px;
   }
   .main-menu-panel > ul > li > button,
@@ -864,15 +859,15 @@ footer > .container {
     background-color: transparent;
     border-left: none;
   }
-  
+
   /* 4. 서브 메뉴 패널 (메가 메뉴 풀스크린) */
   .menu-wrapper {
-    flex-direction: row; 
+    flex-direction: row;
   }
 
   .sub-menu-panel {
     position: absolute;
-    top: 100%; 
+    top: 100%;
     left: 0;
     width: 100%;
     background-color: var(--color-white);
@@ -882,7 +877,7 @@ footer > .container {
     z-index: 2;
   }
 
- .sub-menu-list {
+  .sub-menu-list {
     display: grid !important;
     grid-template-areas:
       "left right-top"
@@ -891,92 +886,91 @@ footer > .container {
     gap: 20px; /* 요소들 사이의 간격 (원하는 대로 조절) */
   }
 
-  .sub-menu{
+  .sub-menu {
     border: none;
     font-size: var(--m-h1-size);
   }
-  .sub-menu>a{
+  .sub-menu > a {
     justify-content: start !important;
   }
 
-  .sub-menu-all{
+  .sub-menu-all {
     grid-area: left;
     align-self: start;
   }
-  .sub-menu-item{
+  .sub-menu-item {
     display: grid !important;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .shape-item {
     background-color: transparent !important;
   }
 
-  .shape-item > img{
+  .shape-item > img {
     display: none;
   }
-  .shape-item > a:before{
+  .shape-item > a:before {
     content: "#";
     display: inline;
   }
 
-  .sub-menu-panel .sub-menu-grid{
-    grid-template-columns: repeat(2 ,1fr);
+  .sub-menu-panel .sub-menu-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .sub-menu-panel .sub-menu-grid > *{
+  .sub-menu-panel .sub-menu-grid > * {
     border: none;
   }
 
-  .hide-menu{
+  .hide-menu {
     display: none !important;
   }
 
-/* 푸터 */
-  .footer-wrap{
+  /* 푸터 */
+  .footer-wrap {
     display: flex;
     flex-direction: row;
-    gap: calc(var(--base-unit)*12);
+    gap: calc(var(--base-unit) * 12);
   }
 
-
-  .footer-main-content{
+  .footer-main-content {
     display: flex;
-    gap: calc(var(--base-unit)*12);
+    gap: calc(var(--base-unit) * 12);
   }
-  
-  .cs .footer-nav{
+
+  .cs .footer-nav {
     display: flex;
     flex-direction: column;
     gap: calc(var(--base-unit) * 0.5);
   }
 
-  .family-site .footer-nav{
+  .family-site .footer-nav {
     flex-direction: column;
   }
 
-  .cc{
+  .cc {
     display: flex;
   }
-  .cc > *{
+  .cc > * {
     display: block;
   }
-  .footer-foot-wrap{
+  .footer-foot-wrap {
     display: flex;
     flex-direction: column;
     gap: calc(var(--base-unit));
   }
 
-  .rounz-find-info{
+  .rounz-find-info {
     display: none !important;
   }
 
-  .rounz-info{
+  .rounz-info {
     display: flex;
     flex-direction: column;
     gap: calc(var(--base-unit));
   }
-  .rounz-info> ul{
+  .rounz-info > ul {
     display: flex;
     gap: calc(var(--base-unit));
   }
@@ -991,7 +985,4 @@ footer > .container {
   .footer-simple .pc-only {
     display: flex !important; /* 상황에 따라 flex 등으로 조절 가능 */
   }
-
-  
-
 }

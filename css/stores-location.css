@@ -877,6 +877,7 @@ a:focus:not(:focus-visible) {
     min-width: 450px; /* flex 환경에서 줄어들지 않도록 */
     flex-shrink: 0;
     height: calc(100vh - 70px);
+    margin-top: 70px;
     overflow-y: auto;
     border-right: 1px solid var(--color-gray-200, #e5e5e5);
     background-color: var(--color-white, #fff);
@@ -1125,6 +1126,7 @@ a:focus:not(:focus-visible) {
     flex: 1;
     min-width: 0; /* flex-item이 부모를 초과하지 않도록 */
     height: calc(100vh - 70px);
+    margin-top: 70px;
     overflow: hidden;
     background-color: var(--color-gray-100, #f5f5f5);
   }
@@ -1300,7 +1302,7 @@ a:focus:not(:focus-visible) {
     left: 24px;
   }
   .pc-map-controls {
-    top: 24px;
+    top: 32px;
     right: 24px;
   }
 
@@ -1408,5 +1410,130 @@ a:focus:not(:focus-visible) {
     white-space: nowrap;
     cursor: pointer;
     box-sizing: border-box;
+  }
+}
+
+/* 360px 모바일 화면 가로 잘림 방지 보정 */
+@media (max-width: 399px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .container {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+    box-sizing: border-box;
+  }
+
+  .layout-mobile-tablet,
+  .stores-location,
+  .stores-hero__inner,
+  .stores-search__container,
+  .stores-featured,
+  .stores-list__inner,
+  .stores-services__inner,
+  .stores-cta__inner,
+  .stores-ai-banner {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .stores-search__input-wrap,
+  .stores-search__submit-btn,
+  .stores-search__location-btn,
+  .stores-cta__btn {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .stores-search__filters {
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 8px;
+  }
+
+  .stores-search__filters .filter-chip {
+    flex: 0 0 auto;
+    min-width: 0;
+    padding-left: 12px;
+    padding-right: 12px;
+    white-space: nowrap;
+  }
+
+  .stores-featured__actions,
+  .store-card__actions {
+    width: 100%;
+    max-width: 100%;
+    gap: 8px;
+  }
+
+  .stores-featured__actions button,
+  .store-card__btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    white-space: nowrap;
+  }
+
+  .stores-services__grid {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .stores-services__item {
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .map-lightbox__container {
+    width: calc(100vw - 32px);
+    min-width: 0;
+    max-width: calc(100vw - 32px);
+    box-sizing: border-box;
+  }
+
+  .fixed-action-bar {
+    right: 12px;
+    bottom: 20px;
+  }
+
+  .stores-message-card {
+    width: calc(100vw - 32px);
+    max-width: calc(100vw - 32px);
+    left: 16px;
+    right: auto;
+    box-sizing: border-box;
+  }
+}
+
+/* 라이트박스 배경 스크롤 방지 보정 */
+.map-lightbox,
+.map-lightbox__overlay,
+.map-lightbox__container {
+  overscroll-behavior: contain;
+}
+
+.map-lightbox.is-open {
+  overflow: hidden;
+}
+
+.map-lightbox__map {
+  overscroll-behavior: contain;
+}
+
+/* 768 이상에서 검색 결과 없음 카드가 한 칸만 차지하는 문제 보정 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .stores-list__items > .store-card:only-child {
+    grid-column: 1 / -1;
   }
 }
