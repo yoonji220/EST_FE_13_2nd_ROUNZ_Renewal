@@ -312,7 +312,7 @@ function createBrandContent(data, brandData) {
 // 상세 이미지 렌더링
 function createDetailImages(data) {
   const detailImages = document.querySelectorAll(".detail-image");
-  const imageUrls = data.images.detailImages || [];
+  const imageUrls = data.images.gallery || [];
 
   detailImages.forEach((image, index) => {
     const imageUrl = imageUrls[index];
