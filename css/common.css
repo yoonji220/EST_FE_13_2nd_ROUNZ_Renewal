@@ -586,14 +586,17 @@ a {
 
 .cart-badge{
   position: absolute;
-  top: -4px;
+  top: -5px;
   right: -10px;
 
   background-color: var(--color-point);
   color: var(--color-white);
-  min-width: 20px;
-  min-height: 20px;
+  min-width: 25px;
+  min-height: 25px;
   border-radius: 50%;
+
+  display: grid;
+  place-items: center;
  
 }
 
