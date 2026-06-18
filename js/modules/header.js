@@ -3,10 +3,10 @@ export function renderHeader() {
   target.innerHTML = `
     <div class="main-header container d-flex justify-content-between align-items-center">
         <button type="button" class="btn-hamburger mobile-only" aria-label="메뉴 열기">
-          <span class="typo-m-icons-xl-o">menu</span>
+          <span class="header-icons typo-m-icons-xl-o">menu</span>
         </button>
 
-        <h1 class="logo typo-m-h1"><a href="#">rounz</a></h1>
+        <h1 class="logo typo-m-h1"><a href="index.html">rounz</a></h1>
 
         <nav class="global-nav hide-menu">
           <div class="nav-top d-flex justify-content-between align-items-center mobile-only">
@@ -56,7 +56,7 @@ export function renderHeader() {
             <div class="sub-menu-panel">
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="sunglasses">
                 <div class="sub-menu sub-menu-all">
-                  <a class="d-flex justify-content-between align-items-center" href="#">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a class="d-flex justify-content-between align-items-center" href="filters.html?category=sunglasses">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
@@ -112,7 +112,7 @@ export function renderHeader() {
                     <div><a href="#">더보기</a></div>
                   </div>
                 </div>
-                <a href="#" class="link-container mobile-only" aria-label="신상품로 이동">
+                <a href="filters.html?category=sunglasses" class="link-container mobile-only" aria-label="신상품로 이동">
                   <div class="text-box typo-m-body " id="sunglasses-text-box">
                     <p>new arrivals</p>
                     <p>2026 선글라스 컬렉션</p>
@@ -122,7 +122,7 @@ export function renderHeader() {
 
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="glasses">
                 <div class="sub-menu sub-menu-all">
-                  <a class="d-flex justify-content-between align-items-center" href="#">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a class="d-flex justify-content-between align-items-center" href="filters.html?category=glasses">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
@@ -175,7 +175,7 @@ export function renderHeader() {
                     <div><a href="#">더보기</a></div>
                   </div>
                 </div>
-                <a href="#" class="link-container mobile-only" aria-label="신상품로 이동">
+                <a href="filters.html" class="link-container mobile-only" aria-label="신상품로 이동">
                   <div class="text-box typo-m-body" id="frame-text-box">
                     <p>new arrivals</p>
                     <p>2026 아이웨어 컬렉션</p>
@@ -185,18 +185,18 @@ export function renderHeader() {
 
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="best">
                 <div class="sub-menu">
-                  <a  class="d-flex justify-content-between align-items-center" href="#">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a  class="d-flex justify-content-between align-items-center" href="filters.html?category=glasses">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <h2>인기 키워드</h2>
                   <hr class="mobile-only" />
                   <ul class="sub-menu-grid typo-m-body">
-                    <li><a href="#">#티타늄 안경테</a></li>
-                    <li><a href="#">#동글이 안경테</a></li>
-                    <li><a href="#">#뿔테 안경테</a></li>
-                    <li><a href="#">#스포츠 고글</a></li>
-                    <li><a href="#">#투브릿지 안경테</a></li>
-                    <li><a href="#">#뿔테 선글라스</a></li>
+                    <li><a href="filters.html?category=glasses">#티타늄 안경테</a></li>
+                    <li><a href="filters.html?category=glasses">#동글이 안경테</a></li>
+                    <li><a href="filters.html?category=glasses">#뿔테 안경테</a></li>
+                    <li><a href="filters.html?category=sunglasses">#스포츠 고글</a></li>
+                    <li><a href="filters.html?category=glasses">#투브릿지 안경테</a></li>
+                    <li><a href="filters.html?category=sunglasses">#뿔테 선글라스</a></li>
                   </ul>
                 </div>
               </div>
@@ -206,14 +206,14 @@ export function renderHeader() {
 
         <ul class="d-flex g-1 shortcut-menu">
           <li aria-label="회원 로그인">
-            <a href="#"><span class="typo-m-icons-xl-o">person</span></a>
+            <a href="login.html"><span class="header-icons typo-m-icons-xl-o">person</span></a>
           </li>
           <li aria-label="제품 검색">
-            <a href="#"><span class="typo-m-icons-xl-o">search</span></a>
+            <a href="filters.html"><span class="header-icons typo-m-icons-xl-o">search</span></a>
           </li>
           <li aria-label="장바구니">
-            <a class="cart-link" href="#">
-            <span class="typo-m-icons-xl-o">shopping_bag</span>
+            <a class="cart-link" href="cart.html">
+            <span class="header-icons typo-m-icons-xl-o">shopping_bag</span>
             <span class="cart-badge typo-m-btn-s text-center">22</span>
             </a>
           </li>
@@ -223,12 +223,14 @@ export function renderHeader() {
 
   bindHeaderEvents(target);
 
+  updateCartBadge(target);
+
   adjustSubPagePadding();
 
   window.addEventListener('resize', adjustSubPagePadding);
 }
 
- function bindHeaderEvents(target){
+ export function bindHeaderEvents(target){
   const btnOpen = target.querySelector('.btn-hamburger[aria-label="메뉴 열기"]');
   const btnClose = target.querySelector('.btn-hamburger[aria-label="메뉴 닫기"]');
   const globalNav = target.querySelector('.global-nav');
@@ -389,5 +391,33 @@ function adjustSubPagePadding() {
     
     // 서브 페이지의 padding-top을 헤더 높이와 똑같이 맞춰줍니다.
     subPage.style.paddingTop = `${headerHeight}px`;
+  }
+}
+
+
+// 뱃지 수량을 업데이트하는 함수 (외부에서도 호출할 수 있게 export)
+export function updateCartBadge(target = document) {
+  const badge = target.querySelector('.cart-badge');
+  if (!badge) return;
+
+  try {
+    const savedItems = localStorage.getItem("cart");
+    let itemCount = 0; // 상품 종류의 개수
+
+    if (savedItems) {
+      const parsedItems = JSON.parse(savedItems);
+      
+      // 배열 형태인지 확인 후 개수(length) 측정
+      if (Array.isArray(parsedItems)) {
+        itemCount = parsedItems.length; 
+      }
+    }
+
+    // 100개 이상이면 99+로 표시, 아니면 실제 개수 표시
+    badge.textContent = itemCount >= 100 ? "99+" : itemCount;
+    
+  } catch (error) {
+    console.error("장바구니 뱃지 업데이트 실패:", error);
+    badge.textContent = "0";
   }
 }

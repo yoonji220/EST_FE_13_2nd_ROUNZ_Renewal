@@ -1,5 +1,5 @@
 import { renderFooter } from "../../js/modules/footer.js";
-import { renderHeader } from "../../js/modules/header.js";
+import { renderHeader, updateCartBadge } from "../../js/modules/header.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return;
   }
 
-  const STORAGE_KEY = "rounz-cart-items";
+  const STORAGE_KEY = "cart";
 
   /* =========================
      장바구니 데이터
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return parsedItems
         .map(savedItem => {
           const baseItem = allProducts.find(
-            item => Number(item.id) === Number(savedItem.id)
+            item => Number(item.id) === Number(savedItem.id),
           );
 
           if (!baseItem) return null;
@@ -94,7 +94,10 @@ document.addEventListener("DOMContentLoaded", () => {
             image: baseItem.images.thumbnail,
             alt: baseItem.title,
             url: `https://rounz.com/product.php?productIndex=${baseItem.id}`,
-            quantity: Math.max(1, Number(savedItem.qty) || Number(savedItem.quantity) || 1),
+            quantity: Math.max(
+              1,
+              Number(savedItem.qty) || Number(savedItem.quantity) || 1,
+            ),
             selected: savedItem.selected !== false,
           };
         })
@@ -111,11 +114,16 @@ document.addEventListener("DOMContentLoaded", () => {
         JSON.stringify(
           cartItems.map(item => ({
             id: item.id,
-            quantity: item.quantity,
+            title: item.title,
+            brand: item.brand,
+            thumb: item.image,
+            price: item.price,
+            qty: item.quantity,
             selected: item.selected !== false,
           })),
         ),
       );
+      updateCartBadge();
     } catch (error) {
       // 저장이 막힌 환경은 무시합니다.
     }

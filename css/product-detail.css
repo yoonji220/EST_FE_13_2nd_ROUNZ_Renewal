@@ -45,7 +45,8 @@
 
 .product-image-box {
   width: 100%;
-  height: 480px;
+  aspect-ratio: 1 / 1;
+  height: auto;
   overflow: hidden;
   border: 1px solid var(--color-gray);
   background-color: var(--color-white);
@@ -260,12 +261,6 @@
   display: none;
 }
 
-@media (min-width: 768px) {
-  .product-image-box {
-    height: 480px;
-  }
-}
-
 @media (min-width: 1200px) {
   .product-summary {
     flex-direction: row;
@@ -280,6 +275,12 @@
 
   .product-image-box {
     height: 624px;
+  }
+
+  .product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .product-info {
@@ -390,7 +391,7 @@
 /* Product Tab */
 .product-tab {
   position: sticky;
-  top: 72px; /* 임시 */
+  top: 72px;
   z-index: 1;
   background-color: var(--color-white);
   padding-top: 24px;
@@ -432,17 +433,26 @@
   background-color: var(--color-point);
   transform: translateX(-50%);
 }
+
+.tab-panel {
+  scroll-margin-top: 160px;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
 /* 태블릿 */
 @media (min-width: 768px) {
   .product-tab {
-    top: 56px; /* 헤더 확정 전 임시 */
+    top: 56px;
   }
 }
 
 /* PC */
 @media (min-width: 1200px) {
   .product-tab {
-    top: 69px; /* 데브모드 헤더 높이 */
+    top: 69px;
   }
 }
 
@@ -618,6 +628,7 @@
 
   .brand-feature-desc {
     max-width: 960px;
+    font: var(--t-body-size-);
   }
 }
 
@@ -635,16 +646,17 @@
 
 .detail-image-item {
   width: 100%;
-  height: 298px;
+  height: auto;
   overflow: hidden;
   background-color: var(--color-white);
   border: 1px solid var(--color-light-gray);
 }
 
 .detail-image {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
 }
 
 @media (min-width: 1200px) {
@@ -671,7 +683,8 @@
 
 .point-image-box {
   width: 100%;
-  height: 204px;
+  aspect-ratio: 16 / 9;
+  height: auto;
   overflow: hidden;
   border: 1px solid var(--color-light-gray);
 }
@@ -704,7 +717,17 @@
 .point-desc {
   color: var(--color-dark-gray);
 }
+@media (min-width: 480px) and (max-width: 767px) {
+  .point-image-box {
+    height: 280px;
+  }
+}
 
+@media (min-width: 768px) and (max-width: 1199px) {
+  .point-image-box {
+    height: 320px;
+  }
+}
 @media (min-width: 1200px) {
   .point-card-box {
     display: grid;
@@ -714,6 +737,10 @@
 
   .point-image-box {
     height: 360px;
+  }
+
+  .point-desc {
+    font: var(--t-body-size);
   }
 }
 
@@ -780,10 +807,6 @@
 
 .spec-value span {
   color: var(--color-dark-gray);
-}
-
-.tab-panel.is-active {
-  display: block;
 }
 
 @media (min-width: 1200px) {
@@ -1208,7 +1231,7 @@
 
 .product-hero .carousel-controls {
   position: absolute;
-  top: 240px;
+  top: 50%;
   left: 0;
   right: 0;
   transform: translateY(-50%);
@@ -1636,5 +1659,58 @@
 @media (min-width: 1200px) {
   .product-detail-footer {
     padding-bottom: 16px;
+  }
+}
+
+/* skeleton UI*/
+.is-loading .product-image-box,
+.is-loading .product-title,
+.is-loading .price-row,
+.is-loading .brand-feature-image-box,
+.is-loading .brand-feature-title,
+.is-loading .brand-feature-desc,
+.is-loading .detail-image-item,
+.is-loading .point-image-box,
+.is-loading .size-guide-title,
+.is-loading .diagram-card {
+  position: relative;
+  overflow: hidden;
+  color: transparent;
+  background-color: var(--color-light-gray);
+}
+
+.is-loading .product-image,
+.is-loading .brand-feature-image,
+.is-loading .detail-image,
+.is-loading .point-image,
+.is-loading .size-guide-image {
+  opacity: 0;
+}
+
+.is-loading .product-image-box::after,
+.is-loading .product-title::after,
+.is-loading .price-row::after,
+.is-loading .brand-feature-image-box::after,
+.is-loading .brand-feature-title::after,
+.is-loading .brand-feature-desc::after,
+.is-loading .detail-image-item::after,
+.is-loading .point-image-box::after,
+.is-loading .size-guide-title::after,
+.is-loading .diagram-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
   }
 }
