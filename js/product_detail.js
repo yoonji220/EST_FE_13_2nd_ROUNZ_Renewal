@@ -8,6 +8,8 @@ let quantityValue = 1;
 let galleryIndex = 0;
 let toastTimer;
 
+let productImageSwiper;
+
 renderHeader();
 renderFooter(true);
 
@@ -162,9 +164,8 @@ function createSummary(data) {
   if (breadcrumbCurrent) breadcrumbCurrent.textContent = data.brand;
 }
 
-// 상품 갤러리 및 썸네일 렌더링
 function createGallery(data) {
-  const mainImage = document.querySelector(".product-image");
+  const imageWrapper = document.querySelector(".product-image-wrapper");
   const thumbList = document.querySelector(".product-thumb-list");
   const prevBtn = document.querySelector(".carousel-prev");
   const nextBtn = document.querySelector(".carousel-next");
@@ -177,19 +178,41 @@ function createGallery(data) {
         : [];
 
   if (gallery.length === 0) {
-    if (mainImage) {
-      mainImage.alt = "상품 이미지를 준비 중입니다.";
+    if (imageWrapper) {
+      imageWrapper.innerHTML = `
+        <div class="swiper-slide">
+          <div class="product-thumb-placeholder">
+            <span class="typo-m-caption">이미지 준비중</span>
+          </div>
+        </div>
+      `;
     }
 
     if (thumbList) {
       thumbList.innerHTML = `
-      <li class="product-thumb-item product-thumb-placeholder">
-        <span class="typo-m-caption">이미지 준비중</span>
-      </li>
-    `;
+        <li class="product-thumb-item product-thumb-placeholder">
+          <span class="typo-m-caption">이미지 준비중</span>
+        </li>
+      `;
     }
 
     return;
+  }
+
+  if (imageWrapper) {
+    imageWrapper.innerHTML = gallery
+      .map(
+        (image, index) => `
+          <div class="swiper-slide">
+            <img
+              src="${image}"
+              alt="${data.title} 상품 이미지 ${index + 1}"
+              class="product-image"
+            />
+          </div>
+        `,
+      )
+      .join("");
   }
 
   const thumbnailList = [...gallery];
@@ -198,74 +221,56 @@ function createGallery(data) {
     thumbnailList.push(null);
   }
 
-  if (mainImage) {
-    mainImage.src = gallery[0];
-    mainImage.alt = data.title;
-
-    mainImage.onerror = () => {
-      mainImage.onerror = null;
-      mainImage.src = data.images.thumbnail;
-      mainImage.alt = "상품 이미지를 준비 중입니다.";
-    };
-  }
-
   if (thumbList) {
-    const thumbHTML = thumbnailList
+    thumbList.innerHTML = thumbnailList
       .map((image, index) => {
         if (!image) {
           return `
-        <li class="product-thumb-item product-thumb-placeholder">
-          <span class="typo-m-caption">이미지 준비중</span>
-        </li>
-      `;
+            <li class="product-thumb-item product-thumb-placeholder">
+              <span class="typo-m-caption">이미지 준비중</span>
+            </li>
+          `;
         }
 
         return `
-      <li class="product-thumb-item">
-        <button
-          type="button"
-          class="product-thumb-button ${index === 0 ? "is-active" : ""}"
-          aria-label="상품 이미지 ${index + 1} 보기"
-          aria-current="${index === 0 ? "true" : "false"}"
-          data-gallery-index="${index}">
-          <img src="${image}" alt="" class="product-thumb-image" />
-        </button>
-      </li>
-    `;
+          <li class="product-thumb-item">
+            <button
+              type="button"
+              class="product-thumb-button ${index === 0 ? "is-active" : ""}"
+              aria-label="상품 이미지 ${index + 1} 보기"
+              aria-current="${index === 0 ? "true" : "false"}"
+              data-gallery-index="${index}">
+              <img src="${image}" alt="" class="product-thumb-image" />
+            </button>
+          </li>
+        `;
       })
       .join("");
-
-    thumbList.innerHTML = thumbHTML;
   }
 
-  thumbList?.addEventListener("click", e => {
-    const button = e.target.closest(".product-thumb-button");
-    if (!button) return;
-
-    galleryIndex = Number(button.dataset.galleryIndex);
-    changeGalleryImage(gallery, data.title);
-  });
-
-  prevBtn?.addEventListener("click", () => {
-    galleryIndex = galleryIndex === 0 ? gallery.length - 1 : galleryIndex - 1;
-    changeGalleryImage(gallery, data.title);
-  });
-
-  nextBtn?.addEventListener("click", () => {
-    galleryIndex = galleryIndex === gallery.length - 1 ? 0 : galleryIndex + 1;
-    changeGalleryImage(gallery, data.title);
+  if (productImageSwiper) {
+    productImageSwiper.destroy(true, true);
+  }
+  
+  productImageSwiper = new Swiper(".product-image-swiper", {
+    direction: "horizontal",
+    loop: true,
+    speed: 300,
+    navigation: {
+      nextEl: ".carousel-next",
+      prevEl: ".carousel-prev",
+    },
+    on: {
+      slideChange: function () {
+        galleryIndex = this.realIndex;
+        updateGalleryThumb();
+      },
+    },
   });
 }
 
-// 선택한 썸네일 기준으로 메인 이미지 변경
-function changeGalleryImage(gallery, title) {
-  const mainImage = document.querySelector(".product-image");
+function updateGalleryThumb() {
   const thumbButtons = document.querySelectorAll(".product-thumb-button");
-
-  if (mainImage) {
-    mainImage.src = gallery[galleryIndex];
-    mainImage.alt = `${title} 상품 이미지 ${galleryIndex + 1}`;
-  }
 
   thumbButtons.forEach((button, index) => {
     const isActive = index === galleryIndex;

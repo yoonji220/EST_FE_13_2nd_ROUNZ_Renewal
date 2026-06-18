@@ -13,6 +13,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
 
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/product-detail.css" />
@@ -42,14 +46,9 @@
         </ol>
       </nav>
       <div class="product-summary container d-flex flex-column g-2">
-        <!-- 상품 요약 -->
         <div class="product-hero">
-          <div class="product-image-box">
-            <img
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-              alt="상품 이미지 로딩 중"
-              class="product-image"
-            />
+          <div class="product-image-box swiper product-image-swiper">
+            <div class="swiper-wrapper product-image-wrapper"></div>
           </div>
 
           <!-- 이미지 슬라이드 컨트롤 -->
@@ -1106,6 +1105,7 @@
       </div>
     </div>
     <footer class="footer product-detail-footer"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script type="module" src="./js/product_detail.js"></script>
   </body>
 </html>
