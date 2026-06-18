@@ -542,6 +542,7 @@ a {
   white-space: nowrap;
   border: 0;
 }
+
 /* 헤더 푸터 모바일 공통 */
 .pc-only {
   display: none;
@@ -567,7 +568,6 @@ a {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  margin: 0; /* 혹시 모를 마진 리셋 */
 }
 
 .nav-top {
@@ -577,10 +577,6 @@ a {
   background-color: var(--color-white);
 }
 
-/* 헤더에 가려진 메인 컨텐츠 */
-.sub-page {
-  padding-top: 98px;
-}
 
 /* 모바일 메뉴 오픈 시 배경 스크롤 방지 */
 .body-no-scroll {
@@ -785,20 +781,100 @@ footer > .container {
   display: flex;
 }
 
-/* 푸터 반응형 */
+/* 헤더 푸터 반응형 */
 @media (min-width: 1200px) {
-.footer-wrap{
-  display: flex;
-  flex-direction: row;
-  gap: calc(var(--base-unit)*12);
-}
-
+  /* 공통 */
   .mobile-only{
-    display: none;
+    display: none !important;
   }
   .pc-only{
     display: block;
   }
+
+/* 헤더 */
+  .header{
+    padding: 0;
+  }
+  .main-header {
+    position: static;
+  }
+
+  .main-header .logo{
+    position: static;
+    left: auto;
+    transform: none;
+  }
+  .global-nav{
+    position: static;
+    display: block;
+    background-color: transparent;
+    width: auto;
+    height: auto;
+    top: auto;
+    left: auto;
+    z-index: 2;
+    overflow: visible;
+  }
+  .header-hr{
+    display: none;
+  }
+  
+  
+  .main-menu-panel {
+    background-color: transparent;
+    border-right: none;
+    min-width: auto;
+    width: auto;
+  }
+
+  .main-menu-panel > ul{
+   display: flex;
+    flex-direction: row; /* 상단 메뉴를 가로로 나열합니다 [cite: 930] */
+    align-items: center;
+    gap: calc(var(--base-unit)*2); /* 메뉴 간격 조정 */
+    margin: 24px 16px;
+  }
+  .main-menu-panel > ul > li > button,
+  .main-menu-panel > ul > li > a {
+    padding: 10px 0; /* 모바일용 넓은 패딩 제거 */
+    text-align: center;
+  }
+  /* 모바일용 active 스타일 초기화 */
+  .main-menu-panel .active {
+    background-color: transparent;
+    border-left: none;
+  }
+  
+  /* 4. 서브 메뉴 패널 (메가 메뉴 풀스크린) */
+  .menu-wrapper {
+    flex-direction: row; 
+  }
+
+  .sub-menu-panel {
+    position: absolute;
+    top: 100%; 
+    left: 0;
+    width: 100%;
+    background-color: var(--color-white);
+    border-top: 1px solid var(--color-gray);
+    box-shadow: var(--shadow-sub);
+    padding: 32px var(--container-pad-tablet);
+    z-index: 2;
+  }
+
+  .sub-menu-list{
+    flex-direction: row !important;
+    justify-content: space-between;
+  }
+
+/* 푸터 */
+  .footer-wrap{
+    display: flex;
+    flex-direction: row;
+    gap: calc(var(--base-unit)*12);
+  }
+
+
   .footer-main-content{
     display: flex;
     gap: calc(var(--base-unit)*12);
