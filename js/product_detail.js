@@ -1,6 +1,8 @@
 import { renderFooter } from "./modules/footer.js";
 import { renderHeader } from "./modules/header.js";
 
+document.body.classList.add("is-loading");
+
 let product = {};
 let quantityValue = 1;
 let galleryIndex = 0;
@@ -76,7 +78,7 @@ function addToCart(product, qty = 1) {
 }
 
 // 상품 id 기준으로 상세 데이터 조회
-export async function fetchProduct() {
+async function fetchProduct() {
   const params = new URLSearchParams(location.search);
   const productId = params.get("id");
 
@@ -112,8 +114,14 @@ export async function fetchProduct() {
     createContent(product, brandData);
     createRecommendLists(productData.products, product.category, product.id);
     updateTotalPrice();
+
+    document.body.classList.remove("is-loading");
+    document.body.removeAttribute("aria-busy");
   } catch (error) {
     console.error(error);
+    document.body.classList.remove("is-loading");
+    document.body.removeAttribute("aria-busy");
+
     alert("상품 정보를 불러오지 못했습니다.");
   } finally {
     console.log("상품 상세 조회를 종료했습니다.");

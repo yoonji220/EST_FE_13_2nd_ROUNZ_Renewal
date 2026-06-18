@@ -1661,3 +1661,56 @@
     padding-bottom: 16px;
   }
 }
+
+/* skeleton UI*/
+.is-loading .product-image-box,
+.is-loading .product-title,
+.is-loading .price-row,
+.is-loading .brand-feature-image-box,
+.is-loading .brand-feature-title,
+.is-loading .brand-feature-desc,
+.is-loading .detail-image-item,
+.is-loading .point-image-box,
+.is-loading .size-guide-title,
+.is-loading .diagram-card {
+  position: relative;
+  overflow: hidden;
+  color: transparent;
+  background-color: var(--color-light-gray);
+}
+
+.is-loading .product-image,
+.is-loading .brand-feature-image,
+.is-loading .detail-image,
+.is-loading .point-image,
+.is-loading .size-guide-image {
+  opacity: 0;
+}
+
+.is-loading .product-image-box::after,
+.is-loading .product-title::after,
+.is-loading .price-row::after,
+.is-loading .brand-feature-image-box::after,
+.is-loading .brand-feature-title::after,
+.is-loading .brand-feature-desc::after,
+.is-loading .detail-image-item::after,
+.is-loading .point-image-box::after,
+.is-loading .size-guide-title::after,
+.is-loading .diagram-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    transparent 100%
+  );
+  transform: translateX(-100%);
+  animation: shimmer 1.2s infinite;
+}
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
