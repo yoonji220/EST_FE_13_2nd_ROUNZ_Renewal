@@ -678,7 +678,7 @@
 
   .brand-feature-desc {
     max-width: 960px;
-    font: var(--t-body-size-);
+    font: var(--t-body-size);
   }
 }
 
