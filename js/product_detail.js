@@ -938,8 +938,17 @@ document.addEventListener("click", e => {
   const isActive = wishButton.classList.toggle("is-active");
 
   wishButton.setAttribute("aria-pressed", String(isActive));
+  wishButton.setAttribute(
+    "aria-label",
+    isActive ? "관심상품 제거" : "관심상품 추가",
+  );
 
   if (icon) {
+    const defaultClass = wishButton.classList.contains("product-card-wish")
+      ? "typo-m-icons-s-o"
+      : "typo-m-icons-l-o";
+
+    icon.className = isActive ? "material-icons" : defaultClass;
     icon.textContent = isActive ? "favorite" : "favorite_border";
   }
 });

@@ -205,6 +205,15 @@
   height: 100%;
   object-fit: cover;
 }
+.wish-button,
+.product-card-wish {
+  color: var(--color-brown);
+}
+
+.wish-button.is-active,
+.product-card-wish.is-active {
+  color: var(--color-point);
+}
 
 /* Color Options */
 .color-list {
