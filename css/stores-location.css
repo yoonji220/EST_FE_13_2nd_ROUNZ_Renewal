@@ -620,16 +620,23 @@ a:focus:not(:focus-visible) {
   z-index: 200;
 }
 
+.map-lightbox.is-open {
+  display: block;
+}
+
 .map-lightbox__overlay {
   position: absolute;
   inset: 0;
-  background-color: var(--color-overlay);
+  background-color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
 .map-lightbox__container {
   position: absolute;
   width: calc(100% - 32px);
+  max-width: 448px;
+  height: min(520px, calc(100vh - 40px));
+  min-height: 420px;
   max-height: calc(100vh - 40px);
   top: 50%;
   left: 50%;
@@ -643,6 +650,7 @@ a:focus:not(:focus-visible) {
   position: absolute;
   top: 16px;
   right: 16px;
+  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -651,18 +659,83 @@ a:focus:not(:focus-visible) {
   padding: 2px;
   border: none;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.9);
   color: var(--color-dark-black);
   cursor: pointer;
 }
 
 .map-lightbox__map {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  height: 360px;
+  height: 100%;
 }
 
 .map-lightbox__map img {
   max-width: none !important;
+}
+
+/* ===========================
+   Alert Replacement Message Card
+   =========================== */
+
+.stores-message-card {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 132px;
+  z-index: 210;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.stores-message-card[hidden] {
+  display: none;
+}
+
+.stores-message-card__inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  max-width: 448px;
+  min-height: 64px;
+  padding: 12px;
+  border: 1px solid var(--color-gray);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  color: var(--color-dark-black);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
+  pointer-events: auto;
+}
+
+.stores-message-card__icon {
+  flex-shrink: 0;
+  color: var(--color-point);
+  line-height: 1;
+}
+
+.stores-message-card__text {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  color: var(--color-dark-black);
+}
+
+.stores-message-card__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--color-dark-gray);
+  cursor: pointer;
 }
 
 /* ===========================
@@ -1116,6 +1189,41 @@ a:focus:not(:focus-visible) {
     border: 1px solid var(--color-gray, #b8b8b8);
     color: var(--color-black, #000);
   }
+
+  /* Alert 대체 카드 — PC 지도 필터박스 아래 */
+  .stores-message-card {
+    --pc-sidebar-width: 450px;
+    --pc-map-offset: 32px;
+    left: calc(var(--pc-sidebar-width) + var(--pc-map-offset));
+    right: auto;
+    top: calc(70px + var(--pc-map-offset) + 272px);
+    bottom: auto;
+    width: 224px;
+    justify-content: flex-start;
+    z-index: 20;
+  }
+
+  .stores-message-card__inner {
+    max-width: 224px;
+    min-height: 78px;
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #faf8ff;
+    border-color: var(--color-gray, #b8b8b8);
+    box-shadow:
+      0 2px 4px -2px rgba(0, 0, 0, 0.1),
+      0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  }
+
+  .stores-message-card__text {
+    color: var(--color-black, #000);
+  }
+
+  .stores-message-card__close {
+    width: 28px;
+    height: 28px;
+  }
+
   /* Footer test */
   .pc-only {
     display: block;
@@ -1141,5 +1249,11 @@ a:focus:not(:focus-visible) {
   .pc-map-controls {
     top: 24px;
     right: 24px;
+  }
+
+  .stores-message-card {
+    --pc-sidebar-width: 360px;
+    --pc-map-offset: 24px;
+    top: calc(70px + var(--pc-map-offset) + 272px);
   }
 }
