@@ -136,10 +136,10 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 | 이름   | 역할 | 세부 담당                                                | GitHub        | Email                                                   |
 | ------ | ---- | -------------------------------------------------------- | ------------- | ------------------------------------------------------- |
 | 최윤지 | 팀장 | 기획 · 디자인 · 상품 상세 페이지                         | yoonji220     | [choiyj220220@gmail.com](mailto:choiyj220220@gmail.com) |
-| 김정우 | 팀원 | 기획 · 디자인 · 회원가입 · Git 관리 · 공통 Header/Footer | GitHub ID     | [casperjwk@gmail.com](mailto:casperjwk@gmail.com)                                                   |
+| 김정우 | 팀원 | 기획 · 디자인 · 회원가입 · Git 관리 · 공통 Header/Footer | GitHub ID     | [casperjwk@gmail.com](mailto:casperjwk@gmail.com)       |
 | 권유진 | 팀원 | 기획 · 디자인 · 메인 페이지 · 회의록 작성                | GitHub ID     | Email                                                   |
 | 남윤동 | 팀원 | 기획 · 디자인 · 장바구니 · 필터 · 로그인 페이지          | dbsehd125-bot | [dbsehd125@gmail.com] Email                             |
-| 이민호 | 팀원 | 기획 · 디자인 · 매장 찾기 페이지                         | GitHub ID     | [minho0391] (minh05@navercom)                           |
+| 이민호 | 팀원 | 기획 · 디자인 · 매장 찾기 페이지                         | [minho0391]   | (minh05@naver.com)                                      |
 
 ---
 
@@ -206,10 +206,12 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 
 ### 매장 찾기 페이지
 
-- 매장 정보 조회
-- 지도 기반 위치 확인
-- 매장 정보 조회
-- 지도 기반 위치 확인
+- 매장 데이터 기반 비동기 렌더링
+- 매장 검색/필터/정렬
+- PC 사이드바 리스트와 지도 마커 연동
+- 네이버 지도 API 기반 매장 위치 표시
+- 선택 매장 마커 강조 및 지도 중심 이동
+- 사용자 현재 위치 기반 위치 안내 -모바일 tel: 속성 기반 전화 연결
 
 ---
 
