@@ -41,12 +41,14 @@
                 <input type="email" id="useremail" class="typo-m-body" placeholder="email@example.com" required />
                 <button type="button" id="validate" class="typo-m-btn-s" aria-label="이메일 인증요청 버튼" >인증요청</button>
               </div>
+              <span class="feedback typo-m-caption"></span>
             </div>
 
             <div class="field d-flex flex-column g-1">
               <label for="validate_number" class="typo-m-header">인증번호</label>
               <input type="number" id="validate_number" class="typo-m-body" placeholder="6자리 숫자 입력" required />
-              <span class="typo-m-caption">인증번호를 입력해주세요.</span>
+              <span class="feedback typo-m-caption">인증번호를 입력해주세요.</span>
+              
             </div>
 
             <div class="field d-flex flex-column g-1">
@@ -58,7 +60,7 @@
                 placeholder="영문,숫자,특수문자 조합 8자 이상"
                 required
               />
-              <span class="typo-m-caption">안전한 비밀번호를 입력해 주세요.</span>
+              <span class="feedback typo-m-caption">안전한 비밀번호를 입력해 주세요.</span>
             </div>
 
             <div class="field d-flex flex-column g-1">
@@ -70,10 +72,11 @@
             <div class="field d-flex flex-column g-1">
               <label for="username" class="typo-m-header">이름</label>
               <input type="text" id="username" class="typo-m-body" placeholder="실명을 입력해주세요" required />
+              <span class="feedback typo-m-caption"></span>
             </div>
 
             <div class="d-flex g-2">
-              <input type="checkbox" id="allagree" required />
+              <input type="checkbox" id="allagree" />
               <label for="allagree" class="typo-m-body">[전체 동의]</label>
             </div>
 
@@ -81,6 +84,7 @@
               <div class="d-flex g-2">
                 <input type="checkbox" id="tosagree" required />
                 <label for="tosagree" class="typo-m-body">[필수] 이용약관</label>
+                <span class="feedback typo-m-caption"></span>
               </div>
               <span class="typo-m-icons-xs-o">chevron_right</span>
             </div>
@@ -89,6 +93,7 @@
               <div class="d-flex g-2">
                 <input type="checkbox" id="ppagree" required />
                 <label for="ppagree" class="typo-m-body">[필수] 개인정보 처리 방침</label>
+                <span class="feedback typo-m-caption"></span>
               </div>
               <span class="typo-m-icons-xs-o">chevron_right</span>
             </div>
@@ -103,10 +108,11 @@
 
             <button type="submit" class=" align-items-center typo-m-btn-s account-make">가입하기</button>
           </form>
+
           <hr class="container" />
           <div class="d-flex justify-content-center g-1">
             <p class="typo-m-body-s">이미 계정이 있으신가요?</p>
-            <a href="#" class="typo-m-body-s">로그인</a>
+            <a href="login.html" class="typo-m-body-s">로그인</a>
           </div>
         </section>
       </div>
@@ -119,5 +125,7 @@
       renderHeader();
       renderFooter(true);
     </script>
+    <script src="js/new-account.js"></script>
+    <script src="js/utils/common.js"></script>
   </body>
 </html>
