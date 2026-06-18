@@ -13,6 +13,10 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    />
 
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/product-detail.css" />
@@ -42,14 +46,9 @@
         </ol>
       </nav>
       <div class="product-summary container d-flex flex-column g-2">
-        <!-- 상품 요약 -->
         <div class="product-hero">
-          <div class="product-image-box">
-            <img
-              src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
-              alt="상품 이미지 로딩 중"
-              class="product-image"
-            />
+          <div class="product-image-box swiper product-image-swiper">
+            <div class="swiper-wrapper product-image-wrapper"></div>
           </div>
 
           <!-- 이미지 슬라이드 컨트롤 -->
@@ -119,40 +118,7 @@
               <span data-selected-color>black</span>
             </div>
 
-            <ul class="color-list d-flex justify-content-between">
-              <li>
-                <label class="color-chip d-flex align-items-center">
-                  <input type="radio" name="color" value="black" checked />
-                  <span
-                    class="color-dot color-dot-black"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">black 색상 선택</span>
-                </label>
-              </li>
-
-              <li>
-                <label class="color-chip d-flex align-items-center">
-                  <input type="radio" name="color" value="gray" />
-                  <span
-                    class="color-dot color-dot-gray"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">gray 색상 선택</span>
-                </label>
-              </li>
-
-              <li>
-                <label class="color-chip d-flex align-items-center">
-                  <input type="radio" name="color" value="yellow" />
-                  <span
-                    class="color-dot color-dot-yellow"
-                    aria-hidden="true"
-                  ></span>
-                  <span class="sr-only">yellow 색상 선택</span>
-                </label>
-              </li>
-            </ul>
+            <ul class="color-list d-flex g-1"></ul>
           </fieldset>
 
           <!-- 공통 Quantity Control -->
@@ -758,10 +724,9 @@
           이 상품과 비슷한 상품
         </h2>
 
-        <div class="recommend-products-scroller">
-          <ul class="recommend-products-list d-flex g-2"></ul>
+        <div class="recommend-products-scroller swiper recommend-swiper">
+          <ul class="recommend-products-list swiper-wrapper"></ul>
 
-          <!-- 추천 상품 슬라이드 컨트롤 -->
           <div
             class="recommend-carousel-controls d-flex justify-content-between align-items-center"
           >
@@ -770,9 +735,7 @@
               class="recommend-carousel-prev"
               aria-label="이전 추천 상품"
             >
-              <span class="typo-m-icons-l-o" aria-hidden="true">
-                arrow_back_ios
-              </span>
+              <span class="typo-m-icons-l-o">arrow_back_ios</span>
             </button>
 
             <button
@@ -780,9 +743,7 @@
               class="recommend-carousel-next"
               aria-label="다음 추천 상품"
             >
-              <span class="typo-m-icons-l-o" aria-hidden="true">
-                arrow_forward_ios
-              </span>
+              <span class="typo-m-icons-l-o">arrow_forward_ios</span>
             </button>
           </div>
         </div>
@@ -820,7 +781,7 @@
           </div>
         </div>
       </section>
-        <div class="floating-bar g-2"></div>
+      <div class="floating-bar g-2"></div>
     </main>
 
     <!-- 하단 고정 구매 바 -->
@@ -1108,6 +1069,7 @@
     </div>
 
     <footer class="footer product-detail-footer"></footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
     <script type="module" src="./js/product_detail.js"></script>
   </body>
 </html>

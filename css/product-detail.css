@@ -30,7 +30,7 @@
   transition: opacity 0.2s ease;
 }
 
-/* 마우스 hover + 키보드 접근 시 표시 */
+/* 마우스 hover + 키보드 focus 시 표시 */
 .product-hero:hover .carousel-controls,
 .product-hero:focus-within .carousel-controls,
 .recommend-products-scroller:hover .recommend-carousel-controls,
@@ -99,6 +99,20 @@
   text-align: center;
 }
 
+.product-hero .carousel-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 32px;
+  z-index: 30;
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
 .product-hero .carousel-prev,
 .product-hero .carousel-next {
   width: 32px;
@@ -106,6 +120,22 @@
   color: var(--color-gray);
   pointer-events: auto;
   cursor: pointer;
+  opacity: 1;
+  visibility: visible;
+}
+
+.product-hero .carousel-prev.is-disabled,
+.product-hero .carousel-next.is-disabled {
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+.product-hero .carousel-prev span,
+.product-hero .carousel-next span {
+  display: block;
+  color: var(--color-gray);
+  font-size: 24px;
+  line-height: 1;
 }
 
 /* Product Info */
@@ -154,6 +184,35 @@
   margin: 0;
   border: 0;
   background-color: var(--color-gray);
+}
+
+.product-image-swiper {
+  width: 100%;
+}
+
+.product-image-wrapper {
+  width: 100%;
+}
+
+.product-image-swiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+
+.product-image-swiper .product-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.wish-button,
+.product-card-wish {
+  color: var(--color-brown);
+}
+
+.wish-button.is-active,
+.product-card-wish.is-active {
+  color: var(--color-point);
 }
 
 /* Color Options */
@@ -628,7 +687,7 @@
 
   .brand-feature-desc {
     max-width: 960px;
-    font: var(--t-body-size-);
+    font: var(--t-body-size);
   }
 }
 
@@ -1241,23 +1300,37 @@
 .recommend-carousel-controls {
   position: absolute;
   top: 80px;
-  left: -16px;
-  width: calc(100% + 32px);
+  left: 0;
+  right: 0;
   height: 32px;
-  padding-inline: 16px;
   pointer-events: none;
   transform: translateY(-50%);
+  z-index: 20;
 }
 
 .recommend-carousel-prev,
 .recommend-carousel-next {
-  width: 20px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   color: var(--color-gray);
   pointer-events: auto;
   cursor: pointer;
-  overflow: visible;
 }
+
+.recommend-swiper {
+  overflow: hidden;
+}
+
+.recommend-products-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recommend-products-item {
+  height: auto;
+}
+
 @media (min-width: 1200px) {
   .recommend-products-item {
     flex: 0 0 240px;

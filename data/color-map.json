@@ -1,0 +1,33 @@
+{
+  "black": { "name": "black", "hex": "#111111" },
+  "블랙": { "name": "black", "hex": "#111111" },
+  "bsv": { "name": "black", "hex": "#111111" },
+
+  "gold": { "name": "gold", "hex": "#d4af37" },
+  "로즈골드": { "name": "rose gold", "hex": "#b76e79" },
+  "매트 로즈골드": { "name": "matte rose gold", "hex": "#9b6b6f" },
+  "골드": { "name": "gold", "hex": "#d4af37" },
+
+  "silver": { "name": "silver", "hex": "#c0c0c0" },
+  "실버": { "name": "silver", "hex": "#c0c0c0" },
+
+  "brown": { "name": "brown", "hex": "#7c4a2d" },
+  "브라운": { "name": "brown", "hex": "#7c4a2d" },
+  "dem": { "name": "brown", "hex": "#7c4a2d" },
+
+  "gray": { "name": "gray", "hex": "#9ca3af" },
+  "grey": { "name": "gray", "hex": "#9ca3af" },
+  "그레이": { "name": "gray", "hex": "#9ca3af" },
+
+  "yellow": { "name": "yellow", "hex": "#ffd700" },
+  "옐로우": { "name": "yellow", "hex": "#ffd700" },
+
+  "red": { "name": "red", "hex": "#b91c1c" },
+  "레드": { "name": "red", "hex": "#b91c1c" },
+
+  "clear": { "name": "clear", "hex": "#f5f5f5" },
+  "투명": { "name": "clear", "hex": "#f5f5f5" },
+
+  "havana": { "name": "havana", "hex": "#6b3f2a" },
+  "하바나": { "name": "havana", "hex": "#6b3f2a" }
+}

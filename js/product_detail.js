@@ -9,6 +9,8 @@ let quantityValue = 1;
 let galleryIndex = 0;
 let toastTimer;
 
+let productImageSwiper;
+
 renderHeader();
 renderFooter(true);
 renderFloatingBar();
@@ -93,13 +95,15 @@ async function fetchProduct() {
   try {
     const productRes = await fetch("./data/products.json");
     const brandRes = await fetch("./data/brand.json");
+    const colorMapRes = await fetch("./data/color-map.json");
 
-    if (!productRes.ok || !brandRes.ok) {
+    if (!productRes.ok || !brandRes.ok || !colorMapRes.ok) {
       throw new Error("데이터 파일을 불러오지 못했습니다.");
     }
 
     const productData = await productRes.json();
     const brandData = await brandRes.json();
+    const colorMap = await colorMapRes.json();
 
     if (!productData.products || productData.products.length === 0) {
       throw new Error("상품 데이터가 비어 있습니다.");
@@ -114,6 +118,7 @@ async function fetchProduct() {
     }
 
     createContent(product, brandData);
+    createColorOptions(product, productData.products, colorMap);
     createRecommendLists(productData.products, product.category, product.id);
     updateTotalPrice();
 
@@ -164,9 +169,8 @@ function createSummary(data) {
   if (breadcrumbCurrent) breadcrumbCurrent.textContent = data.brand;
 }
 
-// 상품 갤러리 및 썸네일 렌더링
 function createGallery(data) {
-  const mainImage = document.querySelector(".product-image");
+  const imageWrapper = document.querySelector(".product-image-wrapper");
   const thumbList = document.querySelector(".product-thumb-list");
   const prevBtn = document.querySelector(".carousel-prev");
   const nextBtn = document.querySelector(".carousel-next");
@@ -179,19 +183,41 @@ function createGallery(data) {
         : [];
 
   if (gallery.length === 0) {
-    if (mainImage) {
-      mainImage.alt = "상품 이미지를 준비 중입니다.";
+    if (imageWrapper) {
+      imageWrapper.innerHTML = `
+        <div class="swiper-slide">
+          <div class="product-thumb-placeholder">
+            <span class="typo-m-caption">이미지 준비중</span>
+          </div>
+        </div>
+      `;
     }
 
     if (thumbList) {
       thumbList.innerHTML = `
-      <li class="product-thumb-item product-thumb-placeholder">
-        <span class="typo-m-caption">이미지 준비중</span>
-      </li>
-    `;
+        <li class="product-thumb-item product-thumb-placeholder">
+          <span class="typo-m-caption">이미지 준비중</span>
+        </li>
+      `;
     }
 
     return;
+  }
+
+  if (imageWrapper) {
+    imageWrapper.innerHTML = gallery
+      .map(
+        (image, index) => `
+          <div class="swiper-slide">
+            <img
+              src="${image}"
+              alt="${data.title} 상품 이미지 ${index + 1}"
+              class="product-image"
+            />
+          </div>
+        `,
+      )
+      .join("");
   }
 
   const thumbnailList = [...gallery];
@@ -200,74 +226,64 @@ function createGallery(data) {
     thumbnailList.push(null);
   }
 
-  if (mainImage) {
-    mainImage.src = gallery[0];
-    mainImage.alt = data.title;
-
-    mainImage.onerror = () => {
-      mainImage.onerror = null;
-      mainImage.src = data.images.thumbnail;
-      mainImage.alt = "상품 이미지를 준비 중입니다.";
-    };
-  }
-
   if (thumbList) {
-    const thumbHTML = thumbnailList
+    thumbList.innerHTML = thumbnailList
       .map((image, index) => {
         if (!image) {
           return `
-        <li class="product-thumb-item product-thumb-placeholder">
-          <span class="typo-m-caption">이미지 준비중</span>
-        </li>
-      `;
+            <li class="product-thumb-item product-thumb-placeholder">
+              <span class="typo-m-caption">이미지 준비중</span>
+            </li>
+          `;
         }
 
         return `
-      <li class="product-thumb-item">
-        <button
-          type="button"
-          class="product-thumb-button ${index === 0 ? "is-active" : ""}"
-          aria-label="상품 이미지 ${index + 1} 보기"
-          aria-current="${index === 0 ? "true" : "false"}"
-          data-gallery-index="${index}">
-          <img src="${image}" alt="" class="product-thumb-image" />
-        </button>
-      </li>
-    `;
+          <li class="product-thumb-item">
+            <button
+              type="button"
+              class="product-thumb-button ${index === 0 ? "is-active" : ""}"
+              aria-label="상품 이미지 ${index + 1} 보기"
+              aria-current="${index === 0 ? "true" : "false"}"
+              data-gallery-index="${index}">
+              <img src="${image}" alt="" class="product-thumb-image" />
+            </button>
+          </li>
+        `;
       })
       .join("");
-
-    thumbList.innerHTML = thumbHTML;
   }
 
+  if (productImageSwiper) {
+    productImageSwiper.destroy(true, true);
+  }
+
+  productImageSwiper = new Swiper(".product-image-swiper", {
+    direction: "horizontal",
+    loop: true,
+    speed: 300,
+    navigation: {
+      nextEl: ".carousel-next",
+      prevEl: ".carousel-prev",
+    },
+    on: {
+      slideChange: function () {
+        galleryIndex = this.realIndex;
+        updateGalleryThumb();
+      },
+    },
+  });
   thumbList?.addEventListener("click", e => {
     const button = e.target.closest(".product-thumb-button");
     if (!button) return;
 
     galleryIndex = Number(button.dataset.galleryIndex);
-    changeGalleryImage(gallery, data.title);
-  });
-
-  prevBtn?.addEventListener("click", () => {
-    galleryIndex = galleryIndex === 0 ? gallery.length - 1 : galleryIndex - 1;
-    changeGalleryImage(gallery, data.title);
-  });
-
-  nextBtn?.addEventListener("click", () => {
-    galleryIndex = galleryIndex === gallery.length - 1 ? 0 : galleryIndex + 1;
-    changeGalleryImage(gallery, data.title);
+    productImageSwiper?.slideToLoop(galleryIndex);
+    updateGalleryThumb();
   });
 }
 
-// 선택한 썸네일 기준으로 메인 이미지 변경
-function changeGalleryImage(gallery, title) {
-  const mainImage = document.querySelector(".product-image");
+function updateGalleryThumb() {
   const thumbButtons = document.querySelectorAll(".product-thumb-button");
-
-  if (mainImage) {
-    mainImage.src = gallery[galleryIndex];
-    mainImage.alt = `${title} 상품 이미지 ${galleryIndex + 1}`;
-  }
 
   thumbButtons.forEach((button, index) => {
     const isActive = index === galleryIndex;
@@ -581,8 +597,8 @@ function renderQnaItems(qna) {
             </div>
 
             <div class="answer-block d-flex align-items-center g-2">
-              <span class="${hasAnswer ? "answer-label typo-m-header" : "answer-lock typo-p-icon-xs"}" aria-hidden="true">
-                ${hasAnswer ? "A" : "lock"}
+              <span class="${hasAnswer ? "answer-label typo-m-header" : "answer-lock typo-m-icons-xs-o"}" aria-hidden="true">
+              ${hasAnswer ? "A" : "lock"}
               </span>
 
               <p class="answer-content typo-m-caption">
@@ -606,7 +622,7 @@ function createRecommendLists(all, category, id) {
 
   const recommendList = all
     .filter(p => p.category === category && p.id !== id)
-    .slice(0, 4);
+    .slice(0, 8);
 
   if (recommendList.length === 0) {
     recommendGrid.innerHTML = `
@@ -620,7 +636,7 @@ function createRecommendLists(all, category, id) {
   const productHTML = recommendList
     .map(
       p => `
-        <li class="recommend-products-item">
+        <li class="recommend-products-item swiper-slide">
           <article class="product-card d-flex flex-column g-1">
             <div class="product-card-image-box">
               <a href="./product_detail.html?id=${p.id}">
@@ -658,6 +674,17 @@ function createRecommendLists(all, category, id) {
     .join("");
 
   recommendGrid.innerHTML = productHTML;
+
+  new Swiper(".recommend-swiper", {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    loop: true,
+    speed: 300,
+    navigation: {
+      nextEl: ".recommend-carousel-next",
+      prevEl: ".recommend-carousel-prev",
+    },
+  });
 }
 
 // 상품 상세 tab
@@ -741,6 +768,88 @@ function updateTotalPrice() {
 
   totalPrices.forEach(price => {
     price.textContent = formatWon(total);
+  });
+}
+
+/* 컬러 옵션 */
+function getColorFromName(name = "", colorMap = {}) {
+  const text = name.toLowerCase();
+
+  const matchedKey = Object.keys(colorMap)
+    .sort((a, b) => b.length - a.length)
+    .find(key => text.includes(key.toLowerCase()));
+
+  return matchedKey ? colorMap[matchedKey] : { name: "color", hex: "#b8b8b8" };
+}
+
+function createColorOptions(data, allProducts, colorMap) {
+  const colorOptions = document.querySelector(".color-options");
+  const colorList = document.querySelector(".color-list");
+  const selectedColor = document.querySelector("[data-selected-color]");
+
+  if (!colorOptions || !colorList) return;
+
+  const relatedProducts = allProducts.filter(item => {
+    const isCurrent = item.id === data.id;
+
+    const currentHasItem = (data.otherColors || []).some(
+      color => color.sourceUrl === item.sourceUrl,
+    );
+
+    const itemHasCurrent = (item.otherColors || []).some(
+      color => color.sourceUrl === data.sourceUrl,
+    );
+
+    return isCurrent || currentHasItem || itemHasCurrent;
+  });
+
+  const colorItems = relatedProducts.map(item => ({
+    id: item.id,
+    title: item.title,
+    model: item.title,
+    checked: item.id === data.id,
+  }));
+  const visibleColorItems = colorItems.filter(item => {
+    const color = getColorFromName(item.model || item.title, colorMap);
+    return item.checked || color.name !== "color";
+  });
+
+  colorOptions.hidden = false;
+  const currentColor = getColorFromName(data.title, colorMap);
+  if (selectedColor) selectedColor.textContent = currentColor.name;
+
+  colorList.innerHTML = visibleColorItems
+    .map(item => {
+      const color = getColorFromName(item.model || item.title, colorMap);
+
+      return `
+        <li>
+          <label class="color-chip d-flex align-items-center">
+            <input
+              type="radio"
+              name="color"
+              value="${item.id ?? ""}"
+              ${item.checked ? "checked" : ""}
+              ${item.id ? "" : "disabled"}
+              aria-label="${item.model || item.title} 색상 선택"
+            />
+            <span
+              class="color-dot"
+              style="background-color: ${color.hex};"
+              aria-hidden="true"
+            ></span>
+            <span class="sr-only">${color.name} 색상 선택</span>
+          </label>
+        </li>
+      `;
+    })
+    .join("");
+
+  colorList.addEventListener("change", e => {
+    const input = e.target.closest("input[name='color']");
+    if (!input || !input.value || Number(input.value) === data.id) return;
+
+    location.href = `./product_detail.html?id=${input.value}`;
   });
 }
 
@@ -829,8 +938,17 @@ document.addEventListener("click", e => {
   const isActive = wishButton.classList.toggle("is-active");
 
   wishButton.setAttribute("aria-pressed", String(isActive));
+  wishButton.setAttribute(
+    "aria-label",
+    isActive ? "관심상품 제거" : "관심상품 추가",
+  );
 
   if (icon) {
+    const defaultClass = wishButton.classList.contains("product-card-wish")
+      ? "typo-m-icons-s-o"
+      : "typo-m-icons-l-o";
+
+    icon.className = isActive ? "material-icons" : defaultClass;
     icon.textContent = isActive ? "favorite" : "favorite_border";
   }
 });
