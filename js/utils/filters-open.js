@@ -1,4 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // 접근성을 위한 가격 슬라이더 aria-label 동적 추가
+  const priceRange = document.getElementById("priceRange");
+  if (priceRange) priceRange.setAttribute("aria-label", "가격대 조절 슬라이더");
+
   /* =========================
      Brand 선택
   ========================= */

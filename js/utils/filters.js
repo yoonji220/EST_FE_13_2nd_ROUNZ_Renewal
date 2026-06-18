@@ -249,6 +249,10 @@ import { renderHeader } from "../../js/modules/header.js";
   function bindEvents() {
     // 헤더, 하단 푸터 렌더링 및 모바일 반응형 처리
     document.addEventListener("DOMContentLoaded", () => {
+      // 접근성을 위한 검색창 aria-label 동적 추가
+      const searchInput = document.querySelector(".search-box input");
+      if (searchInput) searchInput.setAttribute("aria-label", "모델명 또는 브랜드 검색");
+
       // 모바일 필터 연동 (sessionStorage)
       const savedStateStr = sessionStorage.getItem('mobileFilters');
       if (savedStateStr) {
