@@ -391,7 +391,7 @@
 /* Product Tab */
 .product-tab {
   position: sticky;
-  top: 72px; /* 임시 */
+  top: 72px; 
   z-index: 1;
   background-color: var(--color-white);
   padding-top: 24px;
@@ -433,17 +433,26 @@
   background-color: var(--color-point);
   transform: translateX(-50%);
 }
+
+.tab-panel {
+  scroll-margin-top: 160px;
+}
+
+.tab-panel.is-active {
+  display: block;
+}
+
 /* 태블릿 */
 @media (min-width: 768px) {
   .product-tab {
-    top: 56px; /* 헤더 확정 전 임시 */
+    top: 56px;
   }
 }
 
 /* PC */
 @media (min-width: 1200px) {
   .product-tab {
-    top: 69px; /* 데브모드 헤더 높이 */
+    top: 69px;
   }
 }
 
@@ -781,10 +790,6 @@
 
 .spec-value span {
   color: var(--color-dark-gray);
-}
-
-.tab-panel.is-active {
-  display: block;
 }
 
 @media (min-width: 1200px) {
