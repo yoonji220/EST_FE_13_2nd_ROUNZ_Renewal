@@ -4,15 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>홈</title>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
-    />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
-      rel="stylesheet"
-    />
+      rel="stylesheet" />
 
     <link rel="stylesheet" href="css/common.css" />
     <link rel="stylesheet" href="css/font-utility.css" />
@@ -109,8 +105,7 @@
             </div>
 
             <p class="typo-m-body-s g-1">
-              별도의 촬영 없이 사진만 업로드하면 다양한 안경을 자연스럽게
-              가상으로<br />
+              별도의 촬영 없이 사진만 업로드하면 다양한 안경을 자연스럽게 가상으로<br />
               착용해 볼 수 있습니다. <br />
               사진 한 장으로 다양한 안경을 미리 착용하고<br />
               나만의 스타일을 발견해 보세요!
@@ -121,10 +116,7 @@
         </article>
 
         <article class="guide-card d-flex flex-column g-2">
-          <img
-            src="img/main_AI_3.png"
-            alt="안경 가이드"
-          />
+          <img src="img/main_AI_3.png" alt="안경 가이드" />
 
           <div class="guide-text typo-m-header-l">
             <h2>다양한 얼굴형에<br />맞춘 안경 가이드</h2>
@@ -135,8 +127,7 @@
               <span>다양한 스타일 검색</span>
             </div>
             <p class="typo-m-body-s g-1">
-              둥근형, 각진형, 긴형 등 얼굴형별 추천 안경테를 확인하고 다양한
-              디자인을<br />
+              둥근형, 각진형, 긴형 등 얼굴형별 추천 안경테를 확인하고 다양한 디자인을<br />
               비교할 수 있습니다.<br />
               다양한 프레임을 살펴보고 나만의 스타일을<br />
               완성해 보세요!
@@ -155,17 +146,14 @@
             <span>BEST 베스트셀러</span>
           </h2>
 
-          <a
-            href="#"
-            class="best-link d-flex justify-content-center align-items-center g-1"
-          >
+          <a href="filters.html" class="best-link d-flex justify-content-center align-items-center g-1">
             <span class="typo-m-btn-m">VIEW ALL</span>
             <span class="typo-m-icons-s-o d-flex justify-content-center align-items-center">arrow_forward</span>
           </a>
         </div>
 
-        <ul class="best-swiper g-3 d-flex" data-best-list>
-          <li class="product-card g-1 d-flex flex-column">
+        <ul class="best-swiper g-3 d-flex" data-best-list aria-live="polite" aria-busy="true">
+          <li class="product-card g-1 d-flex flex-column" data-url="product-detail.html?id=1">
             <a href="#" class="product-card__image">
               <img src="./images/glasses01.png" alt="Essential Frame Model" />
             </a>
@@ -173,19 +161,16 @@
             <div class="product-card-content g-1">
               <p class="product-card-brand typo-m-product-brand">BRAND NAME</p>
 
-              <h3 class="product-card-title typo-m-product-name">
-                Essential Frame Model
-              </h3>
+              <h3 class="product-card-title typo-m-product-name">Essential Frame Model</h3>
 
-              <div
-                class="product-card-price-row d-flex justify-content-between"
-              >
+              <div class="product-card-price-row d-flex justify-content-between">
                 <p class="product-card-price typo-m-product-price">₩129,000</p>
 
                 <button
+                  type="button"
                   class="product-card-wish typo-m-icons-s-o"
                   aria-label="찜하기"
-                >
+                  aria-pressed="false">
                   favorite_border
                 </button>
               </div>
@@ -196,15 +181,12 @@
                 </li>
 
                 <li>
-                  <button
-                    class="piting-color gray"
-                    aria-label="그레이"
-                  ></button>
+                  <button class="piting-color gray" aria-label="그레이"></button>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="product-card g-1 d-flex flex-column">
+          <li class="product-card g-1 d-flex flex-column" data-url="product-detail.html?id=1">
             <a href="#" class="product-card__image">
               <img src="./images/glasses01.png" alt="Essential Frame Model" />
             </a>
@@ -212,19 +194,16 @@
             <div class="product-card-content g-1">
               <p class="product-card-brand typo-m-product-brand">BRAND NAME</p>
 
-              <h3 class="product-card-title typo-m-product-name">
-                Essential Frame Model
-              </h3>
+              <h3 class="product-card-title typo-m-product-name">Essential Frame Model</h3>
 
-              <div
-                class="product-card-price-row d-flex justify-content-between"
-              >
+              <div class="product-card-price-row d-flex justify-content-between">
                 <p class="product-card-price typo-m-product-price">₩129,000</p>
 
                 <button
+                  type="button"
                   class="product-card-wish typo-m-icons-s-o"
                   aria-label="찜하기"
-                >
+                  aria-pressed="false">
                   favorite_border
                 </button>
               </div>
@@ -235,15 +214,12 @@
                 </li>
 
                 <li>
-                  <button
-                    class="piting-color gray"
-                    aria-label="그레이"
-                  ></button>
+                  <button class="piting-color gray" aria-label="그레이"></button>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="product-card g-1 d-flex flex-column">
+          <li class="product-card g-1 d-flex flex-column" data-url="product-detail.html?id=1">
             <a href="#" class="product-card__image">
               <img src="./images/glasses01.png" alt="Essential Frame Model" />
             </a>
@@ -251,19 +227,16 @@
             <div class="product-card-content g-1">
               <p class="product-card-brand typo-m-product-brand">BRAND NAME</p>
 
-              <h3 class="product-card-title typo-m-product-name">
-                Essential Frame Model
-              </h3>
+              <h3 class="product-card-title typo-m-product-name">Essential Frame Model</h3>
 
-              <div
-                class="product-card-price-row d-flex justify-content-between"
-              >
+              <div class="product-card-price-row d-flex justify-content-between">
                 <p class="product-card-price typo-m-product-price">₩129,000</p>
 
                 <button
+                  type="button"
                   class="product-card-wish typo-m-icons-s-o"
                   aria-label="찜하기"
-                >
+                  aria-pressed="false">
                   favorite_border
                 </button>
               </div>
@@ -274,15 +247,12 @@
                 </li>
 
                 <li>
-                  <button
-                    class="piting-color gray"
-                    aria-label="그레이"
-                  ></button>
+                  <button class="piting-color gray" aria-label="그레이"></button>
                 </li>
               </ul>
             </div>
           </li>
-          <li class="product-card g-1 d-flex flex-column">
+          <li class="product-card g-1 d-flex flex-column" data-url="product-detail.html?id=1">
             <a href="#" class="product-card__image">
               <img src="./images/glasses01.png" alt="Essential Frame Model" />
             </a>
@@ -290,19 +260,11 @@
             <div class="product-card-content g-1">
               <p class="product-card-brand typo-m-product-brand">BRAND NAME</p>
 
-              <h3 class="product-card-title typo-m-product-name">
-                Essential Frame Model
-              </h3>
+              <h3 class="product-card-title typo-m-product-name">Essential Frame Model</h3>
 
-              <div
-                class="product-card-price-row d-flex justify-content-between"
-              >
+              <div class="product-card-price-row d-flex justify-content-between">
                 <p class="product-card-price typo-m-product-price">₩129,000</p>
-
-                <button
-                  class="product-card-wish typo-m-icons-s-o"
-                  aria-label="찜하기"
-                >
+                <button type="button" class="best-ranking-wish typo-m-icons-s-o" aria-label="찜하기">
                   favorite_border
                 </button>
               </div>
@@ -313,16 +275,13 @@
                 </li>
 
                 <li>
-                  <button
-                    class="piting-color gray"
-                    aria-label="그레이"
-                  ></button>
+                  <button class="piting-color gray" aria-label="그레이"></button>
                 </li>
               </ul>
             </div>
           </li>
         </ul>
-        <ul class="best-ranking d-flex flex-column g-1">
+        <ul class="best-ranking d-flex flex-column g-1" data-best-ranking aria-live="polite" aria-busy="true">
           <li class="best-ranking-item d-flex align-items-center g-1">
             <img src="./img/sunglasses-promotion.webp" alt="" />
             <div class="best-ranking-content d-flex flex-column justify-content-between">
@@ -330,11 +289,7 @@
               <p class="best-ranking-title">Essential Frame Model</p>
               <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
                 <span>₩129,000</span>
-                <button
-                  type="button"
-                  class="best-ranking-wish typo-m-icons-s-o"
-                  aria-label="찜하기"
-                >
+                <button type="button" class="best-ranking-wish typo-m-icons-s-o" aria-label="찜하기">
                   favorite_border
                 </button>
               </div>
@@ -348,11 +303,7 @@
               <p class="best-ranking-title">Essential Frame Model</p>
               <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
                 <span>₩129,000</span>
-                <button
-                  type="button"
-                  class="best-ranking-wish typo-m-icons-s-o"
-                  aria-label="찜하기"
-                >
+                <button type="button" class="best-ranking-wish typo-m-icons-s-o" aria-label="찜하기">
                   favorite_border
                 </button>
               </div>
@@ -366,11 +317,7 @@
               <p class="best-ranking-title">Essential Frame Model</p>
               <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
                 <span>₩129,000</span>
-                <button
-                  type="button"
-                  class="best-ranking-wish typo-m-icons-s-o"
-                  aria-label="찜하기"
-                >
+                <button type="button" class="best-ranking-wish typo-m-icons-s-o" aria-label="찜하기">
                   favorite_border
                 </button>
               </div>
@@ -384,11 +331,7 @@
               <p class="best-ranking-title">Essential Frame Model</p>
               <div class="best-ranking-price-row d-flex justify-content-between align-items-center">
                 <span>₩129,000</span>
-                <button
-                  type="button"
-                  class="best-ranking-wish typo-m-icons-s-o"
-                  aria-label="찜하기"
-                >
+                <button type="button" class="best-ranking-wish typo-m-icons-s-o" aria-label="찜하기">
                   favorite_border
                 </button>
               </div>
@@ -403,12 +346,11 @@
         <div class="brand-header d-flex justify-content-between">
           <h2 class="brand-title typo-m-header-l">brand 브랜드</h2>
 
-          <a
-            href="#"
-            class="brand-link d-flex justify-content-center align-items-center g-1"
-          >
+          <a href="#" class="brand-link d-flex justify-content-center align-items-center g-1">
             <span class="typo-m-btn-m">VIEW ALL</span>
-            <span class="typo-m-icons-s-o typo-m-icons-s-o d-flex justify-content-center align-items-center">arrow_forward</span>
+            <span class="typo-m-icons-s-o typo-m-icons-s-o d-flex justify-content-center align-items-center"
+              >arrow_forward</span
+            >
           </a>
         </div>
 
@@ -416,23 +358,36 @@
           <ul class="left-column g-1 d-flex flex-column">
             <li class="brand-item brand-item-1">
               <a href="#" class="brand-card">
-                <img
-                  src="img/Main_brand_1.jpg"
-                  alt="TOMMY HILFIGER 모델 사진"
-                />
-                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">TOMMY HILFIGER</span>
+                <img src="img/Main_brand_1.jpg" alt="TOMMY HILFIGER 모델 사진" />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center"
+                  >TOMMY HILFIGER</span
+                ><span
+                  >아메리칸 클래식의 정체성을 바탕으로 프레피 감성을 현대적으로 풀어낸 브랜드입니다. 깔끔한 실루엣과
+                  균형 잡힌 디테일이 조화를 이루며 브랜드만의 감성을 담아냅니다.</span
+                >
               </a>
             </li>
             <li class="brand-item brand-item-2">
               <a href="#" class="brand-card">
                 <img src="img/Main_brand_2.jpg" alt="BAIRIMENG 모델 사진" />
-                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">BAIRIMENG</span>
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center"
+                  >BAIRIMENG</span
+                ><span>
+                  과거의 디자인을 그대로 재현하는 것을 넘어, 빈티지의 가치와 현대적인 감성을 함께 담아낸 브랜드입니다.
+                  클래식한 디테일 속에서 브랜드만의 독창적인 분위기를 느낄 수 있습니다.
+                </span>
               </a>
             </li>
             <li class="brand-item brand-item-3">
               <a href="#" class="brand-card">
                 <img src="img/Main_brand_3.png" alt="ROUNZ BASIC 안경 사진" />
-                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">ROUNZ BASIC</span>
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center"
+                  >ROUNZ BASIC</span
+                >
+                <span
+                  >기본에 충실한 디자인과 합리적인 가치를 담은 브랜드입니다. 일상 속에서 편안하게 오래 함께할 수 있는
+                  아이웨어를 지향합니다.
+                </span>
               </a>
             </li>
           </ul>
@@ -441,28 +396,45 @@
             <li class="brand-item brand-item-4">
               <a href="#" class="brand-card">
                 <img src="img/Main_brand_4.jpg" alt="SAGAWAFUJII 모델 사진" />
-                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">SAGAWAFUJII</span>
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center"
+                  >SAGAWAFUJII</span
+                >
+                <span
+                  >엄선된 천연 원목과 섬세한 핸드메이드 공정을 바탕으로 완성되는 브랜드입니다. 자연 그대로의 감성과
+                  시간이 쌓일수록 깊어지는 아름다움이 브랜드만의 특별한 아이웨어를 만들어냅니다.</span
+                >
               </a>
             </li>
             <li class="brand-item brand-item-5">
               <a href="#" class="brand-card">
                 <img src="img/Main_brand_5.jpg" alt="MYKITA 모델 사진" />
-                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">MYKITA</span>
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">MYKITA</span
+                ><span>
+                  정교한 수작업과 첨단 기술이 만나 완성된 브랜드입니다. 미니멀한 디자인과 독창적인 감성이 조화를
+                  이룹니다.
+                </span>
               </a>
             </li>
             <li class="brand-item brand-item-6">
               <a href="#" class="brand-card">
-                <img
-                  src="img/Main_brand_6.jpg"
-                  alt="OLIVER PEOPLES 안경 사진"
-                />
-                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">OLIVER PEOPLES</span>
+                <img src="img/Main_brand_6.jpg" alt="OLIVER PEOPLES 안경 사진" />
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center"
+                  >OLIVER PEOPLES</span
+                ><span
+                  >LA의 감성과 빈티지 디테일을 현대적으로 담아낸 브랜드입니다. 정교한 장인정신과 프리미엄 소재가
+                  브랜드만의 완성도를 만들어냅니다.</span
+                >
               </a>
             </li>
             <li class="brand-item brand-item-7">
               <a href="#" class="brand-card">
                 <img src="img/Main_brand_7.jpg" alt="PUBLIC BEACON 모델 사진" />
-                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center">PUBLIC BEACON</span>
+                <span class="hover-overlay typo-m-btn-m d-flex justify-content-center align-items-center"
+                  >PUBLIC BEACON</span
+                ><span>
+                  기본에 충실한 디자인과 합리적인 가치를 담은 브랜드입니다. 일상 속에서 편안하게 오래 함께할 수 있는
+                  아이웨어를 지향합니다.
+                </span>
               </a>
             </li>
           </ul>
@@ -471,18 +443,13 @@
     </section>
     <section class="store-search">
       <div class="container d-flex flex-column align-items-center g-3">
-        <div
-          class="store-search-header d-flex justify-content-between align-items-center"
-        >
+        <div class="store-search-header d-flex justify-content-between align-items-center">
           <h2 class="typo-m-header-l">직접 써보고 구매하는 안경원</h2>
         </div>
 
         <div class="store-search-body d-flex flex-column g-3">
           <div class="store-preview-img">
-            <img
-              src="img/offline_slide_7.webp"
-              alt="라운즈 오프라인 매장 전경"
-            />
+            <img src="img/offline_slide_7.webp" alt="라운즈 오프라인 매장 전경" />
           </div>
 
           <div class="store-search-content d-flex flex-column">
@@ -499,19 +466,14 @@
                   class="store-search-input typo-m-body"
                   type="text"
                   placeholder="매장명을 입력하세요"
-                  aria-label="매장명 입력"
-                />
+                  aria-label="매장명 입력" />
 
-                <button type="submit" class="btn-submit typo-m-btn-m">
-                  매장 찾기
-                </button>
+                <button type="submit" class="btn-submit typo-m-btn-m">매장 찾기</button>
               </fieldset>
             </form>
 
             <div class="store-types d-flex flex-column align-items-center g-1">
-              <ul
-                class="store-type-list d-flex justify-content-center align-items-center"
-              >
+              <ul class="store-type-list d-flex justify-content-center align-items-center">
                 <li class="typo-m-btn-m">
                   <a href="#">라운즈 플래그십 스토어</a>
                 </li>
@@ -525,15 +487,9 @@
             </div>
           </div>
         </div>
-        <a
-          href="#"
-          class="store__link d-flex justify-content-center align-items-center g-1"
-        >
+        <a href="stores-location.html" class="store__link d-flex justify-content-center align-items-center g-1">
           <span class="typo-m-btn-m">VIEW ALL</span>
-          <span
-            class="typo-m-icons-s-o d-flex justify-content-center align-items-center"
-            >arrow_forward</span
-          >
+          <span class="typo-m-icons-s-o d-flex justify-content-center align-items-center">arrow_forward</span>
         </a>
       </div>
     </section>
@@ -543,262 +499,236 @@
         <h2 class="typo-m-header-l text-center">NOTICE & EVENT</h2>
 
         <!-- 탭 -->
-        <div
-          class="tab-group d-flex justify-content-center align-items-center g-1"
-          role="tablist"
-        >
-          <button
-            type="button"
-            class="tab-btn active typo-m-btn-m"
-            data-tab="notice"
-          >
-            공지사항
-          </button>
+        <div class="tab-group d-flex justify-content-center align-items-center g-1" role="tablist">
+          <button type="button" class="tab-btn active typo-m-btn-m" data-tab="notice">공지사항</button>
 
-          <button type="button" class="tab-btn typo-m-btn-m" data-tab="event">
-            이벤트
-          </button>
+          <button type="button" class="tab-btn typo-m-btn-m" data-tab="event">이벤트</button>
         </div>
 
         <!-- 공지사항 -->
-        <div class="tab-panel active" id="notice-panel">
-          <ul class="accordion-list d-flex flex-column">
-            <li class="accordion-item">
-              <div class="accordion-header d-flex flex-column g-2">
-                <div class="info-meta d-flex align-items-center g-2">
-                  <span class="badge notice typo-m-header">NOTICE</span>
-                  <time datetime="2026-01-01" class="typo-m-caption"
-                    >2026.01.01</time
-                  >
-                </div>
+        <div class="tab-panel-slider">
+          <div class="tab-panel-track" data-tab-track>
+            <div class="tab-panel active" id="notice-panel">
+              <ul class="accordion-list d-flex flex-column">
+                <li class="accordion-item">
+                  <div class="accordion-header d-flex flex-column g-2">
+                    <div class="info-meta d-flex align-items-center g-2">
+                      <span class="badge notice typo-m-header">NOTICE</span>
+                      <time datetime="2026-01-01" class="typo-m-caption">2026.01.01</time>
+                    </div>
 
-                <p class="subject typo-m-body">
-                  설 연휴 배송 및 플래그십스토어 운영 안내
-                </p>
+                    <p class="subject typo-m-body">설 연휴 배송 및 플래그십스토어 운영 안내</p>
 
-                <span
-                  class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
-                  >chevron_right</span
-                >
-              </div>
+                    <span class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
+                      >chevron_right</span
+                    >
+                  </div>
 
-              <div class="accordion-content typo-m-body-s">
-                <p>
-                  라운즈를 아껴주시는 고객님, 안녕하세요. <br />
-                  세상에 없던 안경쇼핑 라운즈입니다. <br />
-                  <br />
-                  설 연휴 동안의 배송 일정을 안내 드리오니 이용에 참고하시기
-                  바랍니다. <br />
-                  <br />
-                  1. 배송안내<br />
-                  <br />
-                  2/12(목) 오후 3:00 까지의 주문 건까지 정상 발송되며 배송은
-                  2/19(목)부터 순차적으로 받아보실 수 있습니다.
-                  <br />
-                  <br />
-                  2/12(목) 오후 3:00 이후의 주문 건은 2/19(목) 부터 발송됩니다.
-                  <br />
-                  <br />
-                  * 발송되는 상품은 연휴 동안 발송하지 못한 물량으로 인해 배송이
-                  지연될 수 있습니다. <br />
-                  <br />
-                  ※ [당일발송]으로 표시된 제품에 한하며 그 외 제품은 재고 유무에
-                  따라 배송 일정이 다를 수 있습니다.
-                  <br />
-                  <br />
-                  <br />
-                  2. 라운즈 고객센터 및 문의게시판 운영 <br />
-                  <br />
-                  라운즈 고객센터는 2/14(토)-2/18(수)은 운영하지 않으니 상담을
-                  원하시는 고객님께서는 2/19(목)에 연락 부탁 드리며 ,<br />
-                  1:1 게시판을 이용해 주시면 다녀와서 신속하게 처리하도록
-                  하겠습니다.<br />
-                  <br />
-                  <br />
-                  3. 라운즈 플래그십스토어<br />
-                  <br />
-                  강남역점 - 2/16(월) ~ 2/17(화) 휴무<br />
-                  판교점 - 2/17(화) 휴무<br />
-                  <br />
-                  새해 복 많이 받으시고, 건강하고 풍요로운 설 명절 되세요.<br />
-                  감사합니다.
-                </p>
-              </div>
-            </li>
-            <li class="accordion-item">
-              <div class="accordion-header d-flex flex-column g-2">
-                <div class="info-meta d-flex align-items-center g-2">
-                  <span class="badge notice typo-m-header">NOTICE</span>
-                  <time datetime="2023-10-30" class="typo-m-caption"
-                    >2023.10.30</time
-                  >
-                </div>
+                  <div class="accordion-content typo-m-body-s">
+                    <p>
+                      라운즈를 아껴주시는 고객님, 안녕하세요. <br />
+                      세상에 없던 안경쇼핑 라운즈입니다. <br />
+                      <br />
+                      설 연휴 동안의 배송 일정을 안내 드리오니 이용에 참고하시기 바랍니다. <br />
+                      <br />
+                      1. 배송안내<br />
+                      <br />
+                      2/12(목) 오후 3:00 까지의 주문 건까지 정상 발송되며 배송은 2/19(목)부터 순차적으로 받아보실 수
+                      있습니다.
+                      <br />
+                      <br />
+                      2/12(목) 오후 3:00 이후의 주문 건은 2/19(목) 부터 발송됩니다.
+                      <br />
+                      <br />
+                      * 발송되는 상품은 연휴 동안 발송하지 못한 물량으로 인해 배송이 지연될 수 있습니다. <br />
+                      <br />
+                      ※ [당일발송]으로 표시된 제품에 한하며 그 외 제품은 재고 유무에 따라 배송 일정이 다를 수 있습니다.
+                      <br />
+                      <br />
+                      <br />
+                      2. 라운즈 고객센터 및 문의게시판 운영 <br />
+                      <br />
+                      라운즈 고객센터는 2/14(토)-2/18(수)은 운영하지 않으니 상담을 원하시는 고객님께서는 2/19(목)에 연락
+                      부탁 드리며 ,<br />
+                      1:1 게시판을 이용해 주시면 다녀와서 신속하게 처리하도록 하겠습니다.<br />
+                      <br />
+                      <br />
+                      3. 라운즈 플래그십스토어<br />
+                      <br />
+                      강남역점 - 2/16(월) ~ 2/17(화) 휴무<br />
+                      판교점 - 2/17(화) 휴무<br />
+                      <br />
+                      새해 복 많이 받으시고, 건강하고 풍요로운 설 명절 되세요.<br />
+                      감사합니다.
+                    </p>
+                  </div>
+                </li>
+                <li class="accordion-item">
+                  <div class="accordion-header d-flex flex-column g-2">
+                    <div class="info-meta d-flex align-items-center g-2">
+                      <span class="badge notice typo-m-header">NOTICE</span>
+                      <time datetime="2023-10-30" class="typo-m-caption">2023.10.30</time>
+                    </div>
 
-                <p class="subject typo-m-body">
-                  개인정보 유효기간제 폐지에 따른 회원 휴면 정책 변경 안내
-                </p>
+                    <p class="subject typo-m-body">개인정보 유효기간제 폐지에 따른 회원 휴면 정책 변경 안내</p>
 
-                <span
-                  class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
-                  >chevron_right</span
-                >
-              </div>
+                    <span class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
+                      >chevron_right</span
+                    >
+                  </div>
 
-              <div class="accordion-content typo-m-body-s">
-                <p>
-                  안녕하세요. 항상 라운즈를 사랑해 주시는 고객님들께 깊은 감사의
-                  말씀드립니다. <br />
-                  <br />
-                  23년 9월 15일 개인정보보호법 개정에 따라 '개인정보
-                  유효기간제(개정 전 39조의 6)'가 폐지되었습니다.<br />
-                  이에 의거하여 라운즈 서비스를 1년간 이용하지 않을 경우,
-                  개인정보를 분리•보관 적용하던 휴면 정책이 변경될
-                  예정입니다.<br />
-                  아래 내용을 확인하시고 이용에 참고하시기 바랍니다.<br />
-                  <br />
-                  ■ 주요 변경사항<br />
-                  2023년 9월 15일 시행된 개인정보보호법 개정에 따라 휴면계정
-                  분리보관 정책 관련 내용의 삭제<br />
-                  <br />
-                  ■ 변경내용<br />
-                  1. 휴면 정책 폐지<br />
-                  라운즈 서비스를 1년간 이용하지 않아도 휴면 회원으로 전환되지
-                  않습니다.<br />
-                  <br />
-                  2. 기존 휴면 회원 상태 변경<br />
-                  시행일 기준 휴면 상태인 회원의 경우 정상 회원 상태로 변경될
-                  예정입니다.<br />
-                  <br />
-                  라운즈는 앞으로도 회원님의 개인정보를 보다 안전하게 보호할
-                  것을 약속 드리며,<br />
-                  더욱 신뢰받는 서비스로 보답하겠습니다.<br />
-                  <br />
-                  - 공고일 : 2023.10.30<br />
-                  - 시행일 : 2023.11.09<br />
-                  <br />
-                  감사합니다.
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
+                  <div class="accordion-content typo-m-body-s">
+                    <p>
+                      안녕하세요. 항상 라운즈를 사랑해 주시는 고객님들께 깊은 감사의 말씀드립니다. <br />
+                      <br />
+                      23년 9월 15일 개인정보보호법 개정에 따라 '개인정보 유효기간제(개정 전 39조의 6)'가
+                      폐지되었습니다.<br />
+                      이에 의거하여 라운즈 서비스를 1년간 이용하지 않을 경우, 개인정보를 분리•보관 적용하던 휴면 정책이
+                      변경될 예정입니다.<br />
+                      아래 내용을 확인하시고 이용에 참고하시기 바랍니다.<br />
+                      <br />
+                      ■ 주요 변경사항<br />
+                      2023년 9월 15일 시행된 개인정보보호법 개정에 따라 휴면계정 분리보관 정책 관련 내용의 삭제<br />
+                      <br />
+                      ■ 변경내용<br />
+                      1. 휴면 정책 폐지<br />
+                      라운즈 서비스를 1년간 이용하지 않아도 휴면 회원으로 전환되지 않습니다.<br />
+                      <br />
+                      2. 기존 휴면 회원 상태 변경<br />
+                      시행일 기준 휴면 상태인 회원의 경우 정상 회원 상태로 변경될 예정입니다.<br />
+                      <br />
+                      라운즈는 앞으로도 회원님의 개인정보를 보다 안전하게 보호할 것을 약속 드리며,<br />
+                      더욱 신뢰받는 서비스로 보답하겠습니다.<br />
+                      <br />
+                      - 공고일 : 2023.10.30<br />
+                      - 시행일 : 2023.11.09<br />
+                      <br />
+                      감사합니다.
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
 
-        <!-- 이벤트 -->
-        <div class="tab-panel" id="event-panel">
-          <ul class="accordion-list d-flex flex-column">
-            <li class="accordion-item">
-              <div class="accordion-header d-flex flex-column g-2">
-                <div class="info-meta d-flex align-items-center g-2">
-                  <span class="badge update typo-m-header">EVENT</span>
-                  <time datetime="2026-06-01" class="typo-m-caption"
-                    >2026.06.01</time
-                  >
-                </div>
+            <!-- 이벤트 -->
+            <div class="tab-panel" id="event-panel">
+              <ul class="accordion-list d-flex flex-column">
+                <li class="accordion-item">
+                  <div class="accordion-header d-flex flex-column g-2">
+                    <div class="info-meta d-flex align-items-center g-2">
+                      <span class="badge update typo-m-header">EVENT</span>
+                      <time datetime="2026-06-01" class="typo-m-caption">2026.06.01</time>
+                    </div>
 
-                <p class="subject typo-m-body">5월 베스트 후기 당첨 공지</p>
+                    <p class="subject typo-m-body">5월 베스트 후기 당첨 공지</p>
 
-                <span
-                  class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
-                  >chevron_right</span
-                >
-              </div>
+                    <span class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
+                      >chevron_right</span
+                    >
+                  </div>
 
-              <div class="accordion-content typo-m-body-s">
-                <p>
-                  안녕하세요,<br />
-                  세상에 없던 안경쇼핑 라운즈입니다.<br />
-                  <br />
-                  항상 소중한 후기를 남겨주신 고객님들께 감사드리며, 1월의
-                  베스트 후기 당첨자를 아래와 같이 발표합니다.<br />
-                  <br />
-                  [5월 베스트 후기 당첨자]<br />
-                  <br />
-                  (휴대폰 번호 뒷자리 / 성함)<br />
-                  <br />
-                  7095 정*현<br />
-                  2079 정*기<br />
-                  2513 고*태<br />
-                  7297 백*승<br />
-                  6706 조*살<br />
-                  8962 김*^<br />
-                  4337 ╰*♡<br />
-                  7804 s*n<br />
-                  2252 강*영<br />
-                  7958 J*m<br />
-                  <br />
-                  당첨되신 분들의 계정 내, 등록된 주문자 휴대폰 번호로
-                  기프티콘을 문자 발송해 드렸습니다.<br />
-                  <br />
-                  앞으로도 고객님의 소중한 목소리에 귀 기울이는 라운즈가
-                  되겠습니다.<br />
-                  <br />
-                  많은 관심과 참여 부탁드립니다.<br />
-                  <br />
-                  감사합니다.<br />
-                  <br />
-                  라운즈 드림
-                </p>
-              </div>
-            </li>
+                  <div class="accordion-content typo-m-body-s">
+                    <p>
+                      안녕하세요,<br />
+                      세상에 없던 안경쇼핑 라운즈입니다.<br />
+                      <br />
+                      항상 소중한 후기를 남겨주신 고객님들께 감사드리며, 1월의 베스트 후기 당첨자를 아래와 같이
+                      발표합니다.<br />
+                      <br />
+                      [5월 베스트 후기 당첨자]<br />
+                      <br />
+                      (휴대폰 번호 뒷자리 / 성함)<br />
+                      <br />
+                      7095 정*현<br />
+                      2079 정*기<br />
+                      2513 고*태<br />
+                      7297 백*승<br />
+                      6706 조*살<br />
+                      8962 김*^<br />
+                      4337 ╰*♡<br />
+                      7804 s*n<br />
+                      2252 강*영<br />
+                      7958 J*m<br />
+                      <br />
+                      당첨되신 분들의 계정 내, 등록된 주문자 휴대폰 번호로 기프티콘을 문자 발송해 드렸습니다.<br />
+                      <br />
+                      앞으로도 고객님의 소중한 목소리에 귀 기울이는 라운즈가 되겠습니다.<br />
+                      <br />
+                      많은 관심과 참여 부탁드립니다.<br />
+                      <br />
+                      감사합니다.<br />
+                      <br />
+                      라운즈 드림
+                    </p>
+                  </div>
+                </li>
 
-            <li class="accordion-item">
-              <div class="accordion-header d-flex flex-column g-2">
-                <div class="info-meta d-flex align-items-center g-2">
-                  <span class="badge update typo-m-header">EVENT</span>
-                  <time datetime="2026-04-01" class="typo-m-caption"
-                    >2026.04.01</time
-                  >
-                </div>
+                <li class="accordion-item">
+                  <div class="accordion-header d-flex flex-column g-2">
+                    <div class="info-meta d-flex align-items-center g-2">
+                      <span class="badge update typo-m-header">EVENT</span>
+                      <time datetime="2026-04-01" class="typo-m-caption">2026.04.01</time>
+                    </div>
 
-                <p class="subject typo-m-body">3월 베스트 후기 당첨 공지</p>
+                    <p class="subject typo-m-body">3월 베스트 후기 당첨 공지</p>
 
-                <span
-                  class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
-                  >chevron_right
-                </span>
-              </div>
+                    <span class="arrow-icon d-flex justify-content-center align-items-center typo-m-icons-l-o"
+                      >chevron_right
+                    </span>
+                  </div>
 
-              <div class="accordion-content typo-m-body-s">
-                <p>
-                  안녕하세요,<br />
-                  세상에 없던 안경쇼핑 라운즈입니다.<br />
-                  <br />
-                  항상 소중한 후기를 남겨주신 고객님들께 감사드리며, 1월의
-                  베스트 후기 당첨자를 아래와 같이 발표합니다.<br />
-                  <br />
-                  [3월 베스트 후기 당첨자]<br />
-                  <br />
-                  (휴대폰 번호 뒷자리 / 성함)<br />
-                  <br />
-                  1060 이*경<br />
-                  7244 채*영<br />
-                  1468 김*민<br />
-                  6429 김*린<br />
-                  8547 H*m<br />
-                  6654 U*O<br />
-                  8338 김*현<br />
-                  8093 이*금<br />
-                  6188 김*화<br />
-                  5013 강*희<br />
-                  <br />
-                  당첨되신 분들의 계정 내, 등록된 주문자 휴대폰 번호로
-                  기프티콘을 문자 발송해 드렸습니다.<br />
-                  <br />
-                  앞으로도 고객님의 소중한 목소리에 귀 기울이는 라운즈가
-                  되겠습니다.<br />
-                  <br />
-                  많은 관심과 참여 부탁드립니다.<br />
-                  <br />
-                  감사합니다.<br />
-                  <br />
-                  라운즈 드림
-                </p>
-              </div>
-            </li>
-          </ul>
+                  <div class="accordion-content typo-m-body-s">
+                    <p>
+                      안녕하세요,<br />
+                      세상에 없던 안경쇼핑 라운즈입니다.<br />
+                      <br />
+                      항상 소중한 후기를 남겨주신 고객님들께 감사드리며, 1월의 베스트 후기 당첨자를 아래와 같이
+                      발표합니다.<br />
+                      <br />
+                      [3월 베스트 후기 당첨자]<br />
+                      <br />
+                      (휴대폰 번호 뒷자리 / 성함)<br />
+                      <br />
+                      1060 이*경<br />
+                      7244 채*영<br />
+                      1468 김*민<br />
+                      6429 김*린<br />
+                      8547 H*m<br />
+                      6654 U*O<br />
+                      8338 김*현<br />
+                      8093 이*금<br />
+                      6188 김*화<br />
+                      5013 강*희<br />
+                      <br />
+                      당첨되신 분들의 계정 내, 등록된 주문자 휴대폰 번호로 기프티콘을 문자 발송해 드렸습니다.<br />
+                      <br />
+                      앞으로도 고객님의 소중한 목소리에 귀 기울이는 라운즈가 되겠습니다.<br />
+                      <br />
+                      많은 관심과 참여 부탁드립니다.<br />
+                      <br />
+                      감사합니다.<br />
+                      <br />
+                      라운즈 드림
+                    </p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <div class="floating-bar g-2">
+      <button type="button" class="floating-btn floating-btn--top" aria-label="맨 위로 이동">
+        <span class="typo-m-btn-xl_o">keyboard_double_arrow_up</span>
+      </button>
+
+      <a href="#" class="floating-btn floating-btn--chat" aria-label="채팅 상담">
+        <span class="typo-m-btn-xl_o">comment</span>
+      </a>
+    </div>
+
     <footer class="footer"></footer>
 
     <script type="module">
