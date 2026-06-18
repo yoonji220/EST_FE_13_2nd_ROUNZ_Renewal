@@ -3,7 +3,7 @@
    ============================================================ */
 
 .login-page {
-  background: #FFFFFF;
+  background: #ffffff;
   padding-top: 86px;
 }
 
@@ -21,7 +21,6 @@
   flex-direction: column;
   gap: 32px;
 }
-
 
 .login-title {
   font-size: 24px;
@@ -41,7 +40,7 @@
 }
 
 .banner-title {
-  color: #3B82F6;
+  color: #3b82f6;
   /* 로운즈 파란색 (가상) */
   font-size: 16px;
   font-weight: 700;
@@ -77,11 +76,11 @@
   width: 100%;
   height: 48px;
   padding: 0 16px;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #e5e7eb;
   border-radius: 4px;
   font-size: 14px;
   color: #000;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   transition: border-color 0.2s;
 }
 
@@ -91,7 +90,7 @@
 }
 
 .input-field::placeholder {
-  color: #9CA3AF;
+  color: #9ca3af;
 }
 
 /* 옵션 (체크박스 & 비밀번호 찾기) */
@@ -118,12 +117,12 @@
   background-color: #fff;
 }
 
-.custom-checkbox input[type="checkbox"]:checked+.checkbox-box {
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-box {
   background-color: #000;
   border-color: #000;
 }
 
-.custom-checkbox input[type="checkbox"]:checked+.checkbox-box::after {
+.custom-checkbox input[type="checkbox"]:checked + .checkbox-box::after {
   content: "";
   position: absolute;
   left: 5px;
@@ -170,7 +169,7 @@
 /* 구분선 */
 .divider {
   border: none;
-  border-top: 1px solid #E5E7EB;
+  border-top: 1px solid #e5e7eb;
   margin: 0;
 }
 
@@ -251,12 +250,12 @@
 }
 
 .sns-btn.kakao .sns-icon {
-  background-color: #FEE500;
+  background-color: #fee500;
   color: #000;
 }
 
 .sns-btn.naver .sns-icon {
-  background-color: #03C75A;
+  background-color: #03c75a;
   font-weight: 900;
   font-size: 20px;
 }
@@ -276,7 +275,7 @@
 .ai-banner {
   margin-top: 16px;
   padding: 32px 16px;
-  border: 1px solid #E5E7EB;
+  border: 1px solid #e5e7eb;
   border-radius: 12px;
   display: flex;
   flex-direction: column;
@@ -300,7 +299,7 @@
 .btn-ai-start {
   width: 200px;
   height: 44px;
-  background-color: #3B82F6;
+  background-color: #3b82f6;
   color: #fff;
   font-size: 14px;
   font-weight: 600;
@@ -311,7 +310,7 @@
 }
 
 .btn-ai-start:hover {
-  background-color: #2563EB;
+  background-color: #2563eb;
 }
 
 /* ===========================
