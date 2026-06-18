@@ -1348,68 +1348,6 @@ html {
   gap: 4px;
 }
 
-.floating-btn {
-  width: 40px;
-  height: 40px;
-  border: none;
-  border-radius: 50%;
-  background: var(--color-white);
-  transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    color 0.2s ease;
-
-  box-shadow: var(--shadow-main);
-  cursor: pointer;
-}
-
-.floating-btn--top {
-  color: var(--color-point);
-}
-
-.floating-btn--chat {
-  color: var(--color-black);
-}
-
-.floating-btn--top:hover {
-  color: var(--color-red);
-}
-
-.floating-btn--chat:hover {
-  color: var(--color-yellow);
-}
-
-@media (min-width: 1200px) {
-  .floating-btn {
-    width: 98px;
-    height: 98px;
-    gap: var(--base-unit);
-  }
-
-  .floating-btn--top .typo-m-icons-xl-o {
-    font-family: var(--font-material-icons);
-    font-size: var(--p-icon-3xl-size);
-    line-height: var(--p-icon-3xl-line);
-    font-weight: 400;
-    letter-spacing: 0;
-  }
-
-  .floating-btn--chat .typo-m-icons-xl-o {
-    font-family: var(--font-material-icons);
-    font-size: var(--p-icon-2xl-size);
-    line-height: var(--p-icon-2xl-line);
-    font-weight: 400;
-    letter-spacing: 0;
-  }
-
-  .floating-btn--top:hover .typo-m-icons-xl-o {
-    color: var(--color-red);
-  }
-
-  .floating-btn--chat:hover .typo-m-icons-xl-o {
-    color: var(--color-yellow);
-  }
-}
 
 /* --- index.css --- */
 

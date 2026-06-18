@@ -62,23 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let ticking = false;
 
-    const syncHeaderState = () => {
-      const headerHeight = header.offsetHeight || 0;
-      const heroBottom = hero.offsetTop + hero.offsetHeight;
-      const isOverHero = window.scrollY < heroBottom - headerHeight;
-
-      header.classList.toggle("is-hero-transparent", isOverHero);
-      ticking = false;
-    };
+  
 
     const requestSync = () => {
       if (ticking) return;
 
       ticking = true;
-      window.requestAnimationFrame(syncHeaderState);
     };
 
-    syncHeaderState();
     window.addEventListener("scroll", requestSync, { passive: true });
     window.addEventListener("resize", requestSync);
   }

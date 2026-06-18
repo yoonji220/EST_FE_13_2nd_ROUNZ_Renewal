@@ -65,35 +65,35 @@ export function renderHeader() {
                   </div>
                   <div class="sub-menu-item shape-scroll-container typo-m-body hide-menu">
                     <div class="shape-item">
-                      <img src="img/sunglasses/1.png" alt="라운드 선글라스" />
+                      <img src="img/sunglasses/1.webp" alt="라운드 선글라스" />
                       <a href="#">라운드</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/sunglasses/2.png" alt="스퀘어 선글라스" />
+                      <img src="img/sunglasses/2.webp" alt="스퀘어 선글라스" />
                       <a href="#">스퀘어</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/sunglasses/3.png" alt="하금테 선글라스" />
+                      <img src="img/sunglasses/3.webp" alt="하금테 선글라스" />
                       <a href="#">하금테</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/sunglasses/4.png" alt="고글" />
+                      <img src="img/sunglasses/4.webp" alt="고글" />
                       <a href="#">고글</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/sunglasses/5.png" alt="믹스 선글라스" />
+                      <img src="img/sunglasses/5.webp" alt="믹스 선글라스" />
                       <a href="#">믹스</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/sunglasses/6.png" alt="보잉 선글라스" />
+                      <img src="img/sunglasses/6.webp" alt="보잉 선글라스" />
                       <a href="#">보잉</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/sunglasses/7.png" alt="캣아이 선글라스" />
+                      <img src="img/sunglasses/7.webp" alt="캣아이 선글라스" />
                       <a href="#">캣아이</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/sunglasses/8.png" alt="기타 선글라스" />
+                      <img src="img/sunglasses/8.webp" alt="기타 선글라스" />
                       <a href="#">기타</a>
                     </div>
                   </div>
@@ -131,31 +131,31 @@ export function renderHeader() {
                   </div>
                   <div class="sub-menu-item shape-scroll-container typo-m-body hide-menu">
                     <div class="shape-item">
-                      <img src="img/glass/1.png" alt="라운드 안경테" />
+                      <img src="img/glass/1.webp" alt="라운드 안경테" />
                       <a href="#">라운드</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/2.png" alt="스퀘어 안경테" />
+                      <img src="img/glass/2.webp" alt="스퀘어 안경테" />
                       <a href="#">스퀘어</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/3.png" alt="하금태 안경테" />
+                      <img src="img/glass/3.webp" alt="하금태 안경테" />
                       <a href="#">하금테</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/4.png" alt="믹스 안경테" />
+                      <img src="img/glass/4.webp" alt="믹스 안경테" />
                       <a href="#">믹스</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/5.png" alt="보잉 안경테" />
+                      <img src="img/glass/5.webp" alt="보잉 안경테" />
                       <a href="#">보잉</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/6.png" alt="캣아이 안경테" />
+                      <img src="img/glass/6.webp" alt="캣아이 안경테" />
                       <a href="#">캣아이</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/7.png" alt="기타 안경테" />
+                      <img src="img/glass/7.webp" alt="기타 안경테" />
                       <a href="#">기타</a>
                     </div>
                   </div>
