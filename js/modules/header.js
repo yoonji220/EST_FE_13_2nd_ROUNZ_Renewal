@@ -6,7 +6,7 @@ export function renderHeader() {
           <span class="typo-m-icons-xl-o">menu</span>
         </button>
 
-        <h1 class="logo typo-m-h1"><a href="index.html">rounz</a></h1>
+        <h1 class="logo typo-m-h1"><a href="#">rounz</a></h1>
 
         <nav class="global-nav hide-menu">
           <div class="nav-top d-flex justify-content-between align-items-center mobile-only">
@@ -56,7 +56,7 @@ export function renderHeader() {
             <div class="sub-menu-panel">
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="sunglasses">
                 <div class="sub-menu sub-menu-all">
-                  <a class="d-flex justify-content-between align-items-center" href="filters.html">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a class="d-flex justify-content-between align-items-center" href="#">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
@@ -112,7 +112,7 @@ export function renderHeader() {
                     <div><a href="#">더보기</a></div>
                   </div>
                 </div>
-                <a href="filters.html" class="link-container mobile-only" aria-label="신상품로 이동">
+                <a href="#" class="link-container mobile-only" aria-label="신상품로 이동">
                   <div class="text-box typo-m-body " id="sunglasses-text-box">
                     <p>new arrivals</p>
                     <p>2026 선글라스 컬렉션</p>
@@ -122,7 +122,7 @@ export function renderHeader() {
 
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="glasses">
                 <div class="sub-menu sub-menu-all">
-                  <a class="d-flex justify-content-between align-items-center" href="filters.html">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a class="d-flex justify-content-between align-items-center" href="#">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
@@ -175,7 +175,7 @@ export function renderHeader() {
                     <div><a href="#">더보기</a></div>
                   </div>
                 </div>
-                <a href="filters.html" class="link-container mobile-only" aria-label="신상품로 이동">
+                <a href="#" class="link-container mobile-only" aria-label="신상품로 이동">
                   <div class="text-box typo-m-body" id="frame-text-box">
                     <p>new arrivals</p>
                     <p>2026 아이웨어 컬렉션</p>
@@ -185,7 +185,7 @@ export function renderHeader() {
 
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="best">
                 <div class="sub-menu">
-                  <a  class="d-flex justify-content-between align-items-center" href="filters.html">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a  class="d-flex justify-content-between align-items-center" href="#">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <h2>인기 키워드</h2>
@@ -206,13 +206,13 @@ export function renderHeader() {
 
         <ul class="d-flex g-1 shortcut-menu">
           <li aria-label="회원 로그인">
-            <a href="login.html"><span class="typo-m-icons-xl-o">person</span></a>
+            <a href="#"><span class="typo-m-icons-xl-o">person</span></a>
           </li>
           <li aria-label="제품 검색">
-            <a href="filters.html"><span class="typo-m-icons-xl-o">search</span></a>
+            <a href="#"><span class="typo-m-icons-xl-o">search</span></a>
           </li>
           <li aria-label="장바구니">
-            <a class="cart-link" href="cart.html">
+            <a class="cart-link" href="#">
             <span class="typo-m-icons-xl-o">shopping_bag</span>
             <span class="cart-badge typo-m-btn-s text-center">22</span>
             </a>
