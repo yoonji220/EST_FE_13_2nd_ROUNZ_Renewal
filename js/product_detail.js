@@ -229,7 +229,7 @@ function createGallery(data) {
               src="${image}"
               alt="${data.title} 상품 이미지 ${index + 1}"
               class="product-image"
-              fetchpriority="high"
+              ${index === 0 ? 'fetchpriority="high"' : ""}
             />
           </div>
         `,
@@ -336,25 +336,27 @@ function createBrandContent(data, brandData) {
 
 // 상세 이미지 렌더링
 function createDetailImages(data) {
-  const detailImages = document.querySelectorAll(".detail-image");
+  const detailImageList = document.querySelector(".detail-image-list");
   const imageUrls = data.images.gallery || [];
 
-  detailImages.forEach((image, index) => {
-    const imageUrl = imageUrls[index];
+  if (!detailImageList) return;
 
-    if (!imageUrl) {
-      image.closest(".detail-image-item")?.remove();
-      return;
-    }
-
-    image.src = imageUrl;
-    image.alt = `${data.title} 상세 이미지 ${index + 1}`;
-
-    image.onerror = () => {
-      image.onerror = null;
-      image.closest(".detail-image-item")?.remove();
-    };
-  });
+  detailImageList.innerHTML = imageUrls
+    .slice(0, 4)
+    .map(
+      (imageUrl, index) => `
+        <li class="detail-image-item d-flex flex-column">
+          <img
+            src="${imageUrl}"
+            alt="${data.title} 상세 이미지 ${index + 1}"
+            class="detail-image"
+            width="860"
+            height="745"
+          />
+        </li>
+      `,
+    )
+    .join("");
 }
 
 // 포인트 카드 이미지 렌더링
@@ -643,9 +645,9 @@ function createRecommendLists(all, category, id) {
 
   if (recommendList.length === 0) {
     recommendGrid.innerHTML = `
-      <li class="empty-message typo-m-body-s">
+      <div class="empty-message typo-m-body-s">
         추천 상품이 없습니다.
-      </li>
+      </div>
     `;
     return;
   }
