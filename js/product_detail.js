@@ -81,6 +81,22 @@ function addToCart(product, qty = 1) {
   updateCartCount();
 }
 
+function setPurchaseSheetFocusable(isOpen) {
+  if (!purchaseSheet) return;
+
+  const focusableElements = purchaseSheet.querySelectorAll(
+    "button, a, input, select, textarea, [tabindex]",
+  );
+
+  focusableElements.forEach(element => {
+    if (isOpen) {
+      element.removeAttribute("tabindex");
+    } else {
+      element.setAttribute("tabindex", "-1");
+    }
+  });
+}
+
 // 상품 id 기준으로 상세 데이터 조회
 async function fetchProduct() {
   const params = new URLSearchParams(location.search);
@@ -213,6 +229,7 @@ function createGallery(data) {
               src="${image}"
               alt="${data.title} 상품 이미지 ${index + 1}"
               class="product-image"
+              fetchpriority="high"
             />
           </div>
         `,
@@ -876,6 +893,7 @@ function openPurchaseSheet() {
 
   purchaseSheet.classList.add("is-open");
   purchaseSheet.setAttribute("aria-hidden", "false");
+  setPurchaseSheetFocusable(true);
 }
 
 // 구매 바텀 시트 닫기
@@ -884,6 +902,7 @@ function closePurchaseSheet() {
 
   purchaseSheet.classList.remove("is-open");
   purchaseSheet.setAttribute("aria-hidden", "true");
+  setPurchaseSheetFocusable(false);
 }
 
 purchaseBarBuyButtons.forEach(button => {
@@ -982,5 +1001,6 @@ toastClose?.addEventListener("click", () => {
   clearTimeout(toastTimer);
 });
 
+setPurchaseSheetFocusable(false);
 updateCartCount();
 fetchProduct();
