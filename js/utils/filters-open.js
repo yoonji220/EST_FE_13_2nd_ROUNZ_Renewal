@@ -132,6 +132,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
+     버튼 이벤트 핸들러 (닫기, AI분석, 초기화)
+  ========================= */
+  const closeBtn = document.querySelector('.close-btn');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      window.location.href = './filters.html';
+    });
+  }
+
+  const aiAnalysisBtn = document.querySelector('.ai-analysis-btn');
+  if (aiAnalysisBtn) {
+    aiAnalysisBtn.addEventListener('click', () => {
+      window.location.href = './index.html';
+    });
+  }
+
+  const resetBtn = document.querySelector('.btn-reset');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      window.location.reload();
+    });
+  }
+
+  /* =========================
      필터 적용 버튼
   ========================= */
   const applyBtn = document.getElementById('apply-mobile-filters');
