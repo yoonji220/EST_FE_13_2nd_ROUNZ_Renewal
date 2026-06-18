@@ -359,24 +359,36 @@ export function renderHeader() {
   }
   
   // 모바일 아코디언 메뉴 이벤트
-  accordionHeaders.forEach(header => {
-    header.addEventListener('click', function(e) {
-      if (isPc.matches) return; // PC일 땐 클릭해도 아무 동작 안 함 (이미 초기화 로직에서 다 펼쳐둠)
+accordionHeaders.forEach(header => {
+  header.addEventListener('click', function(e) {
+    if (isPc.matches) return; // PC일 땐 동작 안 함
 
-      if (e.target.closest('a')) return;
-      
-      const content = header.nextElementSibling;
-      if (content && content.classList.contains('sub-menu-item')) {
-        content.classList.toggle('hide-menu');
-        
-        const icon = header.querySelector('.typo-m-icons-m-o');
-        if (icon) {
-          const isHidden = content.classList.contains('hide-menu');
-          icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
-        }
+    // 🚨 튕겨나가는 return 대신, 기본 동작만 막아주기 (href="#" 일 경우)
+    const targetA = e.target.closest('a');
+    if (targetA) {
+      // 진짜 다른 페이지로 가는 링크가 아니라면 화면 튕김 방지
+      if (targetA.getAttribute('href') === '#' || targetA.getAttribute('href') === '') {
+        e.preventDefault(); 
+      } else {
+        // 만약 진짜 페이지 이동을 해야 하는 a 태그라면,
+        // 기획에 따라 여기서 return; 을 할지 말지 결정해야 합니다.
+        // (일반적인 아코디언 제목은 단순 토글용이므로 preventDefault만 하는 것이 맞습니다)
       }
-    });
+    }
+    
+    // 이제 방해받지 않고 아래 토글 로직이 정상 실행됩니다!
+    const content = header.nextElementSibling;
+    if (content && content.classList.contains('sub-menu-item')) {
+      content.classList.toggle('hide-menu');
+      
+      const icon = header.querySelector('.typo-m-icons-m-o');
+      if (icon) {
+        const isHidden = content.classList.contains('hide-menu');
+        icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
+      }
+    }
   });
+});
 }
 
 
