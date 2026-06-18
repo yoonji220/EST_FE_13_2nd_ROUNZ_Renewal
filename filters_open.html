@@ -14,16 +14,16 @@
   <link rel="stylesheet" href="./css/common.css">
   <link rel="stylesheet" href="./css/filters_open.css">
   <link rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0" />
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0,0">
 </head>
 
 <body>
-  <div class="app-container container filters-open-page">
+  <div class="container filters-open-page">
     <!-- 필터 팝업 모달창용 상단 헤더 영역 -->
     <header class="modal-header">
       <div style="width: 24px;"></div> <!-- Spacer for center alignment -->
       <h1 class="modal-title">필터</h1>
-      <button class="icon-btn close-btn" aria-label="Close" onclick="window.history.back()">
+      <button class="icon-btn close-btn" aria-label="Close">
         <span class="material-symbols-outlined">close</span>
       </button>
     </header>
@@ -34,12 +34,10 @@
       <section class="filter-block">
         <h2 class="filter-heading">브랜드</h2>
         <div class="brand-grid">
-          <button class="brand-btn active">라운즈 (ROUNZ)</button>
-          <button class="brand-btn">젠틀몬스터</button>
-          <button class="brand-btn">레이밴</button>
-          <button class="brand-btn">GENTLE MONSTER</button>
-          <button class="brand-btn">Ray-Ban</button>
-          <button class="brand-btn">TOM FORD</button>
+          <button class="brand-btn" data-value="Ray-Ban">Ray-Ban</button>
+          <button class="brand-btn" data-value="BLIZ">BLIZ</button>
+          <button class="brand-btn" data-value="PUBLIC BEACON">PUBLIC BEACON</button>
+          <button class="brand-btn" data-value="MUSEUM BY BEACON">MUSEUM BY BEACON</button>
         </div>
       </section>
 
@@ -53,55 +51,35 @@
         <div class="shape-grid">
 
           <!-- 라운드 -->
-          <button class="shape-card">
-
+          <button class="shape-card" data-value="round">
             <span class="shape-icon-wrapper">
               <img src="./img/filters_img/peuleim/1.round.png" alt="라운드">
             </span>
-
-            <span class="shape-name">
-              라운드
-            </span>
-
+            <span class="shape-name">라운드</span>
           </button>
 
           <!-- 보스턴 -->
-          <button class="shape-card">
-
+          <button class="shape-card" data-value="browline">
             <span class="shape-icon-wrapper">
               <img src="./img/filters_img/peuleim/2.Boston.png" alt="보스턴">
             </span>
-
-            <span class="shape-name">
-              보스턴
-            </span>
-
+            <span class="shape-name">보스턴</span>
           </button>
 
           <!-- 보잉 -->
-          <button class="shape-card">
-
+          <button class="shape-card" data-value="aviator">
             <span class="shape-icon-wrapper">
               <img src="./img/filters_img/peuleim/3.boeing.png" alt="보잉">
             </span>
-
-            <span class="shape-name">
-              보잉
-            </span>
-
+            <span class="shape-name">보잉</span>
           </button>
 
           <!-- 스퀘어 -->
-          <button class="shape-card">
-
+          <button class="shape-card" data-value="etc">
             <span class="shape-icon-wrapper">
               <img src="./img/filters_img/peuleim/4.square.png" alt="스퀘어">
             </span>
-
-            <span class="shape-name">
-              스퀘어
-            </span>
-
+            <span class="shape-name">스퀘어</span>
           </button>
 
         </div>
@@ -176,15 +154,15 @@
       <section class="filter-block">
         <h2 class="filter-heading">소재</h2>
         <div class="material-grid">
-          <button class="material-btn active">티타늄</button>
-          <button class="material-btn">뿔테</button>
-          <button class="material-btn">나무</button>
-          <button class="material-btn">아세테이트</button>
-          <button class="material-btn">메탈</button>
-          <button class="material-btn">무테/반무테</button>
-          <button class="material-btn">스테인리스</button>
-          <button class="material-btn">TR</button>
-          <button class="material-btn">울템</button>
+          <button class="material-btn active" data-value="티타늄">티타늄</button>
+          <button class="material-btn" data-value="뿔테">뿔테</button>
+          <button class="material-btn" data-value="나무">나무</button>
+          <button class="material-btn" data-value="아세테이트">아세테이트</button>
+          <button class="material-btn" data-value="메탈">메탈</button>
+          <button class="material-btn" data-value="무테">무테/반무테</button>
+          <button class="material-btn" data-value="스테인리스">스테인리스</button>
+          <button class="material-btn" data-value="TR">TR</button>
+          <button class="material-btn" data-value="울템">울템</button>
         </div>
       </section>
 
@@ -194,19 +172,19 @@
         <input type="range" min="0" max="500000" value="250000" step="10000" class="price-slider" id="priceRange">
         <div class="price-labels">
           <span>0원</span>
-          <span id="priceDisplay">500,000원+</span>
+          <span id="priceDisplay">250,000원+</span>
         </div>
-
+      </div>
 
     </main>
 
     <!-- 필터 모달창 하단 고정 액션 버튼 (초기화, 필터적용) 영역 -->
     <div class="filter-bottom-actions">
-      <button class="btn-reset" onclick="window.location.reload()">
+      <button class="btn-reset">
         <span class="material-symbols-outlined" style="font-size: 16px;">refresh</span>
         초기화
       </button>
-      <button class="btn-apply" onclick="window.history.back()">필터적용</button>
+      <button class="btn-apply" id="apply-mobile-filters">필터적용</button>
     </div>
   </div>
   <script src="./js/utils/common.js"></script>

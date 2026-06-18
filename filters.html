@@ -25,11 +25,10 @@
     <main class="filters-main">
       <!-- 페이지 이동 경로 (Breadcrumb) 영역 -->
       <nav class="filters-breadcrumb" aria-label="Breadcrumb">
-        <div class="container" style="display: flex; gap: 8px;">
+        <div class="container breadcrumb-list d-flex align-items-center g-1 typo-m-header-s">
           <a href="index.html">HOME</a>
           <span>&gt;</span>
-          <a href="#">GLASSES</a>
-          <span>&gt;</span>
+
           <strong>PRODUCT DETAIL</strong>
         </div>
       </nav>
@@ -37,8 +36,8 @@
       <!-- PC 레이아웃용 래퍼 -->
       <div class="container">
         <!-- 상세 필터 팝업 열기 버튼 (모바일용) -->
-        <!-- FILTERS 버튼: 클릭 시 fiters_open.html로 이동 -->
-        <a class="filter-bar" id="filter-toggle" href="fiters_open.html" aria-label="필터 열기">
+        <!-- FILTERS 버튼: 클릭 시 filters_open.html로 이동 -->
+        <a class="filter-bar" id="filter-toggle" href="filters_open.html" aria-label="필터 열기">
           <span class="filter-title">
             <span class="material-symbols-outlined">sort</span>
             FILTERS
@@ -70,65 +69,56 @@
               <details open>
                 <summary>브랜드 <span class="material-symbols-outlined">expand_more</span></summary>
                 <div class="accordion-content">
-                  <label><input type="checkbox"> 라운즈 (ROUNZ)</label>
-                  <label><input type="checkbox"> 젠틀몬스터</label>
-                  <label><input type="checkbox"> 레이밴</label>
-                  <label><input type="checkbox"> GENTLE MONSTER</label>
-                  <label><input type="checkbox"> Ray-Ban</label>
-                  <label><input type="checkbox"> TOM FORD</label>
+                  <label><input type="checkbox" name="brand" value="Ray-Ban"> Ray-Ban</label>
+                  <label><input type="checkbox" name="brand" value="BLIZ"> BLIZ</label>
+                  <label><input type="checkbox" name="brand" value="PUBLIC BEACON"> PUBLIC BEACON</label>
+                  <label><input type="checkbox" name="brand" value="MUSEUM BY BEACON"> MUSEUM BY BEACON</label>
                 </div>
               </details>
 
               <details open>
                 <summary>프레임 형태 <span class="material-symbols-outlined">expand_more</span></summary>
                 <div class="accordion-content">
-                  <label><input type="checkbox"> 스퀘어</label>
-                  <label><input type="checkbox"> 라운드</label>
-                  <label><input type="checkbox"> 보잉</label>
-                  <label><input type="checkbox"> 캣 아이</label>
+                  <label><input type="checkbox" name="frameShape" value="browline"> 브로우라인</label>
+                  <label><input type="checkbox" name="frameShape" value="cat-eye"> 캣 아이</label>
+                  <label><input type="checkbox" name="frameShape" value="goggle"> 고글</label>
+                  <label><input type="checkbox" name="frameShape" value="aviator"> 보잉(에비에이터)</label>
+                  <label><input type="checkbox" name="frameShape" value="round"> 라운드</label>
+                  <label><input type="checkbox" name="frameShape" value="mixed"> 혼합형</label>
+                  <label><input type="checkbox" name="frameShape" value="etc"> 기타</label>
                 </div>
               </details>
 
               <details open>
                 <summary>소재 <span class="material-symbols-outlined">expand_more</span></summary>
                 <div class="accordion-content">
-                  <label><input type="checkbox"> 티타늄</label>
-                  <label><input type="checkbox"> 뿔테</label>
-                  <label><input type="checkbox"> 나무</label>
-                  <label><input type="checkbox"> 아세테이트</label>
-                  <label><input type="checkbox"> 메탈</label>
-                  <label><input type="checkbox"> 무테/반무테</label>
-                  <label><input type="checkbox"> 스테인리스</label>
-                  <label><input type="checkbox"> TR</label>
-                  <label><input type="checkbox"> 울템</label>
+                  <label><input type="checkbox" name="material" value="티타늄"> 티타늄</label>
+                  <label><input type="checkbox" name="material" value="뿔테"> 뿔테</label>
+                  <label><input type="checkbox" name="material" value="나무"> 나무</label>
+                  <label><input type="checkbox" name="material" value="아세테이트"> 아세테이트</label>
+                  <label><input type="checkbox" name="material" value="메탈"> 메탈</label>
+                  <label><input type="checkbox" name="material" value="무테"> 무테/반무테</label>
+                  <label><input type="checkbox" name="material" value="스테인리스"> 스테인리스</label>
+                  <label><input type="checkbox" name="material" value="TR"> TR</label>
+                  <label><input type="checkbox" name="material" value="울템"> 울템</label>
                 </div>
               </details>
 
               <details open>
                 <summary>가격 <span class="material-symbols-outlined">expand_more</span></summary>
                 <div class="accordion-content">
-                  <label><input type="checkbox"> 10만원 이하</label>
-                  <label><input type="checkbox"> 10-20만원</label>
-                  <label><input type="checkbox"> 20-30만원</label>
-                  <label><input type="checkbox"> 30만원 이상</label>
-                </div>
-              </details>
-
-              <details open>
-                <summary>사이즈 <span class="material-symbols-outlined">expand_more</span></summary>
-                <div class="accordion-content">
-                  <label><input type="checkbox"> S</label>
-                  <label><input type="checkbox"> M</label>
-                  <label><input type="checkbox"> L</label>
+                  <label><input type="checkbox" name="price" value="0-100000"> 10만원 이하</label>
+                  <label><input type="checkbox" name="price" value="100000-200000"> 10-20만원</label>
+                  <label><input type="checkbox" name="price" value="200000-300000"> 20-30만원</label>
+                  <label><input type="checkbox" name="price" value="300000-99999999"> 30만원 이상</label>
                 </div>
               </details>
             </div>
 
-            <div class="selected-tags">
+            <div class="selected-tags" style="display: none;">
               <span class="tags-label">현재 선택</span>
               <div class="tags-list">
-                <span class="tag">스퀘어 <button><span class="material-symbols-outlined">close</span></button></span>
-                <span class="tag">티타늄 <button><span class="material-symbols-outlined">close</span></button></span>
+                <!-- JS에서 동적으로 렌더링 -->
               </div>
             </div>
           </aside>
@@ -138,7 +128,8 @@
 
             <div class="product-content-header">
               <div>
-                <h2 class="content-count">전체 아이웨어</h2>
+                <h2 class="content-title">전체 아이웨어</h2>
+                <span class="content-count"></span>
               </div>
 
               <div class="sort-dropdown" style="position: relative;">

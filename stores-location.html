@@ -49,32 +49,35 @@
                 aria-label="매장 검색"
               />
             </div>
-            <button type="button" class="stores-search__location-btn typo-m-btn-m">
-              현재 위치로 찾기
+            <button
+              type="button"
+              class="stores-search__location-btn stores-search__submit-btn typo-m-btn-m"
+            >
+              검색하기
             </button>
             <ul class="stores-search__filters d-flex">
+              <li>
+                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
+                  전체
+                </button>
+              </li>
               <li>
                 <button
                   type="button"
                   class="filter-chip filter-chip--active typo-m-btn-s"
                   aria-pressed="true"
                 >
-                  가까운순
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
-                  영업중
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
                   프리미엄 매장
                 </button>
               </li>
               <li>
                 <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
                   선글라스
+                </button>
+              </li>
+              <li>
+                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
+                  AI안경
                 </button>
               </li>
             </ul>
@@ -182,7 +185,7 @@
                     class="store-card__btn store-card__btn--primary typo-m-btn-s"
                     aria-label="ROUNZ 홍대점 길 안내"
                   >
-                    길 안내
+                    위치 안내
                   </button>
                 </div>
               </li>
@@ -293,43 +296,22 @@
               <h2 id="pc-search-title" class="typo-p-header-s">매장 찾기</h2>
               <p class="typo-p-body-s">지역명, 도시명 또는 매장명으로 검색하세요.</p>
             </div>
-            <div class="pc-search-form d-flex align-items-center">
-              <span class="typo-m-icons-l-o" aria-hidden="true">search</span>
-              <input
-                type="search"
-                class="typo-p-body-s"
-                placeholder="지역명, 도시명 또는 매장명 검색"
-                aria-label="매장 검색"
-              />
+            <div class="pc-search-form">
+              <div class="pc-search-form__input-wrap d-flex align-items-center">
+                <span class="typo-m-icons-l-o" aria-hidden="true">search</span>
+                <input
+                  type="search"
+                  class="typo-p-body-s"
+                  placeholder="지역명, 도시명 또는 매장명 검색"
+                  aria-label="매장 검색"
+                />
+              </div>
               <button type="button" class="pc-search-form__btn typo-p-btn-s" aria-label="지역 검색">
                 지역 검색
               </button>
             </div>
             <ul class="pc-filter-chips d-flex" role="group" aria-label="매장 필터">
-              <li>
-                <button
-                  type="button"
-                  class="filter-chip filter-chip--active typo-p-btn-s"
-                  aria-pressed="true"
-                >
-                  전체
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-p-btn-s" aria-pressed="false">
-                  영업중
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-p-btn-s" aria-pressed="false">
-                  주차가능
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-p-btn-s" aria-pressed="false">
-                  검안가능
-                </button>
-              </li>
+              <!-- JS로 PC 필터칩 렌더링: 전체 / 프리미엄 매장 / 선글라스 / AI안경 -->
             </ul>
             <div class="pc-results-summary d-flex align-items-center justify-content-between">
               <p class="typo-p-body-s">총 <strong>24</strong>개의 매장</p>
@@ -337,7 +319,7 @@
                 type="button"
                 class="pc-results-summary__sort d-flex align-items-center typo-p-body-s"
               >
-                거리순
+                추천순
                 <span class="typo-m-icons-s-o" aria-hidden="true">expand_more</span>
               </button>
             </div>
@@ -370,7 +352,7 @@
                   aria-label="ROUNZ 홍대점 길찾기"
                 >
                   <span class="typo-m-icons-s-o" aria-hidden="true">near_me</span>
-                  길찾기
+                  위치 안내
                 </button>
                 <button
                   type="button"
@@ -430,36 +412,6 @@
         <!-- 지도 마커 (JS로 렌더링 예정) -->
         <div class="pc-map-markers" aria-hidden="true"></div>
 
-        <!-- 필터 오버레이 -->
-        <div class="pc-filter-overlay" role="group" aria-label="지도 필터">
-          <ul class="pc-filter-overlay__list d-flex flex-column">
-            <li class="d-flex align-items-center">
-              <input type="radio" name="pc-map-filter" id="filter-all" value="all" checked />
-              <label for="filter-all" class="typo-p-body-s">전체</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-open" />
-              <label for="filter-open" class="typo-p-body-s">영업중</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-parking" />
-              <label for="filter-parking" class="typo-p-body-s">주차가능</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-exam" />
-              <label for="filter-exam" class="typo-p-body-s">검안가능</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-vr" />
-              <label for="filter-vr" class="typo-p-body-s">가상피팅</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-reserve" />
-              <label for="filter-reserve" class="typo-p-body-s">예약가능</label>
-            </li>
-          </ul>
-        </div>
-
         <!-- 지도 컨트롤 -->
         <div class="pc-map-controls d-flex flex-column" role="group" aria-label="지도 컨트롤">
           <button type="button" class="pc-map-controls__btn" aria-label="지도 확대">
@@ -497,6 +449,20 @@
       </button>
       <div class="map-lightbox__container">
         <!-- JS로 지도 이미지 렌더링 예정 -->
+      </div>
+    </div>
+
+    <!-- Alert Replacement Message Card -->
+    <div class="stores-message-card" role="status" aria-live="polite" hidden>
+      <div class="stores-message-card__inner d-flex align-items-center">
+        <span class="stores-message-card__icon typo-m-icons-l-o" aria-hidden="true">info</span>
+        <p class="stores-message-card__text typo-m-body-s">
+          예약 서비스는 현재 준비 중입니다.<br />
+          예약 문의는 매장 전화번호로 연락 주세요.
+        </p>
+        <button type="button" class="stores-message-card__close" aria-label="안내 메시지 닫기">
+          <span class="typo-m-icons-s-o" aria-hidden="true">close</span>
+        </button>
       </div>
     </div>
 
