@@ -3,7 +3,7 @@ export function renderHeader() {
   target.innerHTML = `
     <div class="main-header container d-flex justify-content-between align-items-center">
         <button type="button" class="btn-hamburger mobile-only" aria-label="메뉴 열기">
-          <span class="typo-m-icons-xl-o">menu</span>
+          <span class="header-icons typo-m-icons-xl-o">menu</span>
         </button>
 
         <h1 class="logo typo-m-h1"><a href="index.html">rounz</a></h1>
@@ -206,14 +206,14 @@ export function renderHeader() {
 
         <ul class="d-flex g-1 shortcut-menu">
           <li aria-label="회원 로그인">
-            <a href="login.html"><span class="typo-m-icons-xl-o">person</span></a>
+            <a href="login.html"><span class="header-icons typo-m-icons-xl-o">person</span></a>
           </li>
           <li aria-label="제품 검색">
-            <a href="filters.html"><span class="typo-m-icons-xl-o">search</span></a>
+            <a href="filters.html"><span class="header-icons typo-m-icons-xl-o">search</span></a>
           </li>
           <li aria-label="장바구니">
             <a class="cart-link" href="cart.html">
-            <span class="typo-m-icons-xl-o">shopping_bag</span>
+            <span class="header-icons typo-m-icons-xl-o">shopping_bag</span>
             <span class="cart-badge typo-m-btn-s text-center">22</span>
             </a>
           </li>
@@ -223,12 +223,14 @@ export function renderHeader() {
 
   bindHeaderEvents(target);
 
+  updateCartBadge(target);
+
   adjustSubPagePadding();
 
   window.addEventListener('resize', adjustSubPagePadding);
 }
 
- function bindHeaderEvents(target){
+ export function bindHeaderEvents(target){
   const btnOpen = target.querySelector('.btn-hamburger[aria-label="메뉴 열기"]');
   const btnClose = target.querySelector('.btn-hamburger[aria-label="메뉴 닫기"]');
   const globalNav = target.querySelector('.global-nav');
@@ -389,5 +391,33 @@ function adjustSubPagePadding() {
     
     // 서브 페이지의 padding-top을 헤더 높이와 똑같이 맞춰줍니다.
     subPage.style.paddingTop = `${headerHeight}px`;
+  }
+}
+
+
+// 뱃지 수량을 업데이트하는 함수 (외부에서도 호출할 수 있게 export)
+export function updateCartBadge(target = document) {
+  const badge = target.querySelector('.cart-badge');
+  if (!badge) return;
+
+  try {
+    const savedItems = localStorage.getItem("cart");
+    let itemCount = 0; // 상품 종류의 개수
+
+    if (savedItems) {
+      const parsedItems = JSON.parse(savedItems);
+      
+      // 배열 형태인지 확인 후 개수(length) 측정
+      if (Array.isArray(parsedItems)) {
+        itemCount = parsedItems.length; 
+      }
+    }
+
+    // 100개 이상이면 99+로 표시, 아니면 실제 개수 표시
+    badge.textContent = itemCount >= 100 ? "99+" : itemCount;
+    
+  } catch (error) {
+    console.error("장바구니 뱃지 업데이트 실패:", error);
+    badge.textContent = "0";
   }
 }

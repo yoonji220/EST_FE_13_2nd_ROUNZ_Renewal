@@ -586,14 +586,17 @@ a {
 
 .cart-badge{
   position: absolute;
-  top: -4px;
+  top: -5px;
   right: -10px;
 
   background-color: var(--color-point);
   color: var(--color-white);
-  min-width: 20px;
-  min-height: 20px;
+  min-width: 25px;
+  min-height: 25px;
   border-radius: 50%;
+
+  display: grid;
+  place-items: center;
  
 }
 
@@ -803,86 +806,118 @@ footer > .container {
 
 /* 헤더 푸터 반응형 */
 @media (min-width: 1200px) {
-  /* 공통 */
-  .mobile-only{
-    display: none !important;
+
+
+/* 애니메이션 */
+@keyframes slideDownFade {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px); /* 위에서 10px 위에서 시작 */
   }
-  .pc-only{
-    display: block;
+  100% {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 복귀 */
   }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.sub-menu-list:not(.hide-menu) {
+  animation: fadeIn 0.25s ease-in-out forwards;
+}
+
+/* 공통 */
+.mobile-only{
+  display: none !important;
+}
+.pc-only{
+  display: block;
+}
 
 /* 헤더 */
-  .header{
-    padding: 0 var(--base-unit);
-  }
-  .main-header {
-    position: static;
-  }
+.header{
+  padding: 0 var(--base-unit);
+}
+.main-header {
+  position: static;
+}
 
-  .main-header .logo{
-    position: static;
-    left: auto;
-    transform: none;
-  }
-  .global-nav{
-    position: static;
-    display: block;
-    background-color: transparent;
-    width: auto;
-    height: auto;
-    top: auto;
-    left: auto;
-    z-index: 2;
-    overflow: visible;
-  }
-  .header-hr{
-    display: none;
-  }
-  
-  
-  .main-menu-panel {
-    background-color: transparent;
-    border-right: none;
-    min-width: auto;
-    width: auto;
-  }
+.main-header .logo{
+  position: static;
+  left: auto;
+  transform: none;
+}
+.global-nav{
+  position: static;
+  display: block;
+  background-color: transparent;
+  width: auto;
+  height: auto;
+  top: auto;
+  left: auto;
+  z-index: 2;
+  overflow: visible;
+}
+.header-hr{
+  display: none;
+}
 
-  .main-menu-panel > ul{
-   display: flex;
-    flex-direction: row; /* 상단 메뉴를 가로로 나열합니다 [cite: 930] */
-    align-items: center;
-    gap: calc(var(--base-unit)*2); /* 메뉴 간격 조정 */
-    margin: 24px 16px;
-  }
-  .main-menu-panel > ul > li > button,
-  .main-menu-panel > ul > li > a {
-    padding: 10px 0; /* 모바일용 넓은 패딩 제거 */
-    text-align: center;
-  }
-  /* 모바일용 active 스타일 초기화 */
-  .main-menu-panel .active {
-    background-color: transparent;
-    border-left: none;
-  }
-  
-  /* 4. 서브 메뉴 패널 (메가 메뉴 풀스크린) */
-  .menu-wrapper {
-    flex-direction: row; 
-  }
 
-  .sub-menu-panel {
-    position: absolute;
-    top: 100%; 
-    left: 0;
-    width: 100%;
-    background-color: var(--color-white);
-    border-top: 1px solid var(--color-gray);
-    box-shadow: var(--shadow-sub);
-    padding: 32px var(--container-pad-tablet);
-    z-index: 2;
-  }
+.main-menu-panel {
+  background-color: transparent;
+  border-right: none;
+  min-width: auto;
+  width: auto;
+}
 
- .sub-menu-list {
+.main-menu-panel > ul{
+  display: flex;
+  flex-direction: row; /* 상단 메뉴를 가로로 나열합니다 [cite: 930] */
+  align-items: center;
+  gap: calc(var(--base-unit)*2); /* 메뉴 간격 조정 */
+  margin: 24px 16px;
+}
+.main-menu-panel > ul > li > button,
+.main-menu-panel > ul > li > a {
+  padding: 10px 0; /* 모바일용 넓은 패딩 제거 */
+  text-align: center;
+}
+/* 모바일용 active 스타일 초기화 */
+.main-menu-panel .active {
+  background-color: transparent;
+  border-left: none;
+}
+
+/* 4. 서브 메뉴 패널 (메가 메뉴 풀스크린) */
+.menu-wrapper {
+  flex-direction: row; 
+}
+
+.sub-menu-panel {
+  position: absolute;
+  top: 100%; 
+  left: 0;
+  width: 100%;
+  background-color: var(--color-white);
+  border-top: 1px solid var(--color-gray);
+  box-shadow: var(--shadow-sub);
+  padding: 32px var(--container-pad-tablet);
+  z-index: 2;
+}
+
+.sub-menu-panel:not(.hide-menu) {
+  animation: slideDownFade 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  /* 부드러운 감속 이징 사용 */
+}
+
+.sub-menu-list {
     display: grid !important;
     grid-template-areas:
       "left right-top"
