@@ -772,6 +772,8 @@ const purchaseBarBuyButtons = document.querySelectorAll(".purchase-bar-buy");
 const purchaseSheet = document.querySelector("[data-purchase-sheet]");
 const purchaseSheetClose = document.querySelector(".sheet-close");
 const purchaseSheetHandle = document.querySelector(".purchase-sheet-handle");
+const purchaseBarHandle = document.querySelector(".purchase-bar-handle");
+
 const pcPurchasePanel = document.querySelector(".pc-purchase-panel");
 const pcPurchaseClose = document.querySelector(".pc-purchase-close");
 const pcPurchaseMiniCard = document.querySelector(".pc-purchase-mini-card");
@@ -797,6 +799,14 @@ purchaseBarBuyButtons.forEach(button => {
 });
 
 purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
+purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
+
+purchaseBarBuyButtons.forEach(button => {
+  button.addEventListener("click", openPurchaseSheet);
+});
+
+purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
+purchaseBarHandle?.addEventListener("click", openPurchaseSheet);
 purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
 
 // pc 구매패널 접기
