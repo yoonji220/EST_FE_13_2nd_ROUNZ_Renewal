@@ -1,29 +1,32 @@
 /*
-  index.html 전용 스크립트
-  - BEST 상품/랭킹을 products.json으로 렌더링하고 상세 페이지 이동을 연결합니다.
-  - 메인 영상, 가이드 슬라이더, 공지/이벤트 탭, 찜하기 UI를 제어합니다.
+  index.html ?�용 ?�크립트
+  - BEST ?�품/??��??products.json?�로 ?�더링하�??�세 ?�이지 ?�동???�결?�니??
+  - 메인 ?�상, 가?�드 ?�라?�더, 공�?/?�벤???? 찜하�?UI�??�어?�니??
 */
 
 document.addEventListener("DOMContentLoaded", () => {
-  /* 초기 DOM 참조 및 공통 UI 실행 */
+  /* 초기 DOM 참조 �?공통 UI ?�행 */
   const bestList = document.querySelector("[data-best-list]");
   const bestRanking = document.querySelector("[data-best-ranking]");
 
+  initHeroHeader();
   initHeroVideoSlider();
   initGuideSlider();
   initNoticeEvent();
   initWishlistButtons();
   const mainStoreSearchForm = document.querySelector(".store-search-form");
   const mainStoreSearchInput = document.querySelector(".store-search-input");
+  initMainStoreSearch();
 
   initMainStoreSearch();
 
   if (!bestList) return;
 
-  /* BEST 상품 기본 설정 */
+  /* BEST ?�품 기본 ?�정 */
   const bestProductCount = 7;
   const bestRankingCount = 4;
-  const fallbackProducts = Array.from({ length: bestProductCount }, (_, index) => ({
+  const bestTotalCount = bestProductCount + bestRankingCount;
+  const fallbackProducts = Array.from({ length: bestTotalCount }, (_, index) => ({
     id: index + 1,
     brand: "ROUNZ BASIC",
     title: `Essential Frame Model ${index + 1}`,
@@ -52,30 +55,64 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function initHeroHeader() {
+    const header = document.querySelector(".header");
+    const hero = document.querySelector(".hero-video");
+    if (!header || !hero) return;
+
+    let ticking = false;
+
+    const syncHeaderState = () => {
+      const headerHeight = header.offsetHeight || 0;
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const isOverHero = window.scrollY < heroBottom - headerHeight;
+
+      header.classList.toggle("is-hero-transparent", isOverHero);
+      ticking = false;
+    };
+
+    const requestSync = () => {
+      if (ticking) return;
+
+      ticking = true;
+      window.requestAnimationFrame(syncHeaderState);
+    };
+
+    syncHeaderState();
+    window.addEventListener("scroll", requestSync, { passive: true });
+    window.addEventListener("resize", requestSync);
+  }
+
   async function initBestSection() {
+    const productsSrc = bestList.dataset.productsSrc || "./data/products.json";
     const skeletonStartedAt = performance.now();
     renderBestSkeletons(bestProductCount);
 
     try {
-      const response = await fetch("./data/products.json");
+      const response = await fetch(productsSrc);
       if (!response.ok) throw new Error("Failed to load products.json");
 
       const data = await response.json();
-      const products = getBestProducts(data.products).slice(0, bestProductCount);
+      const products = getBestProducts(data.products).slice(0, bestTotalCount);
       const displayProducts = products.length ? products : fallbackProducts;
+      const productCardProducts = displayProducts.slice(0, bestProductCount);
+      const rankingProducts = displayProducts.slice(bestProductCount, bestTotalCount);
 
       await waitForSkeleton(skeletonStartedAt);
-      renderBestProducts(displayProducts);
-      renderBestRanking(displayProducts.slice(0, bestRankingCount));
+      renderBestProducts(productCardProducts);
+      renderBestRanking(rankingProducts);
     } catch (error) {
       console.error(error);
+      const fallbackProductCards = fallbackProducts.slice(0, bestProductCount);
+      const fallbackRankingProducts = fallbackProducts.slice(bestProductCount, bestTotalCount);
+
       await waitForSkeleton(skeletonStartedAt);
-      renderBestProducts(fallbackProducts);
-      renderBestRanking(fallbackProducts.slice(0, bestRankingCount));
+      renderBestProducts(fallbackProductCards);
+      renderBestRanking(fallbackRankingProducts);
     }
   }
 
-  /* BEST 상품 데이터 가공 */
+  /* BEST ?�품 ?�이??가�?*/
   function getBestProducts(products = []) {
     return products
       .filter(product => product.brand && product.title && product.images?.thumbnail)
@@ -90,11 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }));
   }
 
-  /* BEST 상품/랭킹 렌더링 */
+  /* BEST ?�품/??�� ?�더�?*/
   function renderBestProducts(products) {
     bestList.classList.remove("is-loading");
     bestList.setAttribute("aria-busy", "false");
     bestList.innerHTML = products.map(createProductCard).join("");
+    syncWishlistButtons(bestList);
     bindProductCardLinks(bestList, ".product-card");
   }
 
@@ -103,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     bestRanking.setAttribute("aria-busy", "false");
     bestRanking.innerHTML = products.map(createBestRankingItem).join("");
+    syncWishlistButtons(bestRanking);
     bindProductCardLinks(bestRanking, ".best-ranking-item");
   }
 
@@ -112,23 +151,13 @@ document.addEventListener("DOMContentLoaded", () => {
     bestList.innerHTML = Array.from({ length: count }, createProductSkeletonCard).join("");
   }
 
-  /* BEST 상품 가로 드래그 */
+  /* BEST ?�품 가�??�래�?*/
   function initBestDraggable() {
     let isPointerDown = false;
     let hasDragged = false;
-    let shouldBlockClick = false;
     let startX = 0;
     let startScrollLeft = 0;
-    const dragThreshold = 6;
-
-    const stopDragging = event => {
-      if (!isPointerDown) return;
-
-      isPointerDown = false;
-      shouldBlockClick = hasDragged;
-      bestList.classList.remove("is-dragging");
-      bestList.releasePointerCapture?.(event.pointerId);
-    };
+    const dragThreshold = 14;
 
     bestList.addEventListener("pointerdown", event => {
       if (event.button !== 0) return;
@@ -137,37 +166,39 @@ document.addEventListener("DOMContentLoaded", () => {
       hasDragged = false;
       startX = event.clientX;
       startScrollLeft = bestList.scrollLeft;
-      bestList.setPointerCapture?.(event.pointerId);
     });
 
     bestList.addEventListener("pointermove", event => {
       if (!isPointerDown) return;
 
       const dragDistance = event.clientX - startX;
-      if (Math.abs(dragDistance) > dragThreshold) {
-        hasDragged = true;
-        bestList.classList.add("is-dragging");
-      }
 
-      if (!hasDragged) return;
+      if (Math.abs(dragDistance) <= dragThreshold) return;
+
+      hasDragged = true;
+      bestList.classList.add("is-dragging");
 
       event.preventDefault();
       bestList.scrollLeft = startScrollLeft - dragDistance;
     });
 
-    bestList.addEventListener("pointerup", stopDragging);
-    bestList.addEventListener("pointercancel", stopDragging);
-    bestList.addEventListener("pointerleave", stopDragging);
+    bestList.addEventListener("pointerup", () => {
+      isPointerDown = false;
+
+      setTimeout(() => {
+        hasDragged = false;
+      }, 0);
+
+      bestList.classList.remove("is-dragging");
+    });
 
     bestList.addEventListener(
       "click",
       event => {
-        if (!shouldBlockClick) return;
+        if (!hasDragged) return;
 
         event.preventDefault();
         event.stopPropagation();
-        shouldBlockClick = false;
-        hasDragged = false;
       },
       true,
     );
@@ -178,26 +209,16 @@ document.addEventListener("DOMContentLoaded", () => {
       <li class="product-card product-card--skeleton g-1 d-flex flex-column" aria-hidden="true">
         <div class="product-card__image skeleton-block"></div>
 
-        <div class="product-card-content g-1">
+        <div class="product-card-content g-1 d-flex flex-column justify-content-between">
           <div class="product-card-brand skeleton-block"></div>
 
           <div class="product-card-title skeleton-block"></div>
 
-          <div class="product-card-price-row d-flex justify-content-between">
+          <div class="product-card-price-row d-flex justify-content-between align-items-center">
             <div class="product-card-price skeleton-block"></div>
 
             <div class="product-card-wish skeleton-block"></div>
           </div>
-
-          <ul class="product-card-colors d-flex">
-            <li>
-              <div class="piting-color skeleton-block"></div>
-            </li>
-
-            <li>
-              <div class="piting-color skeleton-block"></div>
-            </li>
-          </ul>
         </div>
       </li>
     `;
@@ -220,35 +241,25 @@ document.addEventListener("DOMContentLoaded", () => {
     const price = formatPrice(product.price);
 
     return `
-      <li class="product-card g-1 d-flex flex-column" data-detail-url="${detailUrl}">
+      <li class="product-card d-flex flex-column" data-detail-url="${detailUrl}">
         <a href="${detailUrl}" class="product-card__image">
           <img src="${imageUrl}" alt="${title}" />
         </a>
 
-        <div class="product-card-content g-1">
+        <div class="product-card-content d-flex flex-column justify-content-between">
           <p class="product-card-brand typo-m-product-brand">${brand}</p>
 
-          <h3 class="product-card-title typo-m-product-name">
+          <p class="product-card-title typo-m-product-name">
             <a href="${detailUrl}">${title}</a>
-          </h3>
+          </p>
 
-          <div class="product-card-price-row d-flex justify-content-between">
+          <div class="product-card-price-row d-flex justify-content-between align-items-center">
             <p class="product-card-price typo-m-product-price">${price}</p>
 
             <button type="button" class="product-card-wish typo-m-icons-s-o" aria-label="wishlist" aria-pressed="false">
               favorite_border
             </button>
           </div>
-
-          <ul class="product-card-colors d-flex">
-            <li>
-              <button type="button" class="piting-color black" aria-label="black"></button>
-            </li>
-
-            <li>
-              <button type="button" class="piting-color gray" aria-label="gray"></button>
-            </li>
-          </ul>
         </div>
       </li>
     `;
@@ -282,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
     `;
   }
 
-  /* 상품 상세 이동 및 찜하기 */
+  /* ?�품 ?�세 ?�동 �?찜하�?*/
   function getProductDetailUrl(productId) {
     return productId
       ? `./product_detail.html?id=${encodeURIComponent(productId)}`
@@ -290,25 +301,29 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function bindProductCardLinks(container, itemSelector) {
-    // 각 상품 항목의 클릭/키보드 입력을 상세 페이지 이동으로 연결합니다.
-    // - 실제 클릭 대상이 링크나 버튼이면 기본 동작 또는 다른 핸들러를 우선합니다.
-    // - 이동 주소는 항목의 `data-detail-url`을 우선 사용하고, 없으면 내부 링크의 `href`를 사용합니다.
+    // �??�품 ??��???�릭/?�보???�력???�세 ?�이지 ?�동?�로 ?�결?�니??
+    // - ?�제 ?�릭 ?�?�이 링크??버튼?�면 기본 ?�작 ?�는 ?�른 ?�들?��? ?�선?�니??
+    // - ?�동 주소????��??`data-detail-url`???�선 ?�용?�고, ?�으�??��? 링크??`href`�??�용?�니??
     container.querySelectorAll(itemSelector).forEach(item => {
       item.addEventListener("click", event => {
-        // 내부 링크나 버튼을 누른 경우 여기서 추가 이동하지 않습니다.
-        if (event.target.closest("a, button")) return;
+        // ?��? 링크??버튼???�른 경우 ?�기??추�? ?�동?��? ?�습?�다.
+        if (event.target.closest("button")) return;
+
+        const clickedLink = event.target.closest("a");
+        if (clickedLink && isValidDestination(clickedLink.getAttribute("href"))) return;
 
         const destination = getDestinationFromElement(item);
         if (!isValidDestination(destination)) return;
 
-        // 일반 링크 이동과 같은 방식으로 페이지를 이동합니다.
+        // ?�반 링크 ?�동�?같�? 방식?�로 ?�이지�??�동?�니??
+        event.preventDefault();
         window.location.assign(destination);
       });
 
-      // 접근성을 위해 Enter/Space 키로도 상품 항목을 열 수 있게 합니다.
+      // ?�근?�을 ?�해 Enter/Space ?�로???�품 ??��???????�게 ?�니??
       item.addEventListener("keydown", event => {
         if (event.key !== "Enter" && event.key !== " ") return;
-        // Space 키 입력 시 페이지 스크롤을 막습니다.
+        // Space ???�력 ???�이지 ?�크롤을 막습?�다.
         event.preventDefault();
 
         const destination = getDestinationFromElement(item);
@@ -318,26 +333,11 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // `data-detail-url`을 직접 가진 요소도 클릭 시 링크처럼 동작하게 합니다.
-    container.querySelectorAll("[data-detail-url]").forEach(el => {
-      // 위에서 이미 연결한 상품 항목은 중복으로 처리하지 않습니다.
-      if (el.matches(itemSelector)) return;
-
-      el.addEventListener("click", event => {
-        // 링크 내부 클릭은 해당 링크가 직접 처리하게 둡니다.
-        if (event.target.closest("a")) return;
-
-        const destination = String(el.dataset.detailUrl || "");
-        if (!isValidDestination(destination)) return;
-
-        window.location.assign(destination);
-      });
-    });
   }
 
-  // 상세 페이지 이동 유틸
-  // 요소에서 이동할 URL을 찾습니다.
-  // 우선순위: data-detail-url -> 내부 anchor[href]
+  // ?�세 ?�이지 ?�동 ?�틸
+  // ?�소?�서 ?�동??URL??찾습?�다.
+  // ?�선?�위: data-detail-url -> ?��? anchor[href]
   function getDestinationFromElement(el) {
     if (!el) return null;
 
@@ -350,7 +350,7 @@ document.addEventListener("DOMContentLoaded", () => {
     return null;
   }
 
-  // 빈 값, #, javascript: 같은 잘못된 이동 주소를 걸러냅니다.
+  // �?�? #, javascript: 같�? ?�못???�동 주소�?걸러?�니??
   function isValidDestination(url) {
     if (!url) return false;
     const trimmed = String(url).trim();
@@ -361,9 +361,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function initWishlistButtons() {
-    document.querySelectorAll('button[class*="wish"]').forEach(button => {
-      button.setAttribute("aria-pressed", "false");
-    });
+    syncWishlistButtons(document);
 
     document.addEventListener("click", event => {
       const wishButton = event.target.closest('button[class*="wish"]');
@@ -373,12 +371,23 @@ document.addEventListener("DOMContentLoaded", () => {
       event.stopPropagation();
 
       const isWished = wishButton.classList.toggle("is-wished");
-      wishButton.setAttribute("aria-pressed", String(isWished));
-      wishButton.textContent = isWished ? "favorite" : "favorite_border";
+      setWishlistButtonState(wishButton, isWished);
     });
   }
 
-  /* 공통 포맷/문자열 유틸 */
+  function syncWishlistButtons(root) {
+    root.querySelectorAll('button[class*="wish"]').forEach(button => {
+      setWishlistButtonState(button, button.classList.contains("is-wished"));
+    });
+  }
+
+  function setWishlistButtonState(button, isWished) {
+    button.classList.toggle("is-wished", isWished);
+    button.setAttribute("aria-pressed", String(isWished));
+    button.textContent = isWished ? "favorite" : "favorite_border";
+  }
+
+  /* 공통 ?�맷/문자???�틸 */
   function formatPrice(price) {
     return `\u20a9${Number(price || 0).toLocaleString("ko-KR")}`;
   }
@@ -392,7 +401,7 @@ document.addEventListener("DOMContentLoaded", () => {
       .replaceAll("'", "&#039;");
   }
 
-  /* 메인 히어로 영상 슬라이더 */
+  /* 메인 ?�어�??�상 ?�라?�더 */
   function initHeroVideoSlider() {
     const slider = document.querySelector("[data-hero-video-slider]");
     if (!slider) return;
@@ -404,10 +413,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!slides.length || !progress) return;
 
     progress.innerHTML = slides
-      .map(
-        () =>
-          '<span class="hero-video-progress-item"><span class="hero-video-progress-fill"></span></span>',
-      )
+      .map(() => '<span class="hero-video-progress-item"><span class="hero-video-progress-fill"></span></span>')
       .join("");
 
     const progressFills = Array.from(progress.querySelectorAll(".hero-video-progress-fill"));
@@ -420,7 +426,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let pausedElapsed = 0;
     let isPaused = false;
     let dragStartX = 0;
-    let dragCurrentX = 0;
     let isDragging = false;
     const desktopQuery = window.matchMedia("(min-width: 1200px)");
     const dragThreshold = 56;
@@ -577,14 +582,10 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .catch(() => {
             const duration = getSlideDuration(activeSlide);
-            pausedElapsed =
-              activeVideo.duration > 0 ? activeVideo.currentTime * 1000 : pausedElapsed;
+            pausedElapsed = activeVideo.duration > 0 ? activeVideo.currentTime * 1000 : pausedElapsed;
             slideStartedAt = performance.now() - pausedElapsed;
             updateProgressByTime(duration);
-            timerId = window.setTimeout(
-              () => showSlide(activeIndex + 1),
-              Math.max(duration - pausedElapsed, 0),
-            );
+            timerId = window.setTimeout(() => showSlide(activeIndex + 1), Math.max(duration - pausedElapsed, 0));
           });
         return;
       }
@@ -592,10 +593,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const duration = getSlideDuration(activeSlide);
       slideStartedAt = performance.now() - pausedElapsed;
       updateProgressByTime(duration);
-      timerId = window.setTimeout(
-        () => showSlide(activeIndex + 1),
-        Math.max(duration - pausedElapsed, 0),
-      );
+      timerId = window.setTimeout(() => showSlide(activeIndex + 1), Math.max(duration - pausedElapsed, 0));
     };
 
     slider.addEventListener("mouseenter", pauseHero);
@@ -614,14 +612,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
       isDragging = true;
       dragStartX = event.clientX;
-      dragCurrentX = event.clientX;
       pauseHero();
       slider.setPointerCapture?.(event.pointerId);
-    });
-
-    slider.addEventListener("pointermove", event => {
-      if (!isDragging) return;
-      dragCurrentX = event.clientX;
     });
 
     slider.addEventListener("pointerup", event => {
@@ -658,13 +650,13 @@ document.addEventListener("DOMContentLoaded", () => {
     showSlide(0);
   }
 
-  /* 가이드 카드 슬라이더 */
+  /* 가?�드 카드 ?�라?�더 */
   function initGuideSlider() {
     const slider = document.querySelector(".guide-slider");
     if (!slider) return;
 
     const cards = Array.from(slider.querySelectorAll(".guide-card"));
-    const mobileQuery = window.matchMedia("(max-width: 1024px)");
+    const mobileQuery = window.matchMedia("(max-width: 1199px)");
     const autoplayDelay = 3000;
     let activeIndex = 0;
     let autoplayId = null;
@@ -675,8 +667,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isMobile = () => mobileQuery.matches && cards.length > 1;
 
-    const getSlideLeft = index =>
-      cards[index] ? cards[index].offsetLeft - cards[0].offsetLeft : 0;
+    const getSlideLeft = index => {
+      const card = cards[index];
+      if (!card) return 0;
+
+      return card.offsetLeft - slider.offsetLeft - (slider.clientWidth - card.offsetWidth) / 2;
+    };
 
     const goToSlide = index => {
       if (!isMobile()) return;
@@ -757,7 +753,7 @@ document.addEventListener("DOMContentLoaded", () => {
     handleModeChange();
   }
 
-  /* 공지/이벤트 탭 및 아코디언 */
+  /* 공�?/?�벤????�??�코?�언 */
   function initNoticeEvent() {
     const section = document.querySelector(".notice-event");
     if (!section) return;
