@@ -597,8 +597,8 @@ function renderQnaItems(qna) {
             </div>
 
             <div class="answer-block d-flex align-items-center g-2">
-              <span class="${hasAnswer ? "answer-label typo-m-header" : "answer-lock typo-p-icon-xs"}" aria-hidden="true">
-                ${hasAnswer ? "A" : "lock"}
+              <span class="${hasAnswer ? "answer-label typo-m-header" : "answer-lock typo-m-icons-xs-o"}" aria-hidden="true">
+              ${hasAnswer ? "A" : "lock"}
               </span>
 
               <p class="answer-content typo-m-caption">
