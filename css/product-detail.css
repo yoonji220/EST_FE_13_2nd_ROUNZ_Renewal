@@ -1308,6 +1308,20 @@
   cursor: pointer;
   overflow: visible;
 }
+
+.recommend-swiper {
+  overflow: hidden;
+}
+
+.recommend-products-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.recommend-products-item {
+  height: auto;
+}
 @media (min-width: 1200px) {
   .recommend-products-item {
     flex: 0 0 240px;

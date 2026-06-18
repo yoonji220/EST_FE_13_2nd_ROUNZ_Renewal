@@ -623,7 +623,7 @@ function createRecommendLists(all, category, id) {
   const productHTML = recommendList
     .map(
       p => `
-        <li class="recommend-products-item">
+        <li class="recommend-products-item swiper-slide">
           <article class="product-card d-flex flex-column g-1">
             <div class="product-card-image-box">
               <a href="./product_detail.html?id=${p.id}">
@@ -661,6 +661,26 @@ function createRecommendLists(all, category, id) {
     .join("");
 
   recommendGrid.innerHTML = productHTML;
+
+  new Swiper(".recommend-swiper", {
+    slidesPerView: 2.2,
+    spaceBetween: 16,
+
+    navigation: {
+      nextEl: ".recommend-carousel-next",
+      prevEl: ".recommend-carousel-prev",
+    },
+
+    breakpoints: {
+      768: {
+        slidesPerView: 3.2,
+      },
+
+      1200: {
+        slidesPerView: 4,
+      },
+    },
+  });
 }
 
 // 상품 상세 tab

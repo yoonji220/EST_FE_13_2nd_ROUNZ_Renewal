@@ -750,17 +750,10 @@
         class="recommend-products container d-flex flex-column g-2"
         aria-labelledby="recommend-products-title"
       >
-        <h2
-          id="recommend-products-title"
-          class="recommend-products-title typo-m-header"
-        >
-          이 상품과 비슷한 상품
-        </h2>
+        <
+        <div class="recommend-products-scroller swiper recommend-swiper">
+          <ul class="recommend-products-list swiper-wrapper"></ul>
 
-        <div class="recommend-products-scroller">
-          <ul class="recommend-products-list d-flex g-2"></ul>
-
-          <!-- 추천 상품 슬라이드 컨트롤 -->
           <div
             class="recommend-carousel-controls d-flex justify-content-between align-items-center"
           >
@@ -769,9 +762,7 @@
               class="recommend-carousel-prev"
               aria-label="이전 추천 상품"
             >
-              <span class="typo-m-icons-l-o" aria-hidden="true">
-                arrow_back_ios
-              </span>
+              <span class="typo-m-icons-l-o">arrow_back_ios</span>
             </button>
 
             <button
@@ -779,9 +770,7 @@
               class="recommend-carousel-next"
               aria-label="다음 추천 상품"
             >
-              <span class="typo-m-icons-l-o" aria-hidden="true">
-                arrow_forward_ios
-              </span>
+              <span class="typo-m-icons-l-o">arrow_forward_ios</span>
             </button>
           </div>
         </div>
