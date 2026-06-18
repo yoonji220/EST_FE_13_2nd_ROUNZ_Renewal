@@ -68,7 +68,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (ticking) return;
 
       ticking = true;
-      window.requestAnimationFrame(syncHeaderState);
     };
 
     window.addEventListener("scroll", requestSync, { passive: true });
