@@ -41,55 +41,6 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 
 ---
 
-# 🗓 프로젝트 일정
-
-```mermaid
-%%{init: {'theme':'dark', 'themeVariables': {
-  'sectionBkgColor':'transparent',
-  'altSectionBkgColor':'transparent',
-  'gridColor':'#3a3a3a',
-  'todayLineColor':'#E06A3E',
-  'taskBkgColor':'#6F66C8',
-  'taskBorderColor':'#6F66C8',
-  'taskTextColor':'#ffffff',
-  'taskTextDarkColor':'#ffffff',
-  'taskTextLightColor':'#ffffff',
-  'taskTextOutsideColor':'#d0d0d0',
-  'activeTaskBkgColor':'#1FB58A',
-  'activeTaskBorderColor':'#1FB58A',
-  'doneTaskBkgColor':'#E06A3E',
-  'doneTaskBorderColor':'#E06A3E'
-}}}%%
-gantt
-    title 프로젝트 일정
-    dateFormat YYYY-MM-DD
-    excludes weekends
-    axisFormat %m/%d
-
-    section 기획/설계
-    팀 구성, 기획 착수            :a1, 2026-05-29, 5d
-    발표자료 제작, 기획 마무리     :a2, 2026-06-03, 2d
-
-    section 디자인
-    스토리보드 작성              :active, b1, 2026-06-03, 2d
-    와이어프레임 작성            :active, b2, 2026-06-04, 2d
-    스타일 가이드 작성           :active, b3, 2026-06-04, 1d
-    figma 디자인                :active, b4, 2026-06-04, 6d
-
-    section 구현
-    HTML/CSS 구현               :done, c1, 2026-06-11, 3d
-    JS 구현                     :done, c2, 2026-06-15, 4d
-    반응형 및 접근성 개선         :done, c3, 2026-06-18, 2d
-    QA, 성능 개선               :done, d2, 2026-06-18, 2d
-    README 및 문서 작성          :done, e1, 2026-06-18, 2d
-    GitHub 배포                 :done, e2, 2026-06-18, 1d
-
-    section 발표
-    발표일                      :milestone, m1, 2026-06-19, 0d
-```
-
----
-
 # 🎯 프로젝트 목표
 
 ### 반응형 웹 구현
@@ -286,6 +237,55 @@ EST_FE_13_2nd_ROUNZ_Renewal - Cookie & Session
 | Mobile  | 480px 이하               |
 | Tablet  | 481px ~ 768px           |
 | Desktop | 769px 이상 (1440px 기준 디자인) |
+
+---
+
+# 🗓 프로젝트 일정
+
+```mermaid
+%%{init: {'theme':'dark', 'themeVariables': {
+  'sectionBkgColor':'transparent',
+  'altSectionBkgColor':'transparent',
+  'gridColor':'#3a3a3a',
+  'todayLineColor':'#E06A3E',
+  'taskBkgColor':'#6F66C8',
+  'taskBorderColor':'#6F66C8',
+  'taskTextColor':'#ffffff',
+  'taskTextDarkColor':'#ffffff',
+  'taskTextLightColor':'#ffffff',
+  'taskTextOutsideColor':'#d0d0d0',
+  'activeTaskBkgColor':'#1FB58A',
+  'activeTaskBorderColor':'#1FB58A',
+  'doneTaskBkgColor':'#E06A3E',
+  'doneTaskBorderColor':'#E06A3E'
+}}}%%
+gantt
+    title 프로젝트 일정
+    dateFormat YYYY-MM-DD
+    excludes weekends
+    axisFormat %m/%d
+
+    section 기획/설계
+    팀 구성, 기획 착수            :a1, 2026-05-29, 5d
+    발표자료 제작, 기획 마무리     :a2, 2026-06-03, 2d
+
+    section 디자인
+    스토리보드 작성              :active, b1, 2026-06-03, 2d
+    와이어프레임 작성            :active, b2, 2026-06-04, 2d
+    스타일 가이드 작성           :active, b3, 2026-06-04, 1d
+    figma 디자인                :active, b4, 2026-06-04, 6d
+
+    section 구현
+    HTML/CSS 구현               :done, c1, 2026-06-11, 3d
+    JS 구현                     :done, c2, 2026-06-15, 4d
+    반응형 및 접근성 개선         :done, c3, 2026-06-18, 2d
+    QA, 성능 개선               :done, d2, 2026-06-18, 2d
+    README 및 문서 작성          :done, e1, 2026-06-18, 2d
+    GitHub 배포                 :done, e2, 2026-06-18, 1d
+
+    section 발표
+    발표일                      :milestone, m1, 2026-06-19, 0d
+```
 
 ---
 
