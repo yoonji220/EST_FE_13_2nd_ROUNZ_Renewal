@@ -3,7 +3,7 @@ export function renderHeader() {
   target.innerHTML = `
     <div class="main-header container d-flex justify-content-between align-items-center">
         <button type="button" class="btn-hamburger mobile-only" aria-label="메뉴 열기">
-          <span class="typo-m-icons-xl-o">menu</span>
+          <span class="header-icons typo-m-icons-xl-o">menu</span>
         </button>
 
         <h1 class="logo typo-m-h1"><a href="index.html">rounz</a></h1>
@@ -206,14 +206,14 @@ export function renderHeader() {
 
         <ul class="d-flex g-1 shortcut-menu">
           <li aria-label="회원 로그인">
-            <a href="login.html"><span class="typo-m-icons-xl-o">person</span></a>
+            <a href="login.html"><span class="header-icons typo-m-icons-xl-o">person</span></a>
           </li>
           <li aria-label="제품 검색">
-            <a href="filters.html"><span class="typo-m-icons-xl-o">search</span></a>
+            <a href="filters.html"><span class="header-icons typo-m-icons-xl-o">search</span></a>
           </li>
           <li aria-label="장바구니">
             <a class="cart-link" href="cart.html">
-            <span class="typo-m-icons-xl-o">shopping_bag</span>
+            <span class="header-icons typo-m-icons-xl-o">shopping_bag</span>
             <span class="cart-badge typo-m-btn-s text-center">22</span>
             </a>
           </li>
@@ -223,12 +223,14 @@ export function renderHeader() {
 
   bindHeaderEvents(target);
 
+  updateCartBadge(target);
+
   adjustSubPagePadding();
 
   window.addEventListener('resize', adjustSubPagePadding);
 }
 
- function bindHeaderEvents(target){
+ export function bindHeaderEvents(target){
   const btnOpen = target.querySelector('.btn-hamburger[aria-label="메뉴 열기"]');
   const btnClose = target.querySelector('.btn-hamburger[aria-label="메뉴 닫기"]');
   const globalNav = target.querySelector('.global-nav');
@@ -357,24 +359,36 @@ export function renderHeader() {
   }
   
   // 모바일 아코디언 메뉴 이벤트
-  accordionHeaders.forEach(header => {
-    header.addEventListener('click', function(e) {
-      if (isPc.matches) return; // PC일 땐 클릭해도 아무 동작 안 함 (이미 초기화 로직에서 다 펼쳐둠)
+accordionHeaders.forEach(header => {
+  header.addEventListener('click', function(e) {
+    if (isPc.matches) return; // PC일 땐 동작 안 함
 
-      if (e.target.closest('a')) return;
-      
-      const content = header.nextElementSibling;
-      if (content && content.classList.contains('sub-menu-item')) {
-        content.classList.toggle('hide-menu');
-        
-        const icon = header.querySelector('.typo-m-icons-m-o');
-        if (icon) {
-          const isHidden = content.classList.contains('hide-menu');
-          icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
-        }
+    // 🚨 튕겨나가는 return 대신, 기본 동작만 막아주기 (href="#" 일 경우)
+    const targetA = e.target.closest('a');
+    if (targetA) {
+      // 진짜 다른 페이지로 가는 링크가 아니라면 화면 튕김 방지
+      if (targetA.getAttribute('href') === '#' || targetA.getAttribute('href') === '') {
+        e.preventDefault(); 
+      } else {
+        // 만약 진짜 페이지 이동을 해야 하는 a 태그라면,
+        // 기획에 따라 여기서 return; 을 할지 말지 결정해야 합니다.
+        // (일반적인 아코디언 제목은 단순 토글용이므로 preventDefault만 하는 것이 맞습니다)
       }
-    });
+    }
+    
+    // 이제 방해받지 않고 아래 토글 로직이 정상 실행됩니다!
+    const content = header.nextElementSibling;
+    if (content && content.classList.contains('sub-menu-item')) {
+      content.classList.toggle('hide-menu');
+      
+      const icon = header.querySelector('.typo-m-icons-m-o');
+      if (icon) {
+        const isHidden = content.classList.contains('hide-menu');
+        icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
+      }
+    }
   });
+});
 }
 
 
@@ -389,5 +403,33 @@ function adjustSubPagePadding() {
     
     // 서브 페이지의 padding-top을 헤더 높이와 똑같이 맞춰줍니다.
     subPage.style.paddingTop = `${headerHeight}px`;
+  }
+}
+
+
+// 뱃지 수량을 업데이트하는 함수 (외부에서도 호출할 수 있게 export)
+export function updateCartBadge(target = document) {
+  const badge = target.querySelector('.cart-badge');
+  if (!badge) return;
+
+  try {
+    const savedItems = localStorage.getItem("cart");
+    let itemCount = 0; // 상품 종류의 개수
+
+    if (savedItems) {
+      const parsedItems = JSON.parse(savedItems);
+      
+      // 배열 형태인지 확인 후 개수(length) 측정
+      if (Array.isArray(parsedItems)) {
+        itemCount = parsedItems.length; 
+      }
+    }
+
+    // 100개 이상이면 99+로 표시, 아니면 실제 개수 표시
+    badge.textContent = itemCount >= 100 ? "99+" : itemCount;
+    
+  } catch (error) {
+    console.error("장바구니 뱃지 업데이트 실패:", error);
+    badge.textContent = "0";
   }
 }

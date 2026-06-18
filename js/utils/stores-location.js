@@ -1,5 +1,8 @@
 const NAVER_MAP_CLIENT_ID = "elqc9936ti";
 const EVENT_FALLBACK_IMAGE = "./img/rounz-event-fallback.webp";
+const MAP_DEFAULT_MIN_ZOOM = 12;
+const MAP_DIRECTION_MIN_ZOOM = 7;
+const MAP_MAX_ZOOM = 16;
 
 let stores = [];
 let currentFeaturedStore = null;
@@ -27,6 +30,7 @@ let pcPendingMapRender = null;
 let pcMapLazyObserver = null;
 let pcPendingPromotionImageUrl = null;
 let pcPromotionImageLazyObserver = null;
+let lockedBodyScrollY = 0;
 
 const PC_FILTER_NAMES = ["전체", "프리미엄 매장", "선글라스", "AI안경"];
 const SORT_NAMES = ["추천순", "거리순"];
@@ -345,9 +349,9 @@ function renderStoreList(storeData) {
           type="button"
           class="store-card__btn store-card__btn--primary typo-m-btn-s"
           data-action="direction"
-          aria-label="${store.name} 길 안내"
+          aria-label="${store.name} 위치 안내"
         >
-          길 안내
+          위치 안내
         </button>
       </div>
     `;
@@ -454,6 +458,14 @@ function filterMobileStores(storeData, filterName) {
   return filteredStores;
 }
 
+function syncMobileSearchKeywordWhenInputEmpty() {
+  if (!searchInput) return;
+
+  if (!searchInput.value.trim()) {
+    currentSearchKeyword = "";
+  }
+}
+
 function bindFilterEvents() {
   if (!filterButtons.length) return;
 
@@ -461,6 +473,7 @@ function bindFilterEvents() {
     button.addEventListener("click", () => {
       const filterName = button.textContent.trim();
 
+      syncMobileSearchKeywordWhenInputEmpty();
       setActiveFilterButton(filterName);
       currentFilterName = filterName;
 
@@ -487,6 +500,8 @@ function bindMobileSortEvent() {
   updateMobileSortButtonLabel(currentSortName);
 
   sortButton.addEventListener("click", () => {
+    syncMobileSearchKeywordWhenInputEmpty();
+
     const nextSortName = getNextSortName(currentSortName);
 
     if (nextSortName === "거리순" && !userLocation) {
@@ -867,7 +882,7 @@ function renderPcStoreList(storeData) {
               type="button"
               class="pc-store-card__btn typo-p-btn-s"
               data-action="pc-direction"
-              aria-label="${store.name} 길찾기"
+              aria-label="${store.name} 위치 안내"
             >
               <span class="typo-m-icons-s-o" aria-hidden="true">near_me</span>
               길찾기
@@ -1200,15 +1215,18 @@ function renderPcNaverMap(selectedStore, storeData = pcCurrentFilteredStores, st
     .then(() => {
       const selectedPosition = new naver.maps.LatLng(storeLat, storeLng);
 
+      const mapMinZoom = startLocation ? MAP_DIRECTION_MIN_ZOOM : MAP_DEFAULT_MIN_ZOOM;
+
       if (!pcNaverMap) {
         pcNaverMap = new naver.maps.Map(pcMapBg, {
           center: selectedPosition,
           zoom: 12,
-          minZoom: 12,
-          maxZoom: 16,
-          scrollWheel: false,
+          minZoom: mapMinZoom,
+          maxZoom: MAP_MAX_ZOOM,
+          scrollWheel: true,
         });
       } else {
+        updateMapZoomOptions(pcNaverMap, mapMinZoom);
         pcNaverMap.setCenter(selectedPosition);
       }
 
@@ -1397,16 +1415,31 @@ function clearPcUserGuide() {
 
 function fitPcMapBounds(userPosition, storePosition) {
   const bounds = new naver.maps.LatLngBounds();
+  const directionMinZoom = getDirectionMinZoom(userPosition, storePosition);
+  const fitBoundsOptions = {
+    top: 120,
+    right: 120,
+    bottom: 120,
+    left: 120,
+  };
 
   bounds.extend(userPosition);
   bounds.extend(storePosition);
 
-  pcNaverMap.fitBounds(bounds, {
-    top: 96,
-    right: 96,
-    bottom: 96,
-    left: 96,
+  updateMapZoomOptions(pcNaverMap, directionMinZoom);
+
+  naver.maps.Event.trigger(pcNaverMap, "resize");
+  pcNaverMap.fitBounds(bounds, fitBoundsOptions);
+
+  requestAnimationFrame(() => {
+    naver.maps.Event.trigger(pcNaverMap, "resize");
+    pcNaverMap.fitBounds(bounds, fitBoundsOptions);
   });
+
+  window.setTimeout(() => {
+    naver.maps.Event.trigger(pcNaverMap, "resize");
+    pcNaverMap.fitBounds(bounds, fitBoundsOptions);
+  }, 160);
 }
 
 function bindPcStoreMoreButton() {
@@ -1652,6 +1685,54 @@ function bindMapLightboxCloseEvents() {
   });
 }
 
+function lockBodyScroll() {
+  lockedBodyScrollY = window.scrollY || window.pageYOffset || 0;
+
+  document.documentElement.style.overflow = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.top = `-${lockedBodyScrollY}px`;
+  document.body.style.left = "0";
+  document.body.style.right = "0";
+  document.body.style.width = "100%";
+  document.body.style.overflow = "hidden";
+}
+
+function unlockBodyScroll() {
+  document.documentElement.style.overflow = "";
+  document.body.style.position = "";
+  document.body.style.top = "";
+  document.body.style.left = "";
+  document.body.style.right = "";
+  document.body.style.width = "";
+  document.body.style.overflow = "";
+
+  window.scrollTo(0, lockedBodyScrollY);
+}
+
+function updateMapZoomOptions(mapInstance, minZoom = MAP_DEFAULT_MIN_ZOOM) {
+  if (!mapInstance) return;
+
+  mapInstance.setOptions({
+    minZoom,
+    maxZoom: MAP_MAX_ZOOM,
+    scrollWheel: true,
+  });
+}
+
+function getDirectionMinZoom(userPosition, storePosition) {
+  const userLat = userPosition.lat();
+  const userLng = userPosition.lng();
+  const storeLat = storePosition.lat();
+  const storeLng = storePosition.lng();
+  const distance = getDistance(userLat, userLng, storeLat, storeLng);
+
+  if (distance >= 120) return 6;
+  if (distance >= 60) return 7;
+  if (distance >= 25) return 8;
+
+  return MAP_DIRECTION_MIN_ZOOM;
+}
+
 function moveFocusOutsideMapLightbox() {
   const activeElement = document.activeElement;
 
@@ -1679,9 +1760,10 @@ function openMapLightbox(store) {
   lastFocusedElementBeforeMap =
     document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
+  lockBodyScroll();
+
   mapLightbox.setAttribute("aria-hidden", "false");
   mapLightbox.classList.add("is-open");
-  document.body.style.overflow = "hidden";
 
   renderNaverMap(store);
 }
@@ -1694,9 +1776,10 @@ function showDirectionOnMap(store) {
       lastFocusedElementBeforeMap =
         document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
+      lockBodyScroll();
+
       mapLightbox.setAttribute("aria-hidden", "false");
       mapLightbox.classList.add("is-open");
-      document.body.style.overflow = "hidden";
 
       renderNaverMap(store, location);
     })
@@ -1711,7 +1794,7 @@ function closeMapLightbox() {
   moveFocusOutsideMapLightbox();
 
   mapLightbox.classList.remove("is-open");
-  document.body.style.overflow = "";
+  unlockBodyScroll();
 
   requestAnimationFrame(() => {
     mapLightbox.setAttribute("aria-hidden", "true");
@@ -1784,15 +1867,18 @@ function renderNaverMap(store, startLocation) {
 
       const storePosition = new naver.maps.LatLng(storeLat, storeLng);
 
+      const mapMinZoom = startLocation ? MAP_DIRECTION_MIN_ZOOM : MAP_DEFAULT_MIN_ZOOM;
+
       if (!naverMap) {
         naverMap = new naver.maps.Map(mapContainer, {
           center: storePosition,
           zoom: 16,
-          minZoom: 12,
-          maxZoom: 16,
-          scrollWheel: false,
+          minZoom: mapMinZoom,
+          maxZoom: MAP_MAX_ZOOM,
+          scrollWheel: true,
         });
       } else {
+        updateMapZoomOptions(naverMap, mapMinZoom);
         naverMap.setCenter(storePosition);
       }
 
@@ -1938,14 +2024,29 @@ function clearUserGuide() {
 
 function fitMapBounds(userPosition, storePosition) {
   const bounds = new naver.maps.LatLngBounds();
+  const directionMinZoom = getDirectionMinZoom(userPosition, storePosition);
+  const fitBoundsOptions = {
+    top: 96,
+    right: 64,
+    bottom: 96,
+    left: 64,
+  };
 
   bounds.extend(userPosition);
   bounds.extend(storePosition);
 
-  naverMap.fitBounds(bounds, {
-    top: 80,
-    right: 48,
-    bottom: 80,
-    left: 48,
+  updateMapZoomOptions(naverMap, directionMinZoom);
+
+  naver.maps.Event.trigger(naverMap, "resize");
+  naverMap.fitBounds(bounds, fitBoundsOptions);
+
+  requestAnimationFrame(() => {
+    naver.maps.Event.trigger(naverMap, "resize");
+    naverMap.fitBounds(bounds, fitBoundsOptions);
   });
+
+  window.setTimeout(() => {
+    naver.maps.Event.trigger(naverMap, "resize");
+    naverMap.fitBounds(bounds, fitBoundsOptions);
+  }, 160);
 }

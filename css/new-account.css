@@ -9,6 +9,17 @@ input {
   border: var(--color-gray) 1px solid;
   border-radius: 4px;
 }
+.feedback{
+  color: var(--color-dark-gray);
+}
+
+.alert{
+  color: var(--color-red);
+}
+
+main a{
+  color: var(--color-point);
+}
 
 .form.d-flex input {
   flex: 1;
@@ -42,4 +53,10 @@ input[type=number] {
 
 .main-content{
   padding: 16px;
+}
+
+@media (min-width:1200px) {
+  .account-make{
+    max-width: 960px;
+  }
 }

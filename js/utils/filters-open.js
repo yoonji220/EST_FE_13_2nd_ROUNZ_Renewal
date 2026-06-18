@@ -155,7 +155,26 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetBtn = document.querySelector('.btn-reset');
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
-      window.location.reload();
+      // 모든 버튼의 active 클래스 제거
+      document.querySelectorAll('.brand-btn, .shape-card, .material-btn, .face-shape-item').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      // 얼굴형 이미지 초기화
+      document.querySelectorAll('.face-shape-item img').forEach(img => {
+        if (img.dataset.default) {
+          img.src = img.dataset.default;
+        }
+      });
+
+      // 슬라이더 초기화
+      if (priceSlider) {
+        priceSlider.value = priceSlider.max / 2; // 기본값을 가운데로 (250000)
+        initSlider();
+      }
+
+      // 저장된 세션 지우기
+      sessionStorage.removeItem('mobileFilters');
     });
   }
 

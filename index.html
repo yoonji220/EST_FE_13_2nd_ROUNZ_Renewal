@@ -729,32 +729,39 @@
         </div>
       </section>
 
-      <div class="floating-bar d-flex flex-column">
-        <a
-          href="#top"
-          class="floating-btn floating-btn--top d-flex align-items-center justify-content-center"
-          aria-label="맨 위로 이동">
-          <span class="typo-m-icons-xl-o">keyboard_double_arrow_up</span>
-        </a>
+      
+    </section>
 
-        <button
-          type="button"
-          class="floating-btn floating-btn--chat d-flex align-items-center justify-content-center"
-          aria-label="채팅 상담">
-          <span class="typo-m-icons-xl-o">comment</span>
-        </button>
-      </div>
+    <div class="floating-bar g-2"></div>
 
-      <footer class="footer"></footer>
+    <footer class="footer"></footer>
 
-      <script type="module">
-        import { renderHeader } from "./js/modules/header.js";
-        import { renderFooter } from "./js/modules/footer.js";
-        renderHeader();
-        renderFooter();
-      </script>
-      <script src="./js/utils/common.js"></script>
-      <script src="js/utils/index.js"></script>
-    </body>
-  </html>
+    <script type="module">
+      import { renderHeader , bindHeaderEvents } from "./js/modules/header.js";
+      import { renderFooter } from "./js/modules/footer.js";
+      import { renderFloatingBar } from "./js/modules/floating-bar.js";
+      renderHeader();
+      renderFooter();
+      renderFloatingBar();
+
+      // 1. 헤더 렌더링 및 기본 이벤트 실행
+      renderHeader();
+      const headerTarget = document.querySelector('.header');
+      bindHeaderEvents(headerTarget);
+
+      // ==========================================
+      // 2. 메인 페이지 전용: 스크롤 감지 투명 헤더 로직
+      // ==========================================
+      window.addEventListener('scroll', () => {
+        // 스크롤이 50px 이상 내려갔는지 확인
+        if (window.scrollY > 50) {
+          headerTarget.classList.add('scrolled'); // 배경색 채우기
+        } else {
+          headerTarget.classList.remove('scrolled'); // 다시 투명하게
+        }
+      });
+    </script>
+    <script src="./js/utils/common.js"></script>
+    <script src="js/utils/index.js"></script>
+  </body>
 </html>
