@@ -210,7 +210,7 @@ import { renderHeader } from "../../js/modules/header.js";
     </a>
           <div class="product-meta">
             <span class="brand-name">${escapeHtml(product.brand)}</span>
-            <h2>${escapeHtml(product.title)}</h2>
+            <h2><a href="./product_detail.html?id=${product.id}">${escapeHtml(product.title)}</a></h2>
             <div class="price-row">
               ${priceDisplay}
               <button class="favorite-btn" type="button" aria-label="찜하기" aria-pressed="false">

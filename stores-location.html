@@ -49,16 +49,15 @@
                 aria-label="매장 검색"
               />
             </div>
-            <button type="button" class="stores-search__location-btn typo-m-btn-m">
-              현재 위치로 찾기
+            <button
+              type="button"
+              class="stores-search__location-btn stores-search__submit-btn typo-m-btn-m"
+            >
+              검색하기
             </button>
             <ul class="stores-search__filters d-flex">
               <li>
-                <button
-                  type="button"
-                  class="filter-chip filter-chip--active typo-m-btn-s"
-                  aria-pressed="true"
-                >
+                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
                   가까운순
                 </button>
               </li>
@@ -68,7 +67,11 @@
                 </button>
               </li>
               <li>
-                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
+                <button
+                  type="button"
+                  class="filter-chip filter-chip--active typo-m-btn-s"
+                  aria-pressed="true"
+                >
                   프리미엄 매장
                 </button>
               </li>
@@ -182,7 +185,7 @@
                     class="store-card__btn store-card__btn--primary typo-m-btn-s"
                     aria-label="ROUNZ 홍대점 길 안내"
                   >
-                    길 안내
+                    위치 안내
                   </button>
                 </div>
               </li>
@@ -301,8 +304,8 @@
                 placeholder="지역명, 도시명 또는 매장명 검색"
                 aria-label="매장 검색"
               />
-              <button type="button" class="pc-search-form__btn typo-p-btn-s" aria-label="지역 검색">
-                지역 검색
+              <button type="button" class="pc-search-form__btn typo-p-btn-s" aria-label="검색">
+                검색
               </button>
             </div>
             <ul class="pc-filter-chips d-flex" role="group" aria-label="매장 필터">
@@ -337,7 +340,7 @@
                 type="button"
                 class="pc-results-summary__sort d-flex align-items-center typo-p-body-s"
               >
-                거리순
+                추천순
                 <span class="typo-m-icons-s-o" aria-hidden="true">expand_more</span>
               </button>
             </div>
@@ -370,7 +373,7 @@
                   aria-label="ROUNZ 홍대점 길찾기"
                 >
                   <span class="typo-m-icons-s-o" aria-hidden="true">near_me</span>
-                  길찾기
+                  위치 안내
                 </button>
                 <button
                   type="button"
@@ -497,6 +500,20 @@
       </button>
       <div class="map-lightbox__container">
         <!-- JS로 지도 이미지 렌더링 예정 -->
+      </div>
+    </div>
+
+    <!-- Alert Replacement Message Card -->
+    <div class="stores-message-card" role="status" aria-live="polite" hidden>
+      <div class="stores-message-card__inner d-flex align-items-center">
+        <span class="stores-message-card__icon typo-m-icons-l-o" aria-hidden="true">info</span>
+        <p class="stores-message-card__text typo-m-body-s">
+          예약 서비스는 현재 준비 중입니다.<br />
+          예약 문의는 매장 전화번호로 연락 주세요.
+        </p>
+        <button type="button" class="stores-message-card__close" aria-label="안내 메시지 닫기">
+          <span class="typo-m-icons-s-o" aria-hidden="true">close</span>
+        </button>
       </div>
     </div>
 

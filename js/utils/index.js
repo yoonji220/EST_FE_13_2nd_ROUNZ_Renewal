@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
   const bestList = document.querySelector("[data-best-list]");
+  const mainStoreSearchForm = document.querySelector(".store-search-form");
+  const mainStoreSearchInput = document.querySelector(".store-search-input");
 
   initHeroVideoSlider();
   initGuideSlider();
+  initMainStoreSearch();
 
   if (!bestList) return;
 
@@ -17,6 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
 
   initBestSection();
+
+  function initMainStoreSearch() {
+    if (!mainStoreSearchForm || !mainStoreSearchInput) return;
+
+    mainStoreSearchForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      const keyword = mainStoreSearchInput.value.trim();
+
+      if (!keyword) {
+        window.location.href = "./stores-location.html";
+        return;
+      }
+
+      window.location.href = `./stores-location.html?keyword=${encodeURIComponent(keyword)}`;
+    });
+  }
 
   async function initBestSection() {
     try {
@@ -114,7 +134,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!slides.length || !progress) return;
 
     progress.innerHTML = slides
-      .map(() => '<span class="hero-video-progress-item"><span class="hero-video-progress-fill"></span></span>')
+      .map(
+        () =>
+          '<span class="hero-video-progress-item"><span class="hero-video-progress-fill"></span></span>',
+      )
       .join("");
 
     const progressFills = Array.from(progress.querySelectorAll(".hero-video-progress-fill"));
@@ -284,10 +307,14 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .catch(() => {
             const duration = getSlideDuration(activeSlide);
-            pausedElapsed = activeVideo.duration > 0 ? activeVideo.currentTime * 1000 : pausedElapsed;
+            pausedElapsed =
+              activeVideo.duration > 0 ? activeVideo.currentTime * 1000 : pausedElapsed;
             slideStartedAt = performance.now() - pausedElapsed;
             updateProgressByTime(duration);
-            timerId = window.setTimeout(() => showSlide(activeIndex + 1), Math.max(duration - pausedElapsed, 0));
+            timerId = window.setTimeout(
+              () => showSlide(activeIndex + 1),
+              Math.max(duration - pausedElapsed, 0),
+            );
           });
         return;
       }
@@ -295,7 +322,10 @@ document.addEventListener("DOMContentLoaded", () => {
       const duration = getSlideDuration(activeSlide);
       slideStartedAt = performance.now() - pausedElapsed;
       updateProgressByTime(duration);
-      timerId = window.setTimeout(() => showSlide(activeIndex + 1), Math.max(duration - pausedElapsed, 0));
+      timerId = window.setTimeout(
+        () => showSlide(activeIndex + 1),
+        Math.max(duration - pausedElapsed, 0),
+      );
     };
 
     slider.addEventListener("mouseenter", pauseHero);
@@ -374,7 +404,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const isMobile = () => mobileQuery.matches && cards.length > 1;
 
-    const getSlideLeft = index => (cards[index] ? cards[index].offsetLeft - cards[0].offsetLeft : 0);
+    const getSlideLeft = index =>
+      cards[index] ? cards[index].offsetLeft - cards[0].offsetLeft : 0;
 
     const goToSlide = index => {
       if (!isMobile()) return;
