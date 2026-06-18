@@ -136,7 +136,7 @@ https://www.figma.com/design/kZYfAsKXLNXvKo9CCA0ypU/Cookie-Session---Design
 | 이름   | 역할 | 세부 담당                                                | GitHub        | Email                                                   |
 | ------ | ---- | -------------------------------------------------------- | ------------- | ------------------------------------------------------- |
 | 최윤지 | 팀장 | 기획 · 디자인 · 상품 상세 페이지                         | yoonji220     | [choiyj220220@gmail.com](mailto:choiyj220220@gmail.com) |
-| 김정우 | 팀원 | 기획 · 디자인 · 회원가입 · Git 관리 · 공통 Header/Footer | GitHub ID     | Email                                                   |
+| 김정우 | 팀원 | 기획 · 디자인 · 회원가입 · Git 관리 · 공통 Header/Footer | GitHub ID     | [casperjwk@gmail.com](mailto:casperjwk@gmail.com)                                                   |
 | 권유진 | 팀원 | 기획 · 디자인 · 메인 페이지 · 회의록 작성                | GitHub ID     | Email                                                   |
 | 남윤동 | 팀원 | 기획 · 디자인 · 장바구니 · 필터 · 로그인 페이지          | dbsehd125-bot | [dbsehd125@gmail.com] Email                             |
 | 이민호 | 팀원 | 기획 · 디자인 · 매장 찾기 페이지                         | GitHub ID     | [minho0391] (minh05@navercom)                           |
