@@ -800,14 +800,7 @@ purchaseBarBuyButtons.forEach(button => {
 
 purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
 purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
-
-purchaseBarBuyButtons.forEach(button => {
-  button.addEventListener("click", openPurchaseSheet);
-});
-
-purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
 purchaseBarHandle?.addEventListener("click", openPurchaseSheet);
-purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
 
 // pc 구매패널 접기
 function closePcPurchasePanel() {
@@ -832,11 +825,20 @@ pcPurchaseMiniCard?.addEventListener("click", openPcPurchasePanel);
 const cartButtons = document.querySelectorAll(
   ".purchase-bar-cart, .sheet-cart",
 );
-
+const buyButtons = document.querySelectorAll(
+  ".sheet-buy, .pc-purchase-panel .purchase-bar-buy, .product-purchase-actions .purchase-bar-buy",
+);
 cartButtons.forEach(button => {
   button.addEventListener("click", () => {
     addToCart(makeCartProduct(product), quantityValue);
     showToast();
+  });
+});
+
+buyButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    addToCart(makeCartProduct(product), quantityValue);
+    location.href = "./cart.html";
   });
 });
 
