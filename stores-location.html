@@ -58,12 +58,7 @@
             <ul class="stores-search__filters d-flex">
               <li>
                 <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
-                  가까운순
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
-                  영업중
+                  전체
                 </button>
               </li>
               <li>
@@ -78,6 +73,11 @@
               <li>
                 <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
                   선글라스
+                </button>
+              </li>
+              <li>
+                <button type="button" class="filter-chip typo-m-btn-s" aria-pressed="false">
+                  AI안경
                 </button>
               </li>
             </ul>
@@ -296,43 +296,22 @@
               <h2 id="pc-search-title" class="typo-p-header-s">매장 찾기</h2>
               <p class="typo-p-body-s">지역명, 도시명 또는 매장명으로 검색하세요.</p>
             </div>
-            <div class="pc-search-form d-flex align-items-center">
-              <span class="typo-m-icons-l-o" aria-hidden="true">search</span>
-              <input
-                type="search"
-                class="typo-p-body-s"
-                placeholder="지역명, 도시명 또는 매장명 검색"
-                aria-label="매장 검색"
-              />
-              <button type="button" class="pc-search-form__btn typo-p-btn-s" aria-label="검색">
-                검색
+            <div class="pc-search-form">
+              <div class="pc-search-form__input-wrap d-flex align-items-center">
+                <span class="typo-m-icons-l-o" aria-hidden="true">search</span>
+                <input
+                  type="search"
+                  class="typo-p-body-s"
+                  placeholder="지역명, 도시명 또는 매장명 검색"
+                  aria-label="매장 검색"
+                />
+              </div>
+              <button type="button" class="pc-search-form__btn typo-p-btn-s" aria-label="지역 검색">
+                지역 검색
               </button>
             </div>
             <ul class="pc-filter-chips d-flex" role="group" aria-label="매장 필터">
-              <li>
-                <button
-                  type="button"
-                  class="filter-chip filter-chip--active typo-p-btn-s"
-                  aria-pressed="true"
-                >
-                  전체
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-p-btn-s" aria-pressed="false">
-                  영업중
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-p-btn-s" aria-pressed="false">
-                  주차가능
-                </button>
-              </li>
-              <li>
-                <button type="button" class="filter-chip typo-p-btn-s" aria-pressed="false">
-                  검안가능
-                </button>
-              </li>
+              <!-- JS로 PC 필터칩 렌더링: 전체 / 프리미엄 매장 / 선글라스 / AI안경 -->
             </ul>
             <div class="pc-results-summary d-flex align-items-center justify-content-between">
               <p class="typo-p-body-s">총 <strong>24</strong>개의 매장</p>
@@ -432,36 +411,6 @@
 
         <!-- 지도 마커 (JS로 렌더링 예정) -->
         <div class="pc-map-markers" aria-hidden="true"></div>
-
-        <!-- 필터 오버레이 -->
-        <div class="pc-filter-overlay" role="group" aria-label="지도 필터">
-          <ul class="pc-filter-overlay__list d-flex flex-column">
-            <li class="d-flex align-items-center">
-              <input type="radio" name="pc-map-filter" id="filter-all" value="all" checked />
-              <label for="filter-all" class="typo-p-body-s">전체</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-open" />
-              <label for="filter-open" class="typo-p-body-s">영업중</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-parking" />
-              <label for="filter-parking" class="typo-p-body-s">주차가능</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-exam" />
-              <label for="filter-exam" class="typo-p-body-s">검안가능</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-vr" />
-              <label for="filter-vr" class="typo-p-body-s">가상피팅</label>
-            </li>
-            <li class="d-flex align-items-center">
-              <input type="checkbox" id="filter-reserve" />
-              <label for="filter-reserve" class="typo-p-body-s">예약가능</label>
-            </li>
-          </ul>
-        </div>
 
         <!-- 지도 컨트롤 -->
         <div class="pc-map-controls d-flex flex-column" role="group" aria-label="지도 컨트롤">
