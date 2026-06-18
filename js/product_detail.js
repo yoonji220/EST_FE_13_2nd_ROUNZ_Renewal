@@ -81,6 +81,22 @@ function addToCart(product, qty = 1) {
   updateCartCount();
 }
 
+function setPurchaseSheetFocusable(isOpen) {
+  if (!purchaseSheet) return;
+
+  const focusableElements = purchaseSheet.querySelectorAll(
+    "button, a, input, select, textarea, [tabindex]",
+  );
+
+  focusableElements.forEach(element => {
+    if (isOpen) {
+      element.removeAttribute("tabindex");
+    } else {
+      element.setAttribute("tabindex", "-1");
+    }
+  });
+}
+
 // 상품 id 기준으로 상세 데이터 조회
 async function fetchProduct() {
   const params = new URLSearchParams(location.search);
@@ -213,6 +229,7 @@ function createGallery(data) {
               src="${image}"
               alt="${data.title} 상품 이미지 ${index + 1}"
               class="product-image"
+              ${index === 0 ? 'fetchpriority="high"' : ""}
             />
           </div>
         `,
@@ -319,25 +336,27 @@ function createBrandContent(data, brandData) {
 
 // 상세 이미지 렌더링
 function createDetailImages(data) {
-  const detailImages = document.querySelectorAll(".detail-image");
+  const detailImageList = document.querySelector(".detail-image-list");
   const imageUrls = data.images.gallery || [];
 
-  detailImages.forEach((image, index) => {
-    const imageUrl = imageUrls[index];
+  if (!detailImageList) return;
 
-    if (!imageUrl) {
-      image.closest(".detail-image-item")?.remove();
-      return;
-    }
-
-    image.src = imageUrl;
-    image.alt = `${data.title} 상세 이미지 ${index + 1}`;
-
-    image.onerror = () => {
-      image.onerror = null;
-      image.closest(".detail-image-item")?.remove();
-    };
-  });
+  detailImageList.innerHTML = imageUrls
+    .slice(0, 4)
+    .map(
+      (imageUrl, index) => `
+        <li class="detail-image-item d-flex flex-column">
+          <img
+            src="${imageUrl}"
+            alt="${data.title} 상세 이미지 ${index + 1}"
+            class="detail-image"
+            width="860"
+            height="745"
+          />
+        </li>
+      `,
+    )
+    .join("");
 }
 
 // 포인트 카드 이미지 렌더링
@@ -626,9 +645,9 @@ function createRecommendLists(all, category, id) {
 
   if (recommendList.length === 0) {
     recommendGrid.innerHTML = `
-      <li class="empty-message typo-m-body-s">
+      <div class="empty-message typo-m-body-s">
         추천 상품이 없습니다.
-      </li>
+      </div>
     `;
     return;
   }
@@ -636,7 +655,7 @@ function createRecommendLists(all, category, id) {
   const productHTML = recommendList
     .map(
       p => `
-        <li class="recommend-products-item swiper-slide">
+         <div class="recommend-products-item swiper-slide">
           <article class="product-card d-flex flex-column g-1">
             <div class="product-card-image-box">
               <a href="./product_detail.html?id=${p.id}">
@@ -668,7 +687,7 @@ function createRecommendLists(all, category, id) {
               </div>
             </div>
           </article>
-        </li>
+        </div>
       `,
     )
     .join("");
@@ -779,7 +798,7 @@ function getColorFromName(name = "", colorMap = {}) {
     .sort((a, b) => b.length - a.length)
     .find(key => text.includes(key.toLowerCase()));
 
-  return matchedKey ? colorMap[matchedKey] : { name: "color", hex: "#b8b8b8" };
+  return matchedKey ? colorMap[matchedKey] : { name: "basic", hex: "#b8b8b8" };
 }
 
 function createColorOptions(data, allProducts, colorMap) {
@@ -816,7 +835,13 @@ function createColorOptions(data, allProducts, colorMap) {
 
   colorOptions.hidden = false;
   const currentColor = getColorFromName(data.title, colorMap);
-  if (selectedColor) selectedColor.textContent = currentColor.name;
+
+  if (selectedColor) {
+    selectedColor.textContent = currentColor.name;
+    // return matchedKey
+    //   ? colorMap[matchedKey]
+    //   : { name: "basic color", hex: "#b8b8b8" };
+  }
 
   colorList.innerHTML = visibleColorItems
     .map(item => {
@@ -870,6 +895,7 @@ function openPurchaseSheet() {
 
   purchaseSheet.classList.add("is-open");
   purchaseSheet.setAttribute("aria-hidden", "false");
+  setPurchaseSheetFocusable(true);
 }
 
 // 구매 바텀 시트 닫기
@@ -878,6 +904,7 @@ function closePurchaseSheet() {
 
   purchaseSheet.classList.remove("is-open");
   purchaseSheet.setAttribute("aria-hidden", "true");
+  setPurchaseSheetFocusable(false);
 }
 
 purchaseBarBuyButtons.forEach(button => {
@@ -976,5 +1003,6 @@ toastClose?.addEventListener("click", () => {
   clearTimeout(toastTimer);
 });
 
+setPurchaseSheetFocusable(false);
 updateCartCount();
 fetchProduct();
