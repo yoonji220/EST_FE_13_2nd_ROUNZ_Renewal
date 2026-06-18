@@ -1,6 +1,8 @@
 import { renderFooter } from "./modules/footer.js";
 import { renderHeader } from "./modules/header.js";
 
+document.body.classList.add("is-loading");
+
 let product = {};
 let quantityValue = 1;
 let galleryIndex = 0;
@@ -76,7 +78,7 @@ function addToCart(product, qty = 1) {
 }
 
 // 상품 id 기준으로 상세 데이터 조회
-export async function fetchProduct() {
+async function fetchProduct() {
   const params = new URLSearchParams(location.search);
   const productId = params.get("id");
 
@@ -112,8 +114,14 @@ export async function fetchProduct() {
     createContent(product, brandData);
     createRecommendLists(productData.products, product.category, product.id);
     updateTotalPrice();
+
+    document.body.classList.remove("is-loading");
+    document.body.removeAttribute("aria-busy");
   } catch (error) {
     console.error(error);
+    document.body.classList.remove("is-loading");
+    document.body.removeAttribute("aria-busy");
+
     alert("상품 정보를 불러오지 못했습니다.");
   } finally {
     console.log("상품 상세 조회를 종료했습니다.");
@@ -291,28 +299,10 @@ function createBrandContent(data, brandData) {
   }
 }
 
-// function createDetailImages(data) {
-//   const detailImages = document.querySelectorAll(".detail-image");
-//   const imageUrls = data.images.detailImages || [];
-
-//   detailImages.forEach((image, index) => {
-//     const imageUrl = imageUrls[index];
-
-//     if (!imageUrl) return;
-
-//     image.src = imageUrl;
-//     image.alt = `${data.title} 상세 이미지 ${index + 1}`;
-
-//     image.onerror = () => {
-//       image.src = "./img/detail-01.webp";
-//     };
-//   });
-// }
-
 // 상세 이미지 렌더링
 function createDetailImages(data) {
   const detailImages = document.querySelectorAll(".detail-image");
-  const imageUrls = data.images.detailImages || [];
+  const imageUrls = data.images.gallery || [];
 
   detailImages.forEach((image, index) => {
     const imageUrl = imageUrls[index];
@@ -332,33 +322,18 @@ function createDetailImages(data) {
   });
 }
 
-// function createPointCards(data) {
-//   const pointImages = document.querySelectorAll(".point-image");
-//   const imageUrls = data.images.pointImages || [];
-//   const fallbackImages = ["./img/point-01.webp", "./img/point-02.webp"];
-
-//   pointImages.forEach((image, index) => {
-//     image.src = imageUrls[index] || fallbackImages[index];
-//     image.alt =
-//       index === 0
-//         ? `${data.title} 프레임 디테일 이미지`
-//         : `${data.title} 착용감 참고 이미지`;
-
-//     image.onerror = () => {
-//       image.src = fallbackImages[index];
-//     };
-//   });
-// }
-
 // 포인트 카드 이미지 렌더링
 function createPointCards(data) {
   const pointImages = document.querySelectorAll(".point-image");
-  const imageUrls = data.images.pointImages || [];
+
+  const fallbackImages = [
+    "./img/point/point_01.webp",
+    "./img/point/point_02.webp",
+  ];
 
   pointImages.forEach((image, index) => {
-    if (!imageUrls[index]) return;
+    image.src = fallbackImages[index];
 
-    image.src = imageUrls[index];
     image.alt =
       index === 0
         ? `${data.title} 프레임 디테일 이미지`
@@ -683,7 +658,7 @@ function createRecommendLists(all, category, id) {
   recommendGrid.innerHTML = productHTML;
 }
 
-// 상품 상세 tab 
+// 상품 상세 tab
 const tabButtons = document.querySelectorAll(".product-tab-button");
 const tabPanels = document.querySelectorAll(".tab-panel");
 
@@ -700,18 +675,24 @@ tabButtons.forEach(button => {
     button.setAttribute("aria-selected", "true");
 
     tabPanels.forEach(panel => {
-      if (panel.dataset.panel === target) {
-        panel.hidden = false;
-        panel.classList.add("is-active");
-      } else {
-        panel.hidden = true;
-        panel.classList.remove("is-active");
-      }
+      const isTarget = panel.dataset.panel === target;
+
+      panel.hidden = !isTarget;
+      panel.classList.toggle("is-active", isTarget);
     });
+
+    const activePanel = document.querySelector(`[data-panel="${target}"]`);
+
+    if (activePanel) {
+      activePanel.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
   });
 });
 
-// 상품 수량 변경 
+// 상품 수량 변경
 const quantityControls = document.querySelectorAll("[data-quantity]");
 
 quantityControls.forEach(control => {
@@ -734,7 +715,7 @@ quantityControls.forEach(control => {
   });
 });
 
-// 수량 표시 업데이트 
+// 수량 표시 업데이트
 function updateQuantity() {
   const quantityTexts = document.querySelectorAll("[data-quantity-value]");
   const miniQty = document.querySelector(".pc-mini-qty");
@@ -748,7 +729,7 @@ function updateQuantity() {
   }
 }
 
-// 수량 따라 총 상품 금액 업데이트 
+// 수량 따라 총 상품 금액 업데이트
 function updateTotalPrice() {
   const totalPrices = document.querySelectorAll(
     ".product-total-price, .sheet-total-price, .pc-purchase-total-price, .pc-mini-price",
@@ -766,11 +747,13 @@ const purchaseBarBuyButtons = document.querySelectorAll(".purchase-bar-buy");
 const purchaseSheet = document.querySelector("[data-purchase-sheet]");
 const purchaseSheetClose = document.querySelector(".sheet-close");
 const purchaseSheetHandle = document.querySelector(".purchase-sheet-handle");
+const purchaseBarHandle = document.querySelector(".purchase-bar-handle");
+
 const pcPurchasePanel = document.querySelector(".pc-purchase-panel");
 const pcPurchaseClose = document.querySelector(".pc-purchase-close");
 const pcPurchaseMiniCard = document.querySelector(".pc-purchase-mini-card");
 
-// 구매 바텀시트 열기 
+// 구매 바텀시트 열기
 function openPurchaseSheet() {
   if (!purchaseSheet) return;
 
@@ -778,7 +761,7 @@ function openPurchaseSheet() {
   purchaseSheet.setAttribute("aria-hidden", "false");
 }
 
-// 구매 바텀 시트 닫기 
+// 구매 바텀 시트 닫기
 function closePurchaseSheet() {
   if (!purchaseSheet) return;
 
@@ -792,8 +775,9 @@ purchaseBarBuyButtons.forEach(button => {
 
 purchaseSheetClose?.addEventListener("click", closePurchaseSheet);
 purchaseSheetHandle?.addEventListener("click", closePurchaseSheet);
+purchaseBarHandle?.addEventListener("click", openPurchaseSheet);
 
-// pc 구매패널 접기 
+// pc 구매패널 접기
 function closePcPurchasePanel() {
   if (!pcPurchasePanel || !pcPurchaseMiniCard) return;
 
@@ -801,7 +785,7 @@ function closePcPurchasePanel() {
   pcPurchaseMiniCard.hidden = false;
 }
 
-// pc 구매 패널 다시 열기 
+// pc 구매 패널 다시 열기
 function openPcPurchasePanel() {
   if (!pcPurchasePanel || !pcPurchaseMiniCard) return;
 
@@ -812,11 +796,13 @@ function openPcPurchasePanel() {
 pcPurchaseClose?.addEventListener("click", closePcPurchasePanel);
 pcPurchaseMiniCard?.addEventListener("click", openPcPurchasePanel);
 
-// 장바구니 
+// 장바구니
 const cartButtons = document.querySelectorAll(
   ".purchase-bar-cart, .sheet-cart",
 );
-
+const buyButtons = document.querySelectorAll(
+  ".sheet-buy, .pc-purchase-panel .purchase-bar-buy, .product-purchase-actions .purchase-bar-buy",
+);
 cartButtons.forEach(button => {
   button.addEventListener("click", () => {
     addToCart(makeCartProduct(product), quantityValue);
@@ -824,7 +810,14 @@ cartButtons.forEach(button => {
   });
 });
 
-// 버튼 
+buyButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    addToCart(makeCartProduct(product), quantityValue);
+    location.href = "./cart.html";
+  });
+});
+
+// 버튼
 document.addEventListener("click", e => {
   const wishButton = e.target.closest(".wish-button, .product-card-wish");
 
@@ -840,7 +833,7 @@ document.addEventListener("click", e => {
   }
 });
 
-// 장바구니 토스트 
+// 장바구니 토스트
 const cartToast = document.querySelector("[data-cart-toast]");
 const toastClose = document.querySelector(".cart-toast-close");
 
