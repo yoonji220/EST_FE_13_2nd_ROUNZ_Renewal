@@ -55,7 +55,7 @@ export function renderHeader() {
 
             <div class="sub-menu-panel">
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="sunglasses">
-                <div class="sub-menu">
+                <div class="sub-menu sub-menu-all">
                   <a class="d-flex justify-content-between align-items-center" href="#">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
@@ -103,12 +103,12 @@ export function renderHeader() {
                     <p>브랜드</p>
                     <span class="typo-m-icons-m-o">chevron_right</span>
                   </div>
-                  <div class="sub-menu-item grid typo-m-body hide-menu">
+                  <div class="sub-menu-item sub-menu-grid typo-m-body hide-menu">
                     <div><a href="#">Ray-Ban</a></div>
                     <div><a href="#">OAKLEY</a></div>
-                    <div><a href="#">LE <br/>SPECS</a></div>
+                    <div><a href="#">LE <br class="mobile-only" />SPECS</a></div>
                     <div><a href="#">FAKEME</a></div>
-                    <div><a href="#">YELLOW <br/> BEE</a></div>
+                    <div><a href="#">YELLOW <br class="mobile-only" /> BEE</a></div>
                     <div><a href="#">더보기</a></div>
                   </div>
                 </div>
@@ -121,7 +121,7 @@ export function renderHeader() {
               </div>
 
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="glasses">
-                <div class="sub-menu">
+                <div class="sub-menu sub-menu-all">
                   <a class="d-flex justify-content-between align-items-center" href="#">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
@@ -160,17 +160,18 @@ export function renderHeader() {
                     </div>
                   </div>
                 </div>
+                
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
                     <p>브랜드</p>
                     <span class="typo-m-icons-m-o">chevron_right</span>
                   </div>
-                  <div class="sub-menu-item grid typo-m-body hide-menu">
-                    <div><a href="#">TART <br/> OPTICAL</a></div>
-                    <div><a href="#">STEPHANE <br /> CHRISTIAN</a></div>
+                  <div class="sub-menu-item sub-menu-grid typo-m-body hide-menu">
+                    <div><a href="#">TART <br class="mobile-only" /> OPTICAL</a></div>
+                    <div><a href="#">STEPHANE <br class="mobile-only" /> CHRISTIAN</a></div>
                     <div><a href="#">Ray-Ban</a></div>
-                    <div><a href="#">NINE <br /> ACCORD</a></div>
-                    <div><a href="#">YELLOW <br/> BEE</a></div>
+                    <div><a href="#">NINE <br class="mobile-only" /> ACCORD</a></div>
+                    <div><a href="#">YELLOW <br class="mobile-only" /> BEE</a></div>
                     <div><a href="#">더보기</a></div>
                   </div>
                 </div>
@@ -186,10 +187,10 @@ export function renderHeader() {
                 <div class="sub-menu">
                   <a  class="d-flex justify-content-between align-items-center" href="#">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
-                <div class="sub-menu">
+                <div>
                   <h2>인기 키워드</h2>
-                  <hr />
-                  <ul class="grid typo-m-body">
+                  <hr class="mobile-only" />
+                  <ul class="sub-menu-grid typo-m-body">
                     <li><a href="#">#티타늄 안경테</a></li>
                     <li><a href="#">#동글이 안경테</a></li>
                     <li><a href="#">#뿔테 안경테</a></li>
