@@ -13,9 +13,9 @@ export function renderFooter(isSimple = false) {
               <h2 class="typo-m-h1">ROUNZ</h2>
               <p class="typo-m-body">세상에 없던 안경 쇼핑</p>
               <ul class="d-flex g-2">
-                <li><a href="#"><img src="../../img/footer_1.png" alt="Facebook"></a></li>
-                <li><a href="#"><img src="../../img/footer_2.png" alt="Instagram"></a></li>
-                <li><a href="#"><img src="../../img/footer_3.png" alt="Naver Blog"></a></li>
+                <li><a href="#"><img src="./img/footer_1.png" alt="Facebook"></a></li>
+                <li><a href="#"><img src="./img/footer_2.png" alt="Instagram"></a></li>
+                <li><a href="#"><img src="./img/footer_3.png" alt="Naver Blog"></a></li>
               </ul>
             </div>
   
@@ -86,9 +86,9 @@ export function renderFooter(isSimple = false) {
           
           <div class="mobile-only sns-icon">
             <ul class="d-flex g-2">
-              <li><a href="#"><img src="../../img/footer_1.png" alt="Facebook"></a></li>
-              <li><a href="#"><img src="../../img/footer_2.png" alt="Instagram"></a></li>
-              <li><a href="#"><img src="../../img/footer_3.png" alt="Naver Blog"></a></li>
+              <li><a href="#"><img src="./img/footer_1.png" alt="Facebook"></a></li>
+              <li><a href="#"><img src="./img/footer_2.png" alt="Instagram"></a></li>
+              <li><a href="#"><img src="./img/footer_3.png" alt="Naver Blog"></a></li>
             </ul>
           </div>
       
