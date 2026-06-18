@@ -628,6 +628,7 @@
 
   .brand-feature-desc {
     max-width: 960px;
+    font: var(--t-body-size-);
   }
 }
 
@@ -743,6 +744,10 @@
 
   .point-image-box {
     height: 360px;
+  }
+
+  .point-desc {
+    font: var(--t-body-size);
   }
 }
 
