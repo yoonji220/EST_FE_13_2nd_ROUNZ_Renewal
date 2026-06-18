@@ -160,11 +160,11 @@
 }
 
 .price-row del {
-  color: var(--color-gray);
+  color: var(--color-dark-gray);
 }
 
 .discount-rate {
-  color: var(--color-red);
+  color: #d00000;
 }
 
 .price-row strong {
@@ -613,7 +613,7 @@
     height: 48px;
     border-radius: 4px;
     color: var(--color-white);
-    background-color: var(--color-point-light);
+    background-color: var(--color-point);
   }
 
   .ai-fitting-video {
@@ -857,7 +857,7 @@
 }
 
 .spec-label {
-  color: var(--color-gray);
+  color: var(--color-dark-gray);
 }
 
 .spec-value {
