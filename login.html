@@ -1,109 +1,125 @@
 <!doctype html>
 <html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ROUNZ - 로그인</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/login.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ROUNZ - 로그인</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Material+Symbols+Outlined&family=Material+Icons&display=swap"
-    rel="stylesheet">
-  <link rel="stylesheet" href="./css/common.css">
-  <link rel="stylesheet" href="./css/login.css">
-</head>
+  <body>
+    <div class="login-page">
+      <!-- 상단 고정 헤더 -->
+      <header class="header"></header>
 
-<body>
-  <div class="login-page">
-    <!-- 상단 고정 헤더 -->
-    <header class="header"></header>
+      <main class="login-main">
+        <div class="login-container">
+          <section class="login-header">
+            <h1 class="login-title">로그인</h1>
+            <p class="login-subtitle">서비스 이용을 위해 로그인해주세요.</p>
+          </section>
 
-    <main class="login-main">
-      <div class="login-container">
+          <section class="banner-know-frame">
+            <h2 class="banner-title">WE KNOW YOUR FRAME</h2>
+            <p class="banner-desc">
+              나만의 얼굴형 분석으로 더<br />정확한 안경 추천을 경험해보세요.
+            </p>
+          </section>
 
-        <section class="login-header">
-          <h1 class="login-title">로그인</h1>
-          <p class="login-subtitle">서비스 이용을 위해 로그인해주세요.</p>
-        </section>
+          <!-- 이메일 및 비밀번호 입력 폼 -->
+          <form class="login-form">
+            <div class="form-group">
+              <label for="email" class="input-label">이메일</label>
+              <input
+                type="email"
+                id="email"
+                class="input-field"
+                placeholder="이메일을 입력해주세요."
+              />
+            </div>
 
-        <section class="banner-know-frame">
-          <h2 class="banner-title">WE KNOW YOUR FRAME</h2>
-          <p class="banner-desc">나만의 얼굴형 분석으로 더<br>정확한 안경 추천을 경험해보세요.</p>
-        </section>
+            <div class="form-group">
+              <label for="password" class="input-label">비밀번호</label>
+              <input
+                type="password"
+                id="password"
+                class="input-field"
+                placeholder="비밀번호를 입력해주세요."
+              />
+            </div>
 
-        <!-- 이메일 및 비밀번호 입력 폼 -->
-        <form class="login-form">
-          <div class="form-group">
-            <label for="email" class="input-label">이메일</label>
-            <input type="email" id="email" class="input-field" placeholder="이메일을 입력해주세요.">
-          </div>
+            <div class="form-options d-flex justify-content-between align-items-center">
+              <label class="custom-checkbox d-flex align-items-center g-1">
+                <input type="checkbox" id="keep-login" />
+                <span class="checkbox-box"></span>
+                <span class="checkbox-text">로그인 상태 유지</span>
+              </label>
+              <a href="javascript:void(0)" class="find-password-link">비밀번호 찾기</a>
+            </div>
 
-          <div class="form-group">
-            <label for="password" class="input-label">비밀번호</label>
-            <input type="password" id="password" class="input-field" placeholder="비밀번호를 입력해주세요.">
-          </div>
+            <button type="button" class="btn-login" id="btn-login-submit">로그인</button>
+          </form>
 
-          <div class="form-options d-flex justify-content-between align-items-center">
-            <label class="custom-checkbox d-flex align-items-center g-1">
-              <input type="checkbox" id="keep-login">
-              <span class="checkbox-box"></span>
-              <span class="checkbox-text">로그인 상태 유지</span>
-            </label>
-            <a href="javascript:void(0)" class="find-password-link">비밀번호 찾기</a>
-          </div>
+          <hr class="divider" />
 
-          <button type="button" class="btn-login" id="btn-login-submit">로그인</button>
-        </form>
+          <!-- 회원가입 유도 영역 -->
+          <section class="signup-section">
+            <h2 class="signup-title">회원가입</h2>
+            <p class="signup-subtitle">
+              아직 회원이 아니신가요? 지금 가입하고 다양한 혜택을 누리세요.
+            </p>
+            <a href="./new-account.html" class="btn-signup">회원가입</a>
+          </section>
 
-        <hr class="divider">
+          <hr class="divider" />
 
-        <!-- 회원가입 유도 영역 -->
-        <section class="signup-section">
-          <h2 class="signup-title">회원가입</h2>
-          <p class="signup-subtitle">아직 회원이 아니신가요? 지금 가입하고 다양한 혜택을 누리세요.</p>
-          <a href="./new-account.html" class="btn-signup">회원가입</a>
-        </section>
+          <!-- 간편 로그인 영역 -->
+          <section class="sns-login-section">
+            <h2 class="sns-title">간편 로그인</h2>
+            <div class="sns-buttons d-flex justify-content-center g-2">
+              <button class="sns-btn kakao" aria-label="카카오톡 간편 로그인">
+                <span class="material-symbols-outlined sns-icon">chat_bubble</span>
+                <span class="sns-name">KAKAO</span>
+              </button>
+              <button class="sns-btn naver" aria-label="네이버 간편 로그인">
+                <span class="sns-icon letter">N</span>
+                <span class="sns-name">NAVER</span>
+              </button>
+              <button class="sns-btn google" aria-label="구글 간편 로그인">
+                <span class="sns-icon letter">G</span>
+                <span class="sns-name">GOOGLE</span>
+              </button>
+            </div>
+          </section>
 
-        <hr class="divider">
-
-        <!-- 간편 로그인 영역 -->
-        <section class="sns-login-section">
-          <p class="sns-title">간편 로그인</p>
-          <div class="sns-buttons d-flex justify-content-center g-2">
-            <button class="sns-btn kakao" aria-label="카카오톡 간편 로그인">
-              <span class="material-symbols-outlined sns-icon">chat_bubble</span>
-              <span class="sns-name">KAKAO</span>
+          <!-- AI 추천 배너 영역 -->
+          <section class="ai-banner">
+            <h2 class="ai-banner-title">안경이 처음이신가요?</h2>
+            <p class="ai-banner-desc">
+              AI 얼굴형 분석과 가상 피팅을 통해 나에게 어울리는<br />안경을 추천받아보세요.
+            </p>
+            <button class="btn-ai-start" onclick="location.href = './index.html'">
+              AI 추천 시작하기
             </button>
-            <button class="sns-btn naver" aria-label="네이버 간편 로그인">
-              <span class="sns-icon letter">N</span>
-              <span class="sns-name">NAVER</span>
-            </button>
-            <button class="sns-btn google" aria-label="구글 간편 로그인">
-              <span class="sns-icon letter">G</span>
-              <span class="sns-name">GOOGLE</span>
-            </button>
-          </div>
-        </section>
+          </section>
+        </div>
+      </main>
 
-        <!-- AI 추천 배너 영역 -->
-        <section class="ai-banner">
-          <h2 class="ai-banner-title">안경이 처음이신가요?</h2>
-          <p class="ai-banner-desc">AI 얼굴형 분석과 가상 피팅을 통해 나에게 어울리는<br>안경을 추천받아보세요.</p>
-          <button class="btn-ai-start" onclick="location.href='./index.html'">AI 추천 시작하기</button>
-        </section>
+      <!-- 하단 푸터 -->
+      <footer class="footer"></footer>
+    </div>
 
-      </div>
-    </main>
-
-    <!-- 하단 푸터 -->
-    <footer class="footer"></footer>
-  </div>
-
-
-
-  <script type="module" src="./js/login.js"></script>
-</body>
-
+    <script type="module" src="./js/login.js"></script>
+  </body>
 </html>
