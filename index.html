@@ -719,23 +719,17 @@
       </div>
     </section>
 
-    <div class="floating-bar g-2">
-      <button type="button" class="floating-btn floating-btn--top" aria-label="맨 위로 이동">
-        <span class="typo-m-btn-xl_o">keyboard_double_arrow_up</span>
-      </button>
-
-      <a href="#" class="floating-btn floating-btn--chat" aria-label="채팅 상담">
-        <span class="typo-m-btn-xl_o">comment</span>
-      </a>
-    </div>
+    <div class="floating-bar g-2"></div>
 
     <footer class="footer"></footer>
 
     <script type="module">
       import { renderHeader , bindHeaderEvents } from "./js/modules/header.js";
       import { renderFooter } from "./js/modules/footer.js";
+      import { renderFloatingBar } from "./js/modules/floating-bar.js";
       renderHeader();
       renderFooter();
+      renderFloatingBar();
 
       // 1. 헤더 렌더링 및 기본 이벤트 실행
       renderHeader();

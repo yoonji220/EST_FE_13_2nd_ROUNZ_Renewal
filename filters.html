@@ -159,6 +159,8 @@
           </div> <!-- end product-content -->
         </div> <!-- end product-layout -->
       </div> <!-- end container -->
+
+      <div class="floating-bar g-2"></div>
     </main>
 
     <!-- 페이지 하단 카피라이트 및 공통 푸터 정보 영역 -->
@@ -167,6 +169,11 @@
 
   <script src="./js/utils/common.js"></script>
   <script type="module" src="./js/utils/filters.js"></script>
+  <script type="module">
+    import { renderFloatingBar } from "./js/modules/floating-bar.js";
+
+    renderFloatingBar();
+  </script>
 </body>
 
 </html>
