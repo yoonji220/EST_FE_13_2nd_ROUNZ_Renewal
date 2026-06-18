@@ -26,11 +26,11 @@
 /* 캐러셀 화살표 기본 숨김 */
 .product-hero .carousel-controls,
 .recommend-carousel-controls {
-  opacity: 1;
+  opacity: 0;
   transition: opacity 0.2s ease;
 }
 
-/* 마우스 hover + 키보드 접근 시 표시 */
+/* 마우스 hover + 키보드 focus 시 표시 */
 .product-hero:hover .carousel-controls,
 .product-hero:focus-within .carousel-controls,
 .recommend-products-scroller:hover .recommend-carousel-controls,
@@ -1291,22 +1291,21 @@
 .recommend-carousel-controls {
   position: absolute;
   top: 80px;
-  left: -16px;
-  width: calc(100% + 32px);
+  left: 0;
+  right: 0;
   height: 32px;
-  padding-inline: 16px;
   pointer-events: none;
   transform: translateY(-50%);
+  z-index: 20;
 }
 
 .recommend-carousel-prev,
 .recommend-carousel-next {
-  width: 20px;
-  height: 24px;
+  width: 32px;
+  height: 32px;
   color: var(--color-gray);
   pointer-events: auto;
   cursor: pointer;
-  overflow: visible;
 }
 
 .recommend-swiper {
@@ -1322,6 +1321,7 @@
 .recommend-products-item {
   height: auto;
 }
+
 @media (min-width: 1200px) {
   .recommend-products-item {
     flex: 0 0 240px;

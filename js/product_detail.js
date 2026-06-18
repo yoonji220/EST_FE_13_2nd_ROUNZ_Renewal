@@ -663,22 +663,13 @@ function createRecommendLists(all, category, id) {
   recommendGrid.innerHTML = productHTML;
 
   new Swiper(".recommend-swiper", {
-    slidesPerView: 2.2,
+    slidesPerView: "auto",
     spaceBetween: 16,
-
+    loop: true,
+    speed: 300,
     navigation: {
       nextEl: ".recommend-carousel-next",
       prevEl: ".recommend-carousel-prev",
-    },
-
-    breakpoints: {
-      768: {
-        slidesPerView: 3.2,
-      },
-
-      1200: {
-        slidesPerView: 4,
-      },
     },
   });
 }
