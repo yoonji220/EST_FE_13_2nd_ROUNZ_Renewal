@@ -793,7 +793,7 @@ footer > .container {
 
 /* 헤더 */
   .header{
-    padding: 0;
+    padding: 0 var(--base-unit);
   }
   .main-header {
     position: static;

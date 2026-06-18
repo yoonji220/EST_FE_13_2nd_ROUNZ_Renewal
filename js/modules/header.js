@@ -224,20 +224,105 @@ export function renderHeader() {
   window.addEventListener('resize', adjustSubPagePadding);
 }
 
-
-function bindHeaderEvents(target){
+ function bindHeaderEvents(target){
   const btnOpen = target.querySelector('.btn-hamburger[aria-label="메뉴 열기"]');
   const btnClose = target.querySelector('.btn-hamburger[aria-label="메뉴 닫기"]');
   const globalNav = target.querySelector('.global-nav');
   const body = document.body;
 
+  // 요소 찾기
+  const menuButtons = target.querySelectorAll('.main-menu-item button[data-menu]');
+  const menuItems = target.querySelectorAll('.main-menu-item');
+  const subMenuPanel = target.querySelector('.sub-menu-panel');
+  const subMenuLists = target.querySelectorAll('.sub-menu-list[data-submenu]');
+  const accordionHeaders = target.querySelectorAll('.sub-menu-list div > .sub-menu');
+  const subMenuItems = target.querySelectorAll('.sub-menu-item');
+
+  // 화면 크기 감지 (1200px 기준)
+  const isPc = window.matchMedia('(min-width: 1200px)');
+
+  // 최초 로드 시 PC화면이면 메뉴 보이기
+  if(isPc.matches){
+    globalNav.classList.remove('hide-menu');
+    subMenuPanel.classList.add('hide-menu');
+    subMenuItems.forEach(subitems => subitems.classList.remove('hide-menu'));
+  }else{
+    globalNav.classList.add('hide-menu');
+    subMenuPanel.classList.remove('hide-menu');
+  }
+
+  // ==========================================
+  // 📦 1. [함수 분리] 모바일 전용 로직
+  // ==========================================
+  const openMobileSubMenu = (button, targetMenu) => {
+    menuItems.forEach(item => item.classList.remove('active'));
+    button.closest('.main-menu-item').classList.add('active');
+
+    subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
+    const targetSubMenu = target.querySelector(`.sub-menu-list[data-submenu="${targetMenu}"]`);
+    if (targetSubMenu) targetSubMenu.classList.remove('hide-menu');
+  };
+
+  // ==========================================
+  // 📦 2. [함수 분리] PC 전용 로직
+  // ==========================================
+  const openPcMegaMenu = (button, targetMenu) => {
+    if(subMenuPanel) subMenuPanel.classList.remove('hide-menu');
+    menuItems.forEach(item => item.classList.remove('active'));
+    button.closest('.main-menu-item').classList.add('active');
+
+    subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
+    const targetSubMenu = target.querySelector(`.sub-menu-list[data-submenu="${targetMenu}"]`);
+    if (targetSubMenu) targetSubMenu.classList.remove('hide-menu');
+  };
+
+  const closePcMegaMenu = () => {
+    if(subMenuPanel) subMenuPanel.classList.add('hide-menu');
+    subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
+    menuItems.forEach(item => item.classList.remove('active'));
+  };
+
+  // ==========================================
+  // 🧹 3. [핵심] 리사이징 시 버그 방지 (초기화 로직)
+  // ==========================================
+  const resetMenuState = (e) => {
+    // 1) 공통 초기화: 활성화된 메뉴 및 패널 모두 닫기
+    menuItems.forEach(item => item.classList.remove('active'));
+    subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
+
+    if (e.matches) {
+      // 💻 모바일 -> PC로 화면이 커졌을 때
+      globalNav.classList.remove('hide-menu', 'open'); // 모바일 전체메뉴 흔적 제거
+      body.classList.remove('body-no-scroll');         // 스크롤 잠금 해제
+      subMenuItems.forEach(item => item.classList.remove('hide-menu')); // PC는 아코디언 항상 펼침
+      subMenuPanel.classList.add('hide-menu');
+    } else {
+      // 📱 PC -> 모바일로 화면이 작아졌을 때
+      globalNav.classList.add('hide-menu');            // 모바일 메뉴 기본 숨김
+      globalNav.classList.remove('open');
+      body.classList.remove('body-no-scroll');
+      subMenuItems.forEach(item => item.classList.add('hide-menu')); // 모바일 아코디언 닫기
+      subMenuPanel.classList.remove('hide-menu');
+      
+      // 아코디언 화살표 아이콘 초기화 (우측 방향)
+      const icons = target.querySelectorAll('.typo-m-icons-m-o');
+      icons.forEach(icon => icon.textContent = 'chevron_right');
+    }
+  };
+
+  // 💡 window.matchMedia의 'change' 이벤트를 활용하여 화면 크기 교차점을 감지
+  isPc.addEventListener('change', resetMenuState);
+
+
+  // ==========================================
+  // 🎧 4. 이벤트 바인딩 (실제 이벤트 동작 연결)
+  // ==========================================
   if (btnOpen) {
     btnOpen.addEventListener('click', () => {
       globalNav.classList.remove('hide-menu');
       globalNav.classList.add('open');
       body.classList.add('body-no-scroll');
     });
-    
   }
 
   if (btnClose) {
@@ -248,117 +333,46 @@ function bindHeaderEvents(target){
     });
   }
 
-
-  // 1. 탭 전환을 위한 요소들 찾기
-  const menuButtons = target.querySelectorAll('.main-menu-item button[data-menu]');
-  const menuItems = target.querySelectorAll('.main-menu-item');
-  const subMenuPanel = target.querySelector('.sub-menu-panel');
-  const subMenuLists = target.querySelectorAll('.sub-menu-list[data-submenu]');
-  const isPc =window.matchMedia('(min-width: 1200px)');
-  // 2. 서브 메뉴 아코디언(Accordion) 열고 닫기 로직
-  // .sub-menu-list 안에서 컨텐츠를 열고 닫을 기준이 되는 .sub-menu(제목 부분)를 모두 찾습니다.
-  const accordionHeaders = target.querySelectorAll('.sub-menu-list div > .sub-menu');
-
-
-  if(isPc.matches){
-    globalNav.classList.remove('hide-menu');
-  }
-  
-
+  // 탭 메뉴 버튼 이벤트
   menuButtons.forEach(button => {
-    // 모바일용: 클릭 이벤트
-    button.addEventListener('click', (e) => {
-      if (!isPc.matches) { // PC가 아닐 때(모바일일 때)만 실행
-        console.log('모바일: 클릭으로 서브메뉴 열기');
-        // 클릭한 버튼의 data-menu 값 가져오기 (예: 'sunglasses', 'glasses' 등)
-        const targetMenu = button.dataset.menu;
-
-        // --- [메인 메뉴 스타일 처리] ---
-        // 모든 메인 메뉴 항목에서 active 클래스 제거
-        menuItems.forEach(item => item.classList.remove('active'));
-        // 클릭한 버튼의 부모(li)에만 active 클래스 추가
-        button.closest('.main-menu-item').classList.add('active');
-
-        // --- [서브 메뉴 화면 처리] ---
-        // 모든 서브 메뉴를 먼저 숨김 (hide-menu 추가)
-        subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
-        
-        // 클릭한 버튼과 똑같은 값을 가진 서브 메뉴만 찾아서 보여주기 (hide-menu 제거)
-        const targetSubMenu = target.querySelector(`.sub-menu-list[data-submenu="${targetMenu}"]`);
-        if (targetSubMenu) {
-          targetSubMenu.classList.remove('hide-menu');
-        }
-      }
-
+    button.addEventListener('click', () => {
+      if (!isPc.matches) openMobileSubMenu(button, button.dataset.menu);
     });
 
-    // PC용: 마우스 올렸을 때 이벤트
-   button.addEventListener('mouseenter', (e) => {
-      if (isPc.matches) { // PC일 때만 실행
-        const targetMenu = button.dataset.menu;
-        subMenuPanel.classList.remove('hide-menu');
-        // 1. 모든 메인 메뉴의 활성화(active) 클래스 제거 후, 현재 호버한 버튼만 활성화
-        menuItems.forEach(item => item.classList.remove('active'));
-        button.closest('.main-menu-item').classList.add('active');
+    button.addEventListener('mouseenter', () => {
+      if (isPc.matches) openPcMegaMenu(button, button.dataset.menu);
+    });
+  });
 
-        // 2. 모든 서브 메뉴를 숨긴 후, 대상 서브 메뉴만 노출
-        subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
-        const targetSubMenu = target.querySelector(`.sub-menu-list[data-submenu="${targetMenu}"]`);
-        if (targetSubMenu) {
-          targetSubMenu.classList.remove('hide-menu');
+  // PC 메가메뉴 마우스 아웃 이벤트
+  const menuWrapper = target.querySelector('.menu-wrapper');
+  if (menuWrapper) {
+    menuWrapper.addEventListener('mouseleave', () => {
+      if (isPc.matches) closePcMegaMenu();
+    });
+  }
+  
+  // 모바일 아코디언 메뉴 이벤트
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', function(e) {
+      if (isPc.matches) return; // PC일 땐 클릭해도 아무 동작 안 함 (이미 초기화 로직에서 다 펼쳐둠)
+
+      if (e.target.closest('a')) return;
+      
+      const content = header.nextElementSibling;
+      if (content && content.classList.contains('sub-menu-item')) {
+        content.classList.toggle('hide-menu');
+        
+        const icon = header.querySelector('.typo-m-icons-m-o');
+        if (icon) {
+          const isHidden = content.classList.contains('hide-menu');
+          icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
         }
       }
     });
   });
-
-  // PC용: 마우스가 메뉴 전체 영역(.menu-wrapper)을 벗어나면 메가 메뉴 닫기
-  const menuWrapper = target.querySelector('.menu-wrapper');
-  if (menuWrapper) {
-    menuWrapper.addEventListener('mouseleave', () => {
-      if (isPc.matches) {
-        subMenuPanel.classList.add('hide-menu');
-        // 모든 서브 메뉴 숨기기 및 메인 메뉴 활성화 해제
-        subMenuLists.forEach(subList => subList.classList.add('hide-menu'));
-        menuItems.forEach(item => item.classList.remove('active'));
-      }
-    });
-  }
-  
-    accordionHeaders.forEach(header => {
-      header.addEventListener('click', function(e) {
-        
-        // 💡 [핵심 분기 처리] PC 화면일 때는 아코디언 동작을 막습니다.
-      if (isPc.matches) {
-        const subMenuItems = target.querySelectorAll('.sub-menu-item');
-          // PC에서 마우스를 올렸을 때의 동작 (예: 드롭다운 열기)
-          submenuItems.forEach(item => item.classList.remove('hide-menu'));
-          return;
-        }
-
-        // --- 여기서부터는 모바일일 때만 실행되는 아코디언 로직 ---
-        else{
-          if (e.target.closest('a')) return;
-
-          // 자바스크립트가 클릭한 요소 바로 밑에 있는 동생 태그(내용물)를 자동으로 찾습니다.
-          const content = header.nextElementSibling;
-
-          // 바로 밑에 실제 숨겨진 컨텐츠(.sub-menu-item)가 존재할 경우에만 실행
-          if (content && content.classList.contains('sub-menu-item')) {
-            // hide-menu 클래스를 토글하여 화면에 보였다가 숨겼다가를 제어합니다.
-            content.classList.toggle('hide-menu');
-
-            // (디테일 추가) 우측 화살표 아이콘 방향 변경
-            const icon = header.querySelector('.typo-m-icons-m-o');
-            if (icon) {
-              // 메뉴가 열렸으면 아래 화살표(expand_more), 닫혔으면 오른쪽 화살표(chevron_right)로 변경
-              const isHidden = content.classList.contains('hide-menu');
-              icon.textContent = isHidden ? 'chevron_right' : 'expand_more';
-            }
-          }
-        }
-      });
-    });
 }
+
 
 // 헤더 높이에 맞춰 서브 페이지 상단 여백을 동적으로 조절하는 함수
 function adjustSubPagePadding() {
