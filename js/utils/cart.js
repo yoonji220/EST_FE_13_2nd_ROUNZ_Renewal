@@ -1,5 +1,5 @@
 import { renderFooter } from "../../js/modules/footer.js";
-import { renderHeader } from "../../js/modules/header.js";
+import { renderHeader, updateCartBadge } from "../../js/modules/header.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   renderHeader();
@@ -123,6 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
           })),
         ),
       );
+      updateCartBadge();
     } catch (error) {
       // 저장이 막힌 환경은 무시합니다.
     }

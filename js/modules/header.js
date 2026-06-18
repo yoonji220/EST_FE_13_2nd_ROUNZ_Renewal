@@ -223,6 +223,8 @@ export function renderHeader() {
 
   bindHeaderEvents(target);
 
+  updateCartBadge(target);
+
   adjustSubPagePadding();
 
   window.addEventListener('resize', adjustSubPagePadding);
@@ -389,5 +391,33 @@ function adjustSubPagePadding() {
     
     // 서브 페이지의 padding-top을 헤더 높이와 똑같이 맞춰줍니다.
     subPage.style.paddingTop = `${headerHeight}px`;
+  }
+}
+
+
+// 뱃지 수량을 업데이트하는 함수 (외부에서도 호출할 수 있게 export)
+export function updateCartBadge(target = document) {
+  const badge = target.querySelector('.cart-badge');
+  if (!badge) return;
+
+  try {
+    const savedItems = localStorage.getItem("cart");
+    let itemCount = 0; // 상품 종류의 개수
+
+    if (savedItems) {
+      const parsedItems = JSON.parse(savedItems);
+      
+      // 배열 형태인지 확인 후 개수(length) 측정
+      if (Array.isArray(parsedItems)) {
+        itemCount = parsedItems.length; 
+      }
+    }
+
+    // 100개 이상이면 99+로 표시, 아니면 실제 개수 표시
+    badge.textContent = itemCount >= 100 ? "99+" : itemCount;
+    
+  } catch (error) {
+    console.error("장바구니 뱃지 업데이트 실패:", error);
+    badge.textContent = "0";
   }
 }
