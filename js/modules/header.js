@@ -212,7 +212,10 @@ export function renderHeader() {
             <a href="#"><span class="typo-m-icons-xl-o">search</span></a>
           </li>
           <li aria-label="장바구니">
-            <a href="#"><span class="typo-m-icons-xl-o">shopping_bag</span></a>
+            <a class="cart-link" href="#">
+            <span class="typo-m-icons-xl-o">shopping_bag</span>
+            <span class="cart-badge typo-m-btn-s text-center">22</span>
+            </a>
           </li>
         </ul>
       </div>

@@ -579,6 +579,24 @@ a {
   background-color: var(--color-white);
 }
 
+.cart-link{
+  position: relative;
+  display: inline-block;
+}
+
+.cart-badge{
+  position: absolute;
+  top: -4px;
+  right: -10px;
+
+  background-color: var(--color-point);
+  color: var(--color-white);
+  min-width: 20px;
+  min-height: 20px;
+  border-radius: 50%;
+ 
+}
+
 
 /* 모바일 메뉴 오픈 시 배경 스크롤 방지 */
 .body-no-scroll {
