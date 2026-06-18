@@ -549,7 +549,7 @@ a {
 .floating-bar {
   position: fixed;
   right: 20px;
-  bottom: 20px;
+  bottom: 120px;
 
   display: flex;
   flex-direction: column;
