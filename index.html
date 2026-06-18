@@ -732,10 +732,27 @@
     <footer class="footer"></footer>
 
     <script type="module">
-      import { renderHeader } from "./js/modules/header.js";
+      import { renderHeader , bindHeaderEvents } from "./js/modules/header.js";
       import { renderFooter } from "./js/modules/footer.js";
       renderHeader();
       renderFooter();
+
+      // 1. 헤더 렌더링 및 기본 이벤트 실행
+      renderHeader();
+      const headerTarget = document.querySelector('.header');
+      bindHeaderEvents(headerTarget);
+
+      // ==========================================
+      // 2. 메인 페이지 전용: 스크롤 감지 투명 헤더 로직
+      // ==========================================
+      window.addEventListener('scroll', () => {
+        // 스크롤이 50px 이상 내려갔는지 확인
+        if (window.scrollY > 50) {
+          headerTarget.classList.add('scrolled'); // 배경색 채우기
+        } else {
+          headerTarget.classList.remove('scrolled'); // 다시 투명하게
+        }
+      });
     </script>
     <script src="./js/utils/common.js"></script>
     <script src="js/utils/index.js"></script>
