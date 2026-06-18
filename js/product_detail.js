@@ -779,7 +779,7 @@ function getColorFromName(name = "", colorMap = {}) {
     .sort((a, b) => b.length - a.length)
     .find(key => text.includes(key.toLowerCase()));
 
-  return matchedKey ? colorMap[matchedKey] : { name: "color", hex: "#b8b8b8" };
+  return matchedKey ? colorMap[matchedKey] : { name: "basic", hex: "#b8b8b8" };
 }
 
 function createColorOptions(data, allProducts, colorMap) {
@@ -816,7 +816,13 @@ function createColorOptions(data, allProducts, colorMap) {
 
   colorOptions.hidden = false;
   const currentColor = getColorFromName(data.title, colorMap);
-  if (selectedColor) selectedColor.textContent = currentColor.name;
+
+  if (selectedColor) {
+    selectedColor.textContent = currentColor.name;
+    // return matchedKey
+    //   ? colorMap[matchedKey]
+    //   : { name: "basic color", hex: "#b8b8b8" };
+  }
 
   colorList.innerHTML = visibleColorItems
     .map(item => {
