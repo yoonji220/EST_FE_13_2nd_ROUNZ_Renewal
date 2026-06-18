@@ -1374,39 +1374,6 @@ button[class*="wish"].is-wished {
   }
 }
 
-/* 고정바 */
-.floating-bar {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-
-  display: flex;
-  flex-direction: column;
-
-  z-index: 1000;
-}
-
-.floating-btn {
-  width: 40px;
-  height: 40px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: none;
-  border-radius: 50%;
-  background: #fff;
-
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-  cursor: pointer;
-}
-
-.floating-btn .material-icons-outlined {
-  font-size: 28px;
-}
-
-
 /* --- index.css --- */
 
 /* 1. 메인 페이지 기본 헤더 상태 (투명) */
