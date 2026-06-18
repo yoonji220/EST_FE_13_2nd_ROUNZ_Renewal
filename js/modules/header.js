@@ -3,7 +3,7 @@ export function renderHeader() {
   target.innerHTML = `
     <div class="main-header container d-flex justify-content-between align-items-center">
         <button type="button" class="btn-hamburger mobile-only" aria-label="메뉴 열기">
-          <span class="typo-m-icons-xl-o">menu</span>
+          <span class="header-icons typo-m-icons-xl-o">menu</span>
         </button>
 
         <h1 class="logo typo-m-h1"><a href="index.html">rounz</a></h1>
@@ -206,14 +206,14 @@ export function renderHeader() {
 
         <ul class="d-flex g-1 shortcut-menu">
           <li aria-label="회원 로그인">
-            <a href="login.html"><span class="typo-m-icons-xl-o">person</span></a>
+            <a href="login.html"><span class="header-icons typo-m-icons-xl-o">person</span></a>
           </li>
           <li aria-label="제품 검색">
-            <a href="filters.html"><span class="typo-m-icons-xl-o">search</span></a>
+            <a href="filters.html"><span class="header-icons typo-m-icons-xl-o">search</span></a>
           </li>
           <li aria-label="장바구니">
             <a class="cart-link" href="cart.html">
-            <span class="typo-m-icons-xl-o">shopping_bag</span>
+            <span class="header-icons typo-m-icons-xl-o">shopping_bag</span>
             <span class="cart-badge typo-m-btn-s text-center">22</span>
             </a>
           </li>
@@ -230,7 +230,7 @@ export function renderHeader() {
   window.addEventListener('resize', adjustSubPagePadding);
 }
 
- function bindHeaderEvents(target){
+ export function bindHeaderEvents(target){
   const btnOpen = target.querySelector('.btn-hamburger[aria-label="메뉴 열기"]');
   const btnClose = target.querySelector('.btn-hamburger[aria-label="메뉴 닫기"]');
   const globalNav = target.querySelector('.global-nav');

@@ -10,7 +10,6 @@
 /* Main video */
 .hero-video {
   width: 100%;
-  padding-top: 98px;
   background: var(--color-black);
 }
 
@@ -1405,4 +1404,40 @@ button[class*="wish"].is-wished {
 
 .floating-btn .material-icons-outlined {
   font-size: 28px;
+}
+
+
+/* --- index.css --- */
+
+/* 1. 메인 페이지 기본 헤더 상태 (투명) */
+.header {
+  background-color: transparent !important; /* 배경 투명하게 */
+  box-shadow: none !important;              /* 헤더 그림자 제거 (있는 경우) */
+  border-bottom: none !important;           /* 하단 선 제거 (있는 경우) */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* 부드러운 전환 효과 */
+}
+
+.header .header-icons{
+  color: var(--color-white);
+}
+
+/* 2. 스크롤이 내려갔을 때 붙을 클래스 (.scrolled) */
+.header.scrolled {
+  background-color: var(--color-white) !important; /* 다시 흰색으로 (또는 #ffffff) */
+  box-shadow: 0 4px 4px var(--color-overlay) !important; /* 살짝 그림자 추가 (선택사항) */
+  border-bottom: var(--color-gray) 1px solid !important;
+}
+.header.scrolled .header-icons{
+  color: var(--color-black);
+}
+
+@media (min-width: 1200px)  {
+  .header .main-menu-panel{
+    color: var(--color-white);
+  }
+
+    .header.scrolled .main-menu-panel{
+    color: var(--color-black);
+  }
+  
 }
