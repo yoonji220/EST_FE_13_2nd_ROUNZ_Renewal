@@ -875,6 +875,10 @@ footer > .container {
     border: none;
     font-size: var(--m-h1-size);
   }
+  .sub-menu>a{
+    justify-content: start !important;
+  }
+
   .sub-menu-all{
     grid-area: left;
     align-self: start;

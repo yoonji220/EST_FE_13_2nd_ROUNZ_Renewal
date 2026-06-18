@@ -61,7 +61,7 @@ export function renderHeader() {
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
                     <p>모양</p>
-                    <span class="typo-m-icons-m-o">chevron_right</span>
+                    <span class="typo-m-icons-m-o mobile-only">chevron_right</span>
                   </div>
                   <div class="sub-menu-item shape-scroll-container typo-m-body hide-menu">
                     <div class="shape-item">
@@ -101,7 +101,7 @@ export function renderHeader() {
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
                     <p>브랜드</p>
-                    <span class="typo-m-icons-m-o">chevron_right</span>
+                    <span class="typo-m-icons-m-o mobile-only">chevron_right</span>
                   </div>
                   <div class="sub-menu-item sub-menu-grid typo-m-body hide-menu">
                     <div><a href="#">Ray-Ban</a></div>
@@ -127,7 +127,7 @@ export function renderHeader() {
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
                     <p>모양</p>
-                    <span class="typo-m-icons-m-o">chevron_right</span>
+                    <span class="typo-m-icons-m-o mobile-only">chevron_right</span>
                   </div>
                   <div class="sub-menu-item shape-scroll-container typo-m-body hide-menu">
                     <div class="shape-item">
@@ -135,23 +135,23 @@ export function renderHeader() {
                       <a href="#">라운드</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/2.png"" alt="스퀘어 안경테" />
+                      <img src="img/glass/2.png" alt="스퀘어 안경테" />
                       <a href="#">스퀘어</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/3.png"" alt="하금태 안경테" />
+                      <img src="img/glass/3.png" alt="하금태 안경테" />
                       <a href="#">하금테</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/4.png"" alt="믹스 안경테" />
+                      <img src="img/glass/4.png" alt="믹스 안경테" />
                       <a href="#">믹스</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/5.png"" alt="보잉 안경테" />
+                      <img src="img/glass/5.png" alt="보잉 안경테" />
                       <a href="#">보잉</a>
                     </div>
                     <div class="shape-item">
-                      <img src="img/glass/6.png"" alt="캣아이 안경테" />
+                      <img src="img/glass/6.png" alt="캣아이 안경테" />
                       <a href="#">캣아이</a>
                     </div>
                     <div class="shape-item">
@@ -164,7 +164,7 @@ export function renderHeader() {
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
                     <p>브랜드</p>
-                    <span class="typo-m-icons-m-o">chevron_right</span>
+                    <span class="typo-m-icons-m-o mobile-only">chevron_right</span>
                   </div>
                   <div class="sub-menu-item sub-menu-grid typo-m-body hide-menu">
                     <div><a href="#">TART <br class="mobile-only" /> OPTICAL</a></div>
