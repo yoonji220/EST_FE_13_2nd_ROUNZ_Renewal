@@ -636,7 +636,7 @@ function createRecommendLists(all, category, id) {
   const productHTML = recommendList
     .map(
       p => `
-        <li class="recommend-products-item swiper-slide">
+         <div class="recommend-products-item swiper-slide">
           <article class="product-card d-flex flex-column g-1">
             <div class="product-card-image-box">
               <a href="./product_detail.html?id=${p.id}">
@@ -668,7 +668,7 @@ function createRecommendLists(all, category, id) {
               </div>
             </div>
           </article>
-        </li>
+        </div>
       `,
     )
     .join("");
