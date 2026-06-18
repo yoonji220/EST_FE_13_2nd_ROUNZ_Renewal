@@ -568,6 +568,8 @@ a {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  color: var(--color-point);
+  text-transform: uppercase;
 }
 
 .nav-top {
