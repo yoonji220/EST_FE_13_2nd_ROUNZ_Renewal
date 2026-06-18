@@ -56,7 +56,7 @@ export function renderHeader() {
             <div class="sub-menu-panel">
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="sunglasses">
                 <div class="sub-menu sub-menu-all">
-                  <a class="d-flex justify-content-between align-items-center" href="filters.html">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a class="d-flex justify-content-between align-items-center" href="filters.html?category=sunglasses">선글라스 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
@@ -112,7 +112,7 @@ export function renderHeader() {
                     <div><a href="#">더보기</a></div>
                   </div>
                 </div>
-                <a href="filters.html" class="link-container mobile-only" aria-label="신상품로 이동">
+                <a href="filters.html?category=sunglasses" class="link-container mobile-only" aria-label="신상품로 이동">
                   <div class="text-box typo-m-body " id="sunglasses-text-box">
                     <p>new arrivals</p>
                     <p>2026 선글라스 컬렉션</p>
@@ -122,7 +122,7 @@ export function renderHeader() {
 
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="glasses">
                 <div class="sub-menu sub-menu-all">
-                  <a class="d-flex justify-content-between align-items-center" href="filters.html">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a class="d-flex justify-content-between align-items-center" href="filters.html?category=glasses">안경테 전체보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <div class="sub-menu d-flex justify-content-between align-items-center">
@@ -185,18 +185,18 @@ export function renderHeader() {
 
               <div class="sub-menu-list d-flex flex-column g-3 hide-menu typo-m-header" data-submenu="best">
                 <div class="sub-menu">
-                  <a  class="d-flex justify-content-between align-items-center" href="filters.html">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
+                  <a  class="d-flex justify-content-between align-items-center" href="filters.html?category=glasses">베스트 상품 보기 <span class="typo-m-icons-m-o">chevron_right</span></a>
                 </div>
                 <div>
                   <h2>인기 키워드</h2>
                   <hr class="mobile-only" />
                   <ul class="sub-menu-grid typo-m-body">
-                    <li><a href="#">#티타늄 안경테</a></li>
-                    <li><a href="#">#동글이 안경테</a></li>
-                    <li><a href="#">#뿔테 안경테</a></li>
-                    <li><a href="#">#스포츠 고글</a></li>
-                    <li><a href="#">#투브릿지 안경테</a></li>
-                    <li><a href="#">#뿔테 선글라스</a></li>
+                    <li><a href="filters.html?category=glasses">#티타늄 안경테</a></li>
+                    <li><a href="filters.html?category=glasses">#동글이 안경테</a></li>
+                    <li><a href="filters.html?category=glasses">#뿔테 안경테</a></li>
+                    <li><a href="filters.html?category=sunglasses">#스포츠 고글</a></li>
+                    <li><a href="filters.html?category=glasses">#투브릿지 안경테</a></li>
+                    <li><a href="filters.html?category=sunglasses">#뿔테 선글라스</a></li>
                   </ul>
                 </div>
               </div>
