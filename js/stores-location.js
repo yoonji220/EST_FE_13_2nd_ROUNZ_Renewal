@@ -5,6 +5,8 @@ let stores = [];
 let currentFeaturedStore = null;
 let currentFilteredStores = [];
 let currentFilterName = "프리미엄 매장";
+let currentSortName = "추천순";
+let currentSearchKeyword = "";
 let userLocation = null;
 
 let naverMap = null;
@@ -19,15 +21,61 @@ let pcStoreMarkers = [];
 let pcUserMarker = null;
 let pcGuideLine = null;
 let pcVisibleCount = 4;
+let pcCurrentSortName = "추천순";
 
 const PC_FILTER_NAMES = ["전체", "영업중", "프리미엄 매장", "선글라스", "프레임", "렌즈", "AI안경"];
+const SORT_NAMES = ["추천순", "거리순"];
+
+const SERVICE_CARD_INFO = {
+  "매장 피팅": {
+    icon: "straighten",
+    description: "착용감에 맞춰 안경을 조정해요.",
+  },
+  "전문 상담": {
+    icon: "support_agent",
+    description: "전문 상담으로 안경 선택을 도와드려요.",
+  },
+  "가상 피팅": {
+    icon: "face",
+    description: "착용 이미지를 미리 확인할 수 있어요.",
+  },
+  "렌즈 가이드": {
+    icon: "auto_awesome",
+    description: "생활 패턴에 맞는 렌즈를 안내해요.",
+  },
+  선글라스: {
+    icon: "wb_sunny",
+    description: "얼굴형에 맞는 선글라스를 추천해요.",
+  },
+  프레임: {
+    icon: "eyeglasses",
+    description: "스타일에 맞는 프레임을 골라드려요.",
+  },
+  렌즈: {
+    icon: "visibility",
+    description: "도수와 용도에 맞는 렌즈를 안내해요.",
+  },
+  AI안경: {
+    icon: "smart_toy",
+    description: "AI 추천으로 어울리는 안경을 확인해요.",
+  },
+};
+
+const DEFAULT_SERVICE_CARD_INFO = {
+  icon: "check_circle",
+  description: "이 매장에서 제공하는 서비스를 확인해요.",
+};
 
 const storeList = document.querySelector(".stores-list__items");
 const searchInput = document.querySelector(".stores-search__input-wrap input");
-const filterButtons = document.querySelectorAll(".stores-search__filters .filter-chip");
-const locationButtons = document.querySelectorAll(
-  ".stores-search__location-btn, .stores-cta__btn--primary",
+const sortButton = document.querySelector(".stores-list__sort");
+const sortButtonLabel = document.querySelector(".stores-list__sort .typo-m-caption");
+const mobileSearchButton = document.querySelector(
+  ".stores-search__submit-btn, .stores-search__location-btn",
 );
+const filterButtons = document.querySelectorAll(".stores-search__filters .filter-chip");
+const locationButtons = document.querySelectorAll(".stores-cta__btn--primary");
+const allStoreButton = document.querySelector(".stores-cta__btn--secondary");
 
 const featuredImageWrap = document.querySelector(".stores-featured__image-wrap");
 const featuredBadge = document.querySelector(".stores-featured__badge");
@@ -36,6 +84,7 @@ const featuredAddress = document.querySelector(".stores-featured__name-group p")
 const featuredRating = document.querySelector(".stores-featured__rating .typo-m-caption");
 const featuredHours = document.querySelector(".stores-featured__hours .typo-m-caption");
 const featuredStore = document.querySelector(".stores-featured");
+const storeServicesGrid = document.querySelector(".stores-services__grid");
 
 const mapLightbox = document.querySelector(".map-lightbox");
 const mapLightboxOverlay = document.querySelector(".map-lightbox__overlay");
@@ -47,6 +96,7 @@ const pcFilterChipList = document.querySelector(".pc-filter-chips");
 let pcFilterButtons = document.querySelectorAll(".pc-filter-chips .filter-chip");
 const pcStoreList = document.querySelector(".pc-store-list");
 const pcResultsSummaryCount = document.querySelector(".pc-results-summary strong");
+const pcSortButton = document.querySelector(".pc-results-summary__sort");
 const pcMapBg = document.querySelector(".pc-map-bg");
 const pcMapToastText = document.querySelector(".pc-map-toast p");
 const pcZoomInButton = document.querySelector('.pc-map-controls__btn[aria-label="지도 확대"]');
@@ -63,6 +113,9 @@ const pcPromoTitle = document.querySelector(".pc-promo-card__text .typo-p-header
 const pcPromoDesc = document.querySelector(".pc-promo-card__text .typo-p-body-s");
 const pcPromoButton = document.querySelector(".pc-promo-card__btn");
 const pcPromoImage = document.querySelector(".pc-promo-card__image");
+const storesMessageCard = document.querySelector(".stores-message-card");
+const storesMessageCardText = document.querySelector(".stores-message-card__text");
+const storesMessageCardClose = document.querySelector(".stores-message-card__close");
 
 showStoreSkeleton();
 
@@ -80,15 +133,20 @@ fetch("./data/stores.json")
     hideStoreSkeleton();
     initStores();
     bindSearchEvent();
+    bindMobileSearchButton();
     bindFilterEvents();
     bindLocationButtons();
+    bindAllStoreButton();
+    bindMobileSortEvent();
     bindFeaturedMapButton();
     bindMapLightboxCloseEvents();
+    bindStoresMessageCardEvents();
     renderPcFilterChips();
     renderPcMapFilterOverlay();
     initPcStores();
     bindPcSearchEvents();
     bindPcFilterEvents();
+    bindPcSortEvent();
     bindPcMapControlEvents();
     bindPcStoreMoreButton();
     bindPcMapFilterOverlayEvents();
@@ -97,7 +155,6 @@ fetch("./data/stores.json")
   .catch(error => {
     hideStoreSkeleton();
     renderStoreList([]);
-    console.error(error);
   });
 
 function showStoreSkeleton() {
@@ -142,14 +199,12 @@ function hideStoreSkeleton() {
 }
 
 function initStores() {
-  currentFilteredStores = stores
-    .filter(store => store.isPremium)
-    .sort((a, b) => b.rating - a.rating);
+  currentSearchKeyword = "";
+  currentFilterName = "프리미엄 매장";
+  currentSortName = "추천순";
 
-  currentFeaturedStore = currentFilteredStores[0];
-
-  renderFeaturedStore(currentFeaturedStore);
-  renderStoreList(currentFilteredStores.slice(1, 3));
+  updateMobileSortButtonLabel(currentSortName);
+  applyMobileSearchAndFilter();
 }
 
 function renderFeaturedStore(store) {
@@ -178,6 +233,39 @@ function renderFeaturedStore(store) {
   if (featuredHours) {
     featuredHours.textContent = `${store.openTime} - ${store.closeTime}`;
   }
+
+  renderStoreServices(store);
+}
+
+function renderStoreServices(store) {
+  if (!storeServicesGrid) return;
+
+  const services = Array.isArray(store?.services) ? store.services : [];
+
+  if (!services.length) {
+    storeServicesGrid.innerHTML = `
+      <li class="stores-services__item">
+        <span class="typo-m-icons-l-o stores-services__icon" aria-hidden="true">info</span>
+        <strong class="stores-services__name typo-m-body-s">제공 서비스 확인 중</strong>
+        <p class="stores-services__desc typo-m-caption">매장별 제공 서비스 정보를 준비하고 있어요.</p>
+      </li>
+    `;
+    return;
+  }
+
+  storeServicesGrid.innerHTML = services
+    .map(service => {
+      const serviceInfo = SERVICE_CARD_INFO[service] || DEFAULT_SERVICE_CARD_INFO;
+
+      return `
+        <li class="stores-services__item">
+          <span class="typo-m-icons-l-o stores-services__icon" aria-hidden="true">${serviceInfo.icon}</span>
+          <strong class="stores-services__name typo-m-body-s">${service}</strong>
+          <p class="stores-services__desc typo-m-caption">${serviceInfo.description}</p>
+        </li>
+      `;
+    })
+    .join("");
 }
 
 function renderFeaturedImage(store) {
@@ -306,68 +394,36 @@ function bindStoreCardEvents() {
 function bindSearchEvent() {
   if (!searchInput) return;
 
-  searchInput.addEventListener("input", event => {
-    const keyword = event.target.value.trim();
-
-    if (!keyword) {
-      applyFilter(currentFilterName);
-      return;
+  searchInput.addEventListener("keydown", event => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      applyMobileSearch();
     }
-
-    const searchResult = searchStores(keyword);
-
-    currentFilteredStores = searchResult;
-
-    const nextFeaturedStore = searchResult[0];
-
-    renderFeaturedStore(nextFeaturedStore);
-
-    if (!nextFeaturedStore) {
-      renderStoreList([]);
-      return;
-    }
-
-    const nearbyStores = getNearbyStores(nextFeaturedStore, 2, searchResult);
-
-    renderStoreList(nearbyStores);
   });
 }
 
-function bindFilterEvents() {
-  if (!filterButtons.length) return;
-
-  filterButtons.forEach(button => {
-    button.addEventListener("click", () => {
-      const filterName = button.textContent.trim();
-
-      setActiveFilterButton(filterName);
-
-      currentFilterName = filterName;
-
-      applyFilter(filterName);
-    });
-  });
+function bindMobileSearchButton() {
+  mobileSearchButton?.addEventListener("click", applyMobileSearch);
 }
 
-function bindLocationButtons() {
-  if (!locationButtons.length) return;
-
-  locationButtons.forEach(button => {
-    button.addEventListener("click", findStoresByCurrentLocation);
-  });
+function applyMobileSearch() {
+  currentSearchKeyword = searchInput?.value.trim() || "";
+  applyMobileSearchAndFilter();
 }
 
-function setActiveFilterButton(filterName) {
-  filterButtons.forEach(filterButton => {
-    const isActive = filterButton.textContent.trim() === filterName;
+function applyMobileSearchAndFilter() {
+  let filteredStores = filterMobileStores(stores, currentFilterName);
 
-    filterButton.classList.toggle("filter-chip--active", isActive);
-    filterButton.setAttribute("aria-pressed", String(isActive));
-  });
+  if (currentSearchKeyword) {
+    filteredStores = searchStores(currentSearchKeyword, filteredStores);
+  }
+
+  currentFilteredStores = filteredStores;
+  renderMobileSortedStores();
 }
 
-function applyFilter(filterName) {
-  let filteredStores = [...stores];
+function filterMobileStores(storeData, filterName) {
+  let filteredStores = [...storeData];
 
   if (filterName === "영업중") {
     filteredStores = filteredStores.filter(store => store.isOpen);
@@ -385,29 +441,101 @@ function applyFilter(filterName) {
     });
   }
 
+  return filteredStores;
+}
+
+function bindFilterEvents() {
+  if (!filterButtons.length) return;
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const filterName = button.textContent.trim();
+
+      setActiveFilterButton(filterName);
+      currentFilterName = filterName;
+
+      applyFilter(filterName);
+    });
+  });
+}
+
+function bindLocationButtons() {
+  if (!locationButtons.length) return;
+
+  locationButtons.forEach(button => {
+    button.addEventListener("click", findStoresByCurrentLocation);
+  });
+}
+
+function bindAllStoreButton() {
+  allStoreButton?.addEventListener("click", showAllStores);
+}
+
+function bindMobileSortEvent() {
+  if (!sortButton) return;
+
+  updateMobileSortButtonLabel(currentSortName);
+
+  sortButton.addEventListener("click", () => {
+    const nextSortName = getNextSortName(currentSortName);
+
+    if (nextSortName === "거리순" && !userLocation) {
+      getCurrentLocation()
+        .then(() => {
+          currentSortName = nextSortName;
+          updateMobileSortButtonLabel(currentSortName);
+          renderMobileSortedStores();
+        })
+        .catch(error => {
+          alert("위치 정보 사용을 허용하면 가까운 매장을 찾을 수 있습니다.");
+        });
+
+      return;
+    }
+
+    currentSortName = nextSortName;
+    updateMobileSortButtonLabel(currentSortName);
+    renderMobileSortedStores();
+  });
+}
+
+function updateMobileSortButtonLabel(sortName) {
+  if (!sortButtonLabel) return;
+
+  sortButtonLabel.textContent = sortName;
+}
+
+function setActiveFilterButton(filterName) {
+  filterButtons.forEach(filterButton => {
+    const isActive = filterButton.textContent.trim() === filterName;
+
+    filterButton.classList.toggle("filter-chip--active", isActive);
+    filterButton.setAttribute("aria-pressed", String(isActive));
+  });
+}
+
+function applyFilter(filterName) {
   if (filterName === "가까운순") {
-    filteredStores = sortStoresByDistance(filteredStores);
-  } else {
-    filteredStores = filteredStores.sort((a, b) => b.rating - a.rating);
+    currentSortName = "거리순";
+    updateMobileSortButtonLabel(currentSortName);
+
+    if (!userLocation) {
+      getCurrentLocation()
+        .then(() => {
+          applyMobileSearchAndFilter();
+        })
+        .catch(error => {
+          alert("위치 정보 사용을 허용하면 가까운 매장을 찾을 수 있습니다.");
+          currentSortName = "추천순";
+          updateMobileSortButtonLabel(currentSortName);
+          applyMobileSearchAndFilter();
+        });
+
+      return;
+    }
   }
 
-  currentFilteredStores = filteredStores;
-
-  const nextFeaturedStore = filteredStores[0];
-
-  renderFeaturedStore(nextFeaturedStore);
-
-  if (!nextFeaturedStore) {
-    renderStoreList([]);
-    return;
-  }
-
-  const nearbyStores =
-    filterName === "가까운순" && userLocation
-      ? filteredStores.slice(1, 3)
-      : getNearbyStores(nextFeaturedStore, 2, filteredStores);
-
-  renderStoreList(nearbyStores);
+  applyMobileSearchAndFilter();
 }
 
 function findStoresByCurrentLocation() {
@@ -427,15 +555,56 @@ function findStoresByCurrentLocation() {
 
       currentFilteredStores = sortedStores;
       currentFilterName = "가까운순";
+      currentSortName = "거리순";
+      currentSearchKeyword = "";
+
+      if (searchInput) {
+        searchInput.value = "";
+      }
 
       setActiveFilterButton("가까운순");
-      renderFeaturedStore(sortedStores[0]);
-      renderStoreList(sortedStores.slice(1, 3));
+      updateMobileSortButtonLabel(currentSortName);
+      renderMobileSortedStores();
     })
     .catch(error => {
-      console.error("현재 위치를 가져오지 못했습니다.", error);
       alert("위치 정보 사용을 허용하면 가까운 매장을 찾을 수 있습니다.");
     });
+}
+
+function showAllStores() {
+  if (searchInput) {
+    searchInput.value = "";
+  }
+
+  currentFilterName = "전체";
+  currentSortName = "추천순";
+  currentSearchKeyword = "";
+  currentFilteredStores = [...stores];
+
+  filterButtons.forEach(button => {
+    button.classList.remove("filter-chip--active");
+    button.setAttribute("aria-pressed", "false");
+  });
+
+  updateMobileSortButtonLabel(currentSortName);
+
+  const sortedStores = sortStoresByMode(
+    currentFilteredStores,
+    currentSortName,
+    currentFeaturedStore,
+  );
+
+  currentFilteredStores = sortedStores;
+
+  const nextFeaturedStore = sortedStores[0];
+
+  if (!nextFeaturedStore) {
+    renderStoreList([]);
+    return;
+  }
+
+  renderFeaturedStore(nextFeaturedStore);
+  renderStoreList(sortedStores.slice(1));
 }
 
 function getCurrentLocation() {
@@ -471,37 +640,14 @@ function getCurrentLocation() {
   });
 }
 
-function searchStores(keyword) {
+function searchStores(keyword, sourceStores = stores) {
   const normalizedKeyword = keyword.toLowerCase();
 
-  return stores.filter(store => {
+  return sourceStores.filter(store => {
     const name = store.name.toLowerCase();
     const address = store.address.toLowerCase();
 
     return name.includes(normalizedKeyword) || address.includes(normalizedKeyword);
-  });
-}
-
-function sortStoresByDistance(storeData) {
-  if (userLocation) {
-    return storeData
-      .map(store => {
-        const distanceValue = getDistance(userLocation.lat, userLocation.lng, store.lat, store.lng);
-
-        return {
-          ...store,
-          distanceValue,
-          distance: formatDistance(distanceValue),
-        };
-      })
-      .sort((a, b) => a.distanceValue - b.distanceValue);
-  }
-
-  return storeData.sort((a, b) => {
-    const distanceA = parseFloat(a.distance) || 0;
-    const distanceB = parseFloat(b.distance) || 0;
-
-    return distanceA - distanceB;
   });
 }
 
@@ -545,6 +691,82 @@ function formatDistance(distance) {
   }
 
   return `${distance.toFixed(1)}km`;
+}
+
+function getNextSortName(sortName) {
+  const currentIndex = SORT_NAMES.indexOf(sortName);
+  const nextIndex = currentIndex === -1 ? 0 : (currentIndex + 1) % SORT_NAMES.length;
+
+  return SORT_NAMES[nextIndex];
+}
+
+function sortStoresByRecommendation(storeData) {
+  return [...storeData].sort((a, b) => {
+    const ratingA = Number(a.rating) || 0;
+    const ratingB = Number(b.rating) || 0;
+
+    return ratingB - ratingA;
+  });
+}
+
+function sortStoresForDistance(storeData, baseStore) {
+  const sourceLocation =
+    userLocation ||
+    (baseStore
+      ? {
+          lat: baseStore.lat,
+          lng: baseStore.lng,
+        }
+      : null);
+
+  if (!sourceLocation) {
+    return sortStoresByRecommendation(storeData);
+  }
+
+  return [...storeData]
+    .map(store => {
+      const distanceValue = getDistance(
+        sourceLocation.lat,
+        sourceLocation.lng,
+        store.lat,
+        store.lng,
+      );
+
+      return {
+        ...store,
+        distanceValue,
+        distance: formatDistance(distanceValue),
+      };
+    })
+    .sort((a, b) => a.distanceValue - b.distanceValue);
+}
+
+function sortStoresByMode(storeData, sortName, baseStore) {
+  if (sortName === "거리순") {
+    return sortStoresForDistance(storeData, baseStore);
+  }
+
+  return sortStoresByRecommendation(storeData);
+}
+
+function renderMobileSortedStores() {
+  const sortedStores = sortStoresByMode(currentFilteredStores, currentSortName, null);
+
+  renderMobileStoreResult(sortedStores);
+}
+
+function renderMobileStoreResult(storeData) {
+  currentFilteredStores = storeData;
+
+  const nextFeaturedStore = storeData[0];
+
+  if (!nextFeaturedStore) {
+    renderStoreList([]);
+    return;
+  }
+
+  renderFeaturedStore(nextFeaturedStore);
+  renderStoreList(storeData.slice(1, 3));
 }
 
 function renderPcFilterChips() {
@@ -595,7 +817,10 @@ function initPcStores() {
   if (!pcStoreList || !pcMapBg) return;
 
   pcVisibleCount = 4;
-  pcCurrentFilteredStores = [...stores].sort((a, b) => b.rating - a.rating);
+  pcCurrentSortName = "추천순";
+  updatePcSortButtonLabel(pcCurrentSortName);
+
+  pcCurrentFilteredStores = sortStoresByMode(stores, pcCurrentSortName, pcSelectedStore);
   pcSelectedStore = pcCurrentFilteredStores[0] ?? null;
 
   renderPcStoreList(pcCurrentFilteredStores);
@@ -705,7 +930,7 @@ function bindPcStoreCardEvents() {
       event.preventDefault();
       event.stopPropagation();
 
-      alert(`예약 서비스는 현재 준비 중입니다.\n예약 문의는 ${selectedStore.phone}로 연락 주세요.`);
+      showStoresMessageCard(getBookMessage(selectedStore));
     });
 
     card.addEventListener("click", event => {
@@ -721,8 +946,6 @@ function bindPcStoreCardEvents() {
 
 function bindPcSearchEvents() {
   if (!pcSearchInput && !pcSearchButton) return;
-
-  pcSearchInput?.addEventListener("input", applyPcSearchAndFilter);
 
   pcSearchInput?.addEventListener("keydown", event => {
     if (event.key === "Enter") {
@@ -745,6 +968,43 @@ function bindPcFilterEvents() {
       applyPcSearchAndFilter();
     });
   });
+}
+
+function bindPcSortEvent() {
+  if (!pcSortButton) return;
+
+  updatePcSortButtonLabel(pcCurrentSortName);
+
+  pcSortButton.addEventListener("click", () => {
+    const nextSortName = getNextSortName(pcCurrentSortName);
+
+    if (nextSortName === "거리순" && !userLocation) {
+      getCurrentLocation()
+        .then(() => {
+          pcCurrentSortName = nextSortName;
+          updatePcSortButtonLabel(pcCurrentSortName);
+          applyPcSearchAndFilter();
+        })
+        .catch(error => {
+          alert("위치 정보 사용을 허용하면 가까운 매장을 찾을 수 있습니다.");
+        });
+
+      return;
+    }
+
+    pcCurrentSortName = nextSortName;
+    updatePcSortButtonLabel(pcCurrentSortName);
+    applyPcSearchAndFilter();
+  });
+}
+
+function updatePcSortButtonLabel(sortName) {
+  if (!pcSortButton) return;
+
+  pcSortButton.innerHTML = `
+    ${sortName}
+    <span class="typo-m-icons-s-o" aria-hidden="true">expand_more</span>
+  `;
 }
 
 function bindPcMapControlEvents() {
@@ -803,7 +1063,7 @@ function applyPcSearchAndFilter() {
   }
 
   pcVisibleCount = 4;
-  pcCurrentFilteredStores = filteredStores.sort((a, b) => b.rating - a.rating);
+  pcCurrentFilteredStores = sortStoresByMode(filteredStores, pcCurrentSortName, pcSelectedStore);
   pcSelectedStore = pcCurrentFilteredStores[0] ?? null;
 
   renderPcStoreList(pcCurrentFilteredStores);
@@ -880,7 +1140,6 @@ function renderPcNaverMap(selectedStore, storeData = pcCurrentFilteredStores, st
   const storeLng = Number(selectedStore.lng);
 
   if (Number.isNaN(storeLat) || Number.isNaN(storeLng)) {
-    console.error("PC 매장 좌표가 없습니다:", selectedStore);
     return;
   }
 
@@ -931,9 +1190,7 @@ function renderPcNaverMap(selectedStore, storeData = pcCurrentFilteredStores, st
         }
       }, 700);
     })
-    .catch(error => {
-      console.error(error);
-    });
+    .catch(error => {});
 }
 
 function renderPcStoreMarkers(storeData, selectedStoreName) {
@@ -1033,7 +1290,6 @@ function showPcDirectionOnMap(store) {
       updatePcToast(`${store.name}까지 현재 위치 기준 안내를 표시했습니다.`);
     })
     .catch(error => {
-      console.error("현재 위치를 가져오지 못했습니다.", error);
       alert("위치 정보 사용을 허용하면 현재 위치 기준 길찾기를 볼 수 있습니다.");
     });
 }
@@ -1176,7 +1432,6 @@ function initPcPromotionCard() {
       renderPcPromotionCard(event);
     })
     .catch(error => {
-      console.warn(error);
       renderPcPromotionCard(getDefaultPromotionEvent());
     });
 }
@@ -1265,11 +1520,27 @@ function setPcPromotionBackground(imageUrl) {
   pcPromoImage.style.backgroundRepeat = "no-repeat";
 }
 
+function callStore(store) {
+  if (!store?.phone) return;
+
+  const phoneNumber = String(store.phone).replace(/[^0-9+]/g, "");
+
+  if (!phoneNumber) return;
+
+  window.location.href = `tel:${phoneNumber}`;
+}
+
 function bindFeaturedMapButton() {
   const featuredButtons = document.querySelectorAll(".stores-featured__action-btn");
 
   featuredButtons.forEach(button => {
     const buttonText = button.textContent.trim();
+
+    if (buttonText.includes("CALL")) {
+      button.addEventListener("click", () => {
+        callStore(currentFeaturedStore);
+      });
+    }
 
     if (buttonText.includes("MAP")) {
       button.addEventListener("click", () => {
@@ -1282,7 +1553,44 @@ function bindFeaturedMapButton() {
         showDirectionOnMap(currentFeaturedStore);
       });
     }
+
+    if (buttonText.includes("BOOK")) {
+      button.addEventListener("click", () => {
+        showStoresMessageCard(getBookMessage(currentFeaturedStore));
+      });
+    }
   });
+}
+
+function bindStoresMessageCardEvents() {
+  storesMessageCardClose?.addEventListener("click", hideStoresMessageCard);
+
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape") {
+      hideStoresMessageCard();
+    }
+  });
+}
+
+function getBookMessage(store) {
+  const phone = store?.phone || "매장 전화번호";
+
+  return `예약 서비스는 현재 준비 중입니다.\n예약 문의는 ${phone}로 연락 주세요.`;
+}
+
+function showStoresMessageCard(message) {
+  if (!storesMessageCard || !storesMessageCardText) return;
+
+  storesMessageCardText.innerHTML = message.replace(/\n/g, "<br />");
+  storesMessageCard.hidden = false;
+  storesMessageCard.classList.add("is-open");
+}
+
+function hideStoresMessageCard() {
+  if (!storesMessageCard) return;
+
+  storesMessageCard.classList.remove("is-open");
+  storesMessageCard.hidden = true;
 }
 
 function bindMapLightboxCloseEvents() {
@@ -1318,7 +1626,6 @@ function showDirectionOnMap(store) {
       renderNaverMap(store, location);
     })
     .catch(error => {
-      console.error("현재 위치를 가져오지 못했습니다.", error);
       alert("위치 정보 사용을 허용하면 현재 위치 기준 길 안내를 볼 수 있습니다.");
     });
 }
@@ -1326,8 +1633,12 @@ function showDirectionOnMap(store) {
 function closeMapLightbox() {
   if (!mapLightbox) return;
 
-  mapLightbox.setAttribute("aria-hidden", "true");
+  if (document.activeElement && mapLightbox.contains(document.activeElement)) {
+    document.activeElement.blur();
+  }
+
   mapLightbox.classList.remove("is-open");
+  mapLightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
 }
 
@@ -1385,7 +1696,6 @@ function renderNaverMap(store, startLocation) {
   const storeLng = Number(store.lng);
 
   if (Number.isNaN(storeLat) || Number.isNaN(storeLng)) {
-    console.error("매장 좌표가 없습니다:", store);
     return;
   }
 
@@ -1440,9 +1750,7 @@ function renderNaverMap(store, startLocation) {
         }
       }, 700);
     })
-    .catch(error => {
-      console.error(error);
-    });
+    .catch(error => {});
 }
 
 function renderStoreMarker(position, storeName) {
