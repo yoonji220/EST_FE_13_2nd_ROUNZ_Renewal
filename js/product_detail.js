@@ -291,24 +291,6 @@ function createBrandContent(data, brandData) {
   }
 }
 
-// function createDetailImages(data) {
-//   const detailImages = document.querySelectorAll(".detail-image");
-//   const imageUrls = data.images.detailImages || [];
-
-//   detailImages.forEach((image, index) => {
-//     const imageUrl = imageUrls[index];
-
-//     if (!imageUrl) return;
-
-//     image.src = imageUrl;
-//     image.alt = `${data.title} 상세 이미지 ${index + 1}`;
-
-//     image.onerror = () => {
-//       image.src = "./img/detail-01.webp";
-//     };
-//   });
-// }
-
 // 상세 이미지 렌더링
 function createDetailImages(data) {
   const detailImages = document.querySelectorAll(".detail-image");
