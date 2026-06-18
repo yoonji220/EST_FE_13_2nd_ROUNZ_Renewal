@@ -22,8 +22,13 @@ let pcUserMarker = null;
 let pcGuideLine = null;
 let pcVisibleCount = 4;
 let pcCurrentSortName = "추천순";
+let lastFocusedElementBeforeMap = null;
+let pcPendingMapRender = null;
+let pcMapLazyObserver = null;
+let pcPendingPromotionImageUrl = null;
+let pcPromotionImageLazyObserver = null;
 
-const PC_FILTER_NAMES = ["전체", "영업중", "프리미엄 매장", "선글라스", "프레임", "렌즈", "AI안경"];
+const PC_FILTER_NAMES = ["전체", "프리미엄 매장", "선글라스", "AI안경"];
 const SORT_NAMES = ["추천순", "거리순"];
 
 const SERVICE_CARD_INFO = {
@@ -106,8 +111,6 @@ const pcCurrentLocationButton = document.querySelector(
 );
 
 const pcStoreMoreButton = document.querySelector(".pc-store-list__more");
-const pcMapFilterList = document.querySelector(".pc-filter-overlay__list");
-let pcMapFilterCheckboxes = document.querySelectorAll(".pc-filter-overlay input");
 
 const pcPromoTitle = document.querySelector(".pc-promo-card__text .typo-p-header-s");
 const pcPromoDesc = document.querySelector(".pc-promo-card__text .typo-p-body-s");
@@ -142,14 +145,13 @@ fetch("./data/stores.json")
     bindMapLightboxCloseEvents();
     bindStoresMessageCardEvents();
     renderPcFilterChips();
-    renderPcMapFilterOverlay();
     initPcStores();
     bindPcSearchEvents();
     bindPcFilterEvents();
     bindPcSortEvent();
     bindPcMapControlEvents();
     bindPcStoreMoreButton();
-    bindPcMapFilterOverlayEvents();
+    bindPcLazyLoadEvents();
     initPcPromotionCard();
   })
   .catch(error => {
@@ -438,6 +440,14 @@ function filterMobileStores(storeData, filterName) {
       const services = store.services || [];
 
       return services.some(service => service.includes("선글라스"));
+    });
+  }
+
+  if (filterName === "AI안경") {
+    filteredStores = filteredStores.filter(store => {
+      const services = store.services || [];
+
+      return services.some(service => service.includes("AI안경"));
     });
   }
 
@@ -791,28 +801,6 @@ function renderPcFilterChips() {
   pcFilterButtons = document.querySelectorAll(".pc-filter-chips .filter-chip");
 }
 
-function renderPcMapFilterOverlay() {
-  if (!pcMapFilterList) return;
-
-  pcMapFilterList.innerHTML = PC_FILTER_NAMES.map((filterName, index) => {
-    const filterId = `pc-map-filter-${index}`;
-
-    return `
-      <li class="d-flex align-items-center">
-        <input
-          type="checkbox"
-          id="${filterId}"
-          value="${filterName}"
-          ${filterName === "전체" ? "checked" : ""}
-        />
-        <label for="${filterId}" class="typo-p-body-s">${filterName}</label>
-      </li>
-    `;
-  }).join("");
-
-  pcMapFilterCheckboxes = document.querySelectorAll(".pc-filter-overlay input");
-}
-
 function initPcStores() {
   if (!pcStoreList || !pcMapBg) return;
 
@@ -827,7 +815,7 @@ function initPcStores() {
   updatePcResultsCount(pcCurrentFilteredStores.length);
 
   if (pcSelectedStore) {
-    renderPcNaverMap(pcSelectedStore, pcCurrentFilteredStores);
+    requestPcNaverMapRender(pcSelectedStore, pcCurrentFilteredStores);
     updatePcToast("매장을 선택하면 상세 정보를 확인할 수 있습니다");
   }
 }
@@ -938,7 +926,7 @@ function bindPcStoreCardEvents() {
 
       pcSelectedStore = selectedStore;
       renderPcStoreList(pcCurrentFilteredStores);
-      renderPcNaverMap(selectedStore, pcCurrentFilteredStores);
+      requestPcNaverMapRender(selectedStore, pcCurrentFilteredStores);
       updatePcToast(`${selectedStore.name} 상세 정보를 확인 중입니다.`);
     });
   });
@@ -1070,7 +1058,7 @@ function applyPcSearchAndFilter() {
   updatePcResultsCount(pcCurrentFilteredStores.length);
 
   if (pcSelectedStore) {
-    renderPcNaverMap(pcSelectedStore, pcCurrentFilteredStores);
+    requestPcNaverMapRender(pcSelectedStore, pcCurrentFilteredStores);
     updatePcToast(`${pcSelectedStore.name} 매장을 지도에서 확인 중입니다.`);
   } else {
     updatePcToast("검색 결과가 없습니다.");
@@ -1078,29 +1066,11 @@ function applyPcSearchAndFilter() {
 }
 
 function filterPcStores(storeData, filterName) {
-  let activeFilterNames = [];
-
-  if (filterName && filterName !== "전체") {
-    activeFilterNames.push(filterName);
-  }
-
-  activeFilterNames = [...activeFilterNames, ...getCheckedPcMapFilterNames()].filter(
-    name => name && name !== "전체",
-  );
-
-  if (!activeFilterNames.length) {
+  if (!filterName || filterName === "전체") {
     return [...storeData];
   }
 
-  return storeData.filter(store =>
-    activeFilterNames.every(activeFilterName => isStoreMatchedFilter(store, activeFilterName)),
-  );
-}
-
-function getCheckedPcMapFilterNames() {
-  return [...pcMapFilterCheckboxes]
-    .filter(checkbox => checkbox.checked)
-    .map(checkbox => checkbox.value);
+  return storeData.filter(store => isStoreMatchedFilter(store, filterName));
 }
 
 function isStoreMatchedFilter(store, filterName) {
@@ -1133,6 +1103,89 @@ function updatePcToast(message) {
   pcMapToastText.textContent = message;
 }
 
+function bindPcLazyLoadEvents() {
+  window.addEventListener("resize", handlePendingPcMapRender);
+}
+
+function isDesktopMapVisible() {
+  return Boolean(
+    pcMapBg && window.matchMedia("(min-width: 1200px)").matches && pcMapBg.offsetParent !== null,
+  );
+}
+
+function requestPcNaverMapRender(
+  selectedStore,
+  storeData = pcCurrentFilteredStores,
+  startLocation,
+) {
+  if (!pcMapBg || !selectedStore) return;
+
+  pcPendingMapRender = {
+    selectedStore,
+    storeData,
+    startLocation,
+  };
+
+  if (pcNaverMap) {
+    renderPendingPcMap();
+    return;
+  }
+
+  if (!isDesktopMapVisible()) return;
+
+  if (!("IntersectionObserver" in window)) {
+    renderPendingPcMap();
+    return;
+  }
+
+  if (pcMapLazyObserver) return;
+
+  pcMapLazyObserver = new IntersectionObserver(
+    entries => {
+      const isVisible = entries.some(entry => entry.isIntersecting);
+
+      if (!isVisible) return;
+
+      pcMapLazyObserver?.disconnect();
+      pcMapLazyObserver = null;
+      renderPendingPcMap();
+    },
+    {
+      root: null,
+      rootMargin: "160px",
+      threshold: 0.01,
+    },
+  );
+
+  pcMapLazyObserver.observe(pcMapBg);
+}
+
+function handlePendingPcMapRender() {
+  if (!pcPendingMapRender || pcNaverMap || !isDesktopMapVisible()) return;
+
+  if (!("IntersectionObserver" in window)) {
+    renderPendingPcMap();
+    return;
+  }
+
+  if (!pcMapLazyObserver) {
+    requestPcNaverMapRender(
+      pcPendingMapRender.selectedStore,
+      pcPendingMapRender.storeData,
+      pcPendingMapRender.startLocation,
+    );
+  }
+}
+
+function renderPendingPcMap() {
+  if (!pcPendingMapRender) return;
+
+  const { selectedStore, storeData, startLocation } = pcPendingMapRender;
+  pcPendingMapRender = null;
+
+  renderPcNaverMap(selectedStore, storeData, startLocation);
+}
+
 function renderPcNaverMap(selectedStore, storeData = pcCurrentFilteredStores, startLocation) {
   if (!pcMapBg || !selectedStore) return;
 
@@ -1151,6 +1204,9 @@ function renderPcNaverMap(selectedStore, storeData = pcCurrentFilteredStores, st
         pcNaverMap = new naver.maps.Map(pcMapBg, {
           center: selectedPosition,
           zoom: 12,
+          minZoom: 12,
+          maxZoom: 16,
+          scrollWheel: false,
         });
       } else {
         pcNaverMap.setCenter(selectedPosition);
@@ -1213,7 +1269,7 @@ function renderPcStoreMarkers(storeData, selectedStoreName) {
       naver.maps.Event.addListener(marker, "click", () => {
         pcSelectedStore = store;
         renderPcStoreList(pcCurrentFilteredStores);
-        renderPcNaverMap(store, pcCurrentFilteredStores);
+        requestPcNaverMapRender(store, pcCurrentFilteredStores);
         updatePcToast(`${store.name} 상세 정보를 확인 중입니다.`);
       });
 
@@ -1286,7 +1342,7 @@ function showPcDirectionOnMap(store) {
     .then(location => {
       pcSelectedStore = store;
       renderPcStoreList(pcCurrentFilteredStores);
-      renderPcNaverMap(store, pcCurrentFilteredStores, location);
+      requestPcNaverMapRender(store, pcCurrentFilteredStores, location);
       updatePcToast(`${store.name}까지 현재 위치 기준 안내를 표시했습니다.`);
     })
     .catch(error => {
@@ -1367,46 +1423,6 @@ function updatePcStoreMoreButton(totalCount) {
 
   pcStoreMoreButton.hidden = !hasMoreStores;
   pcStoreMoreButton.textContent = hasMoreStores ? "매장 더보기" : "모든 매장을 표시했습니다";
-}
-
-function bindPcMapFilterOverlayEvents() {
-  if (!pcMapFilterCheckboxes.length) return;
-
-  pcMapFilterCheckboxes.forEach(input => {
-    input.addEventListener("change", () => {
-      const allCheckbox = getPcMapFilterAllCheckbox();
-
-      if (input.value === "전체" && input.checked) {
-        clearPcMapFilterCheckboxes();
-      }
-
-      if (input.value !== "전체" && allCheckbox) {
-        allCheckbox.checked = false;
-      }
-
-      const hasCheckedFilter = [...pcMapFilterCheckboxes].some(
-        checkbox => checkbox.value !== "전체" && checkbox.checked,
-      );
-
-      if (!hasCheckedFilter && allCheckbox) {
-        allCheckbox.checked = true;
-      }
-
-      applyPcSearchAndFilter();
-    });
-  });
-}
-
-function getPcMapFilterAllCheckbox() {
-  return [...pcMapFilterCheckboxes].find(checkbox => checkbox.value === "전체");
-}
-
-function clearPcMapFilterCheckboxes() {
-  pcMapFilterCheckboxes.forEach(checkbox => {
-    if (checkbox.value !== "전체") {
-      checkbox.checked = false;
-    }
-  });
 }
 
 function initPcPromotionCard() {
@@ -1491,7 +1507,39 @@ function renderPcPromotionCard(event) {
     }
   }
 
-  renderPcPromotionImage(imageUrl);
+  requestPcPromotionImageLoad(imageUrl);
+}
+
+function requestPcPromotionImageLoad(imageUrl) {
+  if (!pcPromoImage) return;
+
+  pcPendingPromotionImageUrl = imageUrl || EVENT_FALLBACK_IMAGE;
+
+  if (!("IntersectionObserver" in window)) {
+    renderPcPromotionImage(pcPendingPromotionImageUrl);
+    return;
+  }
+
+  if (pcPromotionImageLazyObserver) return;
+
+  pcPromotionImageLazyObserver = new IntersectionObserver(
+    entries => {
+      const isVisible = entries.some(entry => entry.isIntersecting);
+
+      if (!isVisible) return;
+
+      pcPromotionImageLazyObserver?.disconnect();
+      pcPromotionImageLazyObserver = null;
+      renderPcPromotionImage(pcPendingPromotionImageUrl);
+    },
+    {
+      root: null,
+      rootMargin: "160px",
+      threshold: 0.01,
+    },
+  );
+
+  pcPromotionImageLazyObserver.observe(pcPromoImage);
 }
 
 function renderPcPromotionImage(imageUrl) {
@@ -1604,8 +1652,32 @@ function bindMapLightboxCloseEvents() {
   });
 }
 
+function moveFocusOutsideMapLightbox() {
+  const activeElement = document.activeElement;
+
+  if (activeElement instanceof HTMLElement && mapLightbox?.contains(activeElement)) {
+    activeElement.blur();
+  }
+
+  if (
+    lastFocusedElementBeforeMap instanceof HTMLElement &&
+    document.body.contains(lastFocusedElementBeforeMap) &&
+    !mapLightbox?.contains(lastFocusedElementBeforeMap)
+  ) {
+    lastFocusedElementBeforeMap.focus({ preventScroll: true });
+    return;
+  }
+
+  document.body.setAttribute("tabindex", "-1");
+  document.body.focus({ preventScroll: true });
+  document.body.removeAttribute("tabindex");
+}
+
 function openMapLightbox(store) {
   if (!mapLightbox || !store) return;
+
+  lastFocusedElementBeforeMap =
+    document.activeElement instanceof HTMLElement ? document.activeElement : null;
 
   mapLightbox.setAttribute("aria-hidden", "false");
   mapLightbox.classList.add("is-open");
@@ -1619,6 +1691,9 @@ function showDirectionOnMap(store) {
 
   getCurrentLocation()
     .then(location => {
+      lastFocusedElementBeforeMap =
+        document.activeElement instanceof HTMLElement ? document.activeElement : null;
+
       mapLightbox.setAttribute("aria-hidden", "false");
       mapLightbox.classList.add("is-open");
       document.body.style.overflow = "hidden";
@@ -1633,13 +1708,14 @@ function showDirectionOnMap(store) {
 function closeMapLightbox() {
   if (!mapLightbox) return;
 
-  if (document.activeElement && mapLightbox.contains(document.activeElement)) {
-    document.activeElement.blur();
-  }
+  moveFocusOutsideMapLightbox();
 
   mapLightbox.classList.remove("is-open");
-  mapLightbox.setAttribute("aria-hidden", "true");
   document.body.style.overflow = "";
+
+  requestAnimationFrame(() => {
+    mapLightbox.setAttribute("aria-hidden", "true");
+  });
 }
 
 function loadNaverMapScript() {
@@ -1655,6 +1731,7 @@ function loadNaverMapScript() {
     const script = document.createElement("script");
     script.src = `https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId=${NAVER_MAP_CLIENT_ID}`;
     script.async = true;
+    script.defer = true;
 
     script.onload = () => {
       resolve();
@@ -1711,6 +1788,9 @@ function renderNaverMap(store, startLocation) {
         naverMap = new naver.maps.Map(mapContainer, {
           center: storePosition,
           zoom: 16,
+          minZoom: 12,
+          maxZoom: 16,
+          scrollWheel: false,
         });
       } else {
         naverMap.setCenter(storePosition);

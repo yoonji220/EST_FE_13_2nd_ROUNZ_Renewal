@@ -13,8 +13,24 @@ import { renderHeader } from "../../js/modules/header.js";
   let allProducts = []; // 전체 상품 목록 (JSON에서 로드)
   let filteredProducts = []; // 필터/정렬 후 상품
   let currentPage = 1; // 현재 페이지 (더보기 클릭 시 증가)
-  let currentCategory = "sunglasses"; // 현재 선택된 카테고리
+  
+  // URL에서 초기 카테고리 읽기
+  const urlParams = new URLSearchParams(window.location.search);
+  const queryCategory = urlParams.get("category");
+  let currentCategory = queryCategory === "glasses" || queryCategory === "sunglasses" ? queryCategory : "sunglasses";
+
   let currentSort = "신상품순"; // 현재 정렬 기준
+
+  // 초기 로드 시 카테고리 버튼 상태 맞추기
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("[data-filter-option]").forEach(btn => {
+      if (btn.dataset.category === currentCategory) {
+        btn.classList.add("selected");
+      } else {
+        btn.classList.remove("selected");
+      }
+    });
+  });
 
   /* =========================
      DOM 요소
@@ -102,9 +118,16 @@ import { renderHeader } from "../../js/modules/header.js";
 
     // 카테고리 및 속성 필터 적용
     filteredProducts = allProducts.filter(product => {
-      // 1. 카테고리 확인
-      if (currentCategory === "sunglasses" && product.category !== "sunglasses") return false;
-      if (currentCategory === "glasses" && !(product.category === "glasses" || product.category === "eyeglasses" || product.category === "")) return false;
+      // 1. 카테고리 확인 (데이터 오기재 대응 - 제목에 "안경테" 포함 시 안경으로 취급)
+      const isGlassesTitle = (product.title || "").includes("안경테");
+
+      if (currentCategory === "sunglasses") {
+        if (product.category !== "sunglasses" || isGlassesTitle) return false;
+      }
+      if (currentCategory === "glasses") {
+        const isGlassesCategory = product.category === "frame" || product.category === "glasses" || product.category === "eyeglasses" || product.category === "";
+        if (!(isGlassesCategory || isGlassesTitle)) return false;
+      }
       
       // 2. 브랜드 필터
       if (selectedBrands.length > 0 && !selectedBrands.includes(product.brand)) return false;
@@ -249,6 +272,10 @@ import { renderHeader } from "../../js/modules/header.js";
   function bindEvents() {
     // 헤더, 하단 푸터 렌더링 및 모바일 반응형 처리
     document.addEventListener("DOMContentLoaded", () => {
+      // 접근성을 위한 검색창 aria-label 동적 추가
+      const searchInput = document.querySelector(".search-box input");
+      if (searchInput) searchInput.setAttribute("aria-label", "모델명 또는 브랜드 검색");
+
       // 모바일 필터 연동 (sessionStorage)
       const savedStateStr = sessionStorage.getItem('mobileFilters');
       if (savedStateStr) {
@@ -315,8 +342,12 @@ import { renderHeader } from "../../js/modules/header.js";
         // 새 선택 활성화
         button.classList.add("selected");
 
-        // 카테고리 업데이트
+        // 카테고리 업데이트 및 URL 변경
         currentCategory = button.dataset.category;
+        const newUrl = new URL(window.location);
+        newUrl.searchParams.set("category", currentCategory);
+        window.history.replaceState({}, "", newUrl);
+
         applyFilters();
       });
     }
