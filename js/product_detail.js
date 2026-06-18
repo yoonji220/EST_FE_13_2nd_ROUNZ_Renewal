@@ -95,13 +95,15 @@ async function fetchProduct() {
   try {
     const productRes = await fetch("./data/products.json");
     const brandRes = await fetch("./data/brand.json");
+    const colorMapRes = await fetch("./data/color-map.json");
 
-    if (!productRes.ok || !brandRes.ok) {
+    if (!productRes.ok || !brandRes.ok || !colorMapRes.ok) {
       throw new Error("데이터 파일을 불러오지 못했습니다.");
     }
 
     const productData = await productRes.json();
     const brandData = await brandRes.json();
+    const colorMap = await colorMapRes.json();
 
     if (!productData.products || productData.products.length === 0) {
       throw new Error("상품 데이터가 비어 있습니다.");
@@ -116,6 +118,7 @@ async function fetchProduct() {
     }
 
     createContent(product, brandData);
+    createColorOptions(product, productData.products, colorMap);
     createRecommendLists(productData.products, product.category, product.id);
     updateTotalPrice();
 
@@ -268,6 +271,14 @@ function createGallery(data) {
         updateGalleryThumb();
       },
     },
+  });
+  thumbList?.addEventListener("click", e => {
+    const button = e.target.closest(".product-thumb-button");
+    if (!button) return;
+
+    galleryIndex = Number(button.dataset.galleryIndex);
+    productImageSwiper?.slideToLoop(galleryIndex);
+    updateGalleryThumb();
   });
 }
 
@@ -757,6 +768,88 @@ function updateTotalPrice() {
 
   totalPrices.forEach(price => {
     price.textContent = formatWon(total);
+  });
+}
+
+/* 컬러 옵션 */
+function getColorFromName(name = "", colorMap = {}) {
+  const text = name.toLowerCase();
+
+  const matchedKey = Object.keys(colorMap)
+    .sort((a, b) => b.length - a.length)
+    .find(key => text.includes(key.toLowerCase()));
+
+  return matchedKey ? colorMap[matchedKey] : { name: "color", hex: "#b8b8b8" };
+}
+
+function createColorOptions(data, allProducts, colorMap) {
+  const colorOptions = document.querySelector(".color-options");
+  const colorList = document.querySelector(".color-list");
+  const selectedColor = document.querySelector("[data-selected-color]");
+
+  if (!colorOptions || !colorList) return;
+
+  const relatedProducts = allProducts.filter(item => {
+    const isCurrent = item.id === data.id;
+
+    const currentHasItem = (data.otherColors || []).some(
+      color => color.sourceUrl === item.sourceUrl,
+    );
+
+    const itemHasCurrent = (item.otherColors || []).some(
+      color => color.sourceUrl === data.sourceUrl,
+    );
+
+    return isCurrent || currentHasItem || itemHasCurrent;
+  });
+
+  const colorItems = relatedProducts.map(item => ({
+    id: item.id,
+    title: item.title,
+    model: item.title,
+    checked: item.id === data.id,
+  }));
+  const visibleColorItems = colorItems.filter(item => {
+    const color = getColorFromName(item.model || item.title, colorMap);
+    return item.checked || color.name !== "color";
+  });
+
+  colorOptions.hidden = false;
+  const currentColor = getColorFromName(data.title, colorMap);
+  if (selectedColor) selectedColor.textContent = currentColor.name;
+
+  colorList.innerHTML = visibleColorItems
+    .map(item => {
+      const color = getColorFromName(item.model || item.title, colorMap);
+
+      return `
+        <li>
+          <label class="color-chip d-flex align-items-center">
+            <input
+              type="radio"
+              name="color"
+              value="${item.id ?? ""}"
+              ${item.checked ? "checked" : ""}
+              ${item.id ? "" : "disabled"}
+              aria-label="${item.model || item.title} 색상 선택"
+            />
+            <span
+              class="color-dot"
+              style="background-color: ${color.hex};"
+              aria-hidden="true"
+            ></span>
+            <span class="sr-only">${color.name} 색상 선택</span>
+          </label>
+        </li>
+      `;
+    })
+    .join("");
+
+  colorList.addEventListener("change", e => {
+    const input = e.target.closest("input[name='color']");
+    if (!input || !input.value || Number(input.value) === data.id) return;
+
+    location.href = `./product_detail.html?id=${input.value}`;
   });
 }
 
