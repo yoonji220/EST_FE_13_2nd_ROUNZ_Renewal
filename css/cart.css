@@ -346,13 +346,12 @@
   cursor: pointer;
 }
 
-.favorite-btn .material-symbols-outlined {
+.favorite-btn span {
   color: #111;
 }
 
-.favorite-btn.active .material-symbols-outlined {
-  color: #ff3b30;
-  font-variation-settings: "FILL" 1;
+.favorite-btn.active span {
+  color: var(--color-point);
 }
 
 .recommendations .product-name {

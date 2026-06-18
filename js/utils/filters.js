@@ -17,7 +17,7 @@ import { renderHeader } from "../../js/modules/header.js";
   // URL에서 초기 카테고리 읽기
   const urlParams = new URLSearchParams(window.location.search);
   const queryCategory = urlParams.get("category");
-  let currentCategory = queryCategory === "glasses" || queryCategory === "sunglasses" ? queryCategory : "sunglasses";
+  let currentCategory = queryCategory === "glasses" || queryCategory === "sunglasses" ? queryCategory : "all";
 
   let currentSort = "신상품순"; // 현재 정렬 기준
 
@@ -409,10 +409,12 @@ import { renderHeader } from "../../js/modules/header.js";
       if (!favoriteButton) return;
 
       event.preventDefault();
-      const icon = favoriteButton.querySelector(".material-symbols-outlined");
+      const icon = favoriteButton.querySelector("span");
       const isActive = favoriteButton.classList.toggle("active");
       favoriteButton.setAttribute("aria-pressed", String(isActive));
+
       if (icon) {
+        icon.className = isActive ? "material-icons" : "material-symbols-outlined";
         icon.textContent = isActive ? "favorite" : "favorite_border";
       }
     });

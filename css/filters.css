@@ -337,8 +337,8 @@ body {
 }
 
 .favorite-btn.active {
-  color: #ef4444;
-  background: #fff1f2;
+  color: var(--color-point);
+  background: var(--color-info-bg);
 }
 
 .color-swatches {

@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const mainStoreSearchForm = document.querySelector(".store-search-form");
   const mainStoreSearchInput = document.querySelector(".store-search-input");
 
+  initMainStoreSearch();
+
   if (!bestList) return;
 
   /* BEST 상품 기본 설정 */
@@ -282,7 +284,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* 상품 상세 이동 및 찜하기 */
   function getProductDetailUrl(productId) {
-    return productId ? `./product_detail.html?id=${encodeURIComponent(productId)}` : "./product_detail.html";
+    return productId
+      ? `./product_detail.html?id=${encodeURIComponent(productId)}`
+      : "./product_detail.html";
   }
 
   function bindProductCardLinks(container, itemSelector) {
@@ -895,5 +899,4 @@ document.querySelectorAll(".product-card, .best-ranking-item").forEach(card => {
     const url = card.dataset.url || "product-detail.html";
     location.href = url;
   });
-
 });

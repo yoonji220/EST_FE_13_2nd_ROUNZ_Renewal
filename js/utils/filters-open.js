@@ -155,36 +155,25 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetBtn = document.querySelector('.btn-reset');
   if (resetBtn) {
     resetBtn.addEventListener('click', () => {
-      // 브랜드 초기화
-      brandButtons.forEach(btn => btn.classList.remove('active'));
-      
-      // 형태 초기화
-      shapeCards.forEach(card => card.classList.remove('active'));
-      
-      // 얼굴형 초기화
-      faceShapeItems.forEach(item => {
-        item.classList.remove('active');
-        const img = item.querySelector('img');
-        if (img && img.dataset.default) {
+      // 모든 버튼의 active 클래스 제거
+      document.querySelectorAll('.brand-btn, .shape-card, .material-btn, .face-shape-item').forEach(el => {
+        el.classList.remove('active');
+      });
+
+      // 얼굴형 이미지 초기화
+      document.querySelectorAll('.face-shape-item img').forEach(img => {
+        if (img.dataset.default) {
           img.src = img.dataset.default;
         }
       });
-      
-      // 소재 초기화
-      materialButtons.forEach(btn => btn.classList.remove('active'));
-      
-      // 가격 초기화
-      if (priceSlider && priceDisplay) {
-        const defaultValue = 250000;
-        priceSlider.value = defaultValue;
-        priceDisplay.textContent = `${defaultValue.toLocaleString()}원+`;
-        
-        const max = Number(priceSlider.max);
-        const percent = (defaultValue / max) * 100;
-        priceSlider.style.background = `linear-gradient(90deg, var(--color-point-hover) 0%, var(--color-point-hover) ${percent}%, #e5e7eb ${percent}%, #e5e7eb 100%)`;
+
+      // 슬라이더 초기화
+      if (priceSlider) {
+        priceSlider.value = priceSlider.max / 2; // 기본값을 가운데로 (250000)
+        initSlider();
       }
-      
-      // sessionStorage 초기화
+
+      // 저장된 세션 지우기
       sessionStorage.removeItem('mobileFilters');
     });
   }

@@ -369,11 +369,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     event.preventDefault();
-    const icon = favoriteButton.querySelector(".material-symbols-outlined");
+    const icon = favoriteButton.querySelector("span");
     const isActive = favoriteButton.classList.toggle("active");
-
+    
     favoriteButton.setAttribute("aria-pressed", String(isActive));
+    
     if (icon) {
+      icon.className = isActive ? "material-icons" : "material-symbols-outlined";
       icon.textContent = isActive ? "favorite" : "favorite_border";
     }
   });

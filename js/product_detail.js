@@ -1,5 +1,6 @@
 import { renderFooter } from "./modules/footer.js";
 import { renderHeader } from "./modules/header.js";
+import { renderFloatingBar } from "./modules/floating-bar.js";
 
 document.body.classList.add("is-loading");
 
@@ -12,6 +13,7 @@ let productImageSwiper;
 
 renderHeader();
 renderFooter(true);
+renderFloatingBar();
 
 // 가격을 원화 형식으로 변환
 function formatWon(value) {
