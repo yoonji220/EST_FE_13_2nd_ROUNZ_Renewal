@@ -54,3 +54,9 @@ input[type=number] {
 .main-content{
   padding: 16px;
 }
+
+@media (min-width:1200px) {
+  .account-make{
+    max-width: 960px;
+  }
+}
