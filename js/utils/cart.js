@@ -42,38 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const STORAGE_KEY = "rounz-cart-items";
 
   /* =========================
-     장바구니 기본 데이터 (2개)
+     장바구니 데이터
   ========================= */
-  const defaultCartItems = [
-    {
-      id: 1,
-      brand: "ROUNZ EYEWEAR",
-      title: "Signature Bold Frame 01",
-      option: "Black / Free",
-      price: 150000,
-      quantity: 1,
-      selected: true,
-      image:
-        "https://image.rounz.com/_data/product/RAYBAN/RB3774D-003_87(55)/RB3774D-003_87(55)_03.JPG",
-      alt: "Signature Bold Frame 01",
-      url: "https://rounz.com/product.php?productIndex=3024878",
-    },
-    {
-      id: 2,
-      brand: "RECNZ EYEWEAR",
-      title: "Clear Vision Acetate",
-      option: "Brown / Free",
-      price: 185000,
-      quantity: 1,
-      selected: true,
-      image:
-        "https://image.rounz.com/_data/product/RAYBAN/RB2489-1441_R5/RB2489-1441_R5_03.JPG",
-      alt: "Clear Vision Acetate",
-      url: "https://rounz.com/product.php?productIndex=3024875",
-    },
-  ];
-
-  let cartItems = loadCartItems();
+  let cartItems = [];
 
   /* =========================
      유틸리티 함수
@@ -98,37 +69,38 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      LocalStorage
   ========================= */
-  function loadCartItems() {
+  function loadCartItems(allProducts) {
     try {
       const savedItems = localStorage.getItem(STORAGE_KEY);
-      if (!savedItems) {
-        return cloneCartItems(defaultCartItems);
-      }
+      if (!savedItems) return [];
 
       const parsedItems = JSON.parse(savedItems);
-      if (!Array.isArray(parsedItems) || parsedItems.length === 0) {
-        return cloneCartItems(defaultCartItems);
-      }
+      if (!Array.isArray(parsedItems) || parsedItems.length === 0) return [];
 
       return parsedItems
         .map(savedItem => {
-          const baseItem = defaultCartItems.find(
-            item => Number(item.id) === Number(savedItem.id),
+          const baseItem = allProducts.find(
+            item => Number(item.id) === Number(savedItem.id)
           );
 
-          if (!baseItem) {
-            return null;
-          }
+          if (!baseItem) return null;
 
           return {
-            ...baseItem,
-            quantity: Math.max(1, Number(savedItem.quantity) || 1),
+            id: baseItem.id,
+            brand: baseItem.brand,
+            title: baseItem.title,
+            option: "Free",
+            price: baseItem.price.final || baseItem.price,
+            image: baseItem.images.thumbnail,
+            alt: baseItem.title,
+            url: `https://rounz.com/product.php?productIndex=${baseItem.id}`,
+            quantity: Math.max(1, Number(savedItem.qty) || Number(savedItem.quantity) || 1),
             selected: savedItem.selected !== false,
           };
         })
         .filter(Boolean);
     } catch (error) {
-      return cloneCartItems(defaultCartItems);
+      return [];
     }
   }
 
@@ -140,7 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
           cartItems.map(item => ({
             id: item.id,
             quantity: item.quantity,
-            selected: item.selected,
+            selected: item.selected !== false,
           })),
         ),
       );
@@ -191,15 +163,19 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* =========================
-     추천 상품: products.json에서 10개 로드
+     초기 데이터 로드 및 렌더링
   ========================= */
-  async function loadRecommendationItems() {
+  async function initCart() {
     try {
       const response = await fetch("./data/products.json");
       const data = await response.json();
       const allProducts = data.products || [];
 
-      // 장바구니에 있는 상품 제외하고 10개 선택
+      // 1. 장바구니 리얼 데이터 매칭 및 렌더링
+      cartItems = loadCartItems(allProducts);
+      renderCartItems();
+
+      // 2. 장바구니에 있는 상품 제외하고 10개 선택 (추천상품)
       const cartIds = cartItems.map(item => Number(item.id));
       const available = allProducts.filter(p => !cartIds.includes(p.id));
 
@@ -210,8 +186,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       renderRecommendationItems(recommended);
     } catch (error) {
-      console.error("추천 상품 로드 실패:", error);
+      console.error("데이터 로드 실패:", error);
       recommendationSlider.innerHTML = "<p>추천 상품을 불러올 수 없습니다.</p>";
+      renderCartItems(); // 에러 발생 시에도 빈 장바구니 렌더링 시도
     }
   }
 
@@ -451,6 +428,5 @@ document.addEventListener("DOMContentLoaded", () => {
   /* =========================
      초기화
   ========================= */
-  loadRecommendationItems();
-  renderCartItems();
+  initCart();
 });
