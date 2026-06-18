@@ -332,33 +332,18 @@ function createDetailImages(data) {
   });
 }
 
-// function createPointCards(data) {
-//   const pointImages = document.querySelectorAll(".point-image");
-//   const imageUrls = data.images.pointImages || [];
-//   const fallbackImages = ["./img/point-01.webp", "./img/point-02.webp"];
-
-//   pointImages.forEach((image, index) => {
-//     image.src = imageUrls[index] || fallbackImages[index];
-//     image.alt =
-//       index === 0
-//         ? `${data.title} 프레임 디테일 이미지`
-//         : `${data.title} 착용감 참고 이미지`;
-
-//     image.onerror = () => {
-//       image.src = fallbackImages[index];
-//     };
-//   });
-// }
-
 // 포인트 카드 이미지 렌더링
 function createPointCards(data) {
   const pointImages = document.querySelectorAll(".point-image");
-  const imageUrls = data.images.pointImages || [];
+
+  const fallbackImages = [
+    "./img/point/point_01.webp",
+    "./img/point/point_02.webp",
+  ];
 
   pointImages.forEach((image, index) => {
-    if (!imageUrls[index]) return;
+    image.src = fallbackImages[index];
 
-    image.src = imageUrls[index];
     image.alt =
       index === 0
         ? `${data.title} 프레임 디테일 이미지`
