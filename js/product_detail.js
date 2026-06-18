@@ -352,6 +352,7 @@ function createDetailImages(data) {
             class="detail-image"
             width="860"
             height="745"
+            loading="lazy"
           />
         </li>
       `,
@@ -662,7 +663,8 @@ function createRecommendLists(all, category, id) {
                 <img
                   src="${p.images.thumbnail}"
                   alt="${p.title}"
-                  class="product-card-image" />
+                  class="product-card-image"
+                  loading="lazy" />
               </a>
 
               <button
