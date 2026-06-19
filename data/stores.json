@@ -8,7 +8,7 @@
     "lng": 127.031,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-gangnam-exterior.webp",
+    "thumbnail": "./img/stores/store-gangnam-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.8
@@ -22,7 +22,7 @@
     "lng": 126.973564,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-seoul-station-exterior.webp",
+    "thumbnail": "./img/stores/store-seoul-station-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.6
@@ -36,7 +36,7 @@
     "lng": 126.934519,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈"],
-    "thumbnail": "./img/store-mapo-sinchon-exterior.webp",
+    "thumbnail": "./img/stores/store-mapo-sinchon-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.7
@@ -50,7 +50,7 @@
     "lng": 126.825921,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-magok-exterior.webp",
+    "thumbnail": "./img/stores/store-magok-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.9
@@ -64,7 +64,7 @@
     "lng": 126.981681,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-isu-exterior.webp",
+    "thumbnail": "./img/stores/store-isu-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.5
@@ -78,7 +78,7 @@
     "lng": 127.040302,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈"],
-    "thumbnail": "./img/store-seongsu-exterior.webp",
+    "thumbnail": "./img/stores/store-seongsu-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.8
@@ -92,7 +92,7 @@
     "lng": 127.018117,
     "isOpen": true,
     "services": ["프레임", "렌즈"],
-    "thumbnail": "./img/store-suyu-exterior.webp",
+    "thumbnail": "./img/stores/store-suyu-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.3
@@ -106,7 +106,7 @@
     "lng": 127.120714,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈"],
-    "thumbnail": "./img/store-songpa-exterior.webp",
+    "thumbnail": "./img/stores/store-songpa-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.6
@@ -120,7 +120,7 @@
     "lng": 127.11258,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-pangyo-exterior.webp",
+    "thumbnail": "./img/stores/store-pangyo-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 5.0
@@ -134,7 +134,7 @@
     "lng": 127.050473,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-gwanggyo-exterior.webp",
+    "thumbnail": "./img/stores/store-gwanggyo-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.7
@@ -148,7 +148,7 @@
     "lng": 127.096159,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-dongtan-exterior.webp",
+    "thumbnail": "./img/stores/store-dongtan-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.5
@@ -162,7 +162,7 @@
     "lng": 126.70738,
     "isOpen": true,
     "services": ["선글라스", "프레임", "렌즈", "AI안경"],
-    "thumbnail": "./img/store-geomdan-exterior.webp",
+    "thumbnail": "./img/stores/store-geomdan-exterior.webp",
     "openTime": "10:00",
     "closeTime": "20:00",
     "rating": 4.4
