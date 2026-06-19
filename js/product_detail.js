@@ -458,6 +458,8 @@ function createReviews(data) {
     ratingScore.textContent = reviewCount > 0 ? "4.9" : "0.0";
   }
 
+  renderRatingDistribution(reviewCount);
+
   if (!reviewList) return;
 
   if (reviewCount === 0) {
@@ -474,12 +476,6 @@ function createReviews(data) {
     if (reviewMoreButton) {
       reviewMoreButton.hidden = true;
     }
-
-    if (ratingScore) {
-      ratingScore.textContent = reviewCount > 0 ? "4.9" : "0.0";
-    }
-
-    renderRatingDistribution(reviewCount);
 
     return;
   }
