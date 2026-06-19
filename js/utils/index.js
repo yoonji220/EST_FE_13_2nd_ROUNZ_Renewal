@@ -62,14 +62,23 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let ticking = false;
 
-  
+    const syncHeaderState = () => {
+      const headerHeight = header.offsetHeight || 0;
+      const heroBottom = hero.offsetTop + hero.offsetHeight;
+      const isOverHero = window.scrollY < heroBottom - headerHeight;
+
+      header.classList.toggle("is-hero-transparent", isOverHero);
+      ticking = false;
+    };
 
     const requestSync = () => {
       if (ticking) return;
 
       ticking = true;
+      window.requestAnimationFrame(syncHeaderState);
     };
 
+    syncHeaderState();
     window.addEventListener("scroll", requestSync, { passive: true });
     window.addEventListener("resize", requestSync);
   }
@@ -286,9 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ?�품 ?�세 ?�동 �?찜하�?*/
   function getProductDetailUrl(productId) {
-    return productId
-      ? `./product_detail.html?id=${encodeURIComponent(productId)}`
-      : "./product_detail.html";
+    return productId ? `./product_detail.html?id=${encodeURIComponent(productId)}` : "./product_detail.html";
   }
 
   function bindProductCardLinks(container, itemSelector) {
@@ -323,7 +330,6 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.assign(destination);
       });
     });
-
   }
 
   // ?�세 ?�이지 ?�동 ?�틸
@@ -859,16 +865,6 @@ document.addEventListener("DOMContentLoaded", () => {
               favorite_border
             </button>
           </div>
-
-          <ul class="product-card-colors d-flex">
-            <li>
-              <button type="button" class="piting-color black" aria-label="블랙"></button>
-            </li>
-
-            <li>
-              <button type="button" class="piting-color gray" aria-label="그레이"></button>
-            </li>
-          </ul>
         </div>
       </li>
     `;
