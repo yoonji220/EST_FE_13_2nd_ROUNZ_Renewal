@@ -477,7 +477,7 @@ function bindFilterEvents() {
       setActiveFilterButton(filterName);
       currentFilterName = filterName;
 
-      applyFilter(filterName);
+      applyFilter();
     });
   });
 }
@@ -539,27 +539,7 @@ function setActiveFilterButton(filterName) {
   });
 }
 
-function applyFilter(filterName) {
-  if (filterName === "가까운순") {
-    currentSortName = "거리순";
-    updateMobileSortButtonLabel(currentSortName);
-
-    if (!userLocation) {
-      getCurrentLocation()
-        .then(() => {
-          applyMobileSearchAndFilter();
-        })
-        .catch(error => {
-          alert("위치 정보 사용을 허용하면 가까운 매장을 찾을 수 있습니다.");
-          currentSortName = "추천순";
-          updateMobileSortButtonLabel(currentSortName);
-          applyMobileSearchAndFilter();
-        });
-
-      return;
-    }
-  }
-
+function applyFilter() {
   applyMobileSearchAndFilter();
 }
 
@@ -579,7 +559,7 @@ function findStoresByCurrentLocation() {
         .sort((a, b) => a.distanceValue - b.distanceValue);
 
       currentFilteredStores = sortedStores;
-      currentFilterName = "가까운순";
+      currentFilterName = "전체";
       currentSortName = "거리순";
       currentSearchKeyword = "";
 
@@ -587,7 +567,7 @@ function findStoresByCurrentLocation() {
         searchInput.value = "";
       }
 
-      setActiveFilterButton("가까운순");
+      setActiveFilterButton("전체");
       updateMobileSortButtonLabel(currentSortName);
       renderMobileSortedStores();
     })
@@ -606,10 +586,7 @@ function showAllStores() {
   currentSearchKeyword = "";
   currentFilteredStores = [...stores];
 
-  filterButtons.forEach(button => {
-    button.classList.remove("filter-chip--active");
-    button.setAttribute("aria-pressed", "false");
-  });
+  setActiveFilterButton("전체");
 
   updateMobileSortButtonLabel(currentSortName);
 
@@ -885,7 +862,7 @@ function renderPcStoreList(storeData) {
               aria-label="${store.name} 위치 안내"
             >
               <span class="typo-m-icons-s-o" aria-hidden="true">near_me</span>
-              길찾기
+              위치 안내
             </button>
             <button
               type="button"
@@ -1364,7 +1341,7 @@ function showPcDirectionOnMap(store) {
       updatePcToast(`${store.name}까지 현재 위치 기준 안내를 표시했습니다.`);
     })
     .catch(error => {
-      alert("위치 정보 사용을 허용하면 현재 위치 기준 길찾기를 볼 수 있습니다.");
+      alert("위치 정보 사용을 허용하면 현재 위치 기준 위치 안내를 볼 수 있습니다.");
     });
 }
 
@@ -1762,6 +1739,7 @@ function openMapLightbox(store) {
 
   lockBodyScroll();
 
+  mapLightbox.removeAttribute("inert");
   mapLightbox.setAttribute("aria-hidden", "false");
   mapLightbox.classList.add("is-open");
 
@@ -1778,13 +1756,14 @@ function showDirectionOnMap(store) {
 
       lockBodyScroll();
 
+      mapLightbox.removeAttribute("inert");
       mapLightbox.setAttribute("aria-hidden", "false");
       mapLightbox.classList.add("is-open");
 
       renderNaverMap(store, location);
     })
     .catch(error => {
-      alert("위치 정보 사용을 허용하면 현재 위치 기준 길 안내를 볼 수 있습니다.");
+      alert("위치 정보 사용을 허용하면 현재 위치 기준 위치 안내를 볼 수 있습니다.");
     });
 }
 
@@ -1798,6 +1777,7 @@ function closeMapLightbox() {
 
   requestAnimationFrame(() => {
     mapLightbox.setAttribute("aria-hidden", "true");
+    mapLightbox.setAttribute("inert", "");
   });
 }
 

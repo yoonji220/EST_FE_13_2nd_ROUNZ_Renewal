@@ -456,8 +456,8 @@ a:focus:not(:focus-visible) {
 
 .store-card__btn--primary {
   background-color: var(--color-point);
-  border-color: var(--color-gray);
-  color: var(--color-primary);
+  border-color: var(--color-point);
+  color: var(--color-white);
 }
 
 .stores-services {
@@ -1056,34 +1056,6 @@ a:focus:not(:focus-visible) {
     pointer-events: none;
   }
 
-  .pc-filter-overlay {
-    position: absolute;
-    top: 32px;
-    left: 32px;
-    z-index: 10;
-    width: 224px;
-    padding: 24px;
-    border-radius: 16px;
-    background-color: #faf8ff;
-    border: 1px solid var(--color-gray, #b8b8b8);
-  }
-
-  .pc-filter-overlay__list {
-    gap: 12px;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .pc-filter-overlay__list li {
-    gap: 12px;
-    cursor: pointer;
-  }
-
-  .pc-filter-overlay__list input {
-    cursor: pointer;
-  }
-
   .pc-map-controls {
     position: absolute;
     right: 32px;
@@ -1198,10 +1170,7 @@ a:focus:not(:focus-visible) {
     padding: 24px;
     gap: 24px;
   }
-  .pc-filter-overlay {
-    top: 24px;
-    left: 24px;
-  }
+
   .pc-map-controls {
     top: 32px;
     right: 24px;
@@ -1300,7 +1269,7 @@ a:focus:not(:focus-visible) {
     height: 48px;
     border: 0;
     border-radius: 4px;
-    background-color: #60a5fa;
+    background-color: var(--color-point);
     color: var(--color-white, #ffffff);
     font-size: 17px;
     line-height: 24px;
