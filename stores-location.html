@@ -180,7 +180,7 @@
                   <button
                     type="button"
                     class="store-card__btn store-card__btn--primary typo-m-btn-s"
-                    aria-label="ROUNZ 홍대점 길 안내"
+                    aria-label="ROUNZ 홍대점 위치 안내"
                   >
                     위치 안내
                   </button>
@@ -298,7 +298,7 @@
                 지역 검색
               </button>
             </div>
-            <ul class="pc-filter-chips d-flex" role="group" aria-label="매장 필터"></ul>
+            <ul class="pc-filter-chips d-flex" aria-label="매장 필터"></ul>
             <div class="pc-results-summary d-flex align-items-center justify-content-between">
               <p class="typo-p-body-s">총 <strong>24</strong>개의 매장</p>
               <button
@@ -333,7 +333,7 @@
                 <button
                   type="button"
                   class="pc-store-card__btn typo-p-btn-s"
-                  aria-label="ROUNZ 홍대점 길찾기"
+                  aria-label="ROUNZ 홍대점 위치 안내"
                 >
                   <span class="typo-m-icons-s-o" aria-hidden="true">near_me</span>
                   위치 안내
@@ -368,10 +368,10 @@
                 <button
                   type="button"
                   class="pc-store-card__btn typo-p-btn-s"
-                  aria-label="ROUNZ 성수점 길찾기"
+                  aria-label="ROUNZ 성수점 위치 안내"
                 >
                   <span class="typo-m-icons-s-o" aria-hidden="true">near_me</span>
-                  길찾기
+                  위치 안내
                 </button>
                 <button
                   type="button"
@@ -389,7 +389,7 @@
       </aside>
 
       <section class="pc-map-area" aria-label="매장 지도">
-        <div class="pc-map-bg" aria-hidden="true"></div>
+        <div class="pc-map-bg"></div>
 
         <div class="pc-map-markers" aria-hidden="true"></div>
 
@@ -419,9 +419,10 @@
       aria-modal="true"
       aria-label="매장 지도"
       aria-hidden="true"
+      inert=""
     >
       <div class="map-lightbox__overlay"></div>
-      <button type="button" class="map-lightbox__close" aria-label="닫기" autofocus>
+      <button type="button" class="map-lightbox__close" aria-label="닫기">
         <span class="typo-m-icons-l-o" aria-hidden="true">close</span>
       </button>
       <div class="map-lightbox__container"></div>
