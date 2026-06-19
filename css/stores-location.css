@@ -1,15 +1,3 @@
-/* ============================================================
-   stores-location.css — 매장 찾기 페이지 모바일 스타일
-   Viewport: 480px / Content: 448px (padding 0 16px)
-   Figma: kZYfAsKXLNXvKo9CCA0ypU / node 841:3788
-   Component border-radius: Button 4px / Card 4px /
-   Filter Chip 4px / Input 12px / PREMIUM Badge 100px
-   ============================================================ */
-
-/* ===========================
-   Accessibility Utilities
-   =========================== */
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -35,10 +23,6 @@ a:focus:not(:focus-visible) {
   outline: none;
 }
 
-/* ===========================
-   Page Layout
-   =========================== */
-
 .stores-location {
   display: flex;
   flex-direction: column;
@@ -46,10 +30,6 @@ a:focus:not(:focus-visible) {
   gap: 24px;
   overflow-x: hidden;
 }
-
-/* ===========================
-   Section 1 — Hero
-   =========================== */
 
 .stores-hero {
   display: flex;
@@ -67,10 +47,6 @@ a:focus:not(:focus-visible) {
   margin: 0;
   color: var(--color-dark-gray);
 }
-
-/* ===========================
-   Section 2 — Search & Filter
-   =========================== */
 
 .stores-search__container {
   display: flex;
@@ -125,10 +101,6 @@ a:focus:not(:focus-visible) {
   cursor: pointer;
 }
 
-/* ===========================
-   Filter Chip
-   =========================== */
-
 .stores-search__filters {
   display: flex;
   flex-direction: row;
@@ -172,10 +144,6 @@ a:focus:not(:focus-visible) {
   border-color: var(--color-point);
   color: var(--color-white);
 }
-
-/* ===========================
-   Section 3 — AI Banner
-   =========================== */
 
 .stores-ai-banner {
   display: flex;
@@ -232,10 +200,6 @@ a:focus:not(:focus-visible) {
   color: var(--color-white);
   cursor: pointer;
 }
-
-/* ===========================
-   Section 4 — Featured Showroom
-   =========================== */
 
 .stores-featured {
   display: flex;
@@ -372,10 +336,6 @@ a:focus:not(:focus-visible) {
   color: var(--color-point);
 }
 
-/* ===========================
-   Section 5 — Nearby Stores
-   =========================== */
-
 .stores-list {
   display: flex;
   flex-direction: column;
@@ -422,10 +382,6 @@ a:focus:not(:focus-visible) {
   padding: 0;
   margin: 0;
 }
-
-/* ===========================
-   Store Card
-   =========================== */
 
 .store-card {
   display: flex;
@@ -504,10 +460,6 @@ a:focus:not(:focus-visible) {
   color: var(--color-primary);
 }
 
-/* ===========================
-   Section 6 — In-store Services
-   =========================== */
-
 .stores-services {
   display: flex;
   flex-direction: column;
@@ -562,10 +514,6 @@ a:focus:not(:focus-visible) {
   margin: 0;
 }
 
-/* ===========================
-   Section 7 — Missing Location CTA
-   =========================== */
-
 .stores-cta {
   display: flex;
   flex-direction: column;
@@ -619,10 +567,6 @@ a:focus:not(:focus-visible) {
   color: var(--color-dark-gray);
   border: 1px solid var(--color-gray);
 }
-
-/* ===========================
-   Map Lightbox
-   =========================== */
 
 .map-lightbox {
   display: none;
@@ -686,10 +630,6 @@ a:focus:not(:focus-visible) {
   max-width: none !important;
 }
 
-/* ===========================
-   Alert Replacement Message Card
-   =========================== */
-
 .stores-message-card {
   position: fixed;
   left: 16px;
@@ -749,10 +689,6 @@ a:focus:not(:focus-visible) {
   cursor: pointer;
 }
 
-/* ===========================
-   Fixed Action Bar
-   =========================== */
-
 .fixed-action-bar {
   position: fixed;
   right: 16px;
@@ -789,10 +725,6 @@ a:focus:not(:focus-visible) {
   line-height: 1;
 }
 
-/* ==========================================================================
-   Layout 분기 — Mobile/Tablet vs PC
-   ========================================================================== */
-
 .layout-mobile-tablet {
   display: block;
 }
@@ -805,10 +737,6 @@ a:focus:not(:focus-visible) {
     padding: 0;
   }
 }
-
-/* ==========================================================================
-   Tablet Responsive — @media (min-width: 768px)
-   ========================================================================== */
 
 @media (min-width: 768px) {
   .stores-location {
@@ -839,12 +767,7 @@ a:focus:not(:focus-visible) {
   }
 }
 
-/* ==========================================================================
-   PC Layout — @media (min-width: 1200px)
-   ========================================================================== */
-
 @media (min-width: 1200px) {
-  /* 레이아웃 전환 */
   .layout-mobile-tablet {
     display: none;
   }
@@ -853,28 +776,22 @@ a:focus:not(:focus-visible) {
     display: flex;
     flex-direction: row;
     width: 100%;
-    align-items: flex-start; /* sticky 자식 요소가 독립 높이를 가지도록 */
+    align-items: flex-start;
   }
 
-  /* Mobile/Tablet 전용 요소 숨김 */
   .fixed-action-bar {
     display: none;
   }
 
-  /* PC에서 라이트박스 안전 차단 (JS 트리거 없으나 방어적 처리) */
   .map-lightbox {
     display: none !important;
   }
 
-  /* ------------------------------------------------------------------
-     PC 사이드바
-     ------------------------------------------------------------------ */
-
   .pc-sidebar {
     position: sticky;
-    top: 70px; /* 헤더 높이 */
+    top: 70px;
     width: 450px;
-    min-width: 450px; /* flex 환경에서 줄어들지 않도록 */
+    min-width: 450px;
     flex-shrink: 0;
     height: calc(100vh - 70px);
     margin-top: 70px;
@@ -894,7 +811,6 @@ a:focus:not(:focus-visible) {
     margin: 0;
   }
 
-  /* 프로모션 카드 */
   .pc-promo-card {
     gap: 16px;
     padding: 16px;
@@ -929,7 +845,6 @@ a:focus:not(:focus-visible) {
     border: 1px solid var(--color-gray, #b8b8b8);
   }
 
-  /* 검색 영역 */
   .pc-search-section {
     display: flex;
     flex-direction: column;
@@ -970,7 +885,6 @@ a:focus:not(:focus-visible) {
     cursor: pointer;
   }
 
-  /* PC 필터 칩 */
   .pc-filter-chips {
     gap: 24px;
     list-style: none;
@@ -983,7 +897,6 @@ a:focus:not(:focus-visible) {
     height: 36px;
   }
 
-  /* 결과 요약 */
   .pc-results-summary {
     gap: 8px;
     padding: 8px 0 0;
@@ -999,7 +912,6 @@ a:focus:not(:focus-visible) {
     padding: 0;
   }
 
-  /* PC 매장 리스트 */
   .pc-store-list {
     display: flex;
     flex-direction: column;
@@ -1009,7 +921,6 @@ a:focus:not(:focus-visible) {
     margin: 0;
   }
 
-  /* PC 매장 카드 */
   .pc-store-card {
     gap: 12px;
     padding: 24px;
@@ -1106,7 +1017,6 @@ a:focus:not(:focus-visible) {
     color: var(--color-white, #fff);
   }
 
-  /* 더보기 버튼 */
   .pc-store-list__more {
     width: 100%;
     height: 56px;
@@ -1116,15 +1026,11 @@ a:focus:not(:focus-visible) {
     cursor: pointer;
   }
 
-  /* ------------------------------------------------------------------
-     PC 지도 영역
-     ------------------------------------------------------------------ */
-
   .pc-map-area {
     position: sticky;
-    top: 70px; /* 헤더 높이 */
+    top: 70px;
     flex: 1;
-    min-width: 0; /* flex-item이 부모를 초과하지 않도록 */
+    min-width: 0;
     height: calc(100vh - 70px);
     margin-top: 70px;
     overflow: hidden;
@@ -1150,7 +1056,6 @@ a:focus:not(:focus-visible) {
     pointer-events: none;
   }
 
-  /* 필터 오버레이 — 지도 좌상단 */
   .pc-filter-overlay {
     position: absolute;
     top: 32px;
@@ -1179,7 +1084,6 @@ a:focus:not(:focus-visible) {
     cursor: pointer;
   }
 
-  /* 지도 컨트롤 — 우측 상단 */
   .pc-map-controls {
     position: absolute;
     right: 32px;
@@ -1203,7 +1107,6 @@ a:focus:not(:focus-visible) {
     cursor: pointer;
   }
 
-  /* 토스트 안내 — 하단 중앙 */
   .pc-map-toast {
     position: absolute;
     bottom: 24px;
@@ -1219,7 +1122,6 @@ a:focus:not(:focus-visible) {
     color: var(--color-black, #000);
   }
 
-  /* Alert 대체 카드 — PC 지도 필터박스 아래 */
   .stores-message-card {
     --pc-sidebar-width: 450px;
     --pc-map-offset: 32px;
@@ -1279,7 +1181,6 @@ a:focus:not(:focus-visible) {
     height: 28px;
   }
 
-  /* Footer test */
   .pc-only {
     display: block;
   }
@@ -1313,7 +1214,6 @@ a:focus:not(:focus-visible) {
   }
 }
 
-/* PC Search Overflow Fix */
 @media (min-width: 1200px) {
   .pc-sidebar,
   .pc-sidebar__inner,
@@ -1341,7 +1241,6 @@ a:focus:not(:focus-visible) {
   }
 }
 
-/* PC 필터칩 한 줄 정렬 보정 */
 @media (min-width: 1200px) {
   .pc-filter-chips {
     flex-wrap: nowrap;
@@ -1359,7 +1258,6 @@ a:focus:not(:focus-visible) {
   }
 }
 
-/* PC 검색 input / 버튼 구조 보정 */
 @media (min-width: 1200px) {
   .pc-search-form {
     display: flex;
@@ -1413,7 +1311,6 @@ a:focus:not(:focus-visible) {
   }
 }
 
-/* 360px 모바일 화면 가로 잘림 방지 보정 */
 @media (max-width: 399px) {
   html,
   body {
@@ -1516,7 +1413,6 @@ a:focus:not(:focus-visible) {
   }
 }
 
-/* 라이트박스 배경 스크롤 방지 보정 */
 .map-lightbox,
 .map-lightbox__overlay,
 .map-lightbox__container {
@@ -1531,7 +1427,6 @@ a:focus:not(:focus-visible) {
   overscroll-behavior: contain;
 }
 
-/* 768 이상에서 검색 결과 없음 카드가 한 칸만 차지하는 문제 보정 */
 @media (min-width: 768px) and (max-width: 1199px) {
   .stores-list__items > .store-card:only-child {
     grid-column: 1 / -1;
