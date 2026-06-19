@@ -793,14 +793,28 @@ function updateTotalPrice() {
 }
 
 /* 컬러 옵션 */
-function getColorFromName(name = "", colorMap = {}) {
-  const text = name.toLowerCase();
+function getColorFromName(name = "", colorMap = []) {
+  const norm = name.toLowerCase().replace(/\s/g, ""); 
+  let best = null;
 
-  const matchedKey = Object.keys(colorMap)
-    .sort((a, b) => b.length - a.length)
-    .find(key => text.includes(key.toLowerCase()));
+  for (const c of colorMap) {
+    for (const m of c.match) {
+      const key = m.toLowerCase();
+      const idx = norm.indexOf(key);
+      if (idx === -1) continue;
+      if (
+        !best ||
+        idx < best.idx ||
+        (idx === best.idx && key.length > best.len)
+      ) {
+        best = { idx, len: key.length, color: c };
+      }
+    }
+  }
 
-  return matchedKey ? colorMap[matchedKey] : { name: "basic", hex: "#b8b8b8" };
+  return best
+    ? { name: best.color.name, hex: best.color.hex }
+    : { name: "basic", hex: "#b8b8b8" };
 }
 
 function createColorOptions(data, allProducts, colorMap) {
