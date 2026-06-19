@@ -129,7 +129,7 @@ async function fetchProduct() {
 
     if (!product) {
       alert("존재하지 않는 상품입니다. 상품 목록으로 이동합니다.");
-      location.href = "./product-list.html";
+      location.href = "./filters.html";
       return;
     }
 
