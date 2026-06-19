@@ -444,6 +444,16 @@ function createReviews(data) {
     reviewTab.textContent = `후기(${reviewCount})`;
   }
 
+  function renderRatingDistribution(reviewCount) {
+    const fills = document.querySelectorAll(".progress-fill");
+
+    // 후기 있을 때 막대 너비(5점/4점/3점 순). 이미지랑 비슷하게.
+    const ratios = reviewCount > 0 ? [82, 30, 8] : [0, 0, 0];
+
+    fills.forEach((fill, index) => {
+      fill.style.width = `${ratios[index] ?? 0}%`;
+    });
+  }
   if (ratingScore) {
     ratingScore.textContent = reviewCount > 0 ? "4.9" : "0.0";
   }
@@ -464,6 +474,12 @@ function createReviews(data) {
     if (reviewMoreButton) {
       reviewMoreButton.hidden = true;
     }
+
+    if (ratingScore) {
+      ratingScore.textContent = reviewCount > 0 ? "4.9" : "0.0";
+    }
+
+    renderRatingDistribution(reviewCount);
 
     return;
   }
@@ -492,6 +508,12 @@ function renderReviewItems(reviews) {
       const reviewerName = `user${index + 1}***`;
       const reviewerInitial = reviewerName.charAt(0).toUpperCase();
       const reviewDate = getReviewDate(review.image);
+      const reviewPhoto = review.image
+        ? `<div class="review-photo">
+       <img src="${review.image}" alt="${reviewerName} 님의 후기 사진"
+            class="review-photo-image" loading="lazy" />
+     </div>`
+        : "";
 
       return `
         <li>
@@ -521,10 +543,12 @@ function renderReviewItems(reviews) {
               <span class="star typo-m-icons-xs-o">star</span>
               <span class="star typo-m-icons-xs-o">star</span>
             </div>
-
-            <p class="review-content typo-m-body-s">
-              ${review.content || review.title || "후기 내용이 없습니다."}
-            </p>
+             <div class="review-body d-flex g-2">
+              ${reviewPhoto}
+              <p class="review-content typo-m-body-s">
+                ${review.content || review.title || "후기 내용이 없습니다."}
+              </p>
+            </div>
           </article>
         </li>
       `;
@@ -794,7 +818,7 @@ function updateTotalPrice() {
 
 /* 컬러 옵션 */
 function getColorFromName(name = "", colorMap = []) {
-  const norm = name.toLowerCase().replace(/\s/g, ""); 
+  const norm = name.toLowerCase().replace(/\s/g, "");
   let best = null;
 
   for (const c of colorMap) {
