@@ -23,10 +23,8 @@
   <body>
     <header class="header"></header>
 
-    <!-- Mobile + Tablet 전용 구조 (0~1199px) -->
     <div class="layout-mobile-tablet">
       <main class="sub-page stores-location">
-        <!-- Section 1: Hero -->
         <section class="stores-hero">
           <div class="stores-hero__inner container d-flex flex-column g-1">
             <div class="stores-hero__heading">
@@ -40,7 +38,6 @@
           </div>
         </section>
 
-        <!-- Section 2: Search & Filter -->
         <section class="stores-search" aria-labelledby="stores-search-title">
           <h2 id="stores-search-title" class="sr-only">매장 검색 및 필터</h2>
           <div class="stores-search__container container d-flex flex-column g-1">
@@ -88,7 +85,6 @@
           </div>
         </section>
 
-        <!-- Section 3: AI Banner -->
         <section class="stores-ai-banner container d-flex align-items-center g-2">
           <div class="stores-ai-banner__icon-wrap d-flex align-items-center justify-content-center">
             <span class="typo-m-icons-xl-o" aria-hidden="true">visibility</span>
@@ -105,10 +101,8 @@
           </div>
         </section>
 
-        <!-- Section 4: Featured Showroom -->
         <section class="stores-featured container" aria-labelledby="stores-featured-title">
           <div class="stores-featured__image-wrap">
-            <!-- JS로 이미지 렌더링 예정 -->
             <span class="stores-featured__badge typo-m-header">PREMIUM</span>
           </div>
           <div class="stores-featured__info d-flex flex-column">
@@ -150,7 +144,6 @@
           </div>
         </section>
 
-        <!-- Section 5: Nearby Stores -->
         <section class="stores-list" aria-labelledby="stores-list-title">
           <div class="stores-list__inner container d-flex flex-column g-2">
             <div class="stores-list__header d-flex justify-content-between align-items-center">
@@ -229,7 +222,6 @@
           </div>
         </section>
 
-        <!-- Section 6: In-store Services -->
         <section class="stores-services" aria-labelledby="stores-services-title">
           <div class="stores-services__inner container d-flex flex-column g-2">
             <h2 id="stores-services-title" class="typo-m-header-l">매장 서비스</h2>
@@ -254,7 +246,6 @@
           </div>
         </section>
 
-        <!-- Section 7: Missing Location CTA -->
         <section class="stores-cta">
           <div class="stores-cta__inner container d-flex flex-column g-2">
             <div class="stores-cta__text d-flex flex-column">
@@ -273,28 +264,21 @@
         </section>
       </main>
     </div>
-    <!-- /layout-mobile-tablet -->
 
-    <!-- PC 전용 구조 (1200px+) -->
-    <!-- 주의: Mobile/PC 양쪽에 유사 데이터가 있을 경우 양쪽 수정 필요 -->
     <div class="layout-pc">
       <aside class="pc-sidebar">
         <div class="pc-sidebar__inner">
           <h1 class="typo-p-header-l">라운즈 안경원</h1>
 
-          <!-- 프로모션 카드 -->
           <div class="pc-promo-card d-flex align-items-center">
             <div class="pc-promo-card__text d-flex flex-column">
               <p class="typo-p-header-s">렌즈도 미리 비교하고 고르기</p>
               <p class="typo-p-body-s">방문 전에 원하는 렌즈를 골라보세요.</p>
               <button type="button" class="pc-promo-card__btn typo-p-btn-s">렌즈 비교하기</button>
             </div>
-            <div class="pc-promo-card__image" aria-hidden="true">
-              <!-- JS로 이미지 렌더링 예정 -->
-            </div>
+            <div class="pc-promo-card__image" aria-hidden="true"></div>
           </div>
 
-          <!-- 검색 영역 -->
           <section class="pc-search-section" aria-labelledby="pc-search-title">
             <div class="pc-search-header d-flex flex-column">
               <h2 id="pc-search-title" class="typo-p-header-s">매장 찾기</h2>
@@ -314,9 +298,7 @@
                 지역 검색
               </button>
             </div>
-            <ul class="pc-filter-chips d-flex" role="group" aria-label="매장 필터">
-              <!-- JS로 PC 필터칩 렌더링: 전체 / 프리미엄 매장 / 선글라스 / AI안경 -->
-            </ul>
+            <ul class="pc-filter-chips d-flex" role="group" aria-label="매장 필터"></ul>
             <div class="pc-results-summary d-flex align-items-center justify-content-between">
               <p class="typo-p-body-s">총 <strong>24</strong>개의 매장</p>
               <button
@@ -329,8 +311,6 @@
             </div>
           </section>
 
-          <!-- 매장 리스트 -->
-          <!-- 주의: 아래 샘플 데이터는 Mobile 쪽(.stores-list)과 별도로 관리됨 -->
           <ul class="pc-store-list" aria-label="매장 목록">
             <li class="pc-store-card pc-store-card--active d-flex flex-column">
               <div class="pc-store-card__header d-flex align-items-center">
@@ -408,15 +388,11 @@
         </div>
       </aside>
 
-      <!-- 지도 영역 -->
       <section class="pc-map-area" aria-label="매장 지도">
-        <!-- 지도 배경 (JS로 렌더링 예정) -->
         <div class="pc-map-bg" aria-hidden="true"></div>
 
-        <!-- 지도 마커 (JS로 렌더링 예정) -->
         <div class="pc-map-markers" aria-hidden="true"></div>
 
-        <!-- 지도 컨트롤 -->
         <div class="pc-map-controls d-flex flex-column" role="group" aria-label="지도 컨트롤">
           <button type="button" class="pc-map-controls__btn" aria-label="지도 확대">
             <span class="typo-m-icons-l-o" aria-hidden="true">add</span>
@@ -429,17 +405,14 @@
           </button>
         </div>
 
-        <!-- 토스트 안내 -->
         <div class="pc-map-toast" role="status" aria-live="polite">
           <p class="typo-p-body-s">매장을 선택하면 상세 정보를 확인할 수 있습니다</p>
         </div>
       </section>
     </div>
-    <!-- /layout-pc -->
 
     <footer class="footer"></footer>
 
-    <!-- Map Lightbox -->
     <div
       class="map-lightbox"
       role="dialog"
@@ -451,12 +424,9 @@
       <button type="button" class="map-lightbox__close" aria-label="닫기" autofocus>
         <span class="typo-m-icons-l-o" aria-hidden="true">close</span>
       </button>
-      <div class="map-lightbox__container">
-        <!-- JS로 지도 이미지 렌더링 예정 -->
-      </div>
+      <div class="map-lightbox__container"></div>
     </div>
 
-    <!-- Alert Replacement Message Card -->
     <div class="stores-message-card" role="status" aria-live="polite" hidden>
       <div class="stores-message-card__inner d-flex align-items-center">
         <span class="stores-message-card__icon typo-m-icons-l-o" aria-hidden="true">info</span>
@@ -470,7 +440,6 @@
       </div>
     </div>
 
-    <!-- Fixed Action Bar -->
     <div class="fixed-action-bar d-flex flex-column">
       <button type="button" class="fixed-action-bar__btn" aria-label="맨 위로 이동">
         <span class="typo-m-icons-l-o" aria-hidden="true">keyboard_double_arrow_up</span>
