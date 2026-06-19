@@ -1733,10 +1733,13 @@
 }
 @media (min-width: 1200px) {
   .cart-toast {
-    max-width: 640px;
-    bottom: 120px;
+    left: auto;
+    right: 40px;
+    top: 130px;
+    bottom: auto;
+    max-width: 560px;
+    transform: none;
   }
-
   .cart-toast-title {
     font-size: 24px;
     line-height: 32px;
