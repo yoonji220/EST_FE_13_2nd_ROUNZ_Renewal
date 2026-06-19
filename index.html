@@ -740,9 +740,7 @@
       renderFloatingBar();
 
       // 헤더 렌더링 및 기본 이벤트 실행
-      renderHeader();
       const headerTarget = document.querySelector(".header");
-      bindHeaderEvents(headerTarget);
 
       window.addEventListener("scroll", () => {
         if (window.scrollY > 530) {
