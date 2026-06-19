@@ -1,33 +1,97 @@
-{
-  "black": { "name": "black", "hex": "#111111" },
-  "블랙": { "name": "black", "hex": "#111111" },
-  "bsv": { "name": "black", "hex": "#111111" },
+[
+  { "name": "matte rose gold", "hex": "#9c6f72", "match": ["매트로즈골드"] },
+  {
+    "name": "rose gold",
+    "hex": "#b76e79",
+    "match": ["로즈골드", "rosegold", "rgd"]
+  },
+  { "name": "pink gold", "hex": "#dba99a", "match": ["핑크골드"] },
+  { "name": "beige gold", "hex": "#cbb784", "match": ["베이지골드"] },
+  { "name": "cream gold", "hex": "#e0cf95", "match": ["크림골드"] },
+  { "name": "light gold", "hex": "#e8cd7a", "match": ["라이트골드"] },
+  {
+    "name": "antique gold",
+    "hex": "#a8863f",
+    "match": ["엔틱골드", "앤틱골드"]
+  },
+  { "name": "vintage gold", "hex": "#bfa14f", "match": ["빈티지골드"] },
+  { "name": "brushed gold", "hex": "#c2a24e", "match": ["브러쉬드골드"] },
+  { "name": "gold", "hex": "#d4af37", "match": ["골드", "gold", "gld"] },
 
-  "gold": { "name": "gold", "hex": "#d4af37" },
-  "로즈골드": { "name": "rose gold", "hex": "#b76e79" },
-  "매트 로즈골드": { "name": "matte rose gold", "hex": "#9b6b6f" },
-  "골드": { "name": "gold", "hex": "#d4af37" },
+  { "name": "dark gunmetal", "hex": "#393c40", "match": ["다크건메탈"] },
+  { "name": "gunmetal", "hex": "#4b4e52", "match": ["건메탈", "gunmetal"] },
+  {
+    "name": "charcoal",
+    "hex": "#384650",
+    "match": ["챠콜", "차콜", "charcoal"]
+  },
 
-  "silver": { "name": "silver", "hex": "#c0c0c0" },
-  "실버": { "name": "silver", "hex": "#c0c0c0" },
+  { "name": "matte silver", "hex": "#b4b8bb", "match": ["매트실버"] },
+  { "name": "brushed silver", "hex": "#b9bcbe", "match": ["브러쉬드실버"] },
+  { "name": "vintage silver", "hex": "#b0b3b5", "match": ["빈티지실버"] },
+  { "name": "silver", "hex": "#c0c0c0", "match": ["실버", "silver", "svc"] },
 
-  "brown": { "name": "brown", "hex": "#7c4a2d" },
-  "브라운": { "name": "brown", "hex": "#7c4a2d" },
-  "dem": { "name": "brown", "hex": "#7c4a2d" },
+  { "name": "demi brown", "hex": "#6e4429", "match": ["데미브라운"] },
+  { "name": "dark brown", "hex": "#4a2d1a", "match": ["다크브라운"] },
+  { "name": "red brown", "hex": "#6b2f24", "match": ["레드브라운", "rbr"] },
+  { "name": "cream brown", "hex": "#8a6a45", "match": ["크림브라운"] },
+  { "name": "cocoa", "hex": "#5b3a29", "match": ["코코아", "cocoa"] },
+  { "name": "dark amber", "hex": "#6e3f1c", "match": ["다크엠버"] },
+  { "name": "amber", "hex": "#b06a2c", "match": ["엠버", "amber"] },
+  {
+    "name": "tortoise",
+    "hex": "#4f3520",
+    "match": ["톨토이즈", "tortoise", "tor"]
+  },
+  { "name": "havana", "hex": "#6b3f2a", "match": ["하바나", "havana", "hyd"] },
+  { "name": "brown", "hex": "#7c4a2d", "match": ["브라운", "brown", "dem"] },
 
-  "gray": { "name": "gray", "hex": "#9ca3af" },
-  "grey": { "name": "gray", "hex": "#9ca3af" },
-  "그레이": { "name": "gray", "hex": "#9ca3af" },
+  { "name": "wine", "hex": "#722f37", "match": ["와인레드", "와인", "wine"] },
+  { "name": "burgundy", "hex": "#6d2433", "match": ["버건디", "burgundy"] },
+  { "name": "red", "hex": "#b91c1c", "match": ["레드", "red"] },
 
-  "yellow": { "name": "yellow", "hex": "#ffd700" },
-  "옐로우": { "name": "yellow", "hex": "#ffd700" },
+  { "name": "pumpkin", "hex": "#d2691e", "match": ["펌킨", "pumpkin"] },
+  { "name": "orange", "hex": "#e07820", "match": ["오렌지", "orange"] },
+  { "name": "yellow", "hex": "#ffd700", "match": ["옐로우", "yellow"] },
 
-  "red": { "name": "red", "hex": "#b91c1c" },
-  "레드": { "name": "red", "hex": "#b91c1c" },
+  { "name": "khaki", "hex": "#6b6b3a", "match": ["카키", "khaki"] },
+  {
+    "name": "matte olive",
+    "hex": "#5a5f2a",
+    "match": ["매트올리브", "올리브잉크"]
+  },
+  { "name": "olive", "hex": "#6b7a2c", "match": ["올리브", "olive"] },
+  { "name": "green", "hex": "#2f6b3a", "match": ["그린", "green"] },
 
-  "clear": { "name": "clear", "hex": "#f5f5f5" },
-  "투명": { "name": "clear", "hex": "#f5f5f5" },
+  { "name": "sky blue", "hex": "#87ceeb", "match": ["스카이블루"] },
+  { "name": "navy", "hex": "#27314f", "match": ["네이비", "navy"] },
+  { "name": "blue", "hex": "#3b5ba5", "match": ["블루", "blue"] },
 
-  "havana": { "name": "havana", "hex": "#6b3f2a" },
-  "하바나": { "name": "havana", "hex": "#6b3f2a" }
-}
+  { "name": "deep pink", "hex": "#d05a85", "match": ["매트딥핑크", "딥핑크"] },
+  { "name": "pink", "hex": "#e8a0b8", "match": ["핑크", "pink"] },
+  { "name": "purple", "hex": "#7a4a8a", "match": ["퍼플", "purple"] },
+
+  { "name": "matte vapor", "hex": "#c2c7cc", "match": ["매트베이퍼"] },
+  { "name": "matte gray", "hex": "#7d8186", "match": ["매트그레이"] },
+  { "name": "dark gray", "hex": "#5a5f66", "match": ["다크그레이"] },
+  { "name": "warm gray", "hex": "#8a857d", "match": ["웜그레이"] },
+  {
+    "name": "gray",
+    "hex": "#9ca3af",
+    "match": ["그레이", "gray", "grey", "gry"]
+  },
+
+  { "name": "matte black", "hex": "#1f1f1f", "match": ["매트블랙", "mbk"] },
+  { "name": "black", "hex": "#111111", "match": ["블랙", "black", "bsv"] },
+
+  { "name": "ivory", "hex": "#f0e8d8", "match": ["아이보리", "ivory"] },
+  { "name": "beige", "hex": "#d8c4a0", "match": ["베이지", "beige"] },
+  { "name": "cream", "hex": "#f0e6c8", "match": ["크림", "cream"] },
+  { "name": "white", "hex": "#f5f5f5", "match": ["화이트", "white"] },
+
+  {
+    "name": "clear",
+    "hex": "#eef1f3",
+    "match": ["반투명", "투명", "clear", "cry"]
+  }
+]
