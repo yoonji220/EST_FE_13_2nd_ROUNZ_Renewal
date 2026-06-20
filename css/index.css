@@ -77,7 +77,12 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.12) 58%, rgba(0, 0, 0, 0.24));
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.58),
+    rgba(0, 0, 0, 0.12) 58%,
+    rgba(0, 0, 0, 0.24)
+  );
   pointer-events: none;
 }
 
@@ -256,7 +261,11 @@
   left: 0;
   width: 100%;
   padding-top: calc(var(--base-unit) * 2);
-  background: linear-gradient(180deg, rgba(239, 246, 255, 0.6) 0%, rgba(153, 153, 153, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    rgba(239, 246, 255, 0.6) 0%,
+    rgba(153, 153, 153, 0) 100%
+  );
   color: var(--color-dark-black);
 }
 
@@ -514,7 +523,12 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0.72),
+    rgba(255, 255, 255, 0)
+  );
   transform: translateX(-100%);
   animation: skeleton-loading 1.2s ease-in-out infinite;
 }
@@ -1366,10 +1380,11 @@ html {
 
 /* 2. 스크롤이 내려갔을 때 붙을 클래스 (.scrolled) */
 .header.scrolled {
-  background-color: var(--color-white) !important; /* 다시 흰색으로 (또는 #ffffff) */
-  box-shadow: 0 4px 4px var(--color-overlay) !important; /* 살짝 그림자 추가 (선택사항) */
-  border-bottom: var(--color-gray) 1px solid !important;
+  background-color: var(--color-white) !important;
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.06) !important;
+  border-bottom: 1px solid rgba(184, 184, 184, 0.4) !important;
 }
+
 .header.scrolled .header-icons {
   color: var(--color-black);
 }
